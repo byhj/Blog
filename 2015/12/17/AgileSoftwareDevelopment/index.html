@@ -302,21 +302,13 @@
           </span>
 
           
-          
-          <!-- 在下面的位置加上如下代码 -->
-
-                 <span id="busuanzi_container_page_pv">
-                 &nbsp; | &nbsp; 热度&nbsp; <span id="busuanzi_value_page_pv"></span>°C
-                 </span>
-
-             <!-- 在上面的位置加上如上代码 -->
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/blog/2015/12/17/AgileSoftwareDevelopment/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/17/AgileSoftwareDevelopment/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/17/AgileSoftwareDevelopment/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -325,6 +317,15 @@
           
 
           
+          
+             <span id="/blog/2015/12/17/AgileSoftwareDevelopment/" class="leancloud_visitors" data-flag-title="敏捷软件开发：原则 ，模式和实践">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
           
 
           
@@ -371,16 +372,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2015/12/16/Cocos2dx-AndroidStudio/" rel="next" title="Cocos2dx-AndroidStudio">
-                <i class="fa fa-chevron-left"></i> Cocos2dx-AndroidStudio
+              <a href="/blog/2015/12/17/EffectiveC++/" rel="next" title="Effective C++总结">
+                <i class="fa fa-chevron-left"></i> Effective C++总结
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2015/12/17/EffectiveC++/" rel="prev" title="Effective C++总结">
-                Effective C++总结 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2015/12/18/Books/" rel="prev" title="Books">
+                Books <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -430,11 +431,8 @@
           
   <div class="comments" id="comments">
     
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
+      <div class="ds-thread" data-thread-key="2015/12/17/AgileSoftwareDevelopment/"
+           data-title="敏捷软件开发：原则 ，模式和实践" data-url="https://byhj.github.io/blog/blog/2015/12/17/AgileSoftwareDevelopment/">
       </div>
     
   </div>
@@ -677,30 +675,28 @@
 
   
 
-
-
+  
+    
   
 
-    <script type="text/javascript">
-      var disqus_shortname = 'byhjblog';
-      var disqus_identifier = '2015/12/17/AgileSoftwareDevelopment/';
-      var disqus_title = '敏捷软件开发：原则 ，模式和实践';
-      var disqus_url = 'https://byhj.github.io/blog/blog/2015/12/17/AgileSoftwareDevelopment/';
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"byhjblog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
 
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-        run_disqus_script('embed.js');
-      
-    </script>
   
+    
+  
+
+
 
 
 
@@ -838,6 +834,105 @@
   
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("PKb1YXeoxSGQQacaNCBuWV4b-gzGzoHsz", "UeY5313r5g3YaEqgT9zWPs5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
