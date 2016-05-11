@@ -1,0 +1,683 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="基础议题仔细区别pointers和referencesPointers和references在某些方面做着同样的事情，但两者还是有所区别：　　没有null reference但是有null pointers，reference总是代表着某个对象，是另一个对象的别名，reference的这一语法特定使得在使用reference之前不需要测试其有效性，在一定程度上提高了效率。在另一方面，pointer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="More Effective C++总结">
+<meta property="og:url" content="https://byhj.github.io/blog/2015/12/17/MoreEffectiveC++/index.html">
+<meta property="og:site_name" content="byhj zzZ~~~">
+<meta property="og:description" content="基础议题仔细区别pointers和referencesPointers和references在某些方面做着同样的事情，但两者还是有所区别：　　没有null reference但是有null pointers，reference总是代表着某个对象，是另一个对象的别名，reference的这一语法特定使得在使用reference之前不需要测试其有效性，在一定程度上提高了效率。在另一方面，pointer">
+<meta property="og:updated_time" content="2016-05-09T04:13:01.216Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="More Effective C++总结">
+<meta name="twitter:description" content="基础议题仔细区别pointers和referencesPointers和references在某些方面做着同样的事情，但两者还是有所区别：　　没有null reference但是有null pointers，reference总是代表着某个对象，是另一个对象的别名，reference的这一语法特定使得在使用reference之前不需要测试其有效性，在一定程度上提高了效率。在另一方面，pointer">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> More Effective C++总结 | byhj zzZ~~~ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">byhj zzZ~~~</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">世上的鲜花会盛开，壮丽不朽的事物会接踵而来</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                More Effective C++总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-17T21:11:28+08:00" content="2015-12-17">
+              2015-12-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基础议题"><a href="#基础议题" class="headerlink" title="基础议题"></a>基础议题</h1><h2 id="仔细区别pointers和references"><a href="#仔细区别pointers和references" class="headerlink" title="仔细区别pointers和references"></a>仔细区别pointers和references</h2><p>Pointers和references在某些方面做着同样的事情，但两者还是有所区别：<br>　　没有null reference但是有null pointers，reference总是代表着某个对象，是另一个对象的别名，reference的这一语法特定<br>使得在使用reference之前不需要测试其有效性，在一定程度上提高了效率。在另一方面，pointers可以被重新赋值，指向另一个对象，<br>而reference总是指向（代表）它最初获得的那个对象。在实现某些操作符，例如operator[], 使用reference能够比较自然得到<br>“被当做assignment赋值对象”的功能。</p>
+ <a id="more"></a>
+<h2 id="最好使用C-转型操作符"><a href="#最好使用C-转型操作符" class="headerlink" title="最好使用C++转型操作符"></a>最好使用C++转型操作符</h2><p>　　由于旧式C语言的转型几乎可以将任何类型转换为其它类型，而没有给出每次转型更精确的意图，加上旧式转型的小括号方式在程序中可能难以辨识，所以最好才采用C++新的转型类型操作符：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">static_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
+<p>　　这是静态类型转换操作，允许基本类型之间的相互转换，但不能移除表达式的常量性，我们采用下面转换来改变表达式的常量性或易变性，这个操作由编译器执行。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">const_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
+<p>　　但要执行继承体系中“安全的向下转型或跨系转型动作”时，使用下面动态类型转换符。需要注意的是它无法应用在缺乏虚函数的类型身上，也不能改变类型的常量性。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">dynamic_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
+<p>　　最后一种转型操作几乎与编译平台相关，所以它不具备移植性，我们常用它来进行转换“函数指针”类型<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">reinterpret_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
+<p>　　当你的编译平台不能支持新式转型操作时，你可以考虑采用宏去模拟这些语法：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#define static_cast(<span class="name">TYPE</span>, EXPR)       ((<span class="name">TYPE</span>) (<span class="name">EXPR</span>))</span><br><span class="line">#define const_cast(<span class="name">TYPE</span>, EXPR)        ((<span class="name">TYPE</span>) (<span class="name">EXPR</span>))</span><br><span class="line">#define reinterpret_cast(<span class="name">TYPE</span>, EXPR)  ((<span class="name">TYPE</span>) (<span class="name">EXPR</span>))</span><br></pre></td></tr></table></figure></p>
+<h2 id="绝对不要以多态方式处理数组"><a href="#绝对不要以多态方式处理数组" class="headerlink" title="绝对不要以多态方式处理数组"></a>绝对不要以多态方式处理数组</h2><p>　　多态和指针算术不能混用，数组访问时是指针算术表达式。通过base class指针删除一个由derived classes objects构成的数组，，其结果未定义。<br>当以数组形式传递时，编译器对数组对象的理解是声明的部分，而不是你想要的多态效果。</p>
+<h2 id="非必要不提供default-constructor"><a href="#非必要不提供default-constructor" class="headerlink" title="非必要不提供default constructor"></a>非必要不提供default constructor</h2><p>　　default constructor在没有任何外来信息的情况将对象初始化，当现实世界往往需要外来信息进行操作。当你不提供default constructor时,<br>没有方法为数组对象指定constructor自变量，它们同样将不适用于许多template-based container classes.虽然有着这些限制，但是在一般情况下还是<br>不要提供default constructor。</p>
+<hr>
+<h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><h2 id="对定制的“类型转换函数”保持警觉"><a href="#对定制的“类型转换函数”保持警觉" class="headerlink" title="对定制的“类型转换函数”保持警觉"></a>对定制的“类型转换函数”保持警觉</h2><p>　　C++允许编译器在不同类型之间执行隐式转换。类型转换的问题在于，在你从未打算也未预期的情况下，此类函数可能会被调用，而其结果可能是不正确<br>，不直观的程序行为，很难调试。存在着两种函数转换：</p>
+<ul>
+<li><p>隐式类型转换操作符 ：关键词operator后加上一个类型名称<br>　　这类转换我们可以将operator的重载换成显式的转换专有函数，string的c_str()函数就是个很好的例子。</p>
+</li>
+<li><p>单变量constructors函数：会执行隐式的转换为类对象<br>　　使用explicit能够避免这一问题，编译器不能因隐式类型转换的需要调用它们，但是你还是可以通过显式类型的转换。当你无法使用explicit时，可以使用<br>proxy技术，将单一参数转换为一个内部类表示，这样做的话就可以执行原来的构造函数又避免类型转换动作，因为这样的转换需要两次，不合法。</p>
+</li>
+</ul>
+<h2 id="区分increment-decrement操作符的前置和后置形式"><a href="#区分increment-decrement操作符的前置和后置形式" class="headerlink" title="区分increment / decrement操作符的前置和后置形式"></a>区分increment / decrement操作符的前置和后置形式</h2><p>　　通过添加一个int自变量进行后置版本的识别，编译器会为此int指定为0值，前置式返回一个reference，后置式返回返回一个const对象。<br>后置式返回的const能够阻止++++之类的操作，这种操作和内建类型的行为不一致，即使可以这样其行为也不是你预期那样。除此之外，后置<br>版本返回原来的副本也会对效率带来影响。</p>
+<h2 id="千万不要重载-amp-amp-和-，操作符"><a href="#千万不要重载-amp-amp-和-，操作符" class="headerlink" title="千万不要重载 &amp;&amp; || 和 ，操作符"></a>千万不要重载 &amp;&amp; || 和 ，操作符</h2><p>　　重载这些操作符会让程序从短路求值语意向函数调用转变，这两者是不同的。当函数调用动作被执行，所有参数值都必须评估完成。C++语言规范并未<br>明确定义函数调用动作中各参数的评估顺序。对于逗号表达式，从左往右进行评估，最后整个逗号表达式的结果以逗号右侧的值为代表。而当你重载逗号<br>操作符后，不能得到这些保证。</p>
+<h2 id="了解各种不同意义的new和delete"><a href="#了解各种不同意义的new和delete" class="headerlink" title="了解各种不同意义的new和delete"></a>了解各种不同意义的new和delete</h2><p>　　new operator由语言内置，不能被改变意义，总是做相同的事情：</p>
+<ul>
+<li>它分配足够的内存，用来放置某些类型的对象。</li>
+<li>调用一个constructor，为刚才分配的内存中的那个对象设定初值。<br>　　你能够进行改变的时用来容纳对象的那块内存的分配行为，new operator调用某个函数，执行必要的内存分配动作，你可以重写或重载那个函数，改变其行为。<br>这个函数称为operator new.</li>
+</ul>
+<p>‘’’<br>void * operator new(size_t size);</p>
+<p>‘’’<br>返回一个指针，指向一块原始的，未设初值的内存，当你重载这个operator new时，size_t是必须的第一参数。它只负责分配内存，不进行初始化。<br>你可以使用placement new对分配好的原始内存，在上面构建对象。</p>
+<p>　　为了避免资源泄露，每一个动态分配行为都必须匹配一个相应但相反的释放动作，operator delete对于内建的delete operator关系与上面类似。<br>内存释放动作由函数operator delete执行，如果你只打算处理原始的，未设初值的内存，应该使用operator new和operator delete(相当于malloc和free)，<br>而不是new operator和delete operator.<br>　　数组版本的new还是那个new operator但内存以一个名为operator new[]的函数进行分配内存（array new)，delete也是同样的道理。数组版与单一版的<br>new operator所调用的constructor数量不同。</p>
+<hr>
+<h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><h2 id="利用destructors避免内存泄露"><a href="#利用destructors避免内存泄露" class="headerlink" title="利用destructors避免内存泄露"></a>利用destructors避免内存泄露</h2><p>　　以一个对象存放“必须自动释放的资源”并依赖该对象的destructor释放，可以在exceptions出现时避免资源泄露。</p>
+<h2 id="在constructors内阻止资源泄露"><a href="#在constructors内阻止资源泄露" class="headerlink" title="在constructors内阻止资源泄露"></a>在constructors内阻止资源泄露</h2><p>　　exception的发生可能由于operator new无法分配足够内存时，这时控制权被移出constructor之外，而析构函数对已构造完成的对象才进行<br>释放操作。这个时候，我们需要将所有可能的exceptioons捕捉起来，执行某些清理工作，然后从新抛出exception使它继续传播出去。当member initialization\<br>lists时，把try catch放在private member functions内，然后进行处理。</p>
+<h2 id="禁止异常流出destructors之外"><a href="#禁止异常流出destructors之外" class="headerlink" title="禁止异常流出destructors之外"></a>禁止异常流出destructors之外</h2><p>　　destructor在两种情况下会被调用：</p>
+<ul>
+<li>当对象在正常状态下被销毁，也就是当它离开了它的生存空间或是被明确地删除</li>
+<li>当对象在exception处理机制的statck-unwinding(展开)机制-销毁<br>可以避免terminate函数在exception传播过程的stack-unwinding， 可以协助确保destructors完成其应该完成的所有的事情。</li>
+</ul>
+<h2 id="了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异"><a href="#了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异" class="headerlink" title="了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异"></a>了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异</h2><p>　　函数参数和exceptions的传递方式都有三种，by value, vy reference, by pointer。但是你调用一个函数，控制权最终会回到调用端。<br>而当你抛出一个exception,控制权不会再回到抛出端。不论exception是以哪种方式参数传递，都会发生复制行为，catch得到是副本，这个复制行为<br>是由对象的copy constructor执行的，该复制动作永远是以对象的静态类型为本。<br>　　exceptions与catch子句相匹配过程中，仅有两种转换可以发生：</p>
+<ul>
+<li>继承架构中的类转换</li>
+<li>从一个“有型指针”转为”无型指针”</li>
+</ul>
+<h2 id="以by-reference方式捕捉exceptions"><a href="#以by-reference方式捕捉exceptions" class="headerlink" title="以by reference方式捕捉exceptions"></a>以by reference方式捕捉exceptions</h2><p>　　catch by reference可以避免对象删除问题。</p>
+<h2 id="明智运用exception-specifications"><a href="#明智运用exception-specifications" class="headerlink" title="明智运用exception specifications"></a>明智运用exception specifications</h2><h2 id="了解异常处理的成本"><a href="#了解异常处理的成本" class="headerlink" title="了解异常处理的成本"></a>了解异常处理的成本</h2><ul>
+<li>必须付出一些空间，放置某些数据结构（记录着那些对象已被完全构造）</li>
+<li>try语句块</li>
+</ul>
+<hr>
+<h1 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h1><h2 id="谨记80-20法则"><a href="#谨记80-20法则" class="headerlink" title="谨记80-20法则"></a>谨记80-20法则</h2><p>　　软件的整体性能几乎总是有其构成要素的一小部分决定。借助程序分析器查找出瓶颈在哪一部分，然后再进行优化。</p>
+<h2 id="考虑使用lazy-evaluation-缓式评估"><a href="#考虑使用lazy-evaluation-缓式评估" class="headerlink" title="考虑使用lazy evaluation(缓式评估)"></a>考虑使用lazy evaluation(缓式评估)</h2><ul>
+<li>Reference Counting (引用计数) ：在你真正需要之前，不必着急为某物做一个副本，可以采用拖延政策直到需要修改时才提供副本操作。</li>
+<li>区分读和写 ： operator[]的读写区分</li>
+<li>Lazy Fetching（缓式取出）：避免非必要的数据库读取动作</li>
+<li>Lazy Expression Evaluation(表达式缓评估) ：避免不必要的数值计算动作</li>
+</ul>
+<h2 id="分期摊还预期的计算成本。"><a href="#分期摊还预期的计算成本。" class="headerlink" title="分期摊还预期的计算成本。"></a>分期摊还预期的计算成本。</h2><p>   超急评估：令他超前进度地做“要求以外”的更多工作。<br>   如果你预期程序常常会用到某个计算，你可以降低每次计算的平均成本，办法就是设计一份数据结构以便能够极有效率地处理需求。<br>  Catching和prefetching(预先取出)都是其中的案例。<br>  但是较佳往往导致较大的内存成本。</p>
+<h2 id="了解临时对象的来源"><a href="#了解临时对象的来源" class="headerlink" title="了解临时对象的来源"></a>了解临时对象的来源</h2><p>　　C++中真正的临时对象时不可见的，由编译器隐式调用生成。一般而言，函数调用时隐式转换和函数返回对象时会生成这类对象。<br>你可以声明reference-to-const避免这类问题。</p>
+<h2 id="协助完成返回值优化（RVO"><a href="#协助完成返回值优化（RVO" class="headerlink" title="协助完成返回值优化（RVO)"></a>协助完成返回值优化（RVO)</h2><p>　　编译器在返回对象时，可以执行返回值优化。<br>‘’’<br>const TestClass operator+(const TestClass &amp;lhs, const TestClass &amp;rhs) {<br>  return TestClass(lhs.val + rhs.val);<br>}<br>‘’’</p>
+<h2 id="利用重载技术避免隐式类型转换"><a href="#利用重载技术避免隐式类型转换" class="headerlink" title="利用重载技术避免隐式类型转换"></a>利用重载技术避免隐式类型转换</h2><p>　　每个重载操作符必须获得至少一个用户定制的自变量，我们可以通过提供多种参数的重载函数避免临时对象的生成。</p>
+<h2 id="考虑以操作符复合形式取代其独身形式"><a href="#考虑以操作符复合形式取代其独身形式" class="headerlink" title="考虑以操作符复合形式取代其独身形式"></a>考虑以操作符复合形式取代其独身形式</h2><p>　　我们一般使用复合形式来实现operator的单一版本，单一版本需要返回一个新对象，而复合版本则是直接将结果写入<br>其左端自变量，不需要产生一个临时对象来放置返回值。</p>
+<h2 id="考虑使用其他程序库"><a href="#考虑使用其他程序库" class="headerlink" title="考虑使用其他程序库"></a>考虑使用其他程序库</h2><p>　　C++的IO操作比C的慢很多，可以视情况选择合适的程序库。</p>
+<h2 id="了解virtual-functions-multiple-inheritance-virtual-base-class-runtime-type-identification的成本"><a href="#了解virtual-functions-multiple-inheritance-virtual-base-class-runtime-type-identification的成本" class="headerlink" title="了解virtual functions, multiple inheritance, virtual base class, runtime type identification的成本"></a>了解virtual functions, multiple inheritance, virtual base class, runtime type identification的成本</h2><p>　　vtbl和vptr需要额外的内存空间，换页动作由此受到影响。虚函数本身并不构成性能上的瓶颈，真正运行时期成本发生在inlining互动的时候。<br>多重继承往往导致virtual base classes虚拟基类的需要，这可能导致对象内的隐式指针增加。RTTI让我们在运行时期获得objects和classes的<br>相关信息，需要空间存储type_info信息，使用typeud去获得class的对应type_info，type_info放在vtbl中。</p>
+<hr>
+<h1 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h1><h2 id="将constructor-和-non-member-functions虚化"><a href="#将constructor-和-non-member-functions虚化" class="headerlink" title="将constructor 和 non-member functions虚化"></a>将constructor 和 non-member functions虚化</h2><p>　　virtual constructo是某种函数，视其获得的输入，可产生不同类型对象。从磁盘或者磁带读取对象信息经常被用到。</p>
+<p>virtual copy constructor返回一个指针，指向其调用者的一个新副本，通常以clone()命名（Prototypee）。<br>当derived class重新定义其base class的一个虚函数时，不再需要一定得声明与原来相同的返回类型。<br>‘’’<br>class Base {<br>  virtual Base * clone() const = 0;<br>};</p>
+<p>class A : public Base {<br>  virtual A <em> clone() const {<br>    return new A(</em>this);<br>  }<br>};</p>
+<p>class B : public Base {<br>  virtual B <em> clone() const {<br>    return new B(</em>this);<br>  }<br>};</p>
+<p>‘’’</p>
+<p>non-member functions的虚化：写一个虚函数做实际工作，再写一个什么都不做的非虚函数，只负责调用函数。</p>
+<p>‘’’<br>class Base {<br>  virtual ostream &amp; print(ostream &amp;s) const = 0;<br>};</p>
+<p>class A : public Base {<br>  virtual ostream &amp; print(ostream &amp;s) const;<br>};</p>
+<p>class B : public Base {<br>  virtual ostream &amp; print(ostream &amp;s) const;<br>};<br>inline ostream &amp;operator &lt;&lt; (ostream &amp;s, const Base &amp;b) {<br>  return b.print(s);<br>}</p>
+<p>‘’’</p>
+<h2 id="限制某个class所能产生的对象数量"><a href="#限制某个class所能产生的对象数量" class="headerlink" title="限制某个class所能产生的对象数量"></a>限制某个class所能产生的对象数量</h2><ul>
+<li><p>允许零个或一个对象<br>阻止对象生成，只要将constructors声明为private，而利用单例模式static操作则可以生成一个对象。</p>
+</li>
+<li><p>不同的对象构造状态</p>
+</li>
+<li><p>允许对象生生灭灭</p>
+</li>
+<li><p>一个用来计算对象个数的base class</p>
+</li>
+</ul>
+<h2 id="要求或禁止对象产生于heap之中"><a href="#要求或禁止对象产生于heap之中" class="headerlink" title="要求或禁止对象产生于heap之中"></a>要求或禁止对象产生于heap之中</h2><ul>
+<li><p>要求对象产生于heap之中（head-based objects)<br>让destrutor成为private,而constructors为public,导入一个伪destructor函数调用真正的private。</p>
+</li>
+<li><p>判断某个对象是否位于heap中</p>
+</li>
+<li><p>禁止对象产生于heap之中<br>对象被直接实例化，对象被实例化为derived class objects内的base classes成分，对象被内嵌于其他对象之中。</p>
+</li>
+</ul>
+<h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><h2 id="proxy-classes代理类"><a href="#proxy-classes代理类" class="headerlink" title="proxy classes代理类"></a>proxy classes代理类</h2><p>　　用来代表其他对象的对象，称为proxy objects（替身对象）,而用以表现proxy objects者，我们称为proxy classes。</p>
+<hr>
+<h1 id="杂项讨论"><a href="#杂项讨论" class="headerlink" title="杂项讨论"></a>杂项讨论</h1><h2 id="在未来时态下发展程序"><a href="#在未来时态下发展程序" class="headerlink" title="在未来时态下发展程序"></a>在未来时态下发展程序</h2><p>　　好的软件对于变化有良好的适应能力。</p>
+<ul>
+<li>以C++本身(而非只是注释或说明文件)来表现各种规范</li>
+<li>避免”demand-paged”式的虚函数</li>
+<li>为每一个class处理assignment和copy construction动作</li>
+<li>努力让classes的操作符和函数拥有自然的语法和直观的语义</li>
+<li>让classes容易被正确使用，不容易被误用</li>
+<li>努力写出可移植代码</li>
+<li>设计你的代码，使：“系统改变所带来的冲击”得以局部化</li>
+<li>提供完整的classes,即使某些部分目前用不到</li>
+<li>设计你的接口，使有利于共同的操作行为，阻止共同的错误</li>
+<li>尽量使你的代码一般化，除非有不良的巨大后果</li>
+</ul>
+<h2 id="将非尾端类（non-leaf-classes）设计为抽象类"><a href="#将非尾端类（non-leaf-classes）设计为抽象类" class="headerlink" title="将非尾端类（non-leaf classes）设计为抽象类"></a>将非尾端类（non-leaf classes）设计为抽象类</h2><p>　　让原来的继承base类成为子类，添加一个抽象基类，这样做可达到允许同型赋值，部分赋值和异型赋值都被禁止的功能。<br>我们可以将其中的virtual destrutor函数声明为纯虚函数来避免提供一个不适合的纯虚接口，这个纯虚析构函数必须被定义，<br>因为derived classes在析构时会调用base classes的析构函数。<br>　　抽象基类降低了“企图以多态方式对待数组”的机会，让operator=的行为更容易被了解。强迫你明白认知有用之抽象性质的<br>存在。只有在原有的具体类被当做基类使用，才强迫导入一个新的抽象类。<br> 　　当你需要扩展一个程序库而又不能修改代码时，只有少数可行的选择：</p>
+<ul>
+<li>将你的具体类派生自既存的具体类</li>
+<li>试着在程序库的继承体系中找到一个更高层的抽象类</li>
+<li>以“你所希望继承的那个程序库类”来实现自己的新类，将程序库类对象作为新类的member</li>
+<li><p>写一些non-member functions以供应你希望加入class内部去的机能</p>
+<h2 id="如何在同一个程序中结合C-和C"><a href="#如何在同一个程序中结合C-和C" class="headerlink" title="如何在同一个程序中结合C++和C"></a>如何在同一个程序中结合C++和C</h2></li>
+</ul>
+<ul>
+<li>Name Mangling（名称重整）<br>　　Name Mangling是一种程序，通过它C++编译器为程序内的每一个函数编出独一无二的名称，在C中没有重载所以不需要此操作。<br>要抑制Name Mangling需要使用C++的extern “C”的命令，它是一个叙述，说明修饰的部分应该以C语言的方式调用。如果需要同时<br>处理C和C++的使用，可以采用预处理器符号__cplusplus, 这个符号只针对C++才用定义.</li>
+</ul>
+<p>‘’’<br>//如果在C++环境中我们使用C编译方式</p>
+<p>#ifdef __cplusplus<br>extern “C” {</p>
+<p>#endif</p>
+<p>// code</p>
+<p>#ifdef __cplusplus<br>}</p>
+<p>#endif</p>
+<p>‘’’</p>
+<ul>
+<li>Statics的初始化<br>　　stait class对象，全局对象，namespace内的对象以及文件范围内的对象，其constructor总在main以前得到执行。<br>而static initialization产生对象的destructors在main调用后。为了使得main是程序起点，很多编译器在main开始出安插<br>一个函数调用的特殊函数完成static initialization.<br>　　尽量使用C++编写main函数，可以调用的命名mian函数进行实际的操作,这样可以保证static的构造和析构被合理调用。<br>‘’’<br>extern “C”<br>int realMain(int argc, char *argv[]);</li>
+</ul>
+<p>int main(int argc, char *argv[]) {<br>  return realMain(argc, argv);<br>}<br>‘’’</p>
+<ul>
+<li><p>动态分配内存<br>　　C++使用new和delete， C使用malloc和free进行内存分配，char <em>strdup（const char </em>ps)这个函数的内存分配就会<br>根据不同的调用采取不同的内存分配方式，所以尽量避免调用标准程序库外的函数。</p>
+</li>
+<li><p>数据结构的兼容性<br>　　在C和C++之间对数据结构做双向交流，应该是安全的，前提是那些结构的定义式在C和C++中都可编译。</p>
+</li>
+</ul>
+<h2 id="让自己习惯于标准C-语言"><a href="#让自己习惯于标准C-语言" class="headerlink" title="让自己习惯于标准C++语言"></a>让自己习惯于标准C++语言</h2><p>　　</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/C/" rel="tag">#C++</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2015/12/16/Cocos2dx-AndroidStudio/" rel="next" title="Cocos2dx-AndroidStudio">
+                <i class="fa fa-chevron-left"></i> Cocos2dx-AndroidStudio
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2015/12/17/EffectiveC++/" rel="prev" title="Effective C++总结">
+                Effective C++总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.gif"
+               alt="byhj" />
+          <p class="site-author-name" itemprop="name">byhj</p>
+          <p class="site-description motion-element" itemprop="description">This is a boring description.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础议题"><span class="nav-number">1.</span> <span class="nav-text">基础议题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#仔细区别pointers和references"><span class="nav-number">1.1.</span> <span class="nav-text">仔细区别pointers和references</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最好使用C-转型操作符"><span class="nav-number">1.2.</span> <span class="nav-text">最好使用C++转型操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绝对不要以多态方式处理数组"><span class="nav-number">1.3.</span> <span class="nav-text">绝对不要以多态方式处理数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非必要不提供default-constructor"><span class="nav-number">1.4.</span> <span class="nav-text">非必要不提供default constructor</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作符"><span class="nav-number">2.</span> <span class="nav-text">操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对定制的“类型转换函数”保持警觉"><span class="nav-number">2.1.</span> <span class="nav-text">对定制的“类型转换函数”保持警觉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区分increment-decrement操作符的前置和后置形式"><span class="nav-number">2.2.</span> <span class="nav-text">区分increment / decrement操作符的前置和后置形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#千万不要重载-amp-amp-和-，操作符"><span class="nav-number">2.3.</span> <span class="nav-text">千万不要重载 && || 和 ，操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解各种不同意义的new和delete"><span class="nav-number">2.4.</span> <span class="nav-text">了解各种不同意义的new和delete</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异常"><span class="nav-number">3.</span> <span class="nav-text">异常</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用destructors避免内存泄露"><span class="nav-number">3.1.</span> <span class="nav-text">利用destructors避免内存泄露</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在constructors内阻止资源泄露"><span class="nav-number">3.2.</span> <span class="nav-text">在constructors内阻止资源泄露</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止异常流出destructors之外"><span class="nav-number">3.3.</span> <span class="nav-text">禁止异常流出destructors之外</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异"><span class="nav-number">3.4.</span> <span class="nav-text">了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以by-reference方式捕捉exceptions"><span class="nav-number">3.5.</span> <span class="nav-text">以by reference方式捕捉exceptions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#明智运用exception-specifications"><span class="nav-number">3.6.</span> <span class="nav-text">明智运用exception specifications</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解异常处理的成本"><span class="nav-number">3.7.</span> <span class="nav-text">了解异常处理的成本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#效率"><span class="nav-number">4.</span> <span class="nav-text">效率</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#谨记80-20法则"><span class="nav-number">4.1.</span> <span class="nav-text">谨记80-20法则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考虑使用lazy-evaluation-缓式评估"><span class="nav-number">4.2.</span> <span class="nav-text">考虑使用lazy evaluation(缓式评估)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分期摊还预期的计算成本。"><span class="nav-number">4.3.</span> <span class="nav-text">分期摊还预期的计算成本。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解临时对象的来源"><span class="nav-number">4.4.</span> <span class="nav-text">了解临时对象的来源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协助完成返回值优化（RVO"><span class="nav-number">4.5.</span> <span class="nav-text">协助完成返回值优化（RVO)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用重载技术避免隐式类型转换"><span class="nav-number">4.6.</span> <span class="nav-text">利用重载技术避免隐式类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考虑以操作符复合形式取代其独身形式"><span class="nav-number">4.7.</span> <span class="nav-text">考虑以操作符复合形式取代其独身形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考虑使用其他程序库"><span class="nav-number">4.8.</span> <span class="nav-text">考虑使用其他程序库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解virtual-functions-multiple-inheritance-virtual-base-class-runtime-type-identification的成本"><span class="nav-number">4.9.</span> <span class="nav-text">了解virtual functions, multiple inheritance, virtual base class, runtime type identification的成本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#技术"><span class="nav-number">5.</span> <span class="nav-text">技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#将constructor-和-non-member-functions虚化"><span class="nav-number">5.1.</span> <span class="nav-text">将constructor 和 non-member functions虚化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限制某个class所能产生的对象数量"><span class="nav-number">5.2.</span> <span class="nav-text">限制某个class所能产生的对象数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#要求或禁止对象产生于heap之中"><span class="nav-number">5.3.</span> <span class="nav-text">要求或禁止对象产生于heap之中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#智能指针"><span class="nav-number">5.4.</span> <span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proxy-classes代理类"><span class="nav-number">5.5.</span> <span class="nav-text">proxy classes代理类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#杂项讨论"><span class="nav-number">6.</span> <span class="nav-text">杂项讨论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在未来时态下发展程序"><span class="nav-number">6.1.</span> <span class="nav-text">在未来时态下发展程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将非尾端类（non-leaf-classes）设计为抽象类"><span class="nav-number">6.2.</span> <span class="nav-text">将非尾端类（non-leaf classes）设计为抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何在同一个程序中结合C-和C"><span class="nav-number">6.3.</span> <span class="nav-text">如何在同一个程序中结合C++和C</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让自己习惯于标准C-语言"><span class="nav-number">6.4.</span> <span class="nav-text">让自己习惯于标准C++语言</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byhj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

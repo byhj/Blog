@@ -1,0 +1,567 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="OpenGL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="OpenGL渲染流水线">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL-Rendering Pipeline">
+<meta property="og:url" content="https://byhj.github.io/blog/2015/09/17/OpenGL-RenderingPipeline/index.html">
+<meta property="og:site_name" content="byhj zzZ~~~">
+<meta property="og:description" content="OpenGL渲染流水线">
+<meta property="og:image" content="http://7xlvtd.com1.z0.glb.clouddn.com/OpenGLRenderingPipeline-1.png">
+<meta property="og:image" content="http://7xlvtd.com1.z0.glb.clouddn.com/15-9-21/27893569.jpg">
+<meta property="og:image" content="http://7xlvtd.com1.z0.glb.clouddn.com/15-9-21/29976945.jpg">
+<meta property="og:updated_time" content="2016-05-09T04:13:01.218Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL-Rendering Pipeline">
+<meta name="twitter:description" content="OpenGL渲染流水线">
+<meta name="twitter:image" content="http://7xlvtd.com1.z0.glb.clouddn.com/OpenGLRenderingPipeline-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> OpenGL-Rendering Pipeline | byhj zzZ~~~ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">byhj zzZ~~~</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">世上的鲜花会盛开，壮丽不朽的事物会接踵而来</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OpenGL-Rendering Pipeline
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-17T22:05:31+08:00" content="2015-09-17">
+              2015-09-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>OpenGL渲染流水线</p>
+<a id="more"></a>
+<p><img src="http://7xlvtd.com1.z0.glb.clouddn.com/OpenGLRenderingPipeline-1.png" alt="RenderingPipeline1"></p>
+<p><img src="http://7xlvtd.com1.z0.glb.clouddn.com/15-9-21/27893569.jpg" alt="RenderingPipeline2"></p>
+<p><img src="http://7xlvtd.com1.z0.glb.clouddn.com/15-9-21/29976945.jpg" alt="RenderingPipelineMap"></p>
+<hr>
+<h1 id="Vertex-Specification"><a href="#Vertex-Specification" class="headerlink" title="Vertex Specification"></a>Vertex Specification</h1><h2 id="Vertex-Rendering"><a href="#Vertex-Rendering" class="headerlink" title="Vertex Rendering"></a>Vertex Rendering</h2><h2 id="Primitive"><a href="#Primitive" class="headerlink" title="Primitive"></a>Primitive</h2><hr>
+<h1 id="Vertex-Processing"><a href="#Vertex-Processing" class="headerlink" title="Vertex Processing"></a>Vertex Processing</h1><h2 id="Vertex-Shader"><a href="#Vertex-Shader" class="headerlink" title="Vertex Shader"></a>Vertex Shader</h2><h2 id="Tessellation"><a href="#Tessellation" class="headerlink" title="Tessellation"></a>Tessellation</h2><h2 id="Geometry"><a href="#Geometry" class="headerlink" title="Geometry"></a>Geometry</h2><hr>
+<h1 id="Vertex-pos-processing"><a href="#Vertex-pos-processing" class="headerlink" title="Vertex pos-processing"></a>Vertex pos-processing</h1><h2 id="Transform-Feedback"><a href="#Transform-Feedback" class="headerlink" title="Transform Feedback"></a>Transform Feedback</h2><h2 id="Clipping"><a href="#Clipping" class="headerlink" title="Clipping"></a>Clipping</h2><hr>
+<h1 id="Primitive-assembly"><a href="#Primitive-assembly" class="headerlink" title="Primitive assembly"></a>Primitive assembly</h1><h2 id="Face-Culling"><a href="#Face-Culling" class="headerlink" title="Face Culling"></a>Face Culling</h2><hr>
+<h1 id="Rasterization"><a href="#Rasterization" class="headerlink" title="Rasterization"></a>Rasterization</h1><hr>
+<h1 id="Fragment-Processing"><a href="#Fragment-Processing" class="headerlink" title="Fragment Processing"></a>Fragment Processing</h1><hr>
+<h1 id="Per-Sample-Operations"><a href="#Per-Sample-Operations" class="headerlink" title="Per-Sample Operations"></a>Per-Sample Operations</h1><h2 id="Scrissor-Test"><a href="#Scrissor-Test" class="headerlink" title="Scrissor Test"></a>Scrissor Test</h2><h2 id="Stencil-Test"><a href="#Stencil-Test" class="headerlink" title="Stencil Test"></a>Stencil Test</h2><h2 id="Depth-Test"><a href="#Depth-Test" class="headerlink" title="Depth Test"></a>Depth Test</h2><h2 id="Blending"><a href="#Blending" class="headerlink" title="Blending"></a>Blending</h2><h2 id="Logical-Operations"><a href="#Logical-Operations" class="headerlink" title="Logical Operations"></a>Logical Operations</h2><h2 id="Masking-operations"><a href="#Masking-operations" class="headerlink" title="Masking operations"></a>Masking operations</h2><hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/OpenGL/" rel="tag">#OpenGL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2015/09/17/OpenGL-Objects/" rel="next" title="OpenGL-Objects">
+                <i class="fa fa-chevron-left"></i> OpenGL-Objects
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2015/09/18/Direct3D-Pipeline/" rel="prev" title="Direct3D-Pipeline">
+                Direct3D-Pipeline <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.gif"
+               alt="byhj" />
+          <p class="site-author-name" itemprop="name">byhj</p>
+          <p class="site-description motion-element" itemprop="description">This is a boring description.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vertex-Specification"><span class="nav-number">1.</span> <span class="nav-text">Vertex Specification</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vertex-Rendering"><span class="nav-number">1.1.</span> <span class="nav-text">Vertex Rendering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Primitive"><span class="nav-number">1.2.</span> <span class="nav-text">Primitive</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vertex-Processing"><span class="nav-number">2.</span> <span class="nav-text">Vertex Processing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vertex-Shader"><span class="nav-number">2.1.</span> <span class="nav-text">Vertex Shader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tessellation"><span class="nav-number">2.2.</span> <span class="nav-text">Tessellation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Geometry"><span class="nav-number">2.3.</span> <span class="nav-text">Geometry</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vertex-pos-processing"><span class="nav-number">3.</span> <span class="nav-text">Vertex pos-processing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Transform-Feedback"><span class="nav-number">3.1.</span> <span class="nav-text">Transform Feedback</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clipping"><span class="nav-number">3.2.</span> <span class="nav-text">Clipping</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Primitive-assembly"><span class="nav-number">4.</span> <span class="nav-text">Primitive assembly</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Face-Culling"><span class="nav-number">4.1.</span> <span class="nav-text">Face Culling</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Rasterization"><span class="nav-number">5.</span> <span class="nav-text">Rasterization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fragment-Processing"><span class="nav-number">6.</span> <span class="nav-text">Fragment Processing</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Per-Sample-Operations"><span class="nav-number">7.</span> <span class="nav-text">Per-Sample Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrissor-Test"><span class="nav-number">7.1.</span> <span class="nav-text">Scrissor Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stencil-Test"><span class="nav-number">7.2.</span> <span class="nav-text">Stencil Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Depth-Test"><span class="nav-number">7.3.</span> <span class="nav-text">Depth Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blending"><span class="nav-number">7.4.</span> <span class="nav-text">Blending</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logical-Operations"><span class="nav-number">7.5.</span> <span class="nav-text">Logical Operations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Masking-operations"><span class="nav-number">7.6.</span> <span class="nav-text">Masking operations</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byhj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

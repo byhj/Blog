@@ -1,0 +1,554 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="OpenGL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Introduction　　在以前很多项目使用GLUT库创建OpenGL环境，由于GLUT项目已经放弃开发和维护，在这里建议大家使用新的freeglut库。可以在freeglut网站下载最新的版本。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL-GLUT">
+<meta property="og:url" content="https://byhj.github.io/blog/2015/12/25/OpenGL-GLUT/index.html">
+<meta property="og:site_name" content="byhj zzZ~~~">
+<meta property="og:description" content="Introduction　　在以前很多项目使用GLUT库创建OpenGL环境，由于GLUT项目已经放弃开发和维护，在这里建议大家使用新的freeglut库。可以在freeglut网站下载最新的版本。">
+<meta property="og:updated_time" content="2016-05-09T04:13:01.217Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL-GLUT">
+<meta name="twitter:description" content="Introduction　　在以前很多项目使用GLUT库创建OpenGL环境，由于GLUT项目已经放弃开发和维护，在这里建议大家使用新的freeglut库。可以在freeglut网站下载最新的版本。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> OpenGL-GLUT | byhj zzZ~~~ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">byhj zzZ~~~</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">世上的鲜花会盛开，壮丽不朽的事物会接踵而来</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OpenGL-GLUT
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-25T09:39:51+08:00" content="2015-12-25">
+              2015-12-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>　　在以前很多项目使用GLUT库创建OpenGL环境，由于GLUT项目已经放弃开发和维护，在这里建议大家使用新的freeglut库。<br>可以在<a href="http://freeglut.sourceforge.net/" target="_blank" rel="external">freeglut</a>网站下载最新的版本。</p>
+<a id="more"></a>
+<h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>　　在官网上下载对应版本的freeglut，你可以下载源码自己编译或者下载已经编译好的库文件。freeglut的使用<br>基本跟glut的使用一样。在做好前期准备工作后，使用VS创建一个空项目，将freeglut库文件目录添加到项目的库依赖目录。<br>下面介绍怎么使用freeglut创建一个OpenGL环境的窗口：</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;GL/freeglut.h&gt;</span><br><span class="line"></span><br><span class="line">//初始化，运行一次</span><br><span class="line">void init()</span><br><span class="line">&#123;</span><br><span class="line">	glClearColor(<span class="number">0</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f, <span class="number">1</span>.<span class="number">0</span>f)<span class="comment">;</span></span><br><span class="line">	glClearDepth(<span class="number">1</span>.<span class="number">0</span>f)<span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//渲染代码，循环运行</span><br><span class="line">void render()</span><br><span class="line">&#123;</span><br><span class="line">	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">	glColor3f(<span class="number">1</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">	glBegin(GL_TRIANGLES)<span class="comment">;</span></span><br><span class="line">	  glVertex3f(-<span class="number">1</span>.<span class="number">0</span>f, -<span class="number">1</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f)<span class="comment">;</span></span><br><span class="line">	  glVertex3f(<span class="number">1</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f)<span class="comment">;</span></span><br><span class="line">	  glVertex3f(<span class="number">0</span>.<span class="number">0</span>, <span class="number">1</span>.<span class="number">0</span>, <span class="number">0</span>.<span class="number">0</span>)<span class="comment">;</span></span><br><span class="line">	glEnd()<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">	glutSwapBuffers()<span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void reshape(int w, int h)</span><br><span class="line">&#123;</span><br><span class="line">	glViewport(<span class="number">0</span>, <span class="number">0</span>, w, h)<span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, char **argv)</span><br><span class="line">&#123;</span><br><span class="line">	glutInit(&amp;argc, argv)<span class="comment">;</span></span><br><span class="line">	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)<span class="comment">;</span></span><br><span class="line">	glutInitWindowPosition(<span class="number">300</span>, <span class="number">0</span>)<span class="comment">;</span></span><br><span class="line">	glutInitWindowSize(<span class="number">720</span>, <span class="number">640</span>)<span class="comment">;</span></span><br><span class="line">	glutCreateWindow("Hello World")<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">	init()<span class="comment">;</span></span><br><span class="line">	glutDisplayFunc(render)<span class="comment">;</span></span><br><span class="line">	glutReshapeFunc(reshape)<span class="comment">;</span></span><br><span class="line">	glutIdleFunc(render)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">	glutMainLoop()<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/OpenGL/" rel="tag">#OpenGL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2015/12/25/OpenGL-GLFW/" rel="next" title="OpenGL-GLFW">
+                <i class="fa fa-chevron-left"></i> OpenGL-GLFW
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2015/12/25/GLFW3-AntTweakBar/" rel="prev" title="在GLFW3中使用AntTweakBar">
+                在GLFW3中使用AntTweakBar <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.gif"
+               alt="byhj" />
+          <p class="site-author-name" itemprop="name">byhj</p>
+          <p class="site-description motion-element" itemprop="description">This is a boring description.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Content"><span class="nav-number">2.</span> <span class="nav-text">Content</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byhj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

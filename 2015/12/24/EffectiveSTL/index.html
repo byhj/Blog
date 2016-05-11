@@ -1,0 +1,573 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="容器　  　对于C++而言，容器是比数组功能更强大更灵活的工具，它可以动态增长或缩减，可以自己管理内存，可以自己记住包含了多少对象，它们还限定了自己所支持的操作的复杂性。对于不同情况我们需要选择不同的容器。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effective STL 总结">
+<meta property="og:url" content="https://byhj.github.io/blog/2015/12/24/EffectiveSTL/index.html">
+<meta property="og:site_name" content="byhj zzZ~~~">
+<meta property="og:description" content="容器　  　对于C++而言，容器是比数组功能更强大更灵活的工具，它可以动态增长或缩减，可以自己管理内存，可以自己记住包含了多少对象，它们还限定了自己所支持的操作的复杂性。对于不同情况我们需要选择不同的容器。">
+<meta property="og:updated_time" content="2016-05-09T04:13:01.215Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Effective STL 总结">
+<meta name="twitter:description" content="容器　  　对于C++而言，容器是比数组功能更强大更灵活的工具，它可以动态增长或缩减，可以自己管理内存，可以自己记住包含了多少对象，它们还限定了自己所支持的操作的复杂性。对于不同情况我们需要选择不同的容器。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Effective STL 总结 | byhj zzZ~~~ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">byhj zzZ~~~</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">世上的鲜花会盛开，壮丽不朽的事物会接踵而来</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Effective STL 总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-24T15:00:23+08:00" content="2015-12-24">
+              2015-12-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><p>　  　对于C++而言，容器是比数组功能更强大更灵活的工具，它可以动态增长或缩减，可以自己管理内存，可以自己记住包含了多少对象，它们还限定了自己所支持的操作的复杂性。对于不同情况我们需要选择不同<br>的容器。</p>
+<p><a id="more"></a>　</p>
+<h2 id="慎重选择容器类型"><a href="#慎重选择容器类型" class="headerlink" title="慎重选择容器类型"></a>慎重选择容器类型</h2><p>　　C++主要提供了一下几种类型的容器</p>
+<ul>
+<li>标准STL序列容器：vector, string, deque, list</li>
+<li>标准STL管理容器：set,  multiset, map, multimap</li>
+<li>非标准序列容器 ：slist, rope</li>
+<li>非标准关联容器 ：hash_set, hash_multiset, hash_map, hash_multimap</li>
+<li>几种标准的非STL容器：bitset, valarray, stack, queue, priority_queue</li>
+</ul>
+<p>　　在不同情况下我们需要采用不同的容器，一般情况下我们都使用vector容器。我们主要把容器以两种方法进行<br>分类：</p>
+<ul>
+<li>对连续内存容器：把它的元素存放在一块或多块(动态分配)内存中，每块内存中存有多个元素。</li>
+<li>基于节点的容器：容器中元素的插入或删除只影响到指向节点的指针，而不影响节点本身的内容。</li>
+</ul>
+<p>下面分别介绍在不同情况下怎么选择合适的容器：</p>
+<p>1.在容器的任意位置插入新元素：选择序列容器。<br>2.是否关系容器中元素是排序的：不关心使用散列容器，关心则避免。<br>3.必须是标准C++一部分：不是可以考虑slist, rope。<br>4.需要哪种类型迭代器:<br>5.当发生元素的插入或删除时，避免移动原来容器元素是否很重要<br>6.容器中元素的布局是否需要和C兼容：<br>7：元素的查找速度是否是关键的考虑因素：<br>8：容器内部使用了引用计数技术：<br>9：对插入和删除操作，需要事物语义:<br>10:需要时迭代器，指针和引用变为无效的次数最少：<br>11：序列容器迭代器是随机访问类型，只有没有删除操作发生，且插入操作发生在容器末尾，则指向数据的指针和引用就不会变为无效：deque</p>
+<h2 id="不要试图编写独立于容器类型的代码"><a href="#不要试图编写独立于容器类型的代码" class="headerlink" title="不要试图编写独立于容器类型的代码"></a>不要试图编写独立于容器类型的代码</h2><h2 id="确保容器中的对象副本正确而高效"><a href="#确保容器中的对象副本正确而高效" class="headerlink" title="确保容器中的对象副本正确而高效"></a>确保容器中的对象副本正确而高效</h2><h2 id="调用empty而不是检测size-是否为0"><a href="#调用empty而不是检测size-是否为0" class="headerlink" title="调用empty而不是检测size()是否为0"></a>调用empty而不是检测size()是否为0</h2><h2 id="区间成员函数优先于与之对应的单元素成员函数"><a href="#区间成员函数优先于与之对应的单元素成员函数" class="headerlink" title="区间成员函数优先于与之对应的单元素成员函数"></a>区间成员函数优先于与之对应的单元素成员函数</h2><h2 id="当心C-编译器最烦人的分析机制"><a href="#当心C-编译器最烦人的分析机制" class="headerlink" title="当心C++编译器最烦人的分析机制"></a>当心C++编译器最烦人的分析机制</h2><h2 id="如果容器中包含通过new操作创建的指针，切记在容器对象析构前将指针delete掉"><a href="#如果容器中包含通过new操作创建的指针，切记在容器对象析构前将指针delete掉" class="headerlink" title="如果容器中包含通过new操作创建的指针，切记在容器对象析构前将指针delete掉"></a>如果容器中包含通过new操作创建的指针，切记在容器对象析构前将指针delete掉</h2><h2 id="切勿创建包含auto-ptr的容器对象"><a href="#切勿创建包含auto-ptr的容器对象" class="headerlink" title="切勿创建包含auto_ptr的容器对象"></a>切勿创建包含auto_ptr的容器对象</h2><h2 id="了解分配子的约定和限制"><a href="#了解分配子的约定和限制" class="headerlink" title="了解分配子的约定和限制"></a>了解分配子的约定和限制</h2><h2 id="理解自定义分配子的合理用法"><a href="#理解自定义分配子的合理用法" class="headerlink" title="理解自定义分配子的合理用法"></a>理解自定义分配子的合理用法</h2><h2 id="切勿对STL容器的线程安全性有不切实际的依赖"><a href="#切勿对STL容器的线程安全性有不切实际的依赖" class="headerlink" title="切勿对STL容器的线程安全性有不切实际的依赖"></a>切勿对STL容器的线程安全性有不切实际的依赖</h2><hr>
+<h1 id="vector和string"><a href="#vector和string" class="headerlink" title="vector和string"></a>vector和string</h1><h2 id="vector和string优先于动态分配的数组"><a href="#vector和string优先于动态分配的数组" class="headerlink" title="vector和string优先于动态分配的数组"></a>vector和string优先于动态分配的数组</h2><h2 id="使用reserve来避免不必要的重新分配"><a href="#使用reserve来避免不必要的重新分配" class="headerlink" title="使用reserve来避免不必要的重新分配"></a>使用reserve来避免不必要的重新分配</h2><h2 id="注意string实现的多样性"><a href="#注意string实现的多样性" class="headerlink" title="注意string实现的多样性"></a>注意string实现的多样性</h2><h2 id="了解如何把vector和string数据传给旧的API"><a href="#了解如何把vector和string数据传给旧的API" class="headerlink" title="了解如何把vector和string数据传给旧的API"></a>了解如何把vector和string数据传给旧的API</h2><h2 id="使用“swap技巧”除去多余的容量"><a href="#使用“swap技巧”除去多余的容量" class="headerlink" title="使用“swap技巧”除去多余的容量"></a>使用“swap技巧”除去多余的容量</h2><h2 id="避免试图vector"><a href="#避免试图vector" class="headerlink" title="避免试图vector"></a>避免试图vector<bool></bool></h2><hr>
+<h1 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h1><h2 id="理解相等和等价的区别"><a href="#理解相等和等价的区别" class="headerlink" title="理解相等和等价的区别"></a>理解相等和等价的区别</h2><h2 id="为包含指针的关联容器指定比较类型"><a href="#为包含指针的关联容器指定比较类型" class="headerlink" title="为包含指针的关联容器指定比较类型"></a>为包含指针的关联容器指定比较类型</h2><h2 id="总是让比较函数在等值情况下返回false"><a href="#总是让比较函数在等值情况下返回false" class="headerlink" title="总是让比较函数在等值情况下返回false"></a>总是让比较函数在等值情况下返回false</h2><h2 id="切勿直接修改set或multiset中的键"><a href="#切勿直接修改set或multiset中的键" class="headerlink" title="切勿直接修改set或multiset中的键"></a>切勿直接修改set或multiset中的键</h2><h2 id="考虑用排序的vector替代关联容器"><a href="#考虑用排序的vector替代关联容器" class="headerlink" title="考虑用排序的vector替代关联容器"></a>考虑用排序的vector替代关联容器</h2><h2 id="当笑料至关重要时，请在map-operator-与map-insert之间谨慎做出选择"><a href="#当笑料至关重要时，请在map-operator-与map-insert之间谨慎做出选择" class="headerlink" title="当笑料至关重要时，请在map::operator[]与map::insert之间谨慎做出选择"></a>当笑料至关重要时，请在map::operator[]与map::insert之间谨慎做出选择</h2><h2 id="熟悉非标准的散列容器"><a href="#熟悉非标准的散列容器" class="headerlink" title="熟悉非标准的散列容器"></a>熟悉非标准的散列容器</h2><hr>
+<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><h2 id="iterator优先于const-iterator-reverse-iterator-const-reverse-iterator"><a href="#iterator优先于const-iterator-reverse-iterator-const-reverse-iterator" class="headerlink" title="iterator优先于const_iterator, reverse_iterator, const_reverse_iterator"></a>iterator优先于const_iterator, reverse_iterator, const_reverse_iterator</h2><h2 id="使用distance和advnace将容器的const-iteator转换成iterator"><a href="#使用distance和advnace将容器的const-iteator转换成iterator" class="headerlink" title="使用distance和advnace将容器的const_iteator转换成iterator"></a>使用distance和advnace将容器的const_iteator转换成iterator</h2><h2 id="正确理解由reverse-iterator的base-成员函数所产生的iterator的用法"><a href="#正确理解由reverse-iterator的base-成员函数所产生的iterator的用法" class="headerlink" title="正确理解由reverse_iterator的base()成员函数所产生的iterator的用法"></a>正确理解由reverse_iterator的base()成员函数所产生的iterator的用法</h2><h2 id="对于逐个字符的输入请考虑使用istreambuf-iterator"><a href="#对于逐个字符的输入请考虑使用istreambuf-iterator" class="headerlink" title="对于逐个字符的输入请考虑使用istreambuf_iterator"></a>对于逐个字符的输入请考虑使用istreambuf_iterator</h2><hr>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="确保目标区间足够大"><a href="#确保目标区间足够大" class="headerlink" title="确保目标区间足够大"></a>确保目标区间足够大</h2><h2 id="了解各种和排序有关的选择"><a href="#了解各种和排序有关的选择" class="headerlink" title="了解各种和排序有关的选择"></a>了解各种和排序有关的选择</h2><h2 id="如果确实需要删除元素，则需要在remove这一类算法之后调用erase"><a href="#如果确实需要删除元素，则需要在remove这一类算法之后调用erase" class="headerlink" title="如果确实需要删除元素，则需要在remove这一类算法之后调用erase"></a>如果确实需要删除元素，则需要在remove这一类算法之后调用erase</h2><h2 id="对包含指针的容器使用remove这一类算法时要特别小心"><a href="#对包含指针的容器使用remove这一类算法时要特别小心" class="headerlink" title="对包含指针的容器使用remove这一类算法时要特别小心"></a>对包含指针的容器使用remove这一类算法时要特别小心</h2><h2 id="了解哪些算法要求使用排序的区间作为参数"><a href="#了解哪些算法要求使用排序的区间作为参数" class="headerlink" title="了解哪些算法要求使用排序的区间作为参数"></a>了解哪些算法要求使用排序的区间作为参数</h2><h2 id="通过mismatch或lexicographical-compare实现简单的忽略大小写的字符串比较"><a href="#通过mismatch或lexicographical-compare实现简单的忽略大小写的字符串比较" class="headerlink" title="通过mismatch或lexicographical_compare实现简单的忽略大小写的字符串比较"></a>通过mismatch或lexicographical_compare实现简单的忽略大小写的字符串比较</h2><h2 id="理解copy-if算法的正确实现"><a href="#理解copy-if算法的正确实现" class="headerlink" title="理解copy_if算法的正确实现"></a>理解copy_if算法的正确实现</h2><h2 id="使用accumulate或者for-each进行区间统计"><a href="#使用accumulate或者for-each进行区间统计" class="headerlink" title="使用accumulate或者for_each进行区间统计"></a>使用accumulate或者for_each进行区间统计</h2><hr>
+<h1 id="函数子，函数子类，函数及其他"><a href="#函数子，函数子类，函数及其他" class="headerlink" title="函数子，函数子类，函数及其他"></a>函数子，函数子类，函数及其他</h1><h2 id="遵循按值传递的原则来设计函数子类"><a href="#遵循按值传递的原则来设计函数子类" class="headerlink" title="遵循按值传递的原则来设计函数子类"></a>遵循按值传递的原则来设计函数子类</h2><h2 id="确保判别式是”纯函数”"><a href="#确保判别式是”纯函数”" class="headerlink" title="确保判别式是”纯函数”"></a>确保判别式是”纯函数”</h2><h2 id="若一个类是函数子，则应使它可配接"><a href="#若一个类是函数子，则应使它可配接" class="headerlink" title="若一个类是函数子，则应使它可配接"></a>若一个类是函数子，则应使它可配接</h2><h2 id="理解ptr-fun-mem-fun和mem-fun-ref的来由"><a href="#理解ptr-fun-mem-fun和mem-fun-ref的来由" class="headerlink" title="理解ptr_fun, mem_fun和mem_fun_ref的来由"></a>理解ptr_fun, mem_fun和mem_fun_ref的来由</h2><h2 id="确保less与operator-lt-具有相同的语义"><a href="#确保less与operator-lt-具有相同的语义" class="headerlink" title="确保less与operator&lt;具有相同的语义"></a>确保less<t>与operator&lt;具有相同的语义</t></h2><hr>
+<h1 id="在程序中使用STL"><a href="#在程序中使用STL" class="headerlink" title="在程序中使用STL"></a>在程序中使用STL</h1><h2 id="算法调用优先于手写的循环"><a href="#算法调用优先于手写的循环" class="headerlink" title="算法调用优先于手写的循环"></a>算法调用优先于手写的循环</h2><h2 id="容器的成员函数优先于同名的算法"><a href="#容器的成员函数优先于同名的算法" class="headerlink" title="容器的成员函数优先于同名的算法"></a>容器的成员函数优先于同名的算法</h2><h2 id="正确区分const-find-binary-search-lower-bound-upper-bound和equal-range"><a href="#正确区分const-find-binary-search-lower-bound-upper-bound和equal-range" class="headerlink" title="正确区分const, find, binary_search, lower_bound, upper_bound和equal_range"></a>正确区分const, find, binary_search, lower_bound, upper_bound和equal_range</h2><h2 id="考虑使用函数对象而不是函数作为STL算法的参数"><a href="#考虑使用函数对象而不是函数作为STL算法的参数" class="headerlink" title="考虑使用函数对象而不是函数作为STL算法的参数"></a>考虑使用函数对象而不是函数作为STL算法的参数</h2><h2 id="考虑产生”直写型”的代码"><a href="#考虑产生”直写型”的代码" class="headerlink" title="考虑产生”直写型”的代码"></a>考虑产生”直写型”的代码</h2><h2 id="总是包含正确的头文件"><a href="#总是包含正确的头文件" class="headerlink" title="总是包含正确的头文件"></a>总是包含正确的头文件</h2><h2 id="学会分享与STL相关的编译器诊断信息"><a href="#学会分享与STL相关的编译器诊断信息" class="headerlink" title="学会分享与STL相关的编译器诊断信息"></a>学会分享与STL相关的编译器诊断信息</h2><h2 id="熟悉与STL相关的Web站点"><a href="#熟悉与STL相关的Web站点" class="headerlink" title="熟悉与STL相关的Web站点"></a>熟悉与STL相关的Web站点</h2>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/C/" rel="tag">#C++</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2015/12/20/Direct3D-Math/" rel="next" title="Direct3D-Math">
+                <i class="fa fa-chevron-left"></i> Direct3D-Math
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2015/12/25/OpenGL-GLFW/" rel="prev" title="OpenGL-GLFW">
+                OpenGL-GLFW <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.gif"
+               alt="byhj" />
+          <p class="site-author-name" itemprop="name">byhj</p>
+          <p class="site-description motion-element" itemprop="description">This is a boring description.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#容器"><span class="nav-number">1.</span> <span class="nav-text">容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#慎重选择容器类型"><span class="nav-number">1.1.</span> <span class="nav-text">慎重选择容器类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不要试图编写独立于容器类型的代码"><span class="nav-number">1.2.</span> <span class="nav-text">不要试图编写独立于容器类型的代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确保容器中的对象副本正确而高效"><span class="nav-number">1.3.</span> <span class="nav-text">确保容器中的对象副本正确而高效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用empty而不是检测size-是否为0"><span class="nav-number">1.4.</span> <span class="nav-text">调用empty而不是检测size()是否为0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区间成员函数优先于与之对应的单元素成员函数"><span class="nav-number">1.5.</span> <span class="nav-text">区间成员函数优先于与之对应的单元素成员函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当心C-编译器最烦人的分析机制"><span class="nav-number">1.6.</span> <span class="nav-text">当心C++编译器最烦人的分析机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果容器中包含通过new操作创建的指针，切记在容器对象析构前将指针delete掉"><span class="nav-number">1.7.</span> <span class="nav-text">如果容器中包含通过new操作创建的指针，切记在容器对象析构前将指针delete掉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切勿创建包含auto-ptr的容器对象"><span class="nav-number">1.8.</span> <span class="nav-text">切勿创建包含auto_ptr的容器对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解分配子的约定和限制"><span class="nav-number">1.9.</span> <span class="nav-text">了解分配子的约定和限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解自定义分配子的合理用法"><span class="nav-number">1.10.</span> <span class="nav-text">理解自定义分配子的合理用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切勿对STL容器的线程安全性有不切实际的依赖"><span class="nav-number">1.11.</span> <span class="nav-text">切勿对STL容器的线程安全性有不切实际的依赖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vector和string"><span class="nav-number">2.</span> <span class="nav-text">vector和string</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vector和string优先于动态分配的数组"><span class="nav-number">2.1.</span> <span class="nav-text">vector和string优先于动态分配的数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用reserve来避免不必要的重新分配"><span class="nav-number">2.2.</span> <span class="nav-text">使用reserve来避免不必要的重新分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意string实现的多样性"><span class="nav-number">2.3.</span> <span class="nav-text">注意string实现的多样性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解如何把vector和string数据传给旧的API"><span class="nav-number">2.4.</span> <span class="nav-text">了解如何把vector和string数据传给旧的API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用“swap技巧”除去多余的容量"><span class="nav-number">2.5.</span> <span class="nav-text">使用“swap技巧”除去多余的容量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免试图vector"><span class="nav-number">2.6.</span> <span class="nav-text">避免试图vector</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关联容器"><span class="nav-number">3.</span> <span class="nav-text">关联容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解相等和等价的区别"><span class="nav-number">3.1.</span> <span class="nav-text">理解相等和等价的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为包含指针的关联容器指定比较类型"><span class="nav-number">3.2.</span> <span class="nav-text">为包含指针的关联容器指定比较类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总是让比较函数在等值情况下返回false"><span class="nav-number">3.3.</span> <span class="nav-text">总是让比较函数在等值情况下返回false</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切勿直接修改set或multiset中的键"><span class="nav-number">3.4.</span> <span class="nav-text">切勿直接修改set或multiset中的键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考虑用排序的vector替代关联容器"><span class="nav-number">3.5.</span> <span class="nav-text">考虑用排序的vector替代关联容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当笑料至关重要时，请在map-operator-与map-insert之间谨慎做出选择"><span class="nav-number">3.6.</span> <span class="nav-text">当笑料至关重要时，请在map::operator[]与map::insert之间谨慎做出选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#熟悉非标准的散列容器"><span class="nav-number">3.7.</span> <span class="nav-text">熟悉非标准的散列容器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迭代器"><span class="nav-number">4.</span> <span class="nav-text">迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#iterator优先于const-iterator-reverse-iterator-const-reverse-iterator"><span class="nav-number">4.1.</span> <span class="nav-text">iterator优先于const_iterator, reverse_iterator, const_reverse_iterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用distance和advnace将容器的const-iteator转换成iterator"><span class="nav-number">4.2.</span> <span class="nav-text">使用distance和advnace将容器的const_iteator转换成iterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正确理解由reverse-iterator的base-成员函数所产生的iterator的用法"><span class="nav-number">4.3.</span> <span class="nav-text">正确理解由reverse_iterator的base()成员函数所产生的iterator的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于逐个字符的输入请考虑使用istreambuf-iterator"><span class="nav-number">4.4.</span> <span class="nav-text">对于逐个字符的输入请考虑使用istreambuf_iterator</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法"><span class="nav-number">5.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#确保目标区间足够大"><span class="nav-number">5.1.</span> <span class="nav-text">确保目标区间足够大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解各种和排序有关的选择"><span class="nav-number">5.2.</span> <span class="nav-text">了解各种和排序有关的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果确实需要删除元素，则需要在remove这一类算法之后调用erase"><span class="nav-number">5.3.</span> <span class="nav-text">如果确实需要删除元素，则需要在remove这一类算法之后调用erase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对包含指针的容器使用remove这一类算法时要特别小心"><span class="nav-number">5.4.</span> <span class="nav-text">对包含指针的容器使用remove这一类算法时要特别小心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解哪些算法要求使用排序的区间作为参数"><span class="nav-number">5.5.</span> <span class="nav-text">了解哪些算法要求使用排序的区间作为参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过mismatch或lexicographical-compare实现简单的忽略大小写的字符串比较"><span class="nav-number">5.6.</span> <span class="nav-text">通过mismatch或lexicographical_compare实现简单的忽略大小写的字符串比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解copy-if算法的正确实现"><span class="nav-number">5.7.</span> <span class="nav-text">理解copy_if算法的正确实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用accumulate或者for-each进行区间统计"><span class="nav-number">5.8.</span> <span class="nav-text">使用accumulate或者for_each进行区间统计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数子，函数子类，函数及其他"><span class="nav-number">6.</span> <span class="nav-text">函数子，函数子类，函数及其他</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#遵循按值传递的原则来设计函数子类"><span class="nav-number">6.1.</span> <span class="nav-text">遵循按值传递的原则来设计函数子类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确保判别式是”纯函数”"><span class="nav-number">6.2.</span> <span class="nav-text">确保判别式是”纯函数”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#若一个类是函数子，则应使它可配接"><span class="nav-number">6.3.</span> <span class="nav-text">若一个类是函数子，则应使它可配接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解ptr-fun-mem-fun和mem-fun-ref的来由"><span class="nav-number">6.4.</span> <span class="nav-text">理解ptr_fun, mem_fun和mem_fun_ref的来由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确保less与operator-lt-具有相同的语义"><span class="nav-number">6.5.</span> <span class="nav-text">确保less与operator<具有相同的语义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在程序中使用STL"><span class="nav-number">7.</span> <span class="nav-text">在程序中使用STL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法调用优先于手写的循环"><span class="nav-number">7.1.</span> <span class="nav-text">算法调用优先于手写的循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器的成员函数优先于同名的算法"><span class="nav-number">7.2.</span> <span class="nav-text">容器的成员函数优先于同名的算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正确区分const-find-binary-search-lower-bound-upper-bound和equal-range"><span class="nav-number">7.3.</span> <span class="nav-text">正确区分const, find, binary_search, lower_bound, upper_bound和equal_range</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考虑使用函数对象而不是函数作为STL算法的参数"><span class="nav-number">7.4.</span> <span class="nav-text">考虑使用函数对象而不是函数作为STL算法的参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考虑产生”直写型”的代码"><span class="nav-number">7.5.</span> <span class="nav-text">考虑产生”直写型”的代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总是包含正确的头文件"><span class="nav-number">7.6.</span> <span class="nav-text">总是包含正确的头文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学会分享与STL相关的编译器诊断信息"><span class="nav-number">7.7.</span> <span class="nav-text">学会分享与STL相关的编译器诊断信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#熟悉与STL相关的Web站点"><span class="nav-number">7.8.</span> <span class="nav-text">熟悉与STL相关的Web站点</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byhj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

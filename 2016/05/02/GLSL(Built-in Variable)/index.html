@@ -1,0 +1,621 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="OpenGL GLSL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="GLSL定义了许多内置变量，这些变量一般被用于固定管线的运算，这里主要介绍下各个变量的内容与用法。
+Vertex shader inputs12in int gl_VertexID;in int gl_InstanceID;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GLSL内置变量">
+<meta property="og:url" content="https://byhj.github.io/blog/2016/05/02/GLSL(Built-in Variable)/index.html">
+<meta property="og:site_name" content="byhj zzZ~~~">
+<meta property="og:description" content="GLSL定义了许多内置变量，这些变量一般被用于固定管线的运算，这里主要介绍下各个变量的内容与用法。
+Vertex shader inputs12in int gl_VertexID;in int gl_InstanceID;">
+<meta property="og:updated_time" content="2016-05-09T04:13:01.216Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GLSL内置变量">
+<meta name="twitter:description" content="GLSL定义了许多内置变量，这些变量一般被用于固定管线的运算，这里主要介绍下各个变量的内容与用法。
+Vertex shader inputs12in int gl_VertexID;in int gl_InstanceID;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> GLSL内置变量 | byhj zzZ~~~ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">byhj zzZ~~~</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">世上的鲜花会盛开，壮丽不朽的事物会接踵而来</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                GLSL内置变量
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-02T21:11:28+08:00" content="2016-05-02">
+              2016-05-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>　  GLSL定义了许多内置变量，这些变量一般被用于固定管线的运算，这里主要介绍下各个变量的内容与用法。</p>
+<h1 id="Vertex-shader-inputs"><a href="#Vertex-shader-inputs" class="headerlink" title="Vertex shader inputs"></a>Vertex shader inputs</h1><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_VertexID</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_InstanceID</span>;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="gl-VertexID​"><a href="#gl-VertexID​" class="headerlink" title="gl_VertexID​"></a>gl_VertexID​</h2><p>因为Vertex Shader对每个Vertex执行一次，所以gl_VertexID是Vertex Shader当前处理的顶点的索引。</p>
+<p>gl_InstanceID​<br>在执行Instance绘制时，gl_InstanceID是当前实例的索引值，当没有进行Instance绘制时它是默认的0值。</p>
+<h1 id="Vertex-shader-outputs"><a href="#Vertex-shader-outputs" class="headerlink" title="Vertex shader outputs"></a>Vertex shader outputs</h1><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">out</span> gl_PerVertex</span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">vec4</span>  <span class="built_in">gl_Position</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_PointSize</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_ClipDistance</span>[];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="gl-PerVertex​"><a href="#gl-PerVertex​" class="headerlink" title="gl_PerVertex​"></a>gl_PerVertex​</h2><p>Vertex Shader的输出结构，在开启光栅化时会被传输。</p>
+<h2 id="gl-Position"><a href="#gl-Position" class="headerlink" title="gl_Position"></a>gl_Position</h2><p>一般是在Vertex Shader经过Model View Proj矩阵变换过的Vertex数据，此时数据位于clip-space， 数据是齐次坐标[x, y, z, w].</p>
+<h2 id="gl-PointSize​"><a href="#gl-PointSize​" class="headerlink" title="gl_PointSize​"></a>gl_PointSize​</h2><p>绘制像素点大小，在绘制point primitives时有效。</p>
+<h2 id="gl-ClipDistance​"><a href="#gl-ClipDistance​" class="headerlink" title="gl_ClipDistance​"></a>gl_ClipDistance​</h2><h2 id="同于用户自定义的裁剪计算，非负值说明顶点在裁剪面内，负值则被裁剪。"><a href="#同于用户自定义的裁剪计算，非负值说明顶点在裁剪面内，负值则被裁剪。" class="headerlink" title="同于用户自定义的裁剪计算，非负值说明顶点在裁剪面内，负值则被裁剪。"></a>同于用户自定义的裁剪计算，非负值说明顶点在裁剪面内，负值则被裁剪。</h2><h1 id="Tessellation-Control-Shaders-input"><a href="#Tessellation-Control-Shaders-input" class="headerlink" title="Tessellation Control Shaders input:"></a>Tessellation Control Shaders input:</h1><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_PatchVerticesIn</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_PrimitiveID</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_InvocationID</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="gl-PatchVerticesIn​"><a href="#gl-PatchVerticesIn​" class="headerlink" title="gl_PatchVerticesIn​"></a>gl_PatchVerticesIn​</h2><p>每个patch多少个vertices</p>
+<h2 id="gl-PrimitiveID​"><a href="#gl-PrimitiveID​" class="headerlink" title="gl_PrimitiveID​"></a>gl_PrimitiveID​</h2><p>当前patch索引值</p>
+<h2 id="gl-InvocationID​"><a href="#gl-InvocationID​" class="headerlink" title="gl_InvocationID​"></a>gl_InvocationID​</h2><p>当前patch中vertices的索引值。</p>
+<p>Tessellation control shader接受vertex shader的输出作为输入，需要注意的是，由于shader对每个patch执行一次，所以该结构是数组模式。</p>
+ <figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> gl_PerVertex</span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">vec4</span> <span class="built_in">gl_Position</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_PointSize</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_ClipDistance</span>[];</span><br><span class="line">&#125; <span class="built_in">gl_in</span>[<span class="built_in">gl_MaxPatchVertices</span>];</span><br></pre></td></tr></table></figure>
+<p>结构内的变量含义在vertex shader那里已经说过了，gl_MaxPatchVertices是patch的顶点数，注意跟gl_PatchVerticesIn的区别。</p>
+<h1 id="Tessellation-Control-Shaders-output"><a href="#Tessellation-Control-Shaders-output" class="headerlink" title="Tessellation Control Shaders output:"></a>Tessellation Control Shaders output:</h1> <figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">patch</span> <span class="keyword">out</span> <span class="type">float</span> <span class="built_in">gl_TessLevelOuter</span>[<span class="number">4</span>];</span><br><span class="line"><span class="keyword">patch</span> <span class="keyword">out</span> <span class="type">float</span> <span class="built_in">gl_TessLevelInner</span>[<span class="number">2</span>];</span><br></pre></td></tr></table></figure>
+<p> 这个两个分量主要分别设置了patch的内外细分度</p>
+<p>Tessellation Control Shader需要将vertex shader传入的数据继续传输下去，所以有类似的输出的结构体：</p>
+ <figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">out</span> gl_PerVertex</span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">vec4</span> <span class="built_in">gl_Position</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_PointSize</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_ClipDistance</span>[];</span><br><span class="line">&#125; <span class="built_in">gl_out</span>[];</span><br></pre></td></tr></table></figure>
+<h1 id="Tessellation-evaluation-shader-inputs"><a href="#Tessellation-evaluation-shader-inputs" class="headerlink" title="Tessellation evaluation shader inputs"></a>Tessellation evaluation shader inputs</h1> <figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> <span class="type">vec3</span> <span class="built_in">gl_TessCoord</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_PatchVerticesIn</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_PrimitiveID</span>;</span><br></pre></td></tr></table></figure>
+<p>gl_TessCoord​<br>细分坐标，利用插值可以产生新的细分顶点</p>
+<p>gl_PatchVerticesIn​<br>与control中类似</p>
+<p>gl_PrimitiveID​<br>当前patch的索引值</p>
+<p>patch in float gl_TessLevelOuter[4];<br>patch in float gl_TessLevelInner[2];</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> gl_PerVertex</span><br><span class="line">&#123;</span><br><span class="line"> <span class="type">vec4</span> <span class="built_in">gl_Position</span>;</span><br><span class="line"> <span class="type">float</span> <span class="built_in">gl_PointSize</span>;</span><br><span class="line"> <span class="type">float</span> <span class="built_in">gl_ClipDistance</span>[];</span><br><span class="line">&#125; <span class="built_in">gl_in</span>[<span class="built_in">gl_MaxPatchVertices</span>];</span><br></pre></td></tr></table></figure>
+<h1 id="Tessellation-evaluation-shader-outputs"><a href="#Tessellation-evaluation-shader-outputs" class="headerlink" title="Tessellation evaluation shader outputs"></a>Tessellation evaluation shader outputs</h1><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">out</span> gl_PerVertex &#123;</span><br><span class="line">  <span class="type">vec4</span> <span class="built_in">gl_Position</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_PointSize</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_ClipDistance</span>[];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>gl_Position​<br>产生细分数据的clip-space坐标值</p>
+<p>gl_PointSize​<br>像素点大小</p>
+<p>gl_ClipDistance​<br>自定义裁剪变量，前面已说明</p>
+<hr>
+<h1 id="Geometry-shader-inputs"><a href="#Geometry-shader-inputs" class="headerlink" title="Geometry shader inputs"></a>Geometry shader inputs</h1><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> gl_PerVertex</span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">vec4</span> <span class="built_in">gl_Position</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_PointSize</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_ClipDistance</span>[];</span><br><span class="line">&#125; <span class="built_in">gl_in</span>[];</span><br></pre></td></tr></table></figure>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_PrimitiveIDIn</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_InvocationID</span>;  <span class="comment">//Requires GLSL 4.0 or ARB_gpu_shader5</span></span><br></pre></td></tr></table></figure>
+<p>gl_PrimitiveIDIn​</p>
+<p>gl_InvocationID​</p>
+<h1 id="Geometry-shader-outputs"><a href="#Geometry-shader-outputs" class="headerlink" title="Geometry shader outputs"></a>Geometry shader outputs</h1><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">out</span> gl_PerVertex</span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">vec4</span> <span class="built_in">gl_Position</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_PointSize</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_ClipDistance</span>[];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>out int gl_PrimitiveID;<br>gl_PrimitiveID = gl_PrimitiveIDIn;</p>
+<p>层次渲染通过下面的变量实现：</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">out</span> <span class="type">int</span> <span class="built_in">gl_Layer</span>;</span><br><span class="line"><span class="keyword">out</span> <span class="type">int</span> <span class="built_in">gl_ViewportIndex</span>; <span class="comment">//Requires GL 4.1 or ARB_viewport_array.</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Fragment-Shaders-input"><a href="#Fragment-Shaders-input" class="headerlink" title="Fragment Shaders input."></a>Fragment Shaders input.</h1><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> <span class="type">vec4</span> <span class="built_in">gl_FragCoord</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">bool</span> <span class="built_in">gl_FrontFacing</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">vec2</span> <span class="built_in">gl_PointCoord</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="gl-FragCoord​"><a href="#gl-FragCoord​" class="headerlink" title="gl_FragCoord​"></a>gl_FragCoord​</h2><p>fragment在window space的位置量， [x,y,z]其中z值会被写入到gl_FragDepth中，而w值等于 1 /w(clip), w(clip)是插值后的gl_Position<br>的w值。gl_FragCoord的原点可以通过下面命令改变，默认原点在bottom-left：<br>layout(origin_upper_left) in vec4 gl_FragCoord;</p>
+<h2 id="gl-FrontFacing​"><a href="#gl-FrontFacing​" class="headerlink" title="gl_FrontFacing​"></a>gl_FrontFacing​</h2><p>用于判断是否处于正面，如果是back-face，结果为负。</p>
+<h2 id="gl-PointCoord​"><a href="#gl-PointCoord​" class="headerlink" title="gl_PointCoord​"></a>gl_PointCoord​</h2><p>Point primitive在的位置，范围[0, 1]，原点在upper-left,可以用来实现Spirtes，可以通过下面命令修改原点位置：<br>glPointParameteri(GL_POINT_SPRITE_COORD_ORIGIN, GL_LOWER_LEFT);​</p>
+<p>OpenGL 4.0增加了几个系统产生的输入变量：</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_SampleID</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">vec2</span> <span class="built_in">gl_SamplePosition</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_SampleMaskIn</span>[];</span><br></pre></td></tr></table></figure>
+<h2 id="gl-SampleID​"><a href="#gl-SampleID​" class="headerlink" title="gl_SampleID​"></a>gl_SampleID​</h2><p>整数值代表当前fragment的sample标志。</p>
+<p>##gl_SamplePosition​<br>当前sample在fragment的位置，[0, 1]。</p>
+<h2 id="gl-SampleMaskIn​"><a href="#gl-SampleMaskIn​" class="headerlink" title="gl_SampleMaskIn​"></a>gl_SampleMaskIn​</h2><p>用于多重采样</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> <span class="type">float</span> <span class="built_in">gl_ClipDistance</span>[];</span><br><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_PrimitiveID</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="gl-ClipDistance​-1"><a href="#gl-ClipDistance​-1" class="headerlink" title="gl_ClipDistance​"></a>gl_ClipDistance​</h2><p>经过插值过的裁剪变量。</p>
+<h2 id="gl-PrimitiveID​-1"><a href="#gl-PrimitiveID​-1" class="headerlink" title="gl_PrimitiveID​"></a>gl_PrimitiveID​</h2><p>当前图元索引值</p>
+<p>OpenGL 4.3增加了下面两个内置输入变量：</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_Layer</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_ViewportIndex</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="gl-Layer​"><a href="#gl-Layer​" class="headerlink" title="gl_Layer​"></a>gl_Layer​</h2><p>当前layer索引值</p>
+<h2 id="gl-ViewportIndex​"><a href="#gl-ViewportIndex​" class="headerlink" title="gl_ViewportIndex​"></a>gl_ViewportIndex​</h2><p>当前viewport索引值</p>
+<h1 id="Fragment-shader-outputs"><a href="#Fragment-shader-outputs" class="headerlink" title="Fragment shader outputs"></a>Fragment shader outputs</h1><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">out</span> <span class="type">float</span> <span class="built_in">gl_FragDepth</span>;</span><br><span class="line"><span class="keyword">out</span> <span class="keyword">in</span> <span class="built_in">gl_SampleMask</span>[];</span><br></pre></td></tr></table></figure>
+<h2 id="gl-FragDepth​"><a href="#gl-FragDepth​" class="headerlink" title="gl_FragDepth​"></a>gl_FragDepth​</h2><p>一般为gl_FragCoord;</p>
+<hr>
+<h1 id="Compute-Shaders-input"><a href="#Compute-Shaders-input" class="headerlink" title="Compute Shaders input."></a>Compute Shaders input.</h1><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> <span class="type">uvec3</span> <span class="built_in">gl_NumWorkGroups</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">uvec3</span> <span class="built_in">gl_WorkGroupID</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">uvec3</span> <span class="built_in">gl_LocalInvocationID</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">uvec3</span> <span class="built_in">gl_GlobalInvocationID</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">uint</span>  <span class="built_in">gl_LocalInvocationIndex</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="gl-NumWorkGroups​"><a href="#gl-NumWorkGroups​" class="headerlink" title="gl_NumWorkGroups​"></a>gl_NumWorkGroups​</h2><p>工作组总的数量</p>
+<h2 id="gl-WorkGroupID​"><a href="#gl-WorkGroupID​" class="headerlink" title="gl_WorkGroupID​"></a>gl_WorkGroupID​</h2><p>当前工作组索引值</p>
+<h2 id="gl-LocalInvocationID​"><a href="#gl-LocalInvocationID​" class="headerlink" title="gl_LocalInvocationID​"></a>gl_LocalInvocationID​</h2><p>工作组内本地工作组的索引值，XYZ处于[0,gl_NumWorkGroups.XYZ]。</p>
+<h2 id="gl-GlobalInvocationID​"><a href="#gl-GlobalInvocationID​" class="headerlink" title="gl_GlobalInvocationID​"></a>gl_GlobalInvocationID​</h2><p>全局的实例索引值，等于下面的值：<br>gl_WorkGroupID * gl_WorkGroupSize + gl_LocalInvocationID;</p>
+<h2 id="gl-LocalInvocationIndex​"><a href="#gl-LocalInvocationIndex​" class="headerlink" title="gl_LocalInvocationIndex​"></a>gl_LocalInvocationIndex​</h2><p>本地工作组内索引值：<br><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">gl_LocalInvocationIndex</span> =</span><br><span class="line">        <span class="built_in">gl_LocalInvocationID</span>.z * <span class="built_in">gl_WorkGroupSize</span>.x * <span class="built_in">gl_WorkGroupSize</span>.y +</span><br><span class="line">        <span class="built_in">gl_LocalInvocationID</span>.y * <span class="built_in">gl_WorkGroupSize</span>.x +</span><br><span class="line">        <span class="built_in">gl_LocalInvocationID</span>.x;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Compute-shader-other-variables"><a href="#Compute-shader-other-variables" class="headerlink" title="Compute shader other variables"></a>Compute shader other variables</h1><p>const uvec3 gl_WorkGroupSize;   // GLSL ≥ 4.30</p>
+<h1 id="Shaders-uniforms"><a href="#Shaders-uniforms" class="headerlink" title="Shaders  uniforms"></a>Shaders  uniforms</h1><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">struct gl_DepthRangeParameters</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">float</span> near;</span><br><span class="line">    <span class="type">float</span> far;</span><br><span class="line">    <span class="type">float</span> diff;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">uniform</span> gl_DepthRangeParameters <span class="built_in">gl_DepthRange</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uniform</span> <span class="type">int</span> <span class="built_in">gl_NumSamples</span>; <span class="comment">//GLSL 4.20</span></span><br></pre></td></tr></table></figure>
+<p>详细介绍<a href="https://www.opengl.org/wiki/Built-in_Variable_(GLSL" target="_blank" rel="external">GLSL Build-In Variable</a>#Fragment_shader_outputs)</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/OpenGL-GLSL/" rel="tag">#OpenGL GLSL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/04/13/Vulkan-Introduction/" rel="next" title="Vulkan">
+                <i class="fa fa-chevron-left"></i> Vulkan
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2016/05/06/Linux-Dir/" rel="prev" title="Linux Dir">
+                Linux Dir <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.gif"
+               alt="byhj" />
+          <p class="site-author-name" itemprop="name">byhj</p>
+          <p class="site-description motion-element" itemprop="description">This is a boring description.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vertex-shader-inputs"><span class="nav-number">1.</span> <span class="nav-text">Vertex shader inputs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-VertexID​"><span class="nav-number">1.1.</span> <span class="nav-text">gl_VertexID​</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vertex-shader-outputs"><span class="nav-number">2.</span> <span class="nav-text">Vertex shader outputs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-PerVertex​"><span class="nav-number">2.1.</span> <span class="nav-text">gl_PerVertex​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-Position"><span class="nav-number">2.2.</span> <span class="nav-text">gl_Position</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-PointSize​"><span class="nav-number">2.3.</span> <span class="nav-text">gl_PointSize​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-ClipDistance​"><span class="nav-number">2.4.</span> <span class="nav-text">gl_ClipDistance​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同于用户自定义的裁剪计算，非负值说明顶点在裁剪面内，负值则被裁剪。"><span class="nav-number">2.5.</span> <span class="nav-text">同于用户自定义的裁剪计算，非负值说明顶点在裁剪面内，负值则被裁剪。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tessellation-Control-Shaders-input"><span class="nav-number">3.</span> <span class="nav-text">Tessellation Control Shaders input:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-PatchVerticesIn​"><span class="nav-number">3.1.</span> <span class="nav-text">gl_PatchVerticesIn​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-PrimitiveID​"><span class="nav-number">3.2.</span> <span class="nav-text">gl_PrimitiveID​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-InvocationID​"><span class="nav-number">3.3.</span> <span class="nav-text">gl_InvocationID​</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tessellation-Control-Shaders-output"><span class="nav-number">4.</span> <span class="nav-text">Tessellation Control Shaders output:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tessellation-evaluation-shader-inputs"><span class="nav-number">5.</span> <span class="nav-text">Tessellation evaluation shader inputs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tessellation-evaluation-shader-outputs"><span class="nav-number">6.</span> <span class="nav-text">Tessellation evaluation shader outputs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Geometry-shader-inputs"><span class="nav-number">7.</span> <span class="nav-text">Geometry shader inputs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Geometry-shader-outputs"><span class="nav-number">8.</span> <span class="nav-text">Geometry shader outputs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fragment-Shaders-input"><span class="nav-number">9.</span> <span class="nav-text">Fragment Shaders input.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-FragCoord​"><span class="nav-number">9.1.</span> <span class="nav-text">gl_FragCoord​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-FrontFacing​"><span class="nav-number">9.2.</span> <span class="nav-text">gl_FrontFacing​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-PointCoord​"><span class="nav-number">9.3.</span> <span class="nav-text">gl_PointCoord​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-SampleID​"><span class="nav-number">9.4.</span> <span class="nav-text">gl_SampleID​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-SampleMaskIn​"><span class="nav-number">9.5.</span> <span class="nav-text">gl_SampleMaskIn​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-ClipDistance​-1"><span class="nav-number">9.6.</span> <span class="nav-text">gl_ClipDistance​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-PrimitiveID​-1"><span class="nav-number">9.7.</span> <span class="nav-text">gl_PrimitiveID​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-Layer​"><span class="nav-number">9.8.</span> <span class="nav-text">gl_Layer​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-ViewportIndex​"><span class="nav-number">9.9.</span> <span class="nav-text">gl_ViewportIndex​</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fragment-shader-outputs"><span class="nav-number">10.</span> <span class="nav-text">Fragment shader outputs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-FragDepth​"><span class="nav-number">10.1.</span> <span class="nav-text">gl_FragDepth​</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Compute-Shaders-input"><span class="nav-number">11.</span> <span class="nav-text">Compute Shaders input.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-NumWorkGroups​"><span class="nav-number">11.1.</span> <span class="nav-text">gl_NumWorkGroups​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-WorkGroupID​"><span class="nav-number">11.2.</span> <span class="nav-text">gl_WorkGroupID​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-LocalInvocationID​"><span class="nav-number">11.3.</span> <span class="nav-text">gl_LocalInvocationID​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-GlobalInvocationID​"><span class="nav-number">11.4.</span> <span class="nav-text">gl_GlobalInvocationID​</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-LocalInvocationIndex​"><span class="nav-number">11.5.</span> <span class="nav-text">gl_LocalInvocationIndex​</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Compute-shader-other-variables"><span class="nav-number">12.</span> <span class="nav-text">Compute shader other variables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shaders-uniforms"><span class="nav-number">13.</span> <span class="nav-text">Shaders  uniforms</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byhj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,616 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="OpenGL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="WebOpenGL3.0+我个人认为比较好的教程，可优先学习：
+
+Learning OpenGL
+opengl-tutorial
+OpenGL-Step-by-Step
+tutorialsplay
+antongerdelan
+mbsoftworks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL-Tutorials">
+<meta property="og:url" content="https://byhj.github.io/blog/2015/09/21/OpenGL-Tutorials/index.html">
+<meta property="og:site_name" content="byhj zzZ~~~">
+<meta property="og:description" content="WebOpenGL3.0+我个人认为比较好的教程，可优先学习：
+
+Learning OpenGL
+opengl-tutorial
+OpenGL-Step-by-Step
+tutorialsplay
+antongerdelan
+mbsoftworks">
+<meta property="og:updated_time" content="2016-05-09T04:13:01.218Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL-Tutorials">
+<meta name="twitter:description" content="WebOpenGL3.0+我个人认为比较好的教程，可优先学习：
+
+Learning OpenGL
+opengl-tutorial
+OpenGL-Step-by-Step
+tutorialsplay
+antongerdelan
+mbsoftworks">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> OpenGL-Tutorials | byhj zzZ~~~ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">byhj zzZ~~~</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">世上的鲜花会盛开，壮丽不朽的事物会接踵而来</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OpenGL-Tutorials
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-21T10:57:56+08:00" content="2015-09-21">
+              2015-09-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="OpenGL3-0"><a href="#OpenGL3-0" class="headerlink" title="OpenGL3.0+"></a>OpenGL3.0+</h2><p>我个人认为比较好的教程，可优先学习：</p>
+<ul>
+<li><a href="http://www.learnopengl.com/" target="_blank" rel="external">Learning OpenGL</a></li>
+<li><a href="http://www.opengl-tutorial.org/" target="_blank" rel="external">opengl-tutorial</a></li>
+<li><a href="http://ogldev.atspace.co.uk/index.html" target="_blank" rel="external">OpenGL-Step-by-Step</a></li>
+<li><a href="https://tutorialsplay.com/opengl/" target="_blank" rel="external">tutorialsplay</a></li>
+<li><a href="http://antongerdelan.net/opengl/index.html" target="_blank" rel="external">antongerdelan</a></li>
+<li><a href="http://www.mbsoftworks.sk/index.php?page=tutorials&amp;series=1" target="_blank" rel="external">mbsoftworks</a></li>
+</ul>
+<a id="more"></a>
+<p>OpenGL官网推荐的：</p>
+<ul>
+<li><a href="https://openclassrooms.com/courses/developpez-vos-applications-3d-avec-opengl-3-3" target="_blank" rel="external">Develop with OpenGL 3.1 from scratch (Français)</a></li>
+<li><a href="http://alfonse.bitbucket.org/oldtut/index.html" target="_blank" rel="external">Learning Modern 3D Graphics Programming Through OpenGL</a></li>
+<li><a href="http://openglbook.com/" target="_blank" rel="external">http://openglbook.com/</a></li>
+<li><a href="http://www.spieleprogrammierung.net/" target="_blank" rel="external">Spiele Programmierung Windows OpenGL 3 Tutorials And Articles</a></li>
+<li><a href="http://www.swiftless.com/opengl4tuts.html" target="_blank" rel="external">Swiftless OpenGL 4 Tutorials</a></li>
+<li><a href="http://www.tomdalling.com/blog/category/modern-opengl/" target="_blank" rel="external">Modern OpenGL Tom Dalling</a></li>
+</ul>
+<h2 id="Pre-OpenGL3-0"><a href="#Pre-OpenGL3-0" class="headerlink" title="Pre-OpenGL3.0"></a>Pre-OpenGL3.0</h2><p>旧渲染管线看得不多，比较好的是Nehe和lighthouse3d,其它没怎么了解。</p>
+<ul>
+<li><a href="http://nehe.gamedev.net/" target="_blank" rel="external">Nehe</a></li>
+<li><a href="http://www.lighthouse3d.com/" target="_blank" rel="external">lightHouse3d</a></li>
+<li><a href="http://lazyfoo.net/tutorials/OpenGL/index.php" target="_blank" rel="external">Lazy Foo’s OpenGL Tutorial</a></li>
+<li><a href="http://www.swiftless.com/opengltuts.html" target="_blank" rel="external">Swiftless Tutorials OpenGL 1 &amp; 2</a></li>
+<li><a href="http://www.songho.ca/opengl/index.html" target="_blank" rel="external">SongHo OpenGL tutorials</a></li>
+<li><a href="http://www.marekknows.com/" target="_blank" rel="external">MarekKnows.com</a></li>
+</ul>
+<hr>
+<h1 id="Book"><a href="#Book" class="headerlink" title="Book"></a>Book</h1><p>OpenGL最经典三本书</p>
+<ul>
+<li>红皮书: OpenGL Programming Guide</li>
+<li>蓝皮书: OpenGL SuperBible</li>
+<li>橙皮书: OpenGL Shading Language</li>
+</ul>
+<p>还有一本值得推荐的</p>
+<ul>
+<li>OpenGL Insights</li>
+</ul>
+<p>再想深入的话可以看OpenGL的官方说明文档</p>
+<hr>
+<h1 id="Tool"><a href="#Tool" class="headerlink" title="Tool"></a>Tool</h1><p>GLUT(太老了，不建议使用，freeglut完全可以替代)<br>Freeglut<br>GLFW<br>SDL<br>QtOpenGL</p>
+<hr>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p>红宝书和蓝宝书的Code可以看看，还有教程的配套Code.<br>G-Truc的Code Sample,例子简单但很全。</p>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/OpenGL/" rel="tag">#OpenGL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2015/09/20/OpenGL-BufferObject/" rel="next" title="OpenGL-BufferObject">
+                <i class="fa fa-chevron-left"></i> OpenGL-BufferObject
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2015/10/06/Movie/" rel="prev" title="Movie">
+                Movie <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.gif"
+               alt="byhj" />
+          <p class="site-author-name" itemprop="name">byhj</p>
+          <p class="site-description motion-element" itemprop="description">This is a boring description.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Web"><span class="nav-number">1.</span> <span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenGL3-0"><span class="nav-number">1.1.</span> <span class="nav-text">OpenGL3.0+</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pre-OpenGL3-0"><span class="nav-number">1.2.</span> <span class="nav-text">Pre-OpenGL3.0</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Book"><span class="nav-number">2.</span> <span class="nav-text">Book</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tool"><span class="nav-number">3.</span> <span class="nav-text">Tool</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">4.</span> <span class="nav-text">Code</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byhj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Direct3D,Math," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Introduction　　本文主要介绍Direct3D开发中使用的数学运算库。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Direct3D-Math">
+<meta property="og:url" content="https://byhj.github.io/blog/2015/12/20/Direct3D-Math/index.html">
+<meta property="og:site_name" content="byhj zzZ~~~">
+<meta property="og:description" content="Introduction　　本文主要介绍Direct3D开发中使用的数学运算库。">
+<meta property="og:updated_time" content="2016-05-09T04:13:01.214Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Direct3D-Math">
+<meta name="twitter:description" content="Introduction　　本文主要介绍Direct3D开发中使用的数学运算库。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Direct3D-Math | byhj zzZ~~~ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">byhj zzZ~~~</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">世上的鲜花会盛开，壮丽不朽的事物会接踵而来</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Direct3D-Math
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-20T22:48:31+08:00" content="2015-12-20">
+              2015-12-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>　　本文主要介绍Direct3D开发中使用的数学运算库。</p>
+<a id="more"></a>
+<h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><h2 id="D3DXMath"><a href="#D3DXMath" class="headerlink" title="D3DXMath"></a>D3DXMath</h2><p>　　这是Direct3D旧版本的数学运算库，主要有d3dx9math, d3dx10math.</p>
+<h2 id="xnamath"><a href="#xnamath" class="headerlink" title="xnamath"></a>xnamath</h2><p>　　在DirectX11的SDK中包含了一个新的数学库xnamath，它主要是为XNA平台开发编写的，采用了<br>SIMD提供运算效率，在PC程序开发中也可以使用。</p>
+<h2 id="DirectXMath"><a href="#DirectXMath" class="headerlink" title="DirectXMath"></a>DirectXMath</h2><p>　　在Windows8.x之后DirectX SDK不再以单一组件形式提供，D3DXMath也已经被抛弃，微软推荐采用新使用C++编写的DirectXMath数学库，<br>它可以看做xnamath的升级版本。<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> _m128 XMVECTOR</span><br></pre></td></tr></table></figure></p>
+<p>为了能充分利用SIMD的效率，在使用时可以采用以下步骤进行操作：</p>
+<ul>
+<li>局部或全局变使用XMVECTOR， XMMATRIX</li>
+<li>类的数据成员使用XMFLOAT<em>， XMFLOAT</em>x*</li>
+<li>在进行运算前，使用相应的loading函数将XMFLOAT<em> / XMFLOAT</em>x*转换为XMVECTOR/ XMMATRIX</li>
+<li>使用XMVECTOR / XMMATRIX进行运算</li>
+<li>采用相应的storage函数将结果从XMVECTOR/XMMATRIX转换回XMFLOAT<em> / XMFLOAT</em>x*</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> XMMATRIX;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Fix-up for (1st) XMMATRIX parameter to pass in-register for ARM64 and vector call; by reference otherwise</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> ( defined(_M_ARM64) || _XM_VECTORCALL_ ) &amp;&amp; !defined(_XM_NO_INTRINSICS_)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">const</span> XMMATRIX FXMMATRIX;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">const</span> XMMATRIX&amp; FXMMATRIX;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Fix-up for (2nd+) XMMATRIX parameters to pass by reference</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">const</span> XMMATRIX&amp; CXMMATRIX;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> _XM_NO_INTRINSICS_</span></span><br><span class="line"><span class="keyword">struct</span> XMMATRIX</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">__declspec(align(<span class="number">16</span>)) <span class="keyword">struct</span> XMMATRIX</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> _XM_NO_INTRINSICS_</span></span><br><span class="line">    <span class="keyword">union</span></span><br><span class="line">    &#123;</span><br><span class="line">        XMVECTOR r[<span class="number">4</span>];</span><br><span class="line">        <span class="keyword">struct</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">float</span> _11, _12, _13, _14;</span><br><span class="line">            <span class="keyword">float</span> _21, _22, _23, _24;</span><br><span class="line">            <span class="keyword">float</span> _31, _32, _33, _34;</span><br><span class="line">            <span class="keyword">float</span> _41, _42, _43, _44;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">float</span> m[<span class="number">4</span>][<span class="number">4</span>];</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    XMVECTOR r[<span class="number">4</span>];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">XMVECTOR XMLoadFloat4(<span class="name">COSNT</span> XMFLOAT4 *pSource);</span><br><span class="line">VOID     XMStoreFloat4(XMFLOAT4 *pDestination, FXMVECTOR V)<span class="comment">;</span></span><br><span class="line">FLOAT XMVectorGetX(<span class="name">FXMVECTOR</span> V)<span class="comment">;</span></span><br><span class="line">XMVECTOR XMVectorSetX(<span class="name">FXMVECTOR</span> V, FLOAT x)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">float</span> XM_PI           = <span class="number">3.141592654</span>f;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">float</span> XMConvertToRadians(<span class="keyword">float</span> fDegrees) &#123; <span class="built_in">return</span> fDegrees * (XM_PI / <span class="number">180.0</span>f); &#125;</span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">float</span> XMConvertToDegrees(<span class="keyword">float</span> fRadians) &#123; <span class="built_in">return</span> fRadians * (<span class="number">180.0</span>f / XM_PI); &#125;</span><br></pre></td></tr></table></figure>
+<p>可以参考MSDN博客上的这篇文章<a href="http://blogs.msdn.com/b/chuckw/archive/2012/03/27/introducing-directxmath.aspx" target="_blank" rel="external">Introducing DirectXMath</a><br>#</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Direct3D/" rel="tag">#Direct3D</a>
+          
+            <a href="/blog/tags/Math/" rel="tag">#Math</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2015/12/20/OpenGLES-Android/" rel="next" title="OpenGLES-Android">
+                <i class="fa fa-chevron-left"></i> OpenGLES-Android
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2015/12/24/EffectiveSTL/" rel="prev" title="Effective STL 总结">
+                Effective STL 总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.gif"
+               alt="byhj" />
+          <p class="site-author-name" itemprop="name">byhj</p>
+          <p class="site-description motion-element" itemprop="description">This is a boring description.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Content"><span class="nav-number">2.</span> <span class="nav-text">Content</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#D3DXMath"><span class="nav-number">2.1.</span> <span class="nav-text">D3DXMath</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xnamath"><span class="nav-number">2.2.</span> <span class="nav-text">xnamath</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DirectXMath"><span class="nav-number">2.3.</span> <span class="nav-text">DirectXMath</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byhj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

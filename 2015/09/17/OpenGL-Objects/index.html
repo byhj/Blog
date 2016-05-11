@@ -1,0 +1,659 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="OpenGL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Introduction 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。　　 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变Ope">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL-Objects">
+<meta property="og:url" content="https://byhj.github.io/blog/2015/09/17/OpenGL-Objects/index.html">
+<meta property="og:site_name" content="byhj zzZ~~~">
+<meta property="og:description" content="Introduction 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。　　 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变Ope">
+<meta property="og:updated_time" content="2016-05-09T04:13:01.217Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL-Objects">
+<meta name="twitter:description" content="Introduction 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。　　 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变Ope">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> OpenGL-Objects | byhj zzZ~~~ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">byhj zzZ~~~</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">世上的鲜花会盛开，壮丽不朽的事物会接踵而来</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OpenGL-Objects
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-17T22:05:15+08:00" content="2015-09-17">
+              2015-09-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p> 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。<br>　　 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变OpenGL的状态，也可以查询某些状态量，或者使用当前的状态去Rendering。<br>　　 OpenGL有着多种类型的Ojbects, 它们存储着不同的状态，一组状态被封装在一个OpenGL Objects中，我们可以通过函数调用去改变它们。<br>　　 需要注意的是，OpenGL只是制定相应的规范，具体实现是由各个显卡驱动的厂商决定的，但实现也一般都会符合OpenGL制定的规范。</p>
+<hr>
+<a id="more"></a>
+<h1 id="Creation-amp-Destruction"><a href="#Creation-amp-Destruction" class="headerlink" title="Creation &amp; Destruction"></a>Creation &amp; Destruction</h1><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> glGen*(GLsizei n, GLuint *objects)</span><br></pre></td></tr></table></figure>
+<p> 　　该函数创建n个对象名称(整数值引用)，返回指向这些objects的指针。在这一步，并不需要创建objects的状态数据。对于大多数object来说，在第一次绑定到上下文时，只包含其默认状态。在绑定前使用Objects是非法的。需要注意的是，Program Pipeline Ojbects和 Sampler Objects并不遵循这种运行机制。<br> 　　Object名称类型是GLuint, 它是一个数值型引用，用来识别一个object, 其中数值0在不同的Object中有着特定意义。<br>  （在OpenGL3.0之前，可以完全忽略上述的的分配函数,直接绑定认为合法的Ojbect名称）<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> glDelete*(GLsizei n​, <span class="keyword">const</span> GLuint *objects​);</span><br></pre></td></tr></table></figure></p>
+<p> 　　当我们使用完Objects，可以使用上面函数进行删除。任何非法Object和Object 0会被忽略。Objects被删除后，它们的名字可以通过glGen*重新分配。</p>
+<h2 id="Deletion-unbinding"><a href="#Deletion-unbinding" class="headerlink" title="Deletion unbinding"></a>Deletion unbinding</h2><p>　　当绑定到当前context的object被删除时，会解除所有该object的绑定。<br>（Binding goes to the context; attachment is what you do when one object references another. Attachments are not severed due to this call.）<br>　　当一个object attached到container object，而该object绑定到context，删除会解除attach操作，如果该object没有绑定到context, attach操作不会被破坏。</p>
+<p>Some objects can be bound to the context in unusual ways. These ways include, but are not limited to:</p>
+<ul>
+<li>Buffer Objects bound to indexed targets via glBindBufferRange​ or its equivalents.</li>
+<li>Textures bound as images.</li>
+</ul>
+<h2 id="Deletion-orphaning"><a href="#Deletion-orphaning" class="headerlink" title="Deletion orphaning"></a>Deletion orphaning</h2><p>　　调用glDelete”并不保证马上消除object的内容和它的名字，如果一个object在删除后还被使用，那么当前object名字还是合法的。</p>
+<p>An object is “in use” if:</p>
+<ul>
+<li>It is bound to a context. This is not necessarily the current one, since deleting it will automatically unbind it from the context that caused the deletion. Though remember the caveat above about non-standard binding points for GL 4.4 and before.</li>
+<li>It is attached to a container object.</li>
+</ul>
+<hr>
+<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p>　　由于Ojbects是一组状态，当要修改Ojbects前，需要把它绑定到OpenGL context。在绑定后，调用API函数可以对context中的状态进行改变，Objects的相应状态也会被改变。在绑定一个新生成的Object名称时，会为这个Object产生新的状态</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> glBind*(GLenum <span class="keyword">target</span>​, GLuint object​);</span><br></pre></td></tr></table></figure>
+<h2 id="Object-zero"><a href="#Object-zero" class="headerlink" title="Object zero"></a>Object zero</h2><p> 　　数值0在一些OpenGL Objects中有着特定的含义。在大多数情况下，object 0就像是空指针NULL，是一种指示作用。对于一些Objects来说，0代表“default object”, Texture 和 Framebuffers都有着这样的概念。</p>
+<hr>
+<h1 id="Multibind"><a href="#Multibind" class="headerlink" title="Multibind"></a>Multibind</h1><p>　　在OpenGL4.4引入了多重绑定概念，可以一次把不同类型的Objects绑定到各自的目标上，这种方式只是用来绑定后使用而不是修改。在多重绑定中，任何一个绑定错误都会导致整体的错误。</p>
+<hr>
+<h1 id="Sharing"><a href="#Sharing" class="headerlink" title="Sharing"></a>Sharing</h1><p>　　你可以创建多个OpenGL contexts, 而当前GL context是线程相关的，一般来说它们各自是完成独立开来的，不会相互影响。但是context创建的时候，你可以使用另一个已经存在context的Objects. 需要注意，那些包含着其它Objects引用的Objects不能被共享，剩下的Objects可以进行context间共享，包括GLSL Objects和Sync Objects这种不遵循OpenGL Object机制的Objects.<br>　　一个context中Objects状态的改变并不是在另一个context马上可见，在这里有着特定的规则保证object状态数据的可见性。如果你使用线程，你需要自己做一些同步处理工作以保证在一个context使用那些会改变的objects之前，objects的改变在另一个context中已经完成。</p>
+<hr>
+<h1 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h1><p>　　Objects can be separated into two different categories: regular objects and container objects. Here is the list of regular objects.</p>
+<p><strong>Regular objects</strong></p>
+<ul>
+<li>Buffer Objects</li>
+<li>Query Objects</li>
+<li>Renderbuffer Objects</li>
+<li>Sampler Objects</li>
+<li>Texture Objects</li>
+</ul>
+<p><strong>Container objects</strong></p>
+<ul>
+<li>Framebuffer Objects</li>
+<li>Program Pipeline Objects</li>
+<li>Transform Feedback Objects</li>
+<li>Vertex Array Objects</li>
+</ul>
+<hr>
+<h1 id="Names"><a href="#Names" class="headerlink" title="Names"></a>Names</h1><p>　　正如上面所说，OpenGL Ojbects的名字是一个由系统分配的整数值，这种方式对于用户并不直观，在调试时也有很大的缺陷。在OpenGL 4.3 Core引入了一种为Object作标志的方法。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> glObjectLabel​(<span class="type">GLenum</span> identifier​, <span class="type">GLuint</span> name​, </span><br><span class="line">                   <span class="type">GLsizei</span> length​, <span class="keyword">const</span> <span class="built_in">char</span> * label​);</span><br><span class="line">                   </span><br><span class="line"><span class="built_in">void</span> glObjectPtrLabel​(<span class="built_in">void</span> * <span class="keyword">ptr</span>​, <span class="type">GLsizei</span> length​, <span class="keyword">const</span> <span class="built_in">char</span> * label​);</span><br></pre></td></tr></table></figure></p>
+<p>第一种方法可以为所有的Objects设置Label，第二种为Sync Objects设置Label</p>
+<table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th style="text-align:center">Object Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GL_BUFFER</td>
+<td style="text-align:center">Buffer Object</td>
+</tr>
+<tr>
+<td>GL_SHADER</td>
+<td style="text-align:center">Shader Object</td>
+</tr>
+<tr>
+<td>GL_PROGRAM</td>
+<td style="text-align:center">Program Object</td>
+</tr>
+<tr>
+<td>GL_VERTEX_ARRAY</td>
+<td style="text-align:center">Vertex Array Object</td>
+</tr>
+<tr>
+<td>GL_QUERY</td>
+<td style="text-align:center">Query Object</td>
+</tr>
+<tr>
+<td>GL_PROGRAM_PIPELINE</td>
+<td style="text-align:center">Program Pipeline Object</td>
+</tr>
+<tr>
+<td>GL_TRANSFORM_FEEDBACK</td>
+<td style="text-align:center">Transform Feedback Object</td>
+</tr>
+<tr>
+<td>GL_SAMPLER</td>
+<td style="text-align:center">Sampler Object</td>
+</tr>
+<tr>
+<td>GL_TEXTURE</td>
+<td style="text-align:center">Texture Object</td>
+</tr>
+<tr>
+<td>GL_RENDERBUFFER</td>
+<td style="text-align:center">Renderbuffer Object</td>
+</tr>
+<tr>
+<td>GL_FRAMEBUFFER</td>
+<td style="text-align:center">Framebuffer Object</td>
+</tr>
+</tbody>
+</table>
+<p>查询设置Label的Objects<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> glGetObjectLabel​(<span class="type">GLenum</span> identifier​, <span class="type">GLuint</span> name​, <span class="type">GLsizei</span> bufSize​,</span><br><span class="line">                      <span class="type">GLsizei</span> * length​, <span class="built_in">char</span> * label​);</span><br><span class="line"></span><br><span class="line"><span class="built_in">void</span> glGetObjectPtrLabel​(<span class="built_in">void</span> * <span class="keyword">ptr</span>​, <span class="type">GLsizei</span> bufSize​, </span><br><span class="line">                         <span class="type">GLsizei</span> * length​, <span class="built_in">char</span> * label​);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h1><p>　　The following are “objects”, but they do not follow the standard conventions laid out on this page for OpenGL objects:</p>
+<ul>
+<li>Sync Objects</li>
+<li>Shader and Program Objects</li>
+</ul>
+<p>Except for program pipeline objects, which do follow the OpenGL Object conventions.</p>
+<p><a href="https://www.opengl.org/wiki/OpenGL_Object" target="_blank" rel="external">–Original: OpenGL Wiki–</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/OpenGL/" rel="tag">#OpenGL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2015/09/15/Direct3D12-Glossary/" rel="next" title="Direct3D12-Glossary">
+                <i class="fa fa-chevron-left"></i> Direct3D12-Glossary
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2015/09/17/OpenGL-RenderingPipeline/" rel="prev" title="OpenGL-Rendering Pipeline">
+                OpenGL-Rendering Pipeline <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.gif"
+               alt="byhj" />
+          <p class="site-author-name" itemprop="name">byhj</p>
+          <p class="site-description motion-element" itemprop="description">This is a boring description.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Creation-amp-Destruction"><span class="nav-number">2.</span> <span class="nav-text">Creation & Destruction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Deletion-unbinding"><span class="nav-number">2.1.</span> <span class="nav-text">Deletion unbinding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deletion-orphaning"><span class="nav-number">2.2.</span> <span class="nav-text">Deletion orphaning</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Usage"><span class="nav-number">3.</span> <span class="nav-text">Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-zero"><span class="nav-number">3.1.</span> <span class="nav-text">Object zero</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Multibind"><span class="nav-number">4.</span> <span class="nav-text">Multibind</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sharing"><span class="nav-number">5.</span> <span class="nav-text">Sharing</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Types"><span class="nav-number">6.</span> <span class="nav-text">Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Names"><span class="nav-number">7.</span> <span class="nav-text">Names</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Other"><span class="nav-number">8.</span> <span class="nav-text">Other</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byhj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

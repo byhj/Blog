@@ -1,0 +1,557 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Math,OpenGL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Introduction　　主要介绍怎么使用glm开源项目作为OpenGL程序的Math库.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL-Math">
+<meta property="og:url" content="https://byhj.github.io/blog/2015/12/25/OpenGL-Math/index.html">
+<meta property="og:site_name" content="byhj zzZ~~~">
+<meta property="og:description" content="Introduction　　主要介绍怎么使用glm开源项目作为OpenGL程序的Math库.">
+<meta property="og:updated_time" content="2016-05-09T04:13:01.217Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL-Math">
+<meta name="twitter:description" content="Introduction　　主要介绍怎么使用glm开源项目作为OpenGL程序的Math库.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> OpenGL-Math | byhj zzZ~~~ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">byhj zzZ~~~</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">世上的鲜花会盛开，壮丽不朽的事物会接踵而来</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OpenGL-Math
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-25T11:08:14+08:00" content="2015-12-25">
+              2015-12-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>　　主要介绍怎么使用glm开源项目作为OpenGL程序的Math库.</p>
+<a id="more"></a>
+<h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glew.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glm/glm.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glm/gtc/matrix_transform.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"common/shader.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> GLuint Width(<span class="number">1200</span>), Height(<span class="number">800</span>);     <span class="comment">//window size</span></span><br><span class="line"><span class="keyword">void</span> key_callback(GLFWwindow *window, <span class="keyword">int</span> key, <span class="keyword">int</span> scancode, <span class="keyword">int</span> action, <span class="keyword">int</span> mode);</span><br><span class="line"><span class="keyword">void</span> init();</span><br><span class="line"><span class="keyword">void</span> render();</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main()</span><br><span class="line">&#123;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">"Starting GLFW context, OpenGL3.3"</span> &lt;&lt; std::endl;</span><br><span class="line">	glfwInit();</span><br><span class="line">	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>); <span class="comment">//opengl 3.3</span></span><br><span class="line">	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); <span class="comment">//using opengl core file</span></span><br><span class="line">	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Create a GLFWwindow object that we can use for GLFW's functions</span></span><br><span class="line">	GLFWwindow *window = glfwCreateWindow(Width, Height, <span class="string">"OpenGL Tutorial"</span>, nullptr, nullptr);</span><br><span class="line">	glfwSetWindowPos(window, <span class="number">300</span>, <span class="number">50</span>);</span><br><span class="line">	glfwMakeContextCurrent(window);</span><br><span class="line">	<span class="built_in">if</span> (window == NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		std::cerr &lt;&lt; <span class="string">"Failed to create GLFW window"</span> &lt;&lt; std::endl;</span><br><span class="line">		glfwTerminate();</span><br><span class="line">		<span class="built_in">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	glfwSetKeyCallback(window, key_callback);  <span class="comment">//keyboard function</span></span><br><span class="line">	glewExperimental = GL_TRUE;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Initialize GLEW to setup the OpenGL Function pointers</span></span><br><span class="line">	<span class="built_in">if</span> (glewInit() != GLEW_OK)</span><br><span class="line">	&#123;</span><br><span class="line">		std::cerr &lt;&lt; <span class="string">"Failed to initializz GLEW"</span> &lt;&lt; std::endl;</span><br><span class="line">		<span class="built_in">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	init();</span><br><span class="line"></span><br><span class="line">	glViewport(<span class="number">0</span>, <span class="number">0</span>, Width, Height);</span><br><span class="line">	<span class="built_in">while</span> (!glfwWindowShouldClose(window))</span><br><span class="line">	&#123;</span><br><span class="line">		glfwPollEvents();</span><br><span class="line">		render();</span><br><span class="line">		glfwSwapBuffers(window);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	glfwTerminate();</span><br><span class="line">	<span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Shader TriangleShader(<span class="string">"Triangle Shader"</span>);</span><br><span class="line">GLuint vao, vbo;</span><br><span class="line">GLuint program;</span><br><span class="line">GLuint mvp_loc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> GLfloat VertexData[] =</span><br><span class="line">&#123;</span><br><span class="line">	<span class="number">-1.0</span>f, <span class="number">-1.0</span>f, <span class="number">0.0</span>f,</span><br><span class="line">	 <span class="number">1.0</span>f, <span class="number">-1.0</span>f, <span class="number">0.0</span>f,</span><br><span class="line">	 <span class="number">0.0</span>f,  <span class="number">1.0</span>f, <span class="number">0.0</span>f</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">void</span> init_buffer()</span><br><span class="line">&#123;</span><br><span class="line">	glGenBuffers(<span class="number">1</span>, &amp;vbo);</span><br><span class="line">	glBindBuffer(GL_ARRAY_BUFFER, vbo);</span><br><span class="line">	glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(VertexData), VertexData, GL_STATIC_DRAW);</span><br><span class="line">	glBindBuffer(GL_ARRAY_BUFFER, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> init_shader()</span><br><span class="line">&#123;</span><br><span class="line">	TriangleShader.init();</span><br><span class="line">	TriangleShader.<span class="built_in">attach</span>(GL_VERTEX_SHADER, <span class="string">"triangle.vert"</span>);</span><br><span class="line">	TriangleShader.<span class="built_in">attach</span>(GL_FRAGMENT_SHADER, <span class="string">"triangle.frag"</span>);</span><br><span class="line">	TriangleShader.link();</span><br><span class="line">	program = TriangleShader.GetProgram();</span><br><span class="line"></span><br><span class="line">	mvp_loc = glGetUniformLocation(program, <span class="string">"mvp"</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> init_vertexArray()</span><br><span class="line">&#123;</span><br><span class="line">	glGenVertexArrays(<span class="number">1</span>, &amp;vao);</span><br><span class="line">	glBindVertexArray(vao);</span><br><span class="line">	glBindBuffer(GL_ARRAY_BUFFER, vbo);</span><br><span class="line">	glEnableVertexAttribArray(<span class="number">0</span>);</span><br><span class="line">	glVertexAttribPointer(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	glBindVertexArray(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> init()</span><br><span class="line">&#123;</span><br><span class="line">	init_shader();</span><br><span class="line">	init_buffer();</span><br><span class="line">	init_vertexArray();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> render()</span><br><span class="line">&#123;</span><br><span class="line">	glClearColor(<span class="number">0.0</span>f, <span class="number">0.0</span>f, <span class="number">0.4</span>f, <span class="number">0.0</span>f);</span><br><span class="line">	glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">	glUseProgram(program);</span><br><span class="line">	<span class="keyword">float</span> time = glfwGetTime();</span><br><span class="line"></span><br><span class="line">	glm::mat4 model = rotate(glm::mat4(<span class="number">1.0</span>f), time, glm::vec3(<span class="number">0.0</span>f, <span class="number">0.0</span>f, <span class="number">1.0</span>f));</span><br><span class="line">	glm::mat4 view = glm::lookAt(glm::vec3(<span class="number">0.0</span>f, <span class="number">0.0</span>f, <span class="number">3.0</span>f), glm::vec3(<span class="number">0.0</span>f, <span class="number">0.0</span>f, <span class="number">0.0</span>f),</span><br><span class="line">		                         glm::vec3(<span class="number">0.0</span>f, <span class="number">1.0</span>f, <span class="number">0.0</span>f) );</span><br><span class="line">	glm::mat4 proj = glm::perspective(<span class="number">45.0</span>f, <span class="keyword">float</span>(Width) / Height, <span class="number">0.1</span>f, <span class="number">1000.0</span>f);</span><br><span class="line">	glm::mat4 mvp = proj * view * model;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//When you send the data to shader, we should glUseProgram() first;</span></span><br><span class="line"></span><br><span class="line">	glUniformMatrix4fv(mvp_loc, <span class="number">1</span>, GL_FALSE, &amp;mvp[<span class="number">0</span>][<span class="number">0</span>]);</span><br><span class="line">	glBindVertexArray(vao);</span><br><span class="line">	glDrawArrays(GL_TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">	glBindVertexArray(<span class="number">0</span>);</span><br><span class="line">	glUseProgram(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> key_callback(GLFWwindow *window, <span class="keyword">int</span> key, <span class="keyword">int</span> scancode, <span class="keyword">int</span> action, <span class="keyword">int</span> mode)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">if</span> (key == GLFW_KEY_ESCAPE &amp;&amp; action == GLFW_PRESS)</span><br><span class="line">		glfwSetWindowShouldClose(window, GL_TRUE);  <span class="comment">//we should close the window</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>triangle.vert<br><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">layout</span> (<span class="keyword">location</span> = <span class="number">0</span>) <span class="keyword">in</span> <span class="type">vec3</span> Position;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uniform</span> <span class="type">mat4</span> mvp;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> main(<span class="type">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">gl_Position</span> = mvp * <span class="type">vec4</span>(Position, <span class="number">1.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>triangle.frag<br><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">layout</span> (<span class="keyword">location</span> = <span class="number">0</span>) <span class="keyword">out</span> <span class="type">vec4</span> fragColor;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> main(<span class="type">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">  fragColor = <span class="type">vec4</span>(<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Math/" rel="tag">#Math</a>
+          
+            <a href="/blog/tags/OpenGL/" rel="tag">#OpenGL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2015/12/25/OpenGL-Debug/" rel="next" title="OpenGL-Debug">
+                <i class="fa fa-chevron-left"></i> OpenGL-Debug
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2016/01/22/QT-static/" rel="prev" title="QT-static">
+                QT-static <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.gif"
+               alt="byhj" />
+          <p class="site-author-name" itemprop="name">byhj</p>
+          <p class="site-description motion-element" itemprop="description">This is a boring description.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Content"><span class="nav-number">2.</span> <span class="nav-text">Content</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byhj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

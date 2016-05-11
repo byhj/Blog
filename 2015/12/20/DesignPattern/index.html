@@ -1,0 +1,586 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++,Pattern," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Creational创建型模式与对象的创建有关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Pattern">
+<meta property="og:url" content="https://byhj.github.io/blog/2015/12/20/DesignPattern/index.html">
+<meta property="og:site_name" content="byhj zzZ~~~">
+<meta property="og:description" content="Creational创建型模式与对象的创建有关">
+<meta property="og:updated_time" content="2016-05-09T04:13:01.214Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Design Pattern">
+<meta name="twitter:description" content="Creational创建型模式与对象的创建有关">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Design Pattern | byhj zzZ~~~ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">byhj zzZ~~~</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">世上的鲜花会盛开，壮丽不朽的事物会接踵而来</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Design Pattern
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-20T20:42:54+08:00" content="2015-12-20">
+              2015-12-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Creational"><a href="#Creational" class="headerlink" title="Creational"></a>Creational</h1><p>创建型模式与对象的创建有关<br><a id="more"></a></p>
+<p>Class</p>
+<h2 id="Factory-Method"><a href="#Factory-Method" class="headerlink" title="Factory Method"></a>Factory Method</h2><p>定义一个用于创建对象的接口，让子类决定实例化哪一个类，使一个类的实例化推迟到其子类。<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span></span><br><span class="line"><span class="meta">## Abstract Factory</span></span><br><span class="line">提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Builder</span></span><br><span class="line">将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以产生不同的表示。</span><br></pre></td></tr></table></figure>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Singleton</span></span><br><span class="line">保证一个类仅有一个实例，并提供一个访问它的全局访问点。</span><br></pre></td></tr></table></figure>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Prototype</span></span><br><span class="line">用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Structural</span></span><br><span class="line">处理类或对象的组合。</span><br><span class="line"></span><br><span class="line">Class</span><br><span class="line"><span class="comment">## Adapter</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">Object</span></span><br><span class="line"><span class="meta">## Adapter</span></span><br><span class="line">将一个类的接口转换成客户端希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。</span><br></pre></td></tr></table></figure>
+<p>class Target<br>{<br>public:<br>   virtual ~Target() = default;<br>   virtual std::string Operation() = 0;<br>};</p>
+<p>class Adaptee<br>{<br>public:<br>   virtual  ~Adaptee() = default;<br>   std::string method()<br>   {<br>     return “Adapter”;<br>   }<br>};</p>
+<p>class Adapter: public Target, private Adaptee<br>{<br>public:<br>    string Opration() override<br>    {<br>      return method();<br>    }<br>};<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Bridge</span></span><br><span class="line">将抽象部分与它的实现部分分离，使它们都可以独立地变化。</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Composite</span></span><br><span class="line">将对象组合成树形结构以表示“部分-整体”的层次结构，使得用户对单个对象和组合对象的使用具有一致性。</span><br></pre></td></tr></table></figure>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Decorator</span></span><br><span class="line">动态地给一个对象添加一些额外的职责。</span><br></pre></td></tr></table></figure>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Facade</span></span><br><span class="line">为子系统中的一组接口提供一个一致的界面，定义了一个高层接口，使得子系统更加容易使用。</span><br></pre></td></tr></table></figure>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Flyweight</span></span><br><span class="line">运用共享技术有效地支持大量细粒度的对象。</span><br></pre></td></tr></table></figure>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Proxy</span></span><br><span class="line">为其他对象提供一种代理以控制对这个对象的访问。</span><br></pre></td></tr></table></figure>
+<p>```</p>
+<hr>
+<h1 id="Behavioral"><a href="#Behavioral" class="headerlink" title="Behavioral"></a>Behavioral</h1><p>对类或对象怎么交互和怎样分配职责进行描述。</p>
+<p>Class</p>
+<h2 id="Template-Method"><a href="#Template-Method" class="headerlink" title="Template Method"></a>Template Method</h2><p>　　定义一个操作中的算法的骨架，而将一些步骤延迟到子类中，使得子类可以不改变一个算法的结构即可<br>重定义该算法的某些特定步骤。</p>
+<p>Object</p>
+<h2 id="Chain-Of-Responsibility"><a href="#Chain-Of-Responsibility" class="headerlink" title="Chain Of Responsibility"></a>Chain Of Responsibility</h2><p>　　使多个对象都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系，将这些对象连成一条链，<br>并沿着这条链传递该请求，直到有一个对象处理它为止。</p>
+<h2 id="Command"><a href="#Command" class="headerlink" title="Command"></a>Command</h2><p>　　将一个请求封装成一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤消的操作。</p>
+<h2 id="Interpreter"><a href="#Interpreter" class="headerlink" title="Interpreter"></a>Interpreter</h2><p>　　给定一个句子，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。</p>
+<h2 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h2><p>　　提供一种方法顺序访问一个聚合对象中的各个元素，而又不需暴露该对象的内部表示。</p>
+<h2 id="Mediator"><a href="#Mediator" class="headerlink" title="Mediator"></a>Mediator</h2><p>　　用一个中介对象来封装一系列的对象交互，中介者使各对象不需要显式地相互引用，从而使其耦合松散，<br>而且可以独立地改变它们之间的关系。</p>
+<h2 id="Memento"><a href="#Memento" class="headerlink" title="Memento"></a>Memento</h2><p>在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，这样以后就可将该对象恢复到原先保存的状态。</p>
+<h2 id="Observer"><a href="#Observer" class="headerlink" title="Observer"></a>Observer</h2><p>定义对象间的一种一对多的依赖关系，当一个对象的状态发生变化时，所有依赖它的对象都能得到通知并被自动更新。</p>
+<h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><p>允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。</p>
+<h2 id="Strategy"><a href="#Strategy" class="headerlink" title="Strategy"></a>Strategy</h2><p>定义一系列的算法，把它们一个个封装起来，并且使它们可相互替换，使得算法可独立于使用它的客户而变化。</p>
+<h2 id="Visitor"><a href="#Visitor" class="headerlink" title="Visitor"></a>Visitor</h2><p>表示一个作用于某对象结构中的各元素的操作，它使你可以在不改变各元素的类的前提下定义作用于这些元素的新操作。</p>
+<hr>
+<p><a href="https://github.com/byhj/DesignPattern.git" target="_blank" rel="external">Source Code</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/C/" rel="tag">#C++</a>
+          
+            <a href="/blog/tags/Pattern/" rel="tag">#Pattern</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2015/12/18/OGRE1.9-环境搭配/" rel="next" title="OGRE1.9-环境搭配">
+                <i class="fa fa-chevron-left"></i> OGRE1.9-环境搭配
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2015/12/20/OpenGLES-Android/" rel="prev" title="OpenGLES-Android">
+                OpenGLES-Android <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.gif"
+               alt="byhj" />
+          <p class="site-author-name" itemprop="name">byhj</p>
+          <p class="site-description motion-element" itemprop="description">This is a boring description.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Creational"><span class="nav-number">1.</span> <span class="nav-text">Creational</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Factory-Method"><span class="nav-number">1.1.</span> <span class="nav-text">Factory Method</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Behavioral"><span class="nav-number">2.</span> <span class="nav-text">Behavioral</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Template-Method"><span class="nav-number">2.1.</span> <span class="nav-text">Template Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chain-Of-Responsibility"><span class="nav-number">2.2.</span> <span class="nav-text">Chain Of Responsibility</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command"><span class="nav-number">2.3.</span> <span class="nav-text">Command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interpreter"><span class="nav-number">2.4.</span> <span class="nav-text">Interpreter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterator"><span class="nav-number">2.5.</span> <span class="nav-text">Iterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mediator"><span class="nav-number">2.6.</span> <span class="nav-text">Mediator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memento"><span class="nav-number">2.7.</span> <span class="nav-text">Memento</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Observer"><span class="nav-number">2.8.</span> <span class="nav-text">Observer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State"><span class="nav-number">2.9.</span> <span class="nav-text">State</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Strategy"><span class="nav-number">2.10.</span> <span class="nav-text">Strategy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Visitor"><span class="nav-number">2.11.</span> <span class="nav-text">Visitor</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byhj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

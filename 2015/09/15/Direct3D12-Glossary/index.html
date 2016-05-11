@@ -1,0 +1,642 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="DirectX,D3D12," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="These terms are distinctive of Direct3D 12.
+
+binding  The process of attaching memory to the graphics pipeline. Resource binding, for example, involves the binding of a resource such as a texture to t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Direct3D12-Glossary">
+<meta property="og:url" content="https://byhj.github.io/blog/2015/09/15/Direct3D12-Glossary/index.html">
+<meta property="og:site_name" content="byhj zzZ~~~">
+<meta property="og:description" content="These terms are distinctive of Direct3D 12.
+
+binding  The process of attaching memory to the graphics pipeline. Resource binding, for example, involves the binding of a resource such as a texture to t">
+<meta property="og:updated_time" content="2016-05-09T04:13:01.214Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Direct3D12-Glossary">
+<meta name="twitter:description" content="These terms are distinctive of Direct3D 12.
+
+binding  The process of attaching memory to the graphics pipeline. Resource binding, for example, involves the binding of a resource such as a texture to t">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Direct3D12-Glossary | byhj zzZ~~~ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">byhj zzZ~~~</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">世上的鲜花会盛开，壮丽不朽的事物会接踵而来</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Direct3D12-Glossary
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-15T10:02:30+08:00" content="2015-09-15">
+              2015-09-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>These terms are distinctive of Direct3D 12.</p>
+<hr>
+<h1 id="binding"><a href="#binding" class="headerlink" title="binding"></a>binding</h1><p>  The process of attaching memory to the graphics pipeline. Resource binding, for example, involves the binding of a resource such as a texture to the pipeline, for use in rendering an object.</p>
+<hr>
+<h1 id="buffer"><a href="#buffer" class="headerlink" title="buffer"></a>buffer</h1><p>  A type of D3D resource that is synonymous with a contiguous memory allocation.</p>
+<hr>
+<h1 id="bundle"><a href="#bundle" class="headerlink" title="bundle"></a>bundle</h1><p>  A command buffer that the graphics processing unit (GPU) can execute only directly via a direct command list. A bundle inherits all GPU state (except for the currently set pipeline state object and primitive topology).</p>
+<a id="more"></a>
+<hr>
+<h1 id="command-allocator"><a href="#command-allocator" class="headerlink" title="command allocator"></a>command allocator</h1><p>  The underlying memory allocations in which GPU commands are stored. The command allocator object applies to both direct command lists and bundles.</p>
+<hr>
+<h1 id="command-list"><a href="#command-list" class="headerlink" title="command list"></a>command list</h1><p>  A command list corresponds to a set of commands which the GPU executes. These include commands such as to set state, draw, clear, and copy. The D3D12 command list interface is significantly different than the D3D11 command list interface. The D3D12 command list interface contains APIs similar to the D3D11 device context rendering APIs.</p>
+<p>  A D3D12 command list does not map or unmap resources, change tile mappings, resize tile pools, get query data, nor does it ever implicitly submit commands to the GPU for execution.</p>
+<p>  Unlike D3D11 deferred contexts, D3D12 command lists only support two levels of indirection. A direct command list corresponds to a command buffer which the GPU can execute. A bundle can be executed only directly via a direct command list.</p>
+<p>  A direct command list does not inherit any GPU state. A bundle inherits all GPU state (except for the currently set pipeline state object and primitive topology).</p>
+<p>  Memory for a command list is set by the command allocator. The purpose of command lists is that they can be submitted to a GPU as a single rendering request.</p>
+<hr>
+<h1 id="command-queue"><a href="#command-queue" class="headerlink" title="command queue"></a>command queue</h1><p>  A queue of command lists that the GPU executes in succession. Applications must explicitly submit command lists to a command queue for execution. Typically there are three command queues: 3D graphics, compute and copy, corresponding to the 3D graphics pipeline, the compute engine, and one or more copy engines, on the GPU.</p>
+<hr>
+<h1 id="conservative-rasterization"><a href="#conservative-rasterization" class="headerlink" title="conservative rasterization"></a>conservative rasterization</h1><p>  Conservative rasterization is a mode of operation for the rasterizer stage of the Direct3D graphics pipeline. It disables the standard sample-based rasterization, and will instead rasterize a pixel that is covered by any amount by a primitive. One important distinction is that, while any coverage at all produces a rasterized pixel, that coverage cannot be characterized by the hardware, so coverage always appears binary to a pixel shader: either fully covered or not covered. It is left to the pixel shader code to analytically determine the actual coverage.</p>
+<p>  Conservative rasterization can help with such problems as collision and hit detection, binning, and occlusion culling, where the color of a pixel is more certain and edge cases can be eliminated. See Conservative Rasterization.</p>
+<hr>
+<h1 id="Constant-Buffer-View-CBV"><a href="#Constant-Buffer-View-CBV" class="headerlink" title="Constant Buffer View (CBV)"></a>Constant Buffer View (CBV)</h1><p>  Constant buffers contain shader constant data, such as a camera view, projection matrices, and world matrices. A “constant buffer view” is the format-specific view of the buffer as seen by the graphics pipeline.</p>
+<hr>
+<h1 id="default-heap"><a href="#default-heap" class="headerlink" title="default heap"></a>default heap</h1><p>  A user-mode heap that is focused on supporting persistent GPU resource types, including GPU-written resources.</p>
+<hr>
+<h1 id="descriptor"><a href="#descriptor" class="headerlink" title="descriptor"></a>descriptor</h1><p>  Descriptors are the primary unit of binding for a single resource in D3D12. A descriptor is a relatively small block of data that fully describes an object to the GPU, in a GPU specific format. There are many different types of descriptors: Shader Resource Views (SRVs), Unordered Access Views (UAVs), Constant Buffer Views (CBVs), and Samplers are a few examples.</p>
+<hr>
+<h1 id="descriptor-heap"><a href="#descriptor-heap" class="headerlink" title="descriptor heap"></a>descriptor heap</h1><p>  A descriptor heap is a collection of contiguous allocations of descriptors, one allocation for every descriptor. The primary point of a descriptor heap is to encompass the bulk of memory allocation required for storing the descriptor specifications of object types that shaders reference for as large of a window of rendering as possible (ideally an entire frame of rendering or more).</p>
+<hr>
+<h1 id="descriptor-table"><a href="#descriptor-table" class="headerlink" title="descriptor table"></a>descriptor table</h1><p>  A descriptor table is logically an array of descriptors. Each descriptor table stores descriptors of one or more types, including SRVs, UAVe, CBVs, and Samplers. A descriptor table is not an allocation of memory, it is simply an offset and length into a descriptor heap.</p>
+<hr>
+<h1 id="direct-command-list"><a href="#direct-command-list" class="headerlink" title="direct command list"></a>direct command list</h1><p>  A command buffer that the GPU can execute. A direct command list doesn’t inherit any GPU state.</p>
+<hr>
+<h1 id="fence"><a href="#fence" class="headerlink" title="fence"></a>fence</h1><p>  A mechanism to synchronize the GPU and CPU. Both the GPU and CPU can be instructed to wait at a fence, waiting in effect for the other processor to catch up. See Synchronization and Multi-Engine.</p>
+<hr>
+<h1 id="hazard-hazard-tracking"><a href="#hazard-hazard-tracking" class="headerlink" title="hazard, hazard tracking"></a>hazard, hazard tracking</h1><p>  A hazard occurs when a resource has been used for one purpose, and the app intends to reuse it for another purpose. In order to use the resource again, intermediate caches will need to be flushed or invalidated, compression requirements will need to be consistent with the second use, and the resource should be in the required state to avoid reading the resource after it has been written to and invalidated for the intended purpose.</p>
+<p>  The process of maintaining resources and avoiding these sync issues is known as hazard tracking. If there is no hazard tracking by the driver, then the app is responsible for this. In most earlier versions of DirectX, hazard tracking was handled by the driver. To improve performance, methods without hazard tracking are available in DirectX 12.</p>
+<hr>
+<h1 id="High-Level-Shader-Language-HLSL"><a href="#High-Level-Shader-Language-HLSL" class="headerlink" title="High-Level Shader Language (HLSL)"></a>High-Level Shader Language (HLSL)</h1><p>  A computer language, similar but distinct in many ways from C, that is used to write shader code. Vertex, pixel, geometry, compute, domain, and hull shaders are all written using HLSL. A compiler converts the HLSL source into a binary format for the GPU to consume.</p>
+<hr>
+<h1 id="multiengine"><a href="#multiengine" class="headerlink" title="multiengine"></a>multiengine</h1><p>  The different instances and types of engines in a single GPU. The types of engines include: graphics, compute, and copy.</p>
+<hr>
+<h1 id="MultiGPU"><a href="#MultiGPU" class="headerlink" title="MultiGPU"></a>MultiGPU</h1><p>  A hardware configuration where there is more than on graphics adapter. The separate adapters are sometimes referred to as nodes. Having multiple GPUs can make the task of synchronizing them with the CPU, and each other, considerably more complex than with a single GPU.</p>
+<hr>
+<h1 id="Pipeline-State-object-PSO"><a href="#Pipeline-State-object-PSO" class="headerlink" title="Pipeline State object (PSO)"></a>Pipeline State object (PSO)</h1><p>  A significant portion of the state of the GPU. This state includes all currently set shaders and certain fixed-function state objects. The only way to change states contained within the pipeline object is to change the currently bound pipeline object.</p>
+<hr>
+<h1 id="predication"><a href="#predication" class="headerlink" title="predication"></a>predication</h1><p>  Predication is a feature that enables the GPU rather than the CPU to determine to not draw, copy or dispatch an object. For example, if a bounding box of an object is totally occluded by another object or perspective has reduced the object to less than the size of a pixel, there may be no point in attempting to draw the hidden object at all. See Predication.</p>
+<hr>
+<h1 id="Rasterizer-Order-View-ROV"><a href="#Rasterizer-Order-View-ROV" class="headerlink" title="Rasterizer Order View (ROV)"></a>Rasterizer Order View (ROV)</h1><p>  Standard graphics pipelines may have trouble correctly compositing together multiple textures that contain transparency. Objects such as wire fences, smoke, fire, vegetation, and colored glass use transparency to get the desired effect. Problems arise when multiple textures that contain transparency are in line with each other (smoke in front of a fence in front of a glass building containing vegetation, as an example). Rasterizer ordered views (ROVs) enable the underlying Order Independent Transparency (OIT) algorithms to use features of the hardware to try to resolve the transparency order correctly. Transparency is handled by the pixel shader.</p>
+<p>  Rasterizer Ordered Views (ROVs) allow pixel shader code to mark Unordered Access View (UAV) bindings with a declaration that alters the normal requirements for the order of graphics pipeline results for UAVs.</p>
+<hr>
+<h1 id="readback-heap"><a href="#readback-heap" class="headerlink" title="readback heap"></a>readback heap</h1><p>  A user-mode heap that is focused on data transfer from the GPU back to the CPU.</p>
+<hr>
+<h1 id="resource"><a href="#resource" class="headerlink" title="resource"></a>resource</h1><p>  An entity that provides data to the pipeline and defines what is rendered during your scene. Resources can be loaded from your game media or created dynamically at run time. Typically, resources include texture data, vertex data, and shader data. Most Direct3D applications create and destroy resources extensively throughout their lifespan.</p>
+<hr>
+<h1 id="resource-barrier"><a href="#resource-barrier" class="headerlink" title="resource barrier"></a>resource barrier</h1><p>  A resource barrier notifies the driver that synchronization of multiple accesses to a single resource may be required, for example, reading and writing to the same texture.</p>
+<hr>
+<h1 id="resource-binding"><a href="#resource-binding" class="headerlink" title="resource binding"></a>resource binding</h1><p>  Resource binding is the process of linking resources (textures, vertex buffers, index buffers, and so on), to the graphics pipeline, enabling the shaders of the pipeline to process the correct resource.</p>
+<hr>
+<h1 id="resource-heaps"><a href="#resource-heaps" class="headerlink" title="resource heaps"></a>resource heaps</h1><p>  Resource heaps is a generic term for the heaps that are memory buffers set aside to hold resources as they are transferred to and from the GPU. A transfer to the GPU requires an Upload Heap, from the GPU to the CPU requires a Readback Heap, and a persistent heap for the GPU to maintain over multiple rendering frames is called a Default Heap.</p>
+<hr>
+<h1 id="root-signature"><a href="#root-signature" class="headerlink" title="root signature"></a>root signature</h1><p>  Root signatures define all the resources that are to be bound to the graphics, or compute, pipelines. A root signature is configured by the app and links command lists to the resources that the shaders require Typically, there is one graphics and one compute root signature per app.</p>
+<hr>
+<h1 id="sampler"><a href="#sampler" class="headerlink" title="sampler"></a>sampler</h1><p>  A sampler is code that reads from a texture.</p>
+<hr>
+<h1 id="Shader-Resource-View-SRV"><a href="#Shader-Resource-View-SRV" class="headerlink" title="Shader Resource View (SRV)"></a>Shader Resource View (SRV)</h1><p>  A format-specific way to look at the data in a shader resource, such as a texture.</p>
+<hr>
+<h1 id="static-heap"><a href="#static-heap" class="headerlink" title="static heap"></a>static heap</h1><p>  A user-mode heap that is focused on multiple GPU-read-only resources that are typically used at the same time and are not changed frequently.</p>
+<hr>
+<h1 id="swap-chain"><a href="#swap-chain" class="headerlink" title="swap chain"></a>swap chain</h1><p>  Swap chains control the back buffer rotation, forming the basis of graphics animation. Swap chains are handled by the low level API set DXGI (see DXGI Overview).</p>
+<hr>
+<h1 id="swizzle"><a href="#swizzle" class="headerlink" title="swizzle"></a>swizzle</h1><p>  A technique of locating multidimensional data in memory such that data of nearby dimensionality tends to have nearby addresses. In particular, all the data for one row is not located contiguously before the data for the next row. A “Parameterized Swizzle” describes a standardized way to describe swizzle patterns.</p>
+<hr>
+<h1 id="texture"><a href="#texture" class="headerlink" title="texture"></a>texture</h1><p>  A type of D3D resource that is multi-dimensional and has a memory layout that is optimized for multi-dimensional access from the GPU. Textures often contain the raw image required to render onto a surface, before lighting and blending takes place, but can contain other forms of data such as color gradients and reference colors. Direct3D 12 supports one, two, and three dimensional textures.</p>
+<hr>
+<h1 id="tile"><a href="#tile" class="headerlink" title="tile"></a>tile</h1><p>  A page of video memory, similar to a CPU/System page of memory. The tile notation helps to distinguish the GPU virtual memory subsystem from the CPU virtual memory subsystem. GPUs provide similar virtual memory capabilities as system virtual memory. Some GPUs have shared virtual memory capabilities, which allow for the sharing of some pages of the virtual memory subsystem with both the CPU and GPU.</p>
+<hr>
+<h1 id="tiled-resources"><a href="#tiled-resources" class="headerlink" title="tiled resources"></a>tiled resources</h1><p>  Tiled resources are needed so less GPU memory is wasted storing regions of surfaces that the application knows will not be accessed, and the hardware can understand how to filter across adjacent tiles. Tiled resources are large logical resources, but requiring small amounts of physical memory.</p>
+<hr>
+<h1 id="Unordered-Access-View-UAV"><a href="#Unordered-Access-View-UAV" class="headerlink" title="Unordered Access View (UAV)"></a>Unordered Access View (UAV)</h1><p>  An unordered access view into a resource (which includes buffers, textures, and texture arrays - without multi-sampling), allows temporally unordered read/write access from multiple threads. This means that this resource type can be read/written simultaneously by multiple threads without generating memory conflicts.</p>
+<hr>
+<h1 id="upload-heap"><a href="#upload-heap" class="headerlink" title="upload heap"></a>upload heap</h1><p>  A user-mode heap that is focused on data transfer from the CPU to the GPU.</p>
+<hr>
+<h1 id="user-mode-heap"><a href="#user-mode-heap" class="headerlink" title="user-mode heap"></a>user-mode heap</h1><p>  A collection of large, contiguous memory allocations that are recycled without any kernel component’s awareness: the allocation and destruction methods do not call kernel allocation and destruction methods during steady state. Upload, Readback, and Default heaps are variants of user mode heaps.</p>
+<hr>
+<h1 id="volume-tiled-resources"><a href="#volume-tiled-resources" class="headerlink" title="volume tiled resources"></a>volume tiled resources</h1><p>  Three-dimensional tiled resources.</p>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/DirectX/" rel="tag">#DirectX</a>
+          
+            <a href="/blog/tags/D3D12/" rel="tag">#D3D12</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2015/09/17/OpenGL-Objects/" rel="prev" title="OpenGL-Objects">
+                OpenGL-Objects <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.gif"
+               alt="byhj" />
+          <p class="site-author-name" itemprop="name">byhj</p>
+          <p class="site-description motion-element" itemprop="description">This is a boring description.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binding"><span class="nav-number">1.</span> <span class="nav-text">binding</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#buffer"><span class="nav-number">2.</span> <span class="nav-text">buffer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bundle"><span class="nav-number">3.</span> <span class="nav-text">bundle</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#command-allocator"><span class="nav-number">4.</span> <span class="nav-text">command allocator</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#command-list"><span class="nav-number">5.</span> <span class="nav-text">command list</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#command-queue"><span class="nav-number">6.</span> <span class="nav-text">command queue</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conservative-rasterization"><span class="nav-number">7.</span> <span class="nav-text">conservative rasterization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Constant-Buffer-View-CBV"><span class="nav-number">8.</span> <span class="nav-text">Constant Buffer View (CBV)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#default-heap"><span class="nav-number">9.</span> <span class="nav-text">default heap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#descriptor"><span class="nav-number">10.</span> <span class="nav-text">descriptor</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#descriptor-heap"><span class="nav-number">11.</span> <span class="nav-text">descriptor heap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#descriptor-table"><span class="nav-number">12.</span> <span class="nav-text">descriptor table</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#direct-command-list"><span class="nav-number">13.</span> <span class="nav-text">direct command list</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fence"><span class="nav-number">14.</span> <span class="nav-text">fence</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hazard-hazard-tracking"><span class="nav-number">15.</span> <span class="nav-text">hazard, hazard tracking</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#High-Level-Shader-Language-HLSL"><span class="nav-number">16.</span> <span class="nav-text">High-Level Shader Language (HLSL)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#multiengine"><span class="nav-number">17.</span> <span class="nav-text">multiengine</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MultiGPU"><span class="nav-number">18.</span> <span class="nav-text">MultiGPU</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pipeline-State-object-PSO"><span class="nav-number">19.</span> <span class="nav-text">Pipeline State object (PSO)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#predication"><span class="nav-number">20.</span> <span class="nav-text">predication</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Rasterizer-Order-View-ROV"><span class="nav-number">21.</span> <span class="nav-text">Rasterizer Order View (ROV)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#readback-heap"><span class="nav-number">22.</span> <span class="nav-text">readback heap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#resource"><span class="nav-number">23.</span> <span class="nav-text">resource</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#resource-barrier"><span class="nav-number">24.</span> <span class="nav-text">resource barrier</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#resource-binding"><span class="nav-number">25.</span> <span class="nav-text">resource binding</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#resource-heaps"><span class="nav-number">26.</span> <span class="nav-text">resource heaps</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#root-signature"><span class="nav-number">27.</span> <span class="nav-text">root signature</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sampler"><span class="nav-number">28.</span> <span class="nav-text">sampler</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shader-Resource-View-SRV"><span class="nav-number">29.</span> <span class="nav-text">Shader Resource View (SRV)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#static-heap"><span class="nav-number">30.</span> <span class="nav-text">static heap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#swap-chain"><span class="nav-number">31.</span> <span class="nav-text">swap chain</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#swizzle"><span class="nav-number">32.</span> <span class="nav-text">swizzle</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#texture"><span class="nav-number">33.</span> <span class="nav-text">texture</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tile"><span class="nav-number">34.</span> <span class="nav-text">tile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tiled-resources"><span class="nav-number">35.</span> <span class="nav-text">tiled resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unordered-Access-View-UAV"><span class="nav-number">36.</span> <span class="nav-text">Unordered Access View (UAV)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#upload-heap"><span class="nav-number">37.</span> <span class="nav-text">upload heap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#user-mode-heap"><span class="nav-number">38.</span> <span class="nav-text">user-mode heap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#volume-tiled-resources"><span class="nav-number">39.</span> <span class="nav-text">volume tiled resources</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byhj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
