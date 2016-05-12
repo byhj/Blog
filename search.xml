@@ -4,60 +4,38 @@
   
     
     <entry>
-      <title><![CDATA[Linux Dir]]></title>
-      <url>https://byhj.github.io/blog/blog/2016/05/06/Linux-Dir/</url>
-      <content type="html"><![CDATA[<p>/： 根目录，一般根目录下只存放目录，不要存放文件，/etc、/bin、/dev、/lib、/sbin应该和根目录放置在一个分区中<br>/bin:/usr/bin: 可执行二进制文件的目录，如常用的命令ls、tar、mv、cat等。<br>/boot： 放置linux系统启动时用到的一些文件。/boot/vmlinuz为linux的内核文件，以及/boot/gurb。建议单独分区，分区大小100M即可<br>/dev： 存放linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备，常用的是挂载光驱mount /dev/cdrom /mnt。<br>/etc： 系统配置文件存放的目录，不建议在此目录下存放可执行文件，重要的配置文件有/etc/inittab、/etc/fstab、/etc/init.d、/etc/X11、/etc/sysconfig、/etc/xinetd.d修改配置文件之前记得备份。注：/etc/X11存放与x windows有关的设置。<br>/home： 系统默认的用户家目录，新增用户账号时，用户的家目录都存放在此目录下，~表示当前用户的家目录，~test表示用户test的家目录。建议单独分区，并设置较大的磁盘空间，方便用户存放数据</p>
+      <title><![CDATA[使用Proxifier使得Shadowsocks本机程序进行代理]]></title>
+      <url>https://byhj.github.io/blog/blog/2016/05/11/proxifier-shadowsocks/</url>
+      <content type="html"><![CDATA[<h1 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h1><p>Shadowsocks:</p>
+<p>　　shadowsocks一个可穿透防火墙的轻量代理，目前已经支持包括WIN，安卓，IOS等所有平台。Shadowsocks的安装可以参考我的另一篇文章<a href="">使用VPS搭建Shadowsocks代理</a>;<br>Proxifier:</p>
+<p>　　<a href="http://www.proxifier.com/download.htm" target="_blank" rel="external">Proxifier</a>是一款功能非常强大的socks5客户端，可以让不支持通过代理服务器工作的网络程序能通过HTTPS或SOCKS代理或代理链。支持 64位系统，支持Xp，Vista，Win7，MAC OS ,支持socks4，socks5，http代理协议，支持TCP，UDP协议，可以指定端口，指定IP，指定域名,指定程序等运行模式，兼容性非常好，和SOCKSCAP属于同类软件，不过SOCKSCAP已经很久没更新了，不支持64位系统。 有许多网络应用程序不支持通过代理服务器工作，Proxifier 解决了这些问题和所有限制，让您有机会不受任何限制使用你喜爱的软件。此外，它让你获得了额外的网络安全控制，创建代理隧道，并添加使用更多网络功能的权力。</p>
 <a id="more"></a>
-<p>/lib:/usr/lib:/usr/local/lib： 系统使用的函数库的目录，程序在执行过程中，需要调用一些额外的参数时需要函数库的协助，比较重要的目录为/lib/modules。<br>/lost+fount： 系统异常产生错误时，会将一些遗失的片段放置于此目录下，通常这个目录会自动出现在装置目录下。如加载硬盘于/disk 中，此目录下就会自动产生目录/disk/lost+found<br>/mnt:/media： 光盘默认挂载点，通常光盘挂载于/mnt/cdrom下，也不一定，可以选择任意位置进行挂载。<br>/opt： 给主机额外安装软件所摆放的目录。如：FC4使用的Fedora 社群开发软件，如果想要自行安装新的KDE 桌面软件，可以将该软件安装在该目录下。以前的 Linux 系统中，习惯放置在 /usr/local 目录下<br>/proc： 此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间，比较重要的目录有/proc/cpuinfo、/proc/interrupts、/proc/dma、/proc/ioports、/proc/net/*等<br>/root： 系统管理员root的家目录，系统第一个启动的分区为/，所以最好将/root和/放置在一个分区下。<br>/sbin:/usr/sbin:/usr/local/sbin： 放置系统管理员使用的可执行命令，如fdisk、shutdown、mount等。与/bin不同的是，这几个目录是给系统管理员root使用的命令，一般用户只能”查看”而不能设置和使用。<br>/tmp： 一般用户或正在执行的程序临时存放文件的目录,任何人都可以访问,重要数据不可放置在此目录下<br>/srv： 服务启动之后需要访问的数据目录，如www服务需要访问的网页数据存放在/srv/www内<br>/usr： 应用程序存放目录，/usr/bin 存放应用程序， /usr/share 存放共享数据，/usr/lib 存放不能直接运行的，却是许多程序运行所必需的一些函数库文件。/usr/local:存放软件升级包。/usr/share/doc: 系统说明文件存放目录。/usr/share/man: 程序说明文件存放目录，使用 man ls时会查询/usr/share/man/man1/ls.1.gz的内容建议单独分区，设置较大的磁盘空间<br>/var： 放置系统执行过程中经常变化的文件，如随时更改的日志文件 /var/log，/var/log/message： 所有的登录文件存放目录，/var/spool/mail： 邮件存放的目录， /var/run: 程序或服务启动</p>
-<p>后，其PID存放在该目录下。建议单独分区，设置较大的磁盘空间</p>
-<p>－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－</p>
-<p>/dev： 目录<br>　　dev是设备(device)的英文缩写。/dev这个目录对所有的用户都十分重要。因为在这个目录中包含了所有Linux系统中使用的外部设备。但是这里并不是放的外部设备的驱动程序，这一点和</p>
-<p>windows,dos操作系统不一样。它实际上是一个访问这些外部设备的端口。我们可以非常方便地去访问这些外部设备，和访问一个文件，一个目录没有任何区别。</p>
-<p>　　Linux沿袭Unix的风格，将所有设备认成是一个文件。</p>
-<p>　　设备文件分为两种：块设备文件(b)和字符设备文件(c)</p>
-<p>　　设备文件一般存放在/dev目录下，对常见设备文件作如下说明：</p>
-<p>　　/dev/hd[a-t]：IDE设备</p>
-<p>　　/dev/sd[a-z]：SCSI设备</p>
-<p>　　/dev/fd[0-7]：标准软驱</p>
-<p>　　/dev/md[0-31]：软raid设备</p>
-<p>　　/dev/loop[0-7]：本地回环设备</p>
-<p>　　/dev/ram[0-15]：内存</p>
-<p>　　/dev/null：无限数据接收设备,相当于黑洞</p>
-<p>　　/dev/zero：无限零资源</p>
-<p>　　/dev/tty[0-63]：虚拟终端</p>
-<p>　　/dev/ttyS[0-3]：串口</p>
-<p>　　/dev/lp[0-3]：并口</p>
-<p>　　/dev/console：控制台</p>
-<p>　　/dev/fb[0-31]：framebuffer</p>
-<p>　　/dev/cdrom =&gt; /dev/hdc</p>
-<p>　　/dev/modem =&gt; /dev/ttyS[0-9]</p>
-<p>　　/dev/pilot =&gt; /dev/ttyS[0-9]</p>
-<p>　　/dev/random：随机数设备</p>
-<p>　　/dev/urandom：随机数设备</p>
-<p>　　(PS：随机数设备，后面我会再写篇博客总结一下)</p>
-<p>　　/dev目录下的节点是怎么创建的?</p>
-<p>　　devf或者udev会自动帮你创建得。</p>
-<p>　　kobject是sysfs文件系统的基础，udev通过监测、检测sysfs来获取新创建的设备的。</p>
-<p>－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－</p>
-<p>/etc： 目录<br>　　包含很多文件.许多网络配置文件也在/etc 中.<br>/etc/rc   or /etc/rc.d   or /etc/rc*.d  　　启动、或改变运行级时运行的scripts或scripts的目录.<br>/etc/passwd<br>　　用户数据库，其中的域给出了用户名、真实姓名、家目录、加密的口令和用户的其他信息.<br>/etc/fstab<br>　　启动时mount -a命令(在/etc/rc 或等效的启动文件中)自动mount的文件系统列表. Linux下，也包括用swapon -a启用的swap区的信息.<br>/etc/group<br>　　类似/etc/passwd ，但说明的不是用户而是组.<br>/etc/inittab<br>　　init 的配置文件.<br>/etc/issue<br>　　getty 在登录提示符前的输出信息.通常包括系统的一段短说明或欢迎信息.内容由系统管理员确定.<br>/etc/motd<br>　　Message Of The Day，成功登录后自动输出.内容由系统管理员确定.经常用于通告信息，如计划关机时间的警告.<br>/etc/mtab<br>　　当前安装的文件系统列表.由scripts初始化，并由mount 命令自动更新.需要一个当前安装的文件系统的列表时使用，例如df 命令.<br>/etc/shadow<br>　　在安装了影子口令软件的系统上的影子口令文件.影子口令文件将/etc/passwd 文件中的加密口令移动到/etc/shadow 中，而后者只对root可读.这使破译口令更困难.<br>/etc/login.defs<br>　　login 命令的配置文件.<br>/etc/printcap<br>　　类似/etc/termcap ，但针对打印机.语法不同.<br>/etc/profile , /etc/csh.login , /etc/csh.cshrc<br>　　登录或启动时Bourne或C shells执行的文件.这允许系统管理员为所有用户建立全局缺省环境.<br>/etc/securetty<br>　　确认安全终端，即哪个终端允许root登录.一般只列出虚拟控制台，这样就不可能(至少很困难)通过modem或网络闯入系统并得到超级用户特权.<br>/etc/shells<br>　　列出可信任的shell.chsh 命令允许用户在本文件指定范围内改变登录shell.提供一台机器FTP服务的服务进程ftpd 检查用户shell是否列在 /etc/shells 文件中，如果不是将不允许该用户登录.<br>/etc/sysconfig<br>　　网络配置相关目录</p>
-<p>－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－</p>
-<p>/proc： 目录</p>
-<p>档名    文件内容<br>/proc/cmdline     加载 kernel 时所下达的相关参数！查阅此文件，可了解系统是如何启动的！<br>/proc/cpuinfo     本机的 CPU 的相关资讯，包含时脉、类型与运算功能等<br>/proc/devices     这个文件记录了系统各个主要装置的主要装置代号，与 mknod 有关呢！<br>/proc/filesystems     目前系统已经加载的文件系统罗！<br>/proc/interrupts     目前系统上面的 IRQ 分配状态。<br>/proc/ioports     目前系统上面各个装置所配置的 I/O 位址。<br>/proc/kcore     这个就是内存的大小啦！好大对吧！但是不要读他啦！<br>/proc/loadavg     还记得 top 以及 uptime 吧？没错！上头的三个平均数值就是记录在此！<br>/proc/meminfo     使用 free 列出的内存资讯，嘿嘿！在这里也能够查阅到！<br>/proc/modules     目前我们的 Linux 已经加载的模块列表，也可以想成是驱动程序啦！<br>/proc/mounts     系统已经挂载的数据，就是用 mount 这个命令呼叫出来的数据啦！<br>/proc/swaps     到底系统挂加载的内存在哪里？呵呵！使用掉的 partition 就记录在此啦！<br>/proc/partitions     使用 fdisk -l 会出现目前所有的 partition 吧？在这个文件当中也有纪录喔！<br>/proc/pci     在 PCI 汇流排上面，每个装置的详细情况！可用 lspci 来查阅！<br>/proc/uptime     就是用 uptime 的时候，会出现的资讯啦！<br>/proc/version     核心的版本，就是用 uname -a 显示的内容啦！<br>/proc/bus/*     一些汇流排的装置，还有 U盘 的装置也记录在此喔！</p>
-<p>－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－</p>
-<p>/usr： 目录<br>　　/usr 文件系统经常很大，因为所有程序安装在这里. /usr 里的所有文件一般来自Linux distribution；本地安装的程序和其他东西在/usr/local 下.这样可能在升级新版系统或新distribution时无须重新安装全部程序.<br>/usr/etc            存放设置文件<br>/usr/games      存放游戏和教学文件<br>/usr/include      存放C开发工具的头文件<br>/usr/share         存放结构独立的数据<br>/usr/bin<br>　　几乎所有用户命令.有些命令在/bin 或/usr/local/bin 中.<br>/usr/sbin<br>　　根文件系统不必要的系统管理命令，例如多数服务程序.<br>/usr/share/man , /usr/share/info , /usr/share/doc<br>　　手册页、GNU信息文档和各种其他文档文件.<br>/usr/include<br>　　C编程语言的头文件.为了一致性这实际上应该在/usr/lib 下，但传统上支持这个名字.<br>/usr/lib<br>　　程序或子系统的不变的数据文件，包括一些site-wide配置文件.名字lib来源于库(library); 编程的原始库存在/usr/lib 里.<br>/usr/local<br>　　本地安装的软件和其他文件放在这里.<br>/usr/src             存放程序的源代码</p>
-<p>－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－<br>/var： 目录<br>　　/var 包括系统一般运行时要改变的数据.每个系统是特定的，即不通过网络与其他计算机共享.<br>/var/catman<br>　　当要求格式化时的man页的cache.man页的源文件一般存在/usr/man/man<em> 中；有些man页可能有预格式化的版本，存在/usr/man/cat</em> 中.而其他的man页在第一次看时需要格式化，格式化完的版本存在/var/man 中，这样其他人再看相同的页时就无须等待格式化了. (/var/catman 经常被清除，就象清除临时目录一样.)<br>/var/lib<br>　　系统正常运行时要改变的文件.<br>/var/local<br>　　/usr/local 中安装的程序的可变数据(即系统管理员安装的程序).注意，如果必要，即使本地安装的程序也会使用其他/var 目录，例如/var/lock .<br>/var/lock<br>　　锁定文件.许多程序遵循在/var/lock 中产生一个锁定文件的约定，以支持他们正在使用某个特定的设备或文件.其他程序注意到这个锁定文件，将不试图使用这个设备或文件.<br>/var/log<br>　　各种程序的Log文件，特别是login  (/var/log/wtmp log所有到系统的登录和注销) 和syslog (/var/log/messages 里存储所有核心和系统程序信息. /var/log 里的文件经常不确定地增长，应该定期清除.<br>/var/run<br>　　保存到下次引导前有效的关于系统的信息文件.例如， /var/run/utmp 包含当前登录的用户的信息.<br>/var/spool<br>　　mail, news, 打印队列和其他队列工作的目录.每个不同的spool在/var/spool 下有自己的子目录，例如，用户的邮箱在/var/spool/mail 中.<br>/var/tmp<br>　　比/tmp 允许的大或需要存在较长时间的临时文件. (虽然系统管理员可能不允许/var/tmp 有很旧的文件.)</p>
-<p>－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－</p>
-<p> 比较重要的目录</p>
-<pre><code>在 Linux 系统中，有几个目录是特别需要注意的，以下提供几个需要注意的目录，以及预设相关的用途：　
-    /etc： 这个目录相当重要，如前所述，你的开机与系统数据文件均在这个目录之下，因此当这个目录被破坏，那你的系统大概也就差不多该死掉了！而在往后的文件中，你会发现我们常常使用这个目录下的 /etc/rc.d/init.d 这个子目录，因为这个 init.d 子目录是开启一些 Linux 系统服务的 scripts （可以想成是批次檔 ）的地方。而在 /etc/rc.d/rc.local 这个文件是开机的执行档。　
-    /bin, /sbin, /usr/bin, /usr/sbin： 这是系统预设的执行文件的放置目录，例如 root 常常使用的 userconf, netconf, perl, gcc, c++ 等等的数据都放在这几个目录中，所以如果你在提示字符下找不到某个执行档时，可以在这四个目录中查一查！其中， /bin, /usr/bin 是给系统使用者使用的指令，而 /sbin, /usr/sbin 则是给系统管理员使用的指令！  　
-    /usr/local： 这是系统预设的让你安装你后来升级的套件的目录。例如，当你发现有更新的 Web 套件（如 Apache ）可以安装，而你又不想以 rpm 的方式升级你的套件，则你可以将 apache 这个套件安装在 /usr/local 底下。安装在这里有个好处，因为目前大家的系统都是差不多的，所以如果你的系统要让别人接管的话，也比较容易上手呀！也比较容易找的到数据喔！因此，如果你有需要的话，通常我都会将 /usr/local/bin 这个路径加到我的 path 中。　
-    /home： 这个是系统将有账号的人口的家目录设置的地方。    　
-    /var： 这个路径就重要了！不论是登入、各类服务的问题发生时的记录、以及常态性的服务记录等等的记录目录，所以当你的系统有问题时，就需要来这个目录记录的文件数据中察看问题的所在啰！而 mail 的预设放置也是在这里，所以他是很重要的    　
-    /usr/share/man, /usr/local/man： 这两个目录为放置各类套件说明档的地方，例如你如果执行 man man，则系统会自动去找这两个目录下的所有说明文件
-</code></pre><p>文件种类：</p>
-<p>谈完了文件格式之后，再来谈谈所谓的文件种类吧！我们在刚刚的属性介绍中提到了最前面的标志 ( d 或 - ) 可以代表目录或文件，那就是不同的文件种类啦！Linux 的文件种类主要有底下</p>
-<p>这几种：<br>    正规文件( regular file )：就是一般类型的文件，在由 ls –al 所显示出来的属性方面，第一个属性为 [ - ]。另外，依照文件的内容，又大略可以分为两种文件种类：<br>        纯文字文件(ascii) ：这是 Unix 系统中最多的一种啰，几乎只要我们可以用来做为设定的文件都属于这一种；<br>        二进制文件(binary) ：通常执行档除了 scripts （文字型批次文件）之外，就是这一种文件格式；<br>    目录 (directory)：就是目录！第一个属性为 [ d ]；<br>    连结档 (link)：就是类似 Windows 底下的快捷方式啦！第一个属性为 [ l ]；<br>    设备档 (device)：与系统周边相关的一些文件，通常都集中在 /dev 这个目录之下！通常又分为两种：<br>    区块 (block) 设备档 ：就是一些储存数据，以提供系统存取的接口设备，简单的说就是硬盘啦！例如你的一号硬盘的代码是 /dev/hda1 等等的文件啦！第一个属性为 [ b ]；<br>    字符 (character) 设备档 ：亦即是一些串行端口的接口设备，例如键盘、鼠标等等！第一个属性为 [ c ]。</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>运行Shadowsocks客户端：</p>
+<p><img width="400" src="http://7xtwmz.com1.z0.glb.clouddn.com/shadowsocks.jpg"></p>
+<p>运行Proxifier，点击配置文件-代理服务器-添加 地址和端口输入本地的参数，类型选SOCKS5，这样运行时会使得本机所有网络活动通过代理。</p>
+<p><img width="400" src="http://7xtwmz.com1.z0.glb.clouddn.com/pro.jpg"></p>
+<p>你也可以通过代理规则指定特定程序进行代理，加速代理。其中Direct是不使用代理的意思，Proxy就是通过Shadowsocks进行代理，除此之外也可以通过右键的菜单栏<br>Proxifer选择打开要进行代理的程序。</p>
+<p><img width="400" src="http://7xtwmz.com1.z0.glb.clouddn.com/pro2.jpg"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[使用VPS搭建Shadowsocks实现代理]]></title>
+      <url>https://byhj.github.io/blog/blog/2016/05/11/linux-shadowsock/</url>
+      <content type="html"><![CDATA[<h1 id="VPS注册和安装"><a href="#VPS注册和安装" class="headerlink" title="VPS注册和安装"></a>VPS注册和安装</h1><p>　　Shadowsocks的正常使用需要服务端，其实所有的翻墙方式都需要服务端，搭建服务端需要你拥有一个属于自己的VPS。VPS提供商有很多，个人推荐<a href="https://m.do.co/c/7049364a99a2" target="_blank" rel="external">DigitalOcean</a>, 注册和安装非常容易，可以绑定国内的银行卡。</p>
+<h1 id="Shadowsocks安装"><a href="#Shadowsocks安装" class="headerlink" title="Shadowsocks安装"></a>Shadowsocks安装</h1><p>首先根据当前系统安装Shadowsocks:</p>
+<p>Debian / Ubuntu:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get <span class="keyword">install</span> python-pip</span><br><span class="line">pip <span class="keyword">install</span> shadowsocks</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>CentOS:<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> python-setuptools &amp;&amp; easy_install pip</span><br><span class="line">pip <span class="keyword">install</span> shadowsocks</span><br></pre></td></tr></table></figure></p>
+<p>然后可以直接在后台运行：<br><figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssserver -p <span class="number">8000</span> -<span class="keyword">k</span> password -m aes-<span class="number">256</span>-cfb -<span class="keyword">d</span> start</span><br></pre></td></tr></table></figure></p>
+<p>当然也可以使用配置文件进行配置，方法创建/etc/shadowsocks.json文件<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="meta-keyword">/etc/</span>shadowsocks.json</span><br></pre></td></tr></table></figure></p>
+<p>　　填入如下内容,其中server_ip是你vps分配的ip， server_port可以随便设置一个没有占用的，local_adresss和local_port下面的默认值，password密码自己定义，method为加密方式，这些参数在客户端需要对应才能使用：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"server"</span>:<span class="string">"server_ip"</span>,</span><br><span class="line">    <span class="attr">"server_port"</span>:<span class="number">8000</span>,</span><br><span class="line">    <span class="attr">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="attr">"password"</span>:<span class="string">"password"</span>,</span><br><span class="line">    <span class="attr">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line">    <span class="attr">"method"</span>:<span class="string">"aes-256-cfb"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后使用配置文件在后台运行：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ssserver -c /etc/shadowsocks<span class="selector-class">.json</span> -d start</span><br></pre></td></tr></table></figure></p>
+<p>停止运行：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ssserver -c /etc/shadowsocks<span class="selector-class">.json</span> -d stop</span><br></pre></td></tr></table></figure></p>
+<p>如果要检查日志：<br><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo less /<span class="built_in">var</span>/<span class="keyword">log</span>/shadowsocks.<span class="keyword">log</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用　　"></a>使用　　</h1><p>　　到<a href="https://shadowsocks.org/en/download/clients.html" target="_blank" rel="external">Shadowsocks</a>下载对应的客户端，在github的<a href="https://shadowsocks.org/en/download/clients.html" target="_blank" rel="external">shadowsocks</a>项目有着源码和使用说明，如果你想进一步了解Shadowsocks情况可以自己到<br>这个github中阅读有关信息。安装好客户端后，点击列表中的服务器，新加一个代理服务器，其中的参数就是上面设置的参数，然后选择系统代理就可以在浏览器中访问国外的网站。<br>你也可以自定义使用代理的网站白名单。</p>
+<p>　　需要注意的是Shadowsocks一般只能通过浏览器进行翻墙，并不是真正的全局vpn，如果需要使得本机程序也使用代理的话，可以使用一个叫Proxifier的软件进行设置，具体可以参看我另一篇教程:<a href="">使用Proxifier使得Shadowsocks本机程序进行代理</a>。</p>
 ]]></content>
     </entry>
     
@@ -66,9 +44,9 @@
       <url>https://byhj.github.io/blog/blog/2016/05/02/GLSL(Built-in%20Variable)/</url>
       <content type="html"><![CDATA[<p>　  GLSL定义了许多内置变量，这些变量一般被用于固定管线的运算，这里主要介绍下各个变量的内容与用法。</p>
 <h1 id="Vertex-shader-inputs"><a href="#Vertex-shader-inputs" class="headerlink" title="Vertex shader inputs"></a>Vertex shader inputs</h1><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_VertexID</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_InstanceID</span>;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <h2 id="gl-VertexID​"><a href="#gl-VertexID​" class="headerlink" title="gl_VertexID​"></a>gl_VertexID​</h2><p>因为Vertex Shader对每个Vertex执行一次，所以gl_VertexID是Vertex Shader当前处理的顶点的索引。</p>
 <p>gl_InstanceID​<br>在执行Instance绘制时，gl_InstanceID是当前实例的索引值，当没有进行Instance绘制时它是默认的0值。</p>
+<a id="more"></a>
 <h1 id="Vertex-shader-outputs"><a href="#Vertex-shader-outputs" class="headerlink" title="Vertex shader outputs"></a>Vertex shader outputs</h1><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">out</span> gl_PerVertex</span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">vec4</span>  <span class="built_in">gl_Position</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_PointSize</span>;</span><br><span class="line">  <span class="type">float</span> <span class="built_in">gl_ClipDistance</span>[];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="gl-PerVertex​"><a href="#gl-PerVertex​" class="headerlink" title="gl_PerVertex​"></a>gl_PerVertex​</h2><p>Vertex Shader的输出结构，在开启光栅化时会被传输。</p>
 <h2 id="gl-Position"><a href="#gl-Position" class="headerlink" title="gl_Position"></a>gl_Position</h2><p>一般是在Vertex Shader经过Model View Proj矩阵变换过的Vertex数据，此时数据位于clip-space， 数据是齐次坐标[x, y, z, w].</p>
@@ -152,9 +130,9 @@
     <entry>
       <title><![CDATA[QT-static]]></title>
       <url>https://byhj.github.io/blog/blog/2016/01/22/QT-static/</url>
-      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>安装python, perl, ruby.<br>打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。</p>
+      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>安装python, perl, ruby.打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。</p>
+<p>设置：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MD -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MD -Zi -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MDd</span><br><span class="line"><span class="comment">//将以上改为</span></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MT -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MT -Zi -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MTd</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>设置：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MD -Zc:strictStrings</span><br><span class="line"></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MD -Zi -Zc:strictStrings</span><br><span class="line"></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MDd</span><br><span class="line"></span><br><span class="line"><span class="comment">//将以上改为</span></span><br><span class="line"></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MT -Zc:strictStrings</span><br><span class="line"></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MT -Zi -Zc:strictStrings</span><br><span class="line"></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MTd</span><br></pre></td></tr></table></figure></p>
 <p>参数：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configure -confirm-license -opensource -mp -platform win32-msvc2013 -debug-and-<span class="keyword">release</span> -<span class="keyword">static</span> -prefix <span class="string">" C:\Qt\5.5.0-static-vs2013"</span> -qt-<span class="keyword">sql</span>-sqlite -qt-<span class="keyword">sql</span>-odbc -<span class="keyword">plugin</span>-<span class="keyword">sql</span>-sqlite -<span class="keyword">plugin</span>-<span class="keyword">sql</span>-odbc -qt-zlib -qt-libpng -qt-libjpeg -opengl desktop -qt-freetype -<span class="keyword">no</span>-qml-debug -<span class="keyword">no</span>-angle -nomake tests -nomake examples -<span class="keyword">skip</span> qtwebkit</span><br></pre></td></tr></table></figure>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmake</span><br><span class="line">nmake <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
@@ -173,15 +151,9 @@
     </entry>
     
     <entry>
-      <title><![CDATA[OpenGL-Debug]]></title>
-      <url>https://byhj.github.io/blog/blog/2015/12/25/OpenGL-Debug/</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[在GLFW3中使用AntTweakBar]]></title>
       <url>https://byhj.github.io/blog/blog/2015/12/25/GLFW3-AntTweakBar/</url>
-      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>　　本文主要介绍怎么在GLFW3中使用AntTweakBar吗，旧版本的GLFW使用在AntTweakBar的Example中<br>已经有了，所以在这里不作介绍。注意，程序是在OpenGL-Framework里面介绍的代码为基础的，如果有不了解的<br>地方，请先阅读那一篇教程.</p>
+      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>　　本文主要介绍怎么在GLFW3中使用AntTweakBar吗，旧版本的GLFW使用在AntTweakBar的Example中已经有了，所以在这里不作介绍。注意，程序是在OpenGL-Framework里面介绍的代码为基础的，如果有不了解的地方，请先阅读那一篇教程.</p>
 <a id="more"></a>
 <h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>App.h</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __APP_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __APP_H_</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glew.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;AntTweakBar.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> USE_ANT</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> _WIN32</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ScreenWidth = <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;( GetSystemMetrics(SM_CXSCREEN) * <span class="number">0.75</span> );</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ScreenHeight = <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(  GetSystemMetrics(SM_CYSCREEN) * <span class="number">0.75</span> );</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> PosX = (GetSystemMetrics(SM_CXSCREEN) - ScreenWidth) ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> PosY = (GetSystemMetrics(SM_CYSCREEN) - ScreenHeight);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ScreenWidth = <span class="number">1200</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ScreenHeight = <span class="number">1000</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> PosX = <span class="number">300</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> PosY = <span class="number">100</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> byhj</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> ogl</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">class</span> App</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		App() &#123;&#125;</span><br><span class="line">		<span class="keyword">virtual</span> ~App() &#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		<span class="function"><span class="keyword">void</span> <span class="title">Run</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;App&gt; the_app)</span></span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//Override</span></span><br><span class="line">		<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_InitInfo</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">		<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_Init</span><span class="params">()</span>	  </span>= <span class="number">0</span>;</span><br><span class="line">		<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_Update</span><span class="params">()</span>   </span>= <span class="number">0</span>;</span><br><span class="line">		<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_Render</span><span class="params">()</span>	  </span>= <span class="number">0</span>;</span><br><span class="line">		<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_Shutdown</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_KeyCallback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> key, <span class="keyword">int</span> scancode, <span class="keyword">int</span> action, <span class="keyword">int</span> mode)</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_Movement</span><span class="params">(GLFWwindow *window)</span> </span>&#123;&#125;</span><br><span class="line">		<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_MouseCallback</span><span class="params">(GLFWwindow* window, <span class="keyword">double</span> xpos, <span class="keyword">double</span> ypos)</span> </span>&#123;&#125;</span><br><span class="line">		<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_ScrollCallback</span><span class="params">(GLFWwindow* window, <span class="keyword">double</span> xoffset, <span class="keyword">double</span> yoffset)</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">protected</span>:</span><br><span class="line">		<span class="keyword">struct</span> WindowInfo</span><br><span class="line">		&#123;</span><br><span class="line">			WindowInfo() :title(<span class="string">"OpenGL BlueBook : "</span>),</span><br><span class="line">				Width(ScreenWidth),</span><br><span class="line">				Height(ScreenHeight),</span><br><span class="line">				posX(PosX),</span><br><span class="line">				posY(PosY) &#123;&#125;</span><br><span class="line"></span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">string</span> title;</span><br><span class="line">			<span class="keyword">int</span> Width;</span><br><span class="line">			<span class="keyword">int</span> Height;</span><br><span class="line">			<span class="keyword">int</span> posX, posY;</span><br><span class="line">		&#125;windowInfo;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">float</span> <span class="title">GetAspect</span><span class="params">()</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">GetScreenWidth</span><span class="params">()</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">GetScreenHeight</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">		<span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">GetGLRenderer</span><span class="params">()</span></span><br><span class="line">		</span>&#123;</span><br><span class="line">			return m_GLRenderer;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">GetGLVersion</span><span class="params">()</span></span><br><span class="line">		</span>&#123;</span><br><span class="line">			return m_GLVersion;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">GetGLSLVersion</span><span class="params">()</span></span><br><span class="line">		</span>&#123;</span><br><span class="line">			return m_GLSLVersion;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">private</span>:</span><br><span class="line">		<span class="keyword">static</span>  <span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;App&gt; app;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">glfw_key</span><span class="params">(GLFWwindow * window, <span class="keyword">int</span> key, <span class="keyword">int</span> scancode, <span class="keyword">int</span> action, <span class="keyword">int</span> mode)</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">glfw_mouse</span><span class="params">(GLFWwindow* window, <span class="keyword">double</span> xpos, <span class="keyword">double</span> ypos)</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">glfw_scroll</span><span class="params">(GLFWwindow* window, <span class="keyword">double</span> xoffset, <span class="keyword">double</span> yoffset)</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">glfw_mouseButton</span><span class="params">(GLFWwindow *window, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">glfw_char</span><span class="params">(GLFWwindow *window, <span class="keyword">unsigned</span> <span class="keyword">int</span> x)</span></span>;</span><br><span class="line"></span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">string</span> m_GLRenderer;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">string</span> m_GLVersion;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">string</span> m_GLSLVersion;</span><br><span class="line"></span><br><span class="line">	&#125;;  <span class="comment">//class</span></span><br><span class="line"></span><br><span class="line">&#125;  <span class="comment">//namespace</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">//namespace</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>  <span class="comment">//</span></span></span><br></pre></td></tr></table></figure>
@@ -194,9 +166,9 @@
     <entry>
       <title><![CDATA[OpenGL-GLUT]]></title>
       <url>https://byhj.github.io/blog/blog/2015/12/25/OpenGL-GLUT/</url>
-      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>　　在以前很多项目使用GLUT库创建OpenGL环境，由于GLUT项目已经放弃开发和维护，在这里建议大家使用新的freeglut库。<br>可以在<a href="http://freeglut.sourceforge.net/" target="_blank" rel="external">freeglut</a>网站下载最新的版本。</p>
+      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>　　在以前很多项目使用GLUT库创建OpenGL环境，由于GLUT项目已经放弃开发和维护，在这里建议大家使用新的freeglut库。可以在<a href="http://freeglut.sourceforge.net/" target="_blank" rel="external">freeglut</a>网站下载最新的版本。</p>
+<h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>　　在官网上下载对应版本的freeglut，你可以下载源码自己编译或者下载已经编译好的库文件。freeglut的使用基本跟glut的使用一样。在做好前期准备工作后，使用VS创建一个空项目，将freeglut库文件目录添加到项目的库依赖目录。下面介绍怎么使用freeglut创建一个OpenGL环境的窗口：</p>
 <a id="more"></a>
-<h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>　　在官网上下载对应版本的freeglut，你可以下载源码自己编译或者下载已经编译好的库文件。freeglut的使用<br>基本跟glut的使用一样。在做好前期准备工作后，使用VS创建一个空项目，将freeglut库文件目录添加到项目的库依赖目录。<br>下面介绍怎么使用freeglut创建一个OpenGL环境的窗口：</p>
 <figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;GL/freeglut.h&gt;</span><br><span class="line"></span><br><span class="line">//初始化，运行一次</span><br><span class="line">void init()</span><br><span class="line">&#123;</span><br><span class="line">	glClearColor(<span class="number">0</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f, <span class="number">1</span>.<span class="number">0</span>f)<span class="comment">;</span></span><br><span class="line">	glClearDepth(<span class="number">1</span>.<span class="number">0</span>f)<span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//渲染代码，循环运行</span><br><span class="line">void render()</span><br><span class="line">&#123;</span><br><span class="line">	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">	glColor3f(<span class="number">1</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">	glBegin(GL_TRIANGLES)<span class="comment">;</span></span><br><span class="line">	  glVertex3f(-<span class="number">1</span>.<span class="number">0</span>f, -<span class="number">1</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f)<span class="comment">;</span></span><br><span class="line">	  glVertex3f(<span class="number">1</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f, <span class="number">0</span>.<span class="number">0</span>f)<span class="comment">;</span></span><br><span class="line">	  glVertex3f(<span class="number">0</span>.<span class="number">0</span>, <span class="number">1</span>.<span class="number">0</span>, <span class="number">0</span>.<span class="number">0</span>)<span class="comment">;</span></span><br><span class="line">	glEnd()<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">	glutSwapBuffers()<span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void reshape(int w, int h)</span><br><span class="line">&#123;</span><br><span class="line">	glViewport(<span class="number">0</span>, <span class="number">0</span>, w, h)<span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, char **argv)</span><br><span class="line">&#123;</span><br><span class="line">	glutInit(&amp;argc, argv)<span class="comment">;</span></span><br><span class="line">	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)<span class="comment">;</span></span><br><span class="line">	glutInitWindowPosition(<span class="number">300</span>, <span class="number">0</span>)<span class="comment">;</span></span><br><span class="line">	glutInitWindowSize(<span class="number">720</span>, <span class="number">640</span>)<span class="comment">;</span></span><br><span class="line">	glutCreateWindow("Hello World")<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">	init()<span class="comment">;</span></span><br><span class="line">	glutDisplayFunc(render)<span class="comment">;</span></span><br><span class="line">	glutReshapeFunc(reshape)<span class="comment">;</span></span><br><span class="line">	glutIdleFunc(render)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">	glutMainLoop()<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
     </entry>
@@ -204,9 +176,9 @@
     <entry>
       <title><![CDATA[OpenGL-GLFW]]></title>
       <url>https://byhj.github.io/blog/blog/2015/12/25/OpenGL-GLFW/</url>
-      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>　　GLFW是一个创建OpenGL环境窗口的开源跨平台程序库，它同时可以处理输入和事件。<br>目前来说，它比OpenGL以前使用的GLUT框架更加成熟和方便。更多信息在<a href="http://www.glfw.org/" target="_blank" rel="external">GLFW</a><br>的官网有介绍。本文主要简单介绍GLFW的使用。</p>
+      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>　　GLFW是一个创建OpenGL环境窗口的开源跨平台程序库，它同时可以处理输入和事件。目前来说，它比OpenGL以前使用的GLUT框架更加成熟和方便。更多信息在<a href="http://www.glfw.org/" target="_blank" rel="external">GLFW</a>的官网有介绍。本文主要简单介绍GLFW的使用。</p>
+<h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>　　在官网上下载对应版本的GLFW，你可以下载源码自己编译或者下载已经编译好的库文件。由于最新的GLFW3跟以前的GLFW版本有所区别，所以从旧版本升级的程序需要按照官网提供的教程进行修改.在做好前期准备工作后，使用VS创建一个空项目，将glfw库文件目录添加到项目的库依赖目录。下面介绍怎么使用GLFW创建一个OpenGL环境的窗口：</p>
 <a id="more"></a>
-<h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>　　在官网上下载对应版本的GLFW，你可以下载源码自己编译或者下载已经编译好的库文件。由于最新的GLFW3跟以前的<br>GLFW版本有所区别，所以从旧版本升级的程序需要按照官网提供的教程进行修改.<br>在做好前期准备工作后，使用VS创建一个空项目，将glfw库文件目录添加到项目的库依赖目录。<br>下面介绍怎么使用GLFW创建一个OpenGL环境的窗口：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span><br><span class="line"></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//初始化GLFW环境</span></span><br><span class="line">	<span class="keyword">if</span> (!glfwInit())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">"Error: can not init the glfw!"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		return <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//创建一个窗口化的OpenGL环境窗口</span></span><br><span class="line">	GLFWwindow *pWindow = glfwCreateWindow(<span class="number">640</span>, <span class="number">480</span>, <span class="string">"Hello World"</span>, NULL, NULL);</span><br><span class="line">	<span class="keyword">if</span> (!pWindow)</span><br><span class="line">	&#123;</span><br><span class="line">		glfwTerminate();</span><br><span class="line">		return <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//使用创建的OpenGL环境窗口</span></span><br><span class="line">	glfwMakeContextCurrent(pWindow);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//循环直到用户关闭窗口</span></span><br><span class="line">	<span class="keyword">while</span> (!glfwWindowShouldClose(pWindow))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//在这里添加渲染代码</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">//交换双缓存</span></span><br><span class="line">		glfwSwapBuffers(pWindow);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//处理事件</span></span><br><span class="line">		glfwPollEvents();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//结束，销毁初始化创建的资源</span></span><br><span class="line">	glfwTerminate();</span><br><span class="line"></span><br><span class="line">	return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
     </entry>
@@ -215,7 +187,6 @@
       <title><![CDATA[Effective STL 总结]]></title>
       <url>https://byhj.github.io/blog/blog/2015/12/24/EffectiveSTL/</url>
       <content type="html"><![CDATA[<h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><p>　  　对于C++而言，容器是比数组功能更强大更灵活的工具，它可以动态增长或缩减，可以自己管理内存，可以自己记住包含了多少对象，它们还限定了自己所支持的操作的复杂性。对于不同情况我们需要选择不同<br>的容器。</p>
-<p><a id="more"></a>　</p>
 <h2 id="慎重选择容器类型"><a href="#慎重选择容器类型" class="headerlink" title="慎重选择容器类型"></a>慎重选择容器类型</h2><p>　　C++主要提供了一下几种类型的容器</p>
 <ul>
 <li>标准STL序列容器：vector, string, deque, list</li>
@@ -224,11 +195,12 @@
 <li>非标准关联容器 ：hash_set, hash_multiset, hash_map, hash_multimap</li>
 <li>几种标准的非STL容器：bitset, valarray, stack, queue, priority_queue</li>
 </ul>
-<p>　　在不同情况下我们需要采用不同的容器，一般情况下我们都使用vector容器。我们主要把容器以两种方法进行<br>分类：</p>
+<p>　　在不同情况下我们需要采用不同的容器，一般情况下我们都使用vector容器。我们主要把容器以两种方法进行分类：</p>
 <ul>
 <li>对连续内存容器：把它的元素存放在一块或多块(动态分配)内存中，每块内存中存有多个元素。</li>
 <li>基于节点的容器：容器中元素的插入或删除只影响到指向节点的指针，而不影响节点本身的内容。</li>
 </ul>
+<p><a id="more"></a>　</p>
 <p>下面分别介绍在不同情况下怎么选择合适的容器：</p>
 <p>1.在容器的任意位置插入新元素：选择序列容器。<br>2.是否关系容器中元素是排序的：不关心使用散列容器，关心则避免。<br>3.必须是标准C++一部分：不是可以考虑slist, rope。<br>4.需要哪种类型迭代器:<br>5.当发生元素的插入或删除时，避免移动原来容器元素是否很重要<br>6.容器中元素的布局是否需要和C兼容：<br>7：元素的查找速度是否是关键的考虑因素：<br>8：容器内部使用了引用计数技术：<br>9：对插入和删除操作，需要事物语义:<br>10:需要时迭代器，指针和引用变为无效的次数最少：<br>11：序列容器迭代器是随机访问类型，只有没有删除操作发生，且插入操作发生在容器末尾，则指向数据的指针和引用就不会变为无效：deque</p>
 <h2 id="不要试图编写独立于容器类型的代码"><a href="#不要试图编写独立于容器类型的代码" class="headerlink" title="不要试图编写独立于容器类型的代码"></a>不要试图编写独立于容器类型的代码</h2><h2 id="确保容器中的对象副本正确而高效"><a href="#确保容器中的对象副本正确而高效" class="headerlink" title="确保容器中的对象副本正确而高效"></a>确保容器中的对象副本正确而高效</h2><h2 id="调用empty而不是检测size-是否为0"><a href="#调用empty而不是检测size-是否为0" class="headerlink" title="调用empty而不是检测size()是否为0"></a>调用empty而不是检测size()是否为0</h2><h2 id="区间成员函数优先于与之对应的单元素成员函数"><a href="#区间成员函数优先于与之对应的单元素成员函数" class="headerlink" title="区间成员函数优先于与之对应的单元素成员函数"></a>区间成员函数优先于与之对应的单元素成员函数</h2><h2 id="当心C-编译器最烦人的分析机制"><a href="#当心C-编译器最烦人的分析机制" class="headerlink" title="当心C++编译器最烦人的分析机制"></a>当心C++编译器最烦人的分析机制</h2><h2 id="如果容器中包含通过new操作创建的指针，切记在容器对象析构前将指针delete掉"><a href="#如果容器中包含通过new操作创建的指针，切记在容器对象析构前将指针delete掉" class="headerlink" title="如果容器中包含通过new操作创建的指针，切记在容器对象析构前将指针delete掉"></a>如果容器中包含通过new操作创建的指针，切记在容器对象析构前将指针delete掉</h2><h2 id="切勿创建包含auto-ptr的容器对象"><a href="#切勿创建包含auto-ptr的容器对象" class="headerlink" title="切勿创建包含auto_ptr的容器对象"></a>切勿创建包含auto_ptr的容器对象</h2><h2 id="了解分配子的约定和限制"><a href="#了解分配子的约定和限制" class="headerlink" title="了解分配子的约定和限制"></a>了解分配子的约定和限制</h2><h2 id="理解自定义分配子的合理用法"><a href="#理解自定义分配子的合理用法" class="headerlink" title="理解自定义分配子的合理用法"></a>理解自定义分配子的合理用法</h2><h2 id="切勿对STL容器的线程安全性有不切实际的依赖"><a href="#切勿对STL容器的线程安全性有不切实际的依赖" class="headerlink" title="切勿对STL容器的线程安全性有不切实际的依赖"></a>切勿对STL容器的线程安全性有不切实际的依赖</h2><hr>
@@ -244,10 +216,11 @@
       <title><![CDATA[Direct3D-Math]]></title>
       <url>https://byhj.github.io/blog/blog/2015/12/20/Direct3D-Math/</url>
       <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>　　本文主要介绍Direct3D开发中使用的数学运算库。</p>
-<a id="more"></a>
 <h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><h2 id="D3DXMath"><a href="#D3DXMath" class="headerlink" title="D3DXMath"></a>D3DXMath</h2><p>　　这是Direct3D旧版本的数学运算库，主要有d3dx9math, d3dx10math.</p>
-<h2 id="xnamath"><a href="#xnamath" class="headerlink" title="xnamath"></a>xnamath</h2><p>　　在DirectX11的SDK中包含了一个新的数学库xnamath，它主要是为XNA平台开发编写的，采用了<br>SIMD提供运算效率，在PC程序开发中也可以使用。</p>
-<h2 id="DirectXMath"><a href="#DirectXMath" class="headerlink" title="DirectXMath"></a>DirectXMath</h2><p>　　在Windows8.x之后DirectX SDK不再以单一组件形式提供，D3DXMath也已经被抛弃，微软推荐采用新使用C++编写的DirectXMath数学库，<br>它可以看做xnamath的升级版本。<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> _m128 XMVECTOR</span><br></pre></td></tr></table></figure></p>
+<h2 id="xnamath"><a href="#xnamath" class="headerlink" title="xnamath"></a>xnamath</h2><p>　　在DirectX11的SDK中包含了一个新的数学库xnamath，它主要是为XNA平台开发编写的，采用了SIMD提供运算效率，在PC程序开发中也可以使用。</p>
+<h2 id="DirectXMath"><a href="#DirectXMath" class="headerlink" title="DirectXMath"></a>DirectXMath</h2><p>　　在Windows8.x之后DirectX SDK不再以单一组件形式提供，D3DXMath也已经被抛弃，微软推荐采用新使用C++编写的DirectXMath数学库，它可以看做xnamath的升级版本。</p>
+<a id="more"></a>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> _m128 XMVECTOR</span><br></pre></td></tr></table></figure>
 <p>为了能充分利用SIMD的效率，在使用时可以采用以下步骤进行操作：</p>
 <ul>
 <li>局部或全局变使用XMVECTOR， XMMATRIX</li>
@@ -264,18 +237,15 @@
     </entry>
     
     <entry>
-      <title><![CDATA[OpenGLES-Android]]></title>
-      <url>https://byhj.github.io/blog/blog/2015/12/20/OpenGLES-Android/</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Design Pattern]]></title>
       <url>https://byhj.github.io/blog/blog/2015/12/20/DesignPattern/</url>
-      <content type="html"><![CDATA[<h1 id="Creational"><a href="#Creational" class="headerlink" title="Creational"></a>Creational</h1><p>创建型模式与对象的创建有关<br><a id="more"></a></p>
+      <content type="html"><![CDATA[<h1 id="Creational"><a href="#Creational" class="headerlink" title="Creational"></a>Creational</h1><p>创建型模式与对象的创建有关</p>
 <p>Class</p>
-<h2 id="Factory-Method"><a href="#Factory-Method" class="headerlink" title="Factory Method"></a>Factory Method</h2><p>定义一个用于创建对象的接口，让子类决定实例化哪一个类，使一个类的实例化推迟到其子类。<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span></span><br><span class="line"><span class="meta">## Abstract Factory</span></span><br><span class="line">提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Builder</span></span><br><span class="line">将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以产生不同的表示。</span><br></pre></td></tr></table></figure>
+<h2 id="Factory-Method"><a href="#Factory-Method" class="headerlink" title="Factory Method"></a>Factory Method</h2><p>定义一个用于创建对象的接口，让子类决定实例化哪一个类，使一个类的实例化推迟到其子类。</p>
+<p>Object</p>
+<h2 id="Abstract-Factory"><a href="#Abstract-Factory" class="headerlink" title="Abstract Factory"></a>Abstract Factory</h2><p>提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。</p>
+<a id="more"></a>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">## Builder</span><br><span class="line">将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以产生不同的表示。</span><br></pre></td></tr></table></figure>
 <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Singleton</span></span><br><span class="line">保证一个类仅有一个实例，并提供一个访问它的全局访问点。</span><br></pre></td></tr></table></figure>
 <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Prototype</span></span><br><span class="line">用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。</span><br></pre></td></tr></table></figure>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Structural</span></span><br><span class="line">处理类或对象的组合。</span><br><span class="line"></span><br><span class="line">Class</span><br><span class="line"><span class="comment">## Adapter</span></span><br></pre></td></tr></table></figure>
@@ -312,9 +282,9 @@
     <entry>
       <title><![CDATA[OGRE1.9-环境搭配]]></title>
       <url>https://byhj.github.io/blog/blog/2015/12/18/OGRE1.9-%E7%8E%AF%E5%A2%83%E6%90%AD%E9%85%8D/</url>
-      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>  　　OGRE是一个面向对象的游戏(渲染)引擎，运用了很多常用的设计模式，它的场景管理尤为值得我们学习。<br>  官网上虽然提供了SDK开发包，但是如果要深入研究OGRE的架构，使用源码学习是一个更好的选择。<br>  本文主要介绍编译OGRE1.9源码的过程，其它版本的环境搭配也类似。</p>
-  <a id="more"></a>
+      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>  　　OGRE是一个面向对象的游戏(渲染)引擎，运用了很多常用的设计模式，它的场景管理尤为值得我们学习。官网上虽然提供了SDK开发包，但是如果要深入研究OGRE的架构，使用源码学习是一个更好的选择。本文主要介绍编译OGRE1.9源码的过程，其它版本的环境搭配也类似。</p>
 <h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><h2 id="SDK"><a href="#SDK" class="headerlink" title="SDK"></a>SDK</h2><p>　　关于OGRE1.9 SDK的编译，只要下载官网上的安装包，安装对应版本的VS，下载安装Cmake。将OGRE1.9SDK安装目录下CMakeLists.txt文件使用Cmake打开，<br>选择你想要IDE(在这个选择你的对应VS版本)，点击Configure，然后Generate，编译生成的工程，就能得到Demo合集的程序。你也可以直接使用根目录下得sln<br>解决方案，用VS打开编译。</p>
+  <a id="more"></a>
 <h2 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h2><p>下载<a href="https://bitbucket.org/sinbad/ogre/downloads" target="_blank" rel="external">OGRE1.9 Source</a><br>在OGRE的bitbucket有着它全部的开发信息，在这里你可以下载到那些正在开发版本。在这里我选择Tags下v1-9-0版本，点击右边的zip下载。<br>下载<a href="https://bitbucket.org/cabalistic/ogredeps/downloads" target="_blank" rel="external">Dependencies</a><br>同样的选择Tags那里进行下载。使用Cmake生成VS工程，编译生成Dependencies工程，将生成好的库文件目录放到Ogre1.9 Source的根目录下。使用Cmake生成OGRE1.9的VS工程，编译运行。</p>
 <h1 id="Website"><a href="#Website" class="headerlink" title="Website"></a>Website</h1><ul>
 <li><a href="http://www.ogre3d.org/tikiwiki/tiki-index.php?page=Building+Ogre" target="_blank" rel="external">Building Ogre</a></li>
@@ -327,7 +297,8 @@
     <entry>
       <title><![CDATA[Direct3D12-HelloWorld]]></title>
       <url>https://byhj.github.io/blog/blog/2015/12/18/Direct3D12-HelloWorld/</url>
-      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><a id="more"></a>
+      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Direct 3D是基于微软的通用对象模式COM（Common Object Mode）的3D图形API。它是由微软（Microsoft）一手树立的3D API规范，微软公司拥有该库版权，它所有的语法定义包含在微软提供的程序开发组件的帮助文件、源代码中。Direct3D 12是新一代的图形API，使得图形开发人员能得到更加多的功能和效率。</p>
+<a id="more"></a>
 <h1 id="Create-A-Framework"><a href="#Create-A-Framework" class="headerlink" title="Create A Framework"></a>Create A Framework</h1><p>　　建立一个框架类</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> D3DAPP_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> D3DAPP_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WIN32_LEAN_AND_MEAN</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windowsx.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;d2d1_3.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;dwrite.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;d3d11on12.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;d3d12.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;dxgi1_4.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;D3Dcompiler.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;DirectXMath.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"d3dx12.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;wrl.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> byhj  </span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> d3d</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> App</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	App() :m_AppName(<span class="string">L"DirectX12: "</span>), m_WndClassName(<span class="string">L"D3DWindow"</span>)</span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">virtual</span> ~App() &#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">InitApp</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">Run</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function">LRESULT CALLBACK <span class="title">MessageHandler</span><span class="params">(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span>	<span class="keyword">void</span> <span class="title">v_Init</span><span class="params">()</span>     </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_Update</span><span class="params">()</span>   </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_Render</span><span class="params">()</span>   </span>= <span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_Shutdown</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Convenience overrides for handling mouse input.</span></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_OnMouseDown</span><span class="params">(WPARAM btnState, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span>  </span>&#123; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_OnMouseUp</span><span class="params">(WPARAM btnState, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span>    </span>&#123; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_OnMouseMove</span><span class="params">(WPARAM btnState, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span>  </span>&#123; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_OnMouseWheel</span><span class="params">(WPARAM btnState, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span>   m_ScreenWidth;</span><br><span class="line">	<span class="keyword">int</span>   m_ScreenHeight;</span><br><span class="line">	<span class="keyword">float</span> m_ScreenFar;</span><br><span class="line">	<span class="keyword">float</span> m_ScreenNear;</span><br><span class="line">	<span class="keyword">int</span>   m_PosX;</span><br><span class="line">	<span class="keyword">int</span>   m_PosY;</span><br><span class="line"></span><br><span class="line">	LPCTSTR m_AppName;</span><br><span class="line">	LPCTSTR m_WndClassName;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//void      GetVideoCardInfo(char &amp;, int &amp;);</span></span><br><span class="line">	<span class="function">HINSTANCE <span class="title">GetAppInst</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; return m_hInstance; &#125;</span><br><span class="line">	<span class="function">HWND      <span class="title">GetHwnd</span><span class="params">()</span>    <span class="keyword">const</span> </span>&#123; return m_hWnd; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">float</span>     <span class="title">GetAspect</span><span class="params">()</span>  <span class="keyword">const</span> </span>&#123; return <span class="keyword">static_cast</span>&lt;<span class="keyword">float</span>&gt;(m_ScreenWidth)</span><br><span class="line">		                                  / <span class="keyword">static_cast</span>&lt;<span class="keyword">float</span>&gt;(m_ScreenHeight); &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">init_window</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	HINSTANCE m_hInstance;</span><br><span class="line">	HWND      m_hWnd;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 <p>框架类的实现</p>
@@ -417,24 +388,289 @@
     </entry>
     
     <entry>
-      <title><![CDATA[敏捷软件开发：原则 ，模式和实践]]></title>
-      <url>https://byhj.github.io/blog/blog/2015/12/17/AgileSoftwareDevelopment/</url>
-      <content type="html"><![CDATA[<h1 id="敏捷设计"><a href="#敏捷设计" class="headerlink" title="敏捷设计"></a>敏捷设计</h1><hr>
+      <title><![CDATA[More Effective C++总结]]></title>
+      <url>https://byhj.github.io/blog/blog/2015/12/17/MoreEffectiveC++/</url>
+      <content type="html"><![CDATA[<h1 id="基础议题"><a href="#基础议题" class="headerlink" title="基础议题"></a>基础议题</h1><h2 id="仔细区别pointers和references"><a href="#仔细区别pointers和references" class="headerlink" title="仔细区别pointers和references"></a>仔细区别pointers和references</h2><p>Pointers和references在某些方面做着同样的事情，但两者还是有所区别：<br>　　没有null reference但是有null pointers，reference总是代表着某个对象，是另一个对象的别名，reference的这一语法特定使得在使用reference之前不需要测试其有效性，在一定程度上提高了效率。在另一方面，pointers可以被重新赋值，指向另一个对象，而reference总是指向（代表）它最初获得的那个对象。在实现某些操作符，例如operator[], 使用reference能够比较自然得到“被当做assignment赋值对象”的功能。</p>
+<h2 id="最好使用C-转型操作符"><a href="#最好使用C-转型操作符" class="headerlink" title="最好使用C++转型操作符"></a>最好使用C++转型操作符</h2><p>　　由于旧式C语言的转型几乎可以将任何类型转换为其它类型，而没有给出每次转型更精确的意图，加上旧式转型的小括号方式在程序中可能难以辨识，所以最好才采用C++新的转型类型操作符：<br> <a id="more"></a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">static_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
+<p>　　这是静态类型转换操作，允许基本类型之间的相互转换，但不能移除表达式的常量性，我们采用下面转换来改变表达式的常量性或易变性，这个操作由编译器执行。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">const_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
+<p>　　但要执行继承体系中“安全的向下转型或跨系转型动作”时，使用下面动态类型转换符。需要注意的是它无法应用在缺乏虚函数的类型身上，也不能改变类型的常量性。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">dynamic_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
+<p>　　最后一种转型操作几乎与编译平台相关，所以它不具备移植性，我们常用它来进行转换“函数指针”类型<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">reinterpret_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
+<p>　　当你的编译平台不能支持新式转型操作时，你可以考虑采用宏去模拟这些语法：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#define static_cast(<span class="name">TYPE</span>, EXPR)       ((<span class="name">TYPE</span>) (<span class="name">EXPR</span>))</span><br><span class="line">#define const_cast(<span class="name">TYPE</span>, EXPR)        ((<span class="name">TYPE</span>) (<span class="name">EXPR</span>))</span><br><span class="line">#define reinterpret_cast(<span class="name">TYPE</span>, EXPR)  ((<span class="name">TYPE</span>) (<span class="name">EXPR</span>))</span><br></pre></td></tr></table></figure></p>
+<h2 id="绝对不要以多态方式处理数组"><a href="#绝对不要以多态方式处理数组" class="headerlink" title="绝对不要以多态方式处理数组"></a>绝对不要以多态方式处理数组</h2><p>　　多态和指针算术不能混用，数组访问时是指针算术表达式。通过base class指针删除一个由derived classes objects构成的数组，，其结果未定义。<br>当以数组形式传递时，编译器对数组对象的理解是声明的部分，而不是你想要的多态效果。</p>
+<h2 id="非必要不提供default-constructor"><a href="#非必要不提供default-constructor" class="headerlink" title="非必要不提供default constructor"></a>非必要不提供default constructor</h2><p>　　default constructor在没有任何外来信息的情况将对象初始化，当现实世界往往需要外来信息进行操作。当你不提供default constructor时,<br>没有方法为数组对象指定constructor自变量，它们同样将不适用于许多template-based container classes.虽然有着这些限制，但是在一般情况下还是<br>不要提供default constructor。</p>
 <hr>
+<h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><h2 id="对定制的“类型转换函数”保持警觉"><a href="#对定制的“类型转换函数”保持警觉" class="headerlink" title="对定制的“类型转换函数”保持警觉"></a>对定制的“类型转换函数”保持警觉</h2><p>　　C++允许编译器在不同类型之间执行隐式转换。类型转换的问题在于，在你从未打算也未预期的情况下，此类函数可能会被调用，而其结果可能是不正确<br>，不直观的程序行为，很难调试。存在着两种函数转换：</p>
+<ul>
+<li><p>隐式类型转换操作符 ：关键词operator后加上一个类型名称<br>　　这类转换我们可以将operator的重载换成显式的转换专有函数，string的c_str()函数就是个很好的例子。</p>
+</li>
+<li><p>单变量constructors函数：会执行隐式的转换为类对象<br>　　使用explicit能够避免这一问题，编译器不能因隐式类型转换的需要调用它们，但是你还是可以通过显式类型的转换。当你无法使用explicit时，可以使用<br>proxy技术，将单一参数转换为一个内部类表示，这样做的话就可以执行原来的构造函数又避免类型转换动作，因为这样的转换需要两次，不合法。</p>
+</li>
+</ul>
+<h2 id="区分increment-decrement操作符的前置和后置形式"><a href="#区分increment-decrement操作符的前置和后置形式" class="headerlink" title="区分increment / decrement操作符的前置和后置形式"></a>区分increment / decrement操作符的前置和后置形式</h2><p>　　通过添加一个int自变量进行后置版本的识别，编译器会为此int指定为0值，前置式返回一个reference，后置式返回返回一个const对象。<br>后置式返回的const能够阻止++++之类的操作，这种操作和内建类型的行为不一致，即使可以这样其行为也不是你预期那样。除此之外，后置<br>版本返回原来的副本也会对效率带来影响。</p>
+<h2 id="千万不要重载-amp-amp-和-，操作符"><a href="#千万不要重载-amp-amp-和-，操作符" class="headerlink" title="千万不要重载 &amp;&amp; || 和 ，操作符"></a>千万不要重载 &amp;&amp; || 和 ，操作符</h2><p>　　重载这些操作符会让程序从短路求值语意向函数调用转变，这两者是不同的。当函数调用动作被执行，所有参数值都必须评估完成。C++语言规范并未<br>明确定义函数调用动作中各参数的评估顺序。对于逗号表达式，从左往右进行评估，最后整个逗号表达式的结果以逗号右侧的值为代表。而当你重载逗号<br>操作符后，不能得到这些保证。</p>
+<h2 id="了解各种不同意义的new和delete"><a href="#了解各种不同意义的new和delete" class="headerlink" title="了解各种不同意义的new和delete"></a>了解各种不同意义的new和delete</h2><p>　　new operator由语言内置，不能被改变意义，总是做相同的事情：</p>
+<ul>
+<li>它分配足够的内存，用来放置某些类型的对象。</li>
+<li>调用一个constructor，为刚才分配的内存中的那个对象设定初值。<br>　　你能够进行改变的时用来容纳对象的那块内存的分配行为，new operator调用某个函数，执行必要的内存分配动作，你可以重写或重载那个函数，改变其行为。<br>这个函数称为operator new.</li>
+</ul>
+<p>‘’’<br>void * operator new(size_t size);</p>
+<p>‘’’<br>返回一个指针，指向一块原始的，未设初值的内存，当你重载这个operator new时，size_t是必须的第一参数。它只负责分配内存，不进行初始化。<br>你可以使用placement new对分配好的原始内存，在上面构建对象。</p>
+<p>　　为了避免资源泄露，每一个动态分配行为都必须匹配一个相应但相反的释放动作，operator delete对于内建的delete operator关系与上面类似。<br>内存释放动作由函数operator delete执行，如果你只打算处理原始的，未设初值的内存，应该使用operator new和operator delete(相当于malloc和free)，<br>而不是new operator和delete operator.<br>　　数组版本的new还是那个new operator但内存以一个名为operator new[]的函数进行分配内存（array new)，delete也是同样的道理。数组版与单一版的<br>new operator所调用的constructor数量不同。</p>
+<hr>
+<h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><h2 id="利用destructors避免内存泄露"><a href="#利用destructors避免内存泄露" class="headerlink" title="利用destructors避免内存泄露"></a>利用destructors避免内存泄露</h2><p>　　以一个对象存放“必须自动释放的资源”并依赖该对象的destructor释放，可以在exceptions出现时避免资源泄露。</p>
+<h2 id="在constructors内阻止资源泄露"><a href="#在constructors内阻止资源泄露" class="headerlink" title="在constructors内阻止资源泄露"></a>在constructors内阻止资源泄露</h2><p>　　exception的发生可能由于operator new无法分配足够内存时，这时控制权被移出constructor之外，而析构函数对已构造完成的对象才进行<br>释放操作。这个时候，我们需要将所有可能的exceptioons捕捉起来，执行某些清理工作，然后从新抛出exception使它继续传播出去。当member initialization\<br>lists时，把try catch放在private member functions内，然后进行处理。</p>
+<h2 id="禁止异常流出destructors之外"><a href="#禁止异常流出destructors之外" class="headerlink" title="禁止异常流出destructors之外"></a>禁止异常流出destructors之外</h2><p>　　destructor在两种情况下会被调用：</p>
+<ul>
+<li>当对象在正常状态下被销毁，也就是当它离开了它的生存空间或是被明确地删除</li>
+<li>当对象在exception处理机制的statck-unwinding(展开)机制-销毁<br>可以避免terminate函数在exception传播过程的stack-unwinding， 可以协助确保destructors完成其应该完成的所有的事情。</li>
+</ul>
+<h2 id="了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异"><a href="#了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异" class="headerlink" title="了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异"></a>了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异</h2><p>　　函数参数和exceptions的传递方式都有三种，by value, vy reference, by pointer。但是你调用一个函数，控制权最终会回到调用端。<br>而当你抛出一个exception,控制权不会再回到抛出端。不论exception是以哪种方式参数传递，都会发生复制行为，catch得到是副本，这个复制行为<br>是由对象的copy constructor执行的，该复制动作永远是以对象的静态类型为本。<br>　　exceptions与catch子句相匹配过程中，仅有两种转换可以发生：</p>
+<ul>
+<li>继承架构中的类转换</li>
+<li>从一个“有型指针”转为”无型指针”</li>
+</ul>
+<h2 id="以by-reference方式捕捉exceptions"><a href="#以by-reference方式捕捉exceptions" class="headerlink" title="以by reference方式捕捉exceptions"></a>以by reference方式捕捉exceptions</h2><p>　　catch by reference可以避免对象删除问题。</p>
+<h2 id="明智运用exception-specifications"><a href="#明智运用exception-specifications" class="headerlink" title="明智运用exception specifications"></a>明智运用exception specifications</h2><h2 id="了解异常处理的成本"><a href="#了解异常处理的成本" class="headerlink" title="了解异常处理的成本"></a>了解异常处理的成本</h2><ul>
+<li>必须付出一些空间，放置某些数据结构（记录着那些对象已被完全构造）</li>
+<li>try语句块</li>
+</ul>
+<hr>
+<h1 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h1><h2 id="谨记80-20法则"><a href="#谨记80-20法则" class="headerlink" title="谨记80-20法则"></a>谨记80-20法则</h2><p>　　软件的整体性能几乎总是有其构成要素的一小部分决定。借助程序分析器查找出瓶颈在哪一部分，然后再进行优化。</p>
+<h2 id="考虑使用lazy-evaluation-缓式评估"><a href="#考虑使用lazy-evaluation-缓式评估" class="headerlink" title="考虑使用lazy evaluation(缓式评估)"></a>考虑使用lazy evaluation(缓式评估)</h2><ul>
+<li>Reference Counting (引用计数) ：在你真正需要之前，不必着急为某物做一个副本，可以采用拖延政策直到需要修改时才提供副本操作。</li>
+<li>区分读和写 ： operator[]的读写区分</li>
+<li>Lazy Fetching（缓式取出）：避免非必要的数据库读取动作</li>
+<li>Lazy Expression Evaluation(表达式缓评估) ：避免不必要的数值计算动作</li>
+</ul>
+<h2 id="分期摊还预期的计算成本。"><a href="#分期摊还预期的计算成本。" class="headerlink" title="分期摊还预期的计算成本。"></a>分期摊还预期的计算成本。</h2><p>   超急评估：令他超前进度地做“要求以外”的更多工作。<br>   如果你预期程序常常会用到某个计算，你可以降低每次计算的平均成本，办法就是设计一份数据结构以便能够极有效率地处理需求。<br>  Catching和prefetching(预先取出)都是其中的案例。<br>  但是较佳往往导致较大的内存成本。</p>
+<h2 id="了解临时对象的来源"><a href="#了解临时对象的来源" class="headerlink" title="了解临时对象的来源"></a>了解临时对象的来源</h2><p>　　C++中真正的临时对象时不可见的，由编译器隐式调用生成。一般而言，函数调用时隐式转换和函数返回对象时会生成这类对象。<br>你可以声明reference-to-const避免这类问题。</p>
+<h2 id="协助完成返回值优化（RVO"><a href="#协助完成返回值优化（RVO" class="headerlink" title="协助完成返回值优化（RVO)"></a>协助完成返回值优化（RVO)</h2><p>　　编译器在返回对象时，可以执行返回值优化。<br>‘’’<br>const TestClass operator+(const TestClass &amp;lhs, const TestClass &amp;rhs) {<br>  return TestClass(lhs.val + rhs.val);<br>}<br>‘’’</p>
+<h2 id="利用重载技术避免隐式类型转换"><a href="#利用重载技术避免隐式类型转换" class="headerlink" title="利用重载技术避免隐式类型转换"></a>利用重载技术避免隐式类型转换</h2><p>　　每个重载操作符必须获得至少一个用户定制的自变量，我们可以通过提供多种参数的重载函数避免临时对象的生成。</p>
+<h2 id="考虑以操作符复合形式取代其独身形式"><a href="#考虑以操作符复合形式取代其独身形式" class="headerlink" title="考虑以操作符复合形式取代其独身形式"></a>考虑以操作符复合形式取代其独身形式</h2><p>　　我们一般使用复合形式来实现operator的单一版本，单一版本需要返回一个新对象，而复合版本则是直接将结果写入<br>其左端自变量，不需要产生一个临时对象来放置返回值。</p>
+<h2 id="考虑使用其他程序库"><a href="#考虑使用其他程序库" class="headerlink" title="考虑使用其他程序库"></a>考虑使用其他程序库</h2><p>　　C++的IO操作比C的慢很多，可以视情况选择合适的程序库。</p>
+<h2 id="了解virtual-functions-multiple-inheritance-virtual-base-class-runtime-type-identification的成本"><a href="#了解virtual-functions-multiple-inheritance-virtual-base-class-runtime-type-identification的成本" class="headerlink" title="了解virtual functions, multiple inheritance, virtual base class, runtime type identification的成本"></a>了解virtual functions, multiple inheritance, virtual base class, runtime type identification的成本</h2><p>　　vtbl和vptr需要额外的内存空间，换页动作由此受到影响。虚函数本身并不构成性能上的瓶颈，真正运行时期成本发生在inlining互动的时候。<br>多重继承往往导致virtual base classes虚拟基类的需要，这可能导致对象内的隐式指针增加。RTTI让我们在运行时期获得objects和classes的<br>相关信息，需要空间存储type_info信息，使用typeud去获得class的对应type_info，type_info放在vtbl中。</p>
+<hr>
+<h1 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h1><h2 id="将constructor-和-non-member-functions虚化"><a href="#将constructor-和-non-member-functions虚化" class="headerlink" title="将constructor 和 non-member functions虚化"></a>将constructor 和 non-member functions虚化</h2><p>　　virtual constructo是某种函数，视其获得的输入，可产生不同类型对象。从磁盘或者磁带读取对象信息经常被用到。</p>
+<p>virtual copy constructor返回一个指针，指向其调用者的一个新副本，通常以clone()命名（Prototypee）。<br>当derived class重新定义其base class的一个虚函数时，不再需要一定得声明与原来相同的返回类型。<br>‘’’<br>class Base {<br>  virtual Base * clone() const = 0;<br>};</p>
+<p>class A : public Base {<br>  virtual A <em> clone() const {<br>    return new A(</em>this);<br>  }<br>};</p>
+<p>class B : public Base {<br>  virtual B <em> clone() const {<br>    return new B(</em>this);<br>  }<br>};</p>
+<p>‘’’</p>
+<p>non-member functions的虚化：写一个虚函数做实际工作，再写一个什么都不做的非虚函数，只负责调用函数。</p>
+<p>‘’’<br>class Base {<br>  virtual ostream &amp; print(ostream &amp;s) const = 0;<br>};</p>
+<p>class A : public Base {<br>  virtual ostream &amp; print(ostream &amp;s) const;<br>};</p>
+<p>class B : public Base {<br>  virtual ostream &amp; print(ostream &amp;s) const;<br>};<br>inline ostream &amp;operator &lt;&lt; (ostream &amp;s, const Base &amp;b) {<br>  return b.print(s);<br>}</p>
+<p>‘’’</p>
+<h2 id="限制某个class所能产生的对象数量"><a href="#限制某个class所能产生的对象数量" class="headerlink" title="限制某个class所能产生的对象数量"></a>限制某个class所能产生的对象数量</h2><ul>
+<li><p>允许零个或一个对象<br>阻止对象生成，只要将constructors声明为private，而利用单例模式static操作则可以生成一个对象。</p>
+</li>
+<li><p>不同的对象构造状态</p>
+</li>
+<li><p>允许对象生生灭灭</p>
+</li>
+<li><p>一个用来计算对象个数的base class</p>
+</li>
+</ul>
+<h2 id="要求或禁止对象产生于heap之中"><a href="#要求或禁止对象产生于heap之中" class="headerlink" title="要求或禁止对象产生于heap之中"></a>要求或禁止对象产生于heap之中</h2><ul>
+<li><p>要求对象产生于heap之中（head-based objects)<br>让destrutor成为private,而constructors为public,导入一个伪destructor函数调用真正的private。</p>
+</li>
+<li><p>判断某个对象是否位于heap中</p>
+</li>
+<li><p>禁止对象产生于heap之中<br>对象被直接实例化，对象被实例化为derived class objects内的base classes成分，对象被内嵌于其他对象之中。</p>
+</li>
+</ul>
+<h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><h2 id="proxy-classes代理类"><a href="#proxy-classes代理类" class="headerlink" title="proxy classes代理类"></a>proxy classes代理类</h2><p>　　用来代表其他对象的对象，称为proxy objects（替身对象）,而用以表现proxy objects者，我们称为proxy classes。</p>
+<hr>
+<h1 id="杂项讨论"><a href="#杂项讨论" class="headerlink" title="杂项讨论"></a>杂项讨论</h1><h2 id="在未来时态下发展程序"><a href="#在未来时态下发展程序" class="headerlink" title="在未来时态下发展程序"></a>在未来时态下发展程序</h2><p>　　好的软件对于变化有良好的适应能力。</p>
+<ul>
+<li>以C++本身(而非只是注释或说明文件)来表现各种规范</li>
+<li>避免”demand-paged”式的虚函数</li>
+<li>为每一个class处理assignment和copy construction动作</li>
+<li>努力让classes的操作符和函数拥有自然的语法和直观的语义</li>
+<li>让classes容易被正确使用，不容易被误用</li>
+<li>努力写出可移植代码</li>
+<li>设计你的代码，使：“系统改变所带来的冲击”得以局部化</li>
+<li>提供完整的classes,即使某些部分目前用不到</li>
+<li>设计你的接口，使有利于共同的操作行为，阻止共同的错误</li>
+<li>尽量使你的代码一般化，除非有不良的巨大后果</li>
+</ul>
+<h2 id="将非尾端类（non-leaf-classes）设计为抽象类"><a href="#将非尾端类（non-leaf-classes）设计为抽象类" class="headerlink" title="将非尾端类（non-leaf classes）设计为抽象类"></a>将非尾端类（non-leaf classes）设计为抽象类</h2><p>　　让原来的继承base类成为子类，添加一个抽象基类，这样做可达到允许同型赋值，部分赋值和异型赋值都被禁止的功能。<br>我们可以将其中的virtual destrutor函数声明为纯虚函数来避免提供一个不适合的纯虚接口，这个纯虚析构函数必须被定义，<br>因为derived classes在析构时会调用base classes的析构函数。<br>　　抽象基类降低了“企图以多态方式对待数组”的机会，让operator=的行为更容易被了解。强迫你明白认知有用之抽象性质的<br>存在。只有在原有的具体类被当做基类使用，才强迫导入一个新的抽象类。<br> 　　当你需要扩展一个程序库而又不能修改代码时，只有少数可行的选择：</p>
+<ul>
+<li>将你的具体类派生自既存的具体类</li>
+<li>试着在程序库的继承体系中找到一个更高层的抽象类</li>
+<li>以“你所希望继承的那个程序库类”来实现自己的新类，将程序库类对象作为新类的member</li>
+<li><p>写一些non-member functions以供应你希望加入class内部去的机能</p>
+<h2 id="如何在同一个程序中结合C-和C"><a href="#如何在同一个程序中结合C-和C" class="headerlink" title="如何在同一个程序中结合C++和C"></a>如何在同一个程序中结合C++和C</h2></li>
+</ul>
+<ul>
+<li>Name Mangling（名称重整）<br>　　Name Mangling是一种程序，通过它C++编译器为程序内的每一个函数编出独一无二的名称，在C中没有重载所以不需要此操作。<br>要抑制Name Mangling需要使用C++的extern “C”的命令，它是一个叙述，说明修饰的部分应该以C语言的方式调用。如果需要同时<br>处理C和C++的使用，可以采用预处理器符号__cplusplus, 这个符号只针对C++才用定义.</li>
+</ul>
+<p>‘’’<br>//如果在C++环境中我们使用C编译方式</p>
+<p>#ifdef __cplusplus<br>extern “C” {</p>
+<p>#endif</p>
+<p>// code</p>
+<p>#ifdef __cplusplus<br>}</p>
+<p>#endif</p>
+<p>‘’’</p>
+<ul>
+<li>Statics的初始化<br>　　stait class对象，全局对象，namespace内的对象以及文件范围内的对象，其constructor总在main以前得到执行。<br>而static initialization产生对象的destructors在main调用后。为了使得main是程序起点，很多编译器在main开始出安插<br>一个函数调用的特殊函数完成static initialization.<br>　　尽量使用C++编写main函数，可以调用的命名mian函数进行实际的操作,这样可以保证static的构造和析构被合理调用。<br>‘’’<br>extern “C”<br>int realMain(int argc, char *argv[]);</li>
+</ul>
+<p>int main(int argc, char *argv[]) {<br>  return realMain(argc, argv);<br>}<br>‘’’</p>
+<ul>
+<li><p>动态分配内存<br>　　C++使用new和delete， C使用malloc和free进行内存分配，char <em>strdup（const char </em>ps)这个函数的内存分配就会<br>根据不同的调用采取不同的内存分配方式，所以尽量避免调用标准程序库外的函数。</p>
+</li>
+<li><p>数据结构的兼容性<br>　　在C和C++之间对数据结构做双向交流，应该是安全的，前提是那些结构的定义式在C和C++中都可编译。</p>
+</li>
+</ul>
+<h2 id="让自己习惯于标准C-语言"><a href="#让自己习惯于标准C-语言" class="headerlink" title="让自己习惯于标准C++语言"></a>让自己习惯于标准C++语言</h2><p>　　</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[深度探索C++对象模型总结]]></title>
+      <url>https://byhj.github.io/blog/blog/2015/12/17/C++ObjectModel/</url>
+      <content type="html"><![CDATA[<p>C++对象模型主要解释为：</p>
+<ul>
+<li>语言中直接支持面向对象程序设计的部分</li>
+<li>对于各种支持的底层实现机制</li>
+</ul>
+<h1 id="关于对象"><a href="#关于对象" class="headerlink" title="关于对象"></a>关于对象</h1><p>　　C语言中，数据和处理数据的操作时分开声明，而C++采用抽象数据类型进行操作。在C++加上封装并未带来布局成本，在布局以及存取时间上主要的额外负担是由virtual引起的：</p>
+<ul>
+<li>virtual function 机制：用以支持一个有效率的“执行期绑定”。</li>
+<li>virtual base blass : 用以实现“多次出现在继承体系中的base class, 有一个单一而被共享的实例”。</li>
+<li>多重继承下的一些额外负担。</li>
+</ul>
+<a id="more"></a>
+<h2 id="C-对象模型"><a href="#C-对象模型" class="headerlink" title="C++对象模型"></a>C++对象模型</h2><ul>
+<li>简单对象模型：members本身不放在objects中，object存储指向member的指针。</li>
+<li>表格驱动对象模型：数据与操作分离为两个表格，object存储指向两个表格的指针。</li>
+<li>C++对象模型：每一个class产生一堆指向virtual functions的指针，放在virtual table(vtbl)中，每一个class object安插一个vptr指向相关的virtual table，每一个class关联的type_info objects信息。vptr的设定和重置都由每一个class的constructor, destructor, copy assignment自动完成。</li>
+</ul>
+<h2 id="关键词所带来的差异"><a href="#关键词所带来的差异" class="headerlink" title="关键词所带来的差异"></a>关键词所带来的差异</h2><p>当一个人感觉到比较好的时候，使用struct取代class，注意struct在C++中的逻辑意义和如何正确使用。</p>
+<h2 id="对象的差异"><a href="#对象的差异" class="headerlink" title="对象的差异"></a>对象的差异</h2><p>C++程序设计模型直接支持三种程序设计范式：</p>
+<ul>
+<li>程序模型</li>
+<li>抽象数据类型模型</li>
+<li>面向对象模型<br>纯粹以一种范式编写程序，有助于整体行为的良好稳固。</li>
+</ul>
+<p>C++以下列方式支持多态：</p>
+<ul>
+<li>经由一组隐式的转化操作，例如把derived class指针转化为一个指向其public bass type的指针</li>
+<li>经由virtual function</li>
+<li>经由dynamic_cast和typeid运算符<br>多态的主要用途是经由一个共同的接口来影响类型的封装。</li>
+</ul>
+<p>需要多少内存才能够表示一个class object:</p>
+<ul>
+<li>其nonstatic data members的总和大小</li>
+<li>任何alignment的需要而填补的空间</li>
+<li>为了支持virtual 而由内部产生的任何额外负担</li>
+</ul>
+<hr>
+<h1 id="构造函数语意学"><a href="#构造函数语意学" class="headerlink" title="构造函数语意学"></a>构造函数语意学</h1><h2 id="Default-Constructor的构造操作"><a href="#Default-Constructor的构造操作" class="headerlink" title="Default Constructor的构造操作"></a>Default Constructor的构造操作</h2><p>default constructors在需要的时候被编译器产生出来，但需要注意的是这种需要时编译器方面的而不是程序的需要。一个由于为声明constructor函数而被隐式声明的default constructor将是一个trivial（无用） constructor，在某些情况编译器将会生成nontrivial default constructor.</p>
+<ul>
+<li><p>带有Defulat Constructor 的Member Class Object：<br>　　在constructor真正被调用生成，编译器在包含这样member的constructor中自动扩张，将member的constructor行为先进行<br>运行，其调用顺序根据member objects在class中的声明顺序决定。</p>
+</li>
+<li><p>带有Default Constructor 的Base Class<br>　与上面同理，bass class的constructor先进行调用。</p>
+</li>
+<li><p>带有一个Virtual Function的Class<br>　　class声明或者继承一个virtual Function  /  class派生自一个继承链，其中有一个或多个virtual base classes.<br>一个virtual function table 会被编译器生成，内放virtual function地址。vptr内含vtbl的地址。</p>
+</li>
+<li><p>带有Virtual Base Class 的 Class</p>
+</li>
+</ul>
+<h2 id="Copy-Constructor的构造操作"><a href="#Copy-Constructor的构造操作" class="headerlink" title="Copy Constructor的构造操作"></a>Copy Constructor的构造操作</h2><p>有三种情况使得一个object的内容作为另一个class object的初值：</p>
+<ul>
+<li>对一个object做显示的初始化操作</li>
+<li>当object被当做参数交给某个函数时</li>
+<li>当函数传回一个class object时</li>
+</ul>
+<p>Default Memberwise Initialization:为定义一个explicit copy constructor时，将object使用递归方式拷贝每个成员。</p>
+<p>当class不展现Bitwise Copy Semantics时会合成copy constructor:</p>
+<ul>
+<li>当class内含一个声明有copy constructorh的member object</li>
+<li>继承的base class有一个copy constructor(不论是显示声明还是合成而得)</li>
+<li>当class声明一个多多个virtual functions</li>
+<li>当class派生于继承链，其中有一个或多个virtual base classes</li>
+</ul>
+<h2 id="程序转化语意学"><a href="#程序转化语意学" class="headerlink" title="程序转化语意学"></a>程序转化语意学</h2><h2 id="成员们的初始化队伍"><a href="#成员们的初始化队伍" class="headerlink" title="成员们的初始化队伍"></a>成员们的初始化队伍</h2><ul>
+<li>初始化一个reference member</li>
+<li>初始化一个const member</li>
+<li>调用一个base class的constructor,而他拥有一组参数</li>
+<li>调用一个member class的constructor， 而它有一组参数<br>initialization list的初始化会被以适当的顺序在constructor之内安插初始化操作，并且在任何explicit user code之前。</li>
+</ul>
+<hr>
+<h1 id="Data-语意学"><a href="#Data-语意学" class="headerlink" title="Data 语意学"></a>Data 语意学</h1><ul>
+<li>语言本身所造成的额外负担</li>
+<li>编译器对于特殊情况所提供的优化处理</li>
+<li>Alignment限制</li>
+</ul>
+<h2 id="Data-Member的绑定"><a href="#Data-Member的绑定" class="headerlink" title="Data Member的绑定"></a>Data Member的绑定</h2><p>   一个inline函数实体，在整个class声明未被完全看见之前，是不会被评估求值得。</p>
+<h2 id="Data-Member的布局"><a href="#Data-Member的布局" class="headerlink" title="Data Member的布局"></a>Data Member的布局</h2><p>　　static data merbers不会被放进class的布局中，members的顺序根据编译器而定，较晚出现的members有较高的地址。</p>
+<h2 id="Data-Member的存取"><a href="#Data-Member的存取" class="headerlink" title="Data Member的存取"></a>Data Member的存取</h2><ul>
+<li><p>Static Data Members<br>　　static 成员只有一个实例，通过一个指针和对象存取member结果一样。若取一个static data member的地址会得到一个指向<br>其数据类型的指针。name-mangling对其进行独一性的编码。</p>
+</li>
+<li><p>Nonstatic Data Members<br>　　在成员函数内，data members通过隐式的this指针进行访问，不同data数据的访问是通过对class object地址进行偏移进行访问。<br>Data members的地址在编译期即可获得，当使用继承之类的机制，data members的存取效率会受到影响。</p>
+</li>
+</ul>
+<h2 id="继承与Data-Member"><a href="#继承与Data-Member" class="headerlink" title="继承与Data Member"></a>继承与Data Member</h2><p>　　具体继承并不会增加空间或者存取时间的额外负担。但加上多态机制之后情况就会有所不同，vtbl 和vptr的创建，constructor和destructor对<br>vtbl和vptr的设定和销毁都会带来空间和时间上的负担。<br>　　将vptr放在class object的尾端可以保留base class C struct的对象布局。将vptr放在class object的前端对于在多重继承下，通过指向class<br>members的指针调用virtual function带来一些帮助。</p>
+<h2 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h2><h2 id="虚继承"><a href="#虚继承" class="headerlink" title="虚继承"></a>虚继承</h2><h2 id="对象成员的效率"><a href="#对象成员的效率" class="headerlink" title="对象成员的效率"></a>对象成员的效率</h2><h2 id="指向Data-Members的指针"><a href="#指向Data-Members的指针" class="headerlink" title="指向Data Members的指针"></a>指向Data Members的指针</h2><h2 id="取一个nonstatic-data-member的地址，将会得到它在class中的offset"><a href="#取一个nonstatic-data-member的地址，将会得到它在class中的offset" class="headerlink" title=" 　　取一个nonstatic data member的地址，将会得到它在class中的offset"></a> 　　取一个nonstatic data member的地址，将会得到它在class中的offset</h2><h1 id="Function-语意学"><a href="#Function-语意学" class="headerlink" title="Function 语意学"></a>Function 语意学</h1><h2 id="Member的各种调用方式"><a href="#Member的各种调用方式" class="headerlink" title="Member的各种调用方式"></a>Member的各种调用方式</h2><h3 id="Nonstatic-Member-functions"><a href="#Nonstatic-Member-functions" class="headerlink" title="Nonstatic Member functions"></a>Nonstatic Member functions</h3><ul>
+<li>改写函数的signature以安插一个额外参数（this)到member function以提供存取管道，使得class object得以将此函数调用。</li>
+<li>将每一个“对nonstatic data member”的存取操作改为经由this指针来存取。</li>
+<li>将member function通过mangling重新写成一个独一无二的·外部函数。</li>
+</ul>
+<h3 id="Virtual-Member-functions"><a href="#Virtual-Member-functions" class="headerlink" title="Virtual Member functions"></a>Virtual Member functions</h3><p>  通过虚运行机制进行调用。</p>
+<h3 id="Static-Member-functions"><a href="#Static-Member-functions" class="headerlink" title="Static Member functions"></a>Static Member functions</h3><ul>
+<li>没有this指针</li>
+<li>不能直接存取class中的nonstatic members</li>
+<li>不能够被声明为const, volatile， virtual</li>
+<li>不需要经由class object才被调用</li>
+<li>取一个这样的地址将获得其内存中的地址吗,是一个nonmember函数指针。</li>
+</ul>
+<h2 id="Virtual-Member-functions-1"><a href="#Virtual-Member-functions-1" class="headerlink" title="Virtual Member functions"></a>Virtual Member functions</h2><p>　　多态以一个public base class的指针或引用寻址出一个derived class object。每个多态class object增加两个members<br>一个字符串或数据表示class的类型和一个指向某个表格的指针（vptr),为了找到函数地址，每一个virtual function被指派一个表格<br>索引值。</p>
+<h3 id="多重继承下得Virtual-functions"><a href="#多重继承下得Virtual-functions" class="headerlink" title="多重继承下得Virtual functions"></a>多重继承下得Virtual functions</h3><h2 id="函数的效能"><a href="#函数的效能" class="headerlink" title="函数的效能"></a>函数的效能</h2><h2 id="指向Member-Function的指针"><a href="#指向Member-Function的指针" class="headerlink" title="指向Member Function的指针"></a>指向Member Function的指针</h2><p>　　取一个nonstatic member function的地址得到的时它在内存中真正的地址，这个值不是完全的，需要被绑定到某个class object上才能<br>够通过它调用该函数。</p>
+<h2 id="Inline-Functions"><a href="#Inline-Functions" class="headerlink" title="Inline Functions"></a>Inline Functions</h2><ul>
+<li>分析函数定义</li>
+<li>真正的inline函数扩展操作是在调用的那一点上。</li>
+</ul>
+<hr>
+<h1 id="构造，析构，拷贝语意学"><a href="#构造，析构，拷贝语意学" class="headerlink" title="构造，析构，拷贝语意学"></a>构造，析构，拷贝语意学</h1><p>纯虚函数的存在：可以定义和静态调用一个pure virtual Function, pure virtual function一定需要进行定义，派生类需要进行相关调用。</p>
+<h2 id="“无继承”情况下得对象构造"><a href="#“无继承”情况下得对象构造" class="headerlink" title="“无继承”情况下得对象构造"></a>“无继承”情况下得对象构造</h2><p>Plain OI Data  ：struct<br>抽象数据类型    ：ADT（Class)<br>带virtual function类 ：constructor需要再任何base class construtors调用之后，在任何使用者供应的代码之前进行附加vptr初始化。<br>这个时候，copy constructor和copy assignment operator不再是trivial,同样需要对vptr进行操作。</p>
+<h2 id="继承体系下得对象构造"><a href="#继承体系下得对象构造" class="headerlink" title="继承体系下得对象构造"></a>继承体系下得对象构造</h2><ul>
+<li>虚继承：解决virtual base class的共享性问题</li>
+</ul>
+<h2 id="vptr初始化语意学"><a href="#vptr初始化语意学" class="headerlink" title="vptr初始化语意学"></a>vptr初始化语意学</h2><ul>
+<li>当一个完整的对象被构造起来时</li>
+<li>当一个subobject constructor调用了一个virtual function</li>
+</ul>
+<h2 id="对象复制语意"><a href="#对象复制语意" class="headerlink" title="对象复制语意"></a>对象复制语意</h2><h2 id="对象的效能"><a href="#对象的效能" class="headerlink" title="对象的效能"></a>对象的效能</h2><h2 id="析构语意学"><a href="#析构语意学" class="headerlink" title="析构语意学"></a>析构语意学</h2><ul>
+<li>如果object内含一个vptrm那么首先重设相关的virtual table</li>
+<li>destructor的函数本体现在被执行</li>
+<li>class拥有member class objects,而后者有destructors，那么它们会以声明顺序的相反顺序被调用<br>-</li>
+</ul>
+<hr>
+<h1 id="执行期语意学"><a href="#执行期语意学" class="headerlink" title="执行期语意学"></a>执行期语意学</h1><h2 id="对象的构造和析构"><a href="#对象的构造和析构" class="headerlink" title="对象的构造和析构"></a>对象的构造和析构</h2><p>将object尽可能放置在使用它的那个程序区段附近，这样做可以节省非必要的对象产生操作和摧毁操作。</p>
+<ul>
+<li>全局对象: 需要静态初始化</li>
+<li>局部静态对象: 初始化一次</li>
+<li>对象数组：</li>
+</ul>
+<h2 id="new和delete运算符"><a href="#new和delete运算符" class="headerlink" title="new和delete运算符"></a>new和delete运算符</h2><ul>
+<li>通过设当的new运算符函数实例，配置所需的内存</li>
+<li>将配置得来的对象设立初值</li>
+</ul>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[Effective C++总结]]></title>
       <url>https://byhj.github.io/blog/blog/2015/12/17/EffectiveC++/</url>
-      <content type="html"><![CDATA[<h1 id="让自己习惯C"><a href="#让自己习惯C" class="headerlink" title="让自己习惯C++"></a>让自己习惯C++</h1><h2 id="视C-为一个语言联邦"><a href="#视C-为一个语言联邦" class="headerlink" title="视C++为一个语言联邦　"></a>视C++为一个语言联邦　</h2><p>当今的C++是个多重范型编程语言(过程形式，面向对象形式，函数形式，泛型形式，元编程形式)，<br>我们应该将C++视为由语言组成的联邦而非单一语言,C++主要分为以下四个次语言：</p>
+      <content type="html"><![CDATA[<h1 id="让自己习惯C"><a href="#让自己习惯C" class="headerlink" title="让自己习惯C++"></a>让自己习惯C++</h1><h2 id="视C-为一个语言联邦"><a href="#视C-为一个语言联邦" class="headerlink" title="视C++为一个语言联邦　"></a>视C++为一个语言联邦　</h2><p>当今的C++是个多重范型编程语言(过程形式，面向对象形式，函数形式，泛型形式，元编程形式)，我们应该将C++视为由语言组成的联邦而非单一语言,C++主要分为以下四个次语言：</p>
 <ul>
 <li>C:<br>C++部分继承了C的语法，这个部分没有模板，重载，继承，异常等语法。</li>
 <li>Object-Oriented C++:<br>包含classes(构造析构)， 封装，继承，多态。</li>
 <li>Template C++:<br>泛型编程的基础，带来了所谓的Template metaprogramming(TMP)编程。</li>
 <li>STL:<br>STL是templater程序库，主要包括容器，迭代器，算法部分。</li>
 </ul>
-<p>不同的次语言有着不同的规则，在编写程序时要按照你的情况进行策略的转变。<br> <a id="more"></a></p>
+<p>不同的次语言有着不同的规则，在编写程序时要按照你的情况进行策略的转变。</p>
+ <a id="more"></a>
 <h2 id="尽量以const-enum-inlne替代-define"><a href="#尽量以const-enum-inlne替代-define" class="headerlink" title="尽量以const, enum, inlne替代 #define"></a>尽量以const, enum, inlne替代 #define</h2><hr>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">static_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure>
 <h2 id="尽量以const-enum-inlne替代-define-1"><a href="#尽量以const-enum-inlne替代-define-1" class="headerlink" title="尽量以const, enum, inlne替代 #define"></a>尽量以const, enum, inlne替代 #define</h2><p>　　宁可以编译器替换预处理器，因为#define不被视为语言的一部分，使用#define定义的名称没有进入符号表中，所以在追踪这类信息时会带来困扰。<br>预处理器盲目替换宏名称会带来更多的目标码，我们无法使用#define创建一个class专属常量，也不能提供任何封装性,下面的const提供了这些支持。</p>
@@ -603,291 +839,15 @@
     </entry>
     
     <entry>
-      <title><![CDATA[More Effective C++总结]]></title>
-      <url>https://byhj.github.io/blog/blog/2015/12/17/MoreEffectiveC++/</url>
-      <content type="html"><![CDATA[<h1 id="基础议题"><a href="#基础议题" class="headerlink" title="基础议题"></a>基础议题</h1><h2 id="仔细区别pointers和references"><a href="#仔细区别pointers和references" class="headerlink" title="仔细区别pointers和references"></a>仔细区别pointers和references</h2><p>Pointers和references在某些方面做着同样的事情，但两者还是有所区别：<br>　　没有null reference但是有null pointers，reference总是代表着某个对象，是另一个对象的别名，reference的这一语法特定<br>使得在使用reference之前不需要测试其有效性，在一定程度上提高了效率。在另一方面，pointers可以被重新赋值，指向另一个对象，<br>而reference总是指向（代表）它最初获得的那个对象。在实现某些操作符，例如operator[], 使用reference能够比较自然得到<br>“被当做assignment赋值对象”的功能。</p>
- <a id="more"></a>
-<h2 id="最好使用C-转型操作符"><a href="#最好使用C-转型操作符" class="headerlink" title="最好使用C++转型操作符"></a>最好使用C++转型操作符</h2><p>　　由于旧式C语言的转型几乎可以将任何类型转换为其它类型，而没有给出每次转型更精确的意图，加上旧式转型的小括号方式在程序中可能难以辨识，所以最好才采用C++新的转型类型操作符：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">static_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
-<p>　　这是静态类型转换操作，允许基本类型之间的相互转换，但不能移除表达式的常量性，我们采用下面转换来改变表达式的常量性或易变性，这个操作由编译器执行。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">const_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
-<p>　　但要执行继承体系中“安全的向下转型或跨系转型动作”时，使用下面动态类型转换符。需要注意的是它无法应用在缺乏虚函数的类型身上，也不能改变类型的常量性。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">dynamic_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
-<p>　　最后一种转型操作几乎与编译平台相关，所以它不具备移植性，我们常用它来进行转换“函数指针”类型<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">reinterpret_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
-<p>　　当你的编译平台不能支持新式转型操作时，你可以考虑采用宏去模拟这些语法：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#define static_cast(<span class="name">TYPE</span>, EXPR)       ((<span class="name">TYPE</span>) (<span class="name">EXPR</span>))</span><br><span class="line">#define const_cast(<span class="name">TYPE</span>, EXPR)        ((<span class="name">TYPE</span>) (<span class="name">EXPR</span>))</span><br><span class="line">#define reinterpret_cast(<span class="name">TYPE</span>, EXPR)  ((<span class="name">TYPE</span>) (<span class="name">EXPR</span>))</span><br></pre></td></tr></table></figure></p>
-<h2 id="绝对不要以多态方式处理数组"><a href="#绝对不要以多态方式处理数组" class="headerlink" title="绝对不要以多态方式处理数组"></a>绝对不要以多态方式处理数组</h2><p>　　多态和指针算术不能混用，数组访问时是指针算术表达式。通过base class指针删除一个由derived classes objects构成的数组，，其结果未定义。<br>当以数组形式传递时，编译器对数组对象的理解是声明的部分，而不是你想要的多态效果。</p>
-<h2 id="非必要不提供default-constructor"><a href="#非必要不提供default-constructor" class="headerlink" title="非必要不提供default constructor"></a>非必要不提供default constructor</h2><p>　　default constructor在没有任何外来信息的情况将对象初始化，当现实世界往往需要外来信息进行操作。当你不提供default constructor时,<br>没有方法为数组对象指定constructor自变量，它们同样将不适用于许多template-based container classes.虽然有着这些限制，但是在一般情况下还是<br>不要提供default constructor。</p>
-<hr>
-<h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><h2 id="对定制的“类型转换函数”保持警觉"><a href="#对定制的“类型转换函数”保持警觉" class="headerlink" title="对定制的“类型转换函数”保持警觉"></a>对定制的“类型转换函数”保持警觉</h2><p>　　C++允许编译器在不同类型之间执行隐式转换。类型转换的问题在于，在你从未打算也未预期的情况下，此类函数可能会被调用，而其结果可能是不正确<br>，不直观的程序行为，很难调试。存在着两种函数转换：</p>
-<ul>
-<li><p>隐式类型转换操作符 ：关键词operator后加上一个类型名称<br>　　这类转换我们可以将operator的重载换成显式的转换专有函数，string的c_str()函数就是个很好的例子。</p>
-</li>
-<li><p>单变量constructors函数：会执行隐式的转换为类对象<br>　　使用explicit能够避免这一问题，编译器不能因隐式类型转换的需要调用它们，但是你还是可以通过显式类型的转换。当你无法使用explicit时，可以使用<br>proxy技术，将单一参数转换为一个内部类表示，这样做的话就可以执行原来的构造函数又避免类型转换动作，因为这样的转换需要两次，不合法。</p>
-</li>
-</ul>
-<h2 id="区分increment-decrement操作符的前置和后置形式"><a href="#区分increment-decrement操作符的前置和后置形式" class="headerlink" title="区分increment / decrement操作符的前置和后置形式"></a>区分increment / decrement操作符的前置和后置形式</h2><p>　　通过添加一个int自变量进行后置版本的识别，编译器会为此int指定为0值，前置式返回一个reference，后置式返回返回一个const对象。<br>后置式返回的const能够阻止++++之类的操作，这种操作和内建类型的行为不一致，即使可以这样其行为也不是你预期那样。除此之外，后置<br>版本返回原来的副本也会对效率带来影响。</p>
-<h2 id="千万不要重载-amp-amp-和-，操作符"><a href="#千万不要重载-amp-amp-和-，操作符" class="headerlink" title="千万不要重载 &amp;&amp; || 和 ，操作符"></a>千万不要重载 &amp;&amp; || 和 ，操作符</h2><p>　　重载这些操作符会让程序从短路求值语意向函数调用转变，这两者是不同的。当函数调用动作被执行，所有参数值都必须评估完成。C++语言规范并未<br>明确定义函数调用动作中各参数的评估顺序。对于逗号表达式，从左往右进行评估，最后整个逗号表达式的结果以逗号右侧的值为代表。而当你重载逗号<br>操作符后，不能得到这些保证。</p>
-<h2 id="了解各种不同意义的new和delete"><a href="#了解各种不同意义的new和delete" class="headerlink" title="了解各种不同意义的new和delete"></a>了解各种不同意义的new和delete</h2><p>　　new operator由语言内置，不能被改变意义，总是做相同的事情：</p>
-<ul>
-<li>它分配足够的内存，用来放置某些类型的对象。</li>
-<li>调用一个constructor，为刚才分配的内存中的那个对象设定初值。<br>　　你能够进行改变的时用来容纳对象的那块内存的分配行为，new operator调用某个函数，执行必要的内存分配动作，你可以重写或重载那个函数，改变其行为。<br>这个函数称为operator new.</li>
-</ul>
-<p>‘’’<br>void * operator new(size_t size);</p>
-<p>‘’’<br>返回一个指针，指向一块原始的，未设初值的内存，当你重载这个operator new时，size_t是必须的第一参数。它只负责分配内存，不进行初始化。<br>你可以使用placement new对分配好的原始内存，在上面构建对象。</p>
-<p>　　为了避免资源泄露，每一个动态分配行为都必须匹配一个相应但相反的释放动作，operator delete对于内建的delete operator关系与上面类似。<br>内存释放动作由函数operator delete执行，如果你只打算处理原始的，未设初值的内存，应该使用operator new和operator delete(相当于malloc和free)，<br>而不是new operator和delete operator.<br>　　数组版本的new还是那个new operator但内存以一个名为operator new[]的函数进行分配内存（array new)，delete也是同样的道理。数组版与单一版的<br>new operator所调用的constructor数量不同。</p>
-<hr>
-<h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><h2 id="利用destructors避免内存泄露"><a href="#利用destructors避免内存泄露" class="headerlink" title="利用destructors避免内存泄露"></a>利用destructors避免内存泄露</h2><p>　　以一个对象存放“必须自动释放的资源”并依赖该对象的destructor释放，可以在exceptions出现时避免资源泄露。</p>
-<h2 id="在constructors内阻止资源泄露"><a href="#在constructors内阻止资源泄露" class="headerlink" title="在constructors内阻止资源泄露"></a>在constructors内阻止资源泄露</h2><p>　　exception的发生可能由于operator new无法分配足够内存时，这时控制权被移出constructor之外，而析构函数对已构造完成的对象才进行<br>释放操作。这个时候，我们需要将所有可能的exceptioons捕捉起来，执行某些清理工作，然后从新抛出exception使它继续传播出去。当member initialization\<br>lists时，把try catch放在private member functions内，然后进行处理。</p>
-<h2 id="禁止异常流出destructors之外"><a href="#禁止异常流出destructors之外" class="headerlink" title="禁止异常流出destructors之外"></a>禁止异常流出destructors之外</h2><p>　　destructor在两种情况下会被调用：</p>
-<ul>
-<li>当对象在正常状态下被销毁，也就是当它离开了它的生存空间或是被明确地删除</li>
-<li>当对象在exception处理机制的statck-unwinding(展开)机制-销毁<br>可以避免terminate函数在exception传播过程的stack-unwinding， 可以协助确保destructors完成其应该完成的所有的事情。</li>
-</ul>
-<h2 id="了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异"><a href="#了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异" class="headerlink" title="了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异"></a>了解“抛出一个exception”与”传递一个参数”或“调用一个虚函数”之间的差异</h2><p>　　函数参数和exceptions的传递方式都有三种，by value, vy reference, by pointer。但是你调用一个函数，控制权最终会回到调用端。<br>而当你抛出一个exception,控制权不会再回到抛出端。不论exception是以哪种方式参数传递，都会发生复制行为，catch得到是副本，这个复制行为<br>是由对象的copy constructor执行的，该复制动作永远是以对象的静态类型为本。<br>　　exceptions与catch子句相匹配过程中，仅有两种转换可以发生：</p>
-<ul>
-<li>继承架构中的类转换</li>
-<li>从一个“有型指针”转为”无型指针”</li>
-</ul>
-<h2 id="以by-reference方式捕捉exceptions"><a href="#以by-reference方式捕捉exceptions" class="headerlink" title="以by reference方式捕捉exceptions"></a>以by reference方式捕捉exceptions</h2><p>　　catch by reference可以避免对象删除问题。</p>
-<h2 id="明智运用exception-specifications"><a href="#明智运用exception-specifications" class="headerlink" title="明智运用exception specifications"></a>明智运用exception specifications</h2><h2 id="了解异常处理的成本"><a href="#了解异常处理的成本" class="headerlink" title="了解异常处理的成本"></a>了解异常处理的成本</h2><ul>
-<li>必须付出一些空间，放置某些数据结构（记录着那些对象已被完全构造）</li>
-<li>try语句块</li>
-</ul>
-<hr>
-<h1 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h1><h2 id="谨记80-20法则"><a href="#谨记80-20法则" class="headerlink" title="谨记80-20法则"></a>谨记80-20法则</h2><p>　　软件的整体性能几乎总是有其构成要素的一小部分决定。借助程序分析器查找出瓶颈在哪一部分，然后再进行优化。</p>
-<h2 id="考虑使用lazy-evaluation-缓式评估"><a href="#考虑使用lazy-evaluation-缓式评估" class="headerlink" title="考虑使用lazy evaluation(缓式评估)"></a>考虑使用lazy evaluation(缓式评估)</h2><ul>
-<li>Reference Counting (引用计数) ：在你真正需要之前，不必着急为某物做一个副本，可以采用拖延政策直到需要修改时才提供副本操作。</li>
-<li>区分读和写 ： operator[]的读写区分</li>
-<li>Lazy Fetching（缓式取出）：避免非必要的数据库读取动作</li>
-<li>Lazy Expression Evaluation(表达式缓评估) ：避免不必要的数值计算动作</li>
-</ul>
-<h2 id="分期摊还预期的计算成本。"><a href="#分期摊还预期的计算成本。" class="headerlink" title="分期摊还预期的计算成本。"></a>分期摊还预期的计算成本。</h2><p>   超急评估：令他超前进度地做“要求以外”的更多工作。<br>   如果你预期程序常常会用到某个计算，你可以降低每次计算的平均成本，办法就是设计一份数据结构以便能够极有效率地处理需求。<br>  Catching和prefetching(预先取出)都是其中的案例。<br>  但是较佳往往导致较大的内存成本。</p>
-<h2 id="了解临时对象的来源"><a href="#了解临时对象的来源" class="headerlink" title="了解临时对象的来源"></a>了解临时对象的来源</h2><p>　　C++中真正的临时对象时不可见的，由编译器隐式调用生成。一般而言，函数调用时隐式转换和函数返回对象时会生成这类对象。<br>你可以声明reference-to-const避免这类问题。</p>
-<h2 id="协助完成返回值优化（RVO"><a href="#协助完成返回值优化（RVO" class="headerlink" title="协助完成返回值优化（RVO)"></a>协助完成返回值优化（RVO)</h2><p>　　编译器在返回对象时，可以执行返回值优化。<br>‘’’<br>const TestClass operator+(const TestClass &amp;lhs, const TestClass &amp;rhs) {<br>  return TestClass(lhs.val + rhs.val);<br>}<br>‘’’</p>
-<h2 id="利用重载技术避免隐式类型转换"><a href="#利用重载技术避免隐式类型转换" class="headerlink" title="利用重载技术避免隐式类型转换"></a>利用重载技术避免隐式类型转换</h2><p>　　每个重载操作符必须获得至少一个用户定制的自变量，我们可以通过提供多种参数的重载函数避免临时对象的生成。</p>
-<h2 id="考虑以操作符复合形式取代其独身形式"><a href="#考虑以操作符复合形式取代其独身形式" class="headerlink" title="考虑以操作符复合形式取代其独身形式"></a>考虑以操作符复合形式取代其独身形式</h2><p>　　我们一般使用复合形式来实现operator的单一版本，单一版本需要返回一个新对象，而复合版本则是直接将结果写入<br>其左端自变量，不需要产生一个临时对象来放置返回值。</p>
-<h2 id="考虑使用其他程序库"><a href="#考虑使用其他程序库" class="headerlink" title="考虑使用其他程序库"></a>考虑使用其他程序库</h2><p>　　C++的IO操作比C的慢很多，可以视情况选择合适的程序库。</p>
-<h2 id="了解virtual-functions-multiple-inheritance-virtual-base-class-runtime-type-identification的成本"><a href="#了解virtual-functions-multiple-inheritance-virtual-base-class-runtime-type-identification的成本" class="headerlink" title="了解virtual functions, multiple inheritance, virtual base class, runtime type identification的成本"></a>了解virtual functions, multiple inheritance, virtual base class, runtime type identification的成本</h2><p>　　vtbl和vptr需要额外的内存空间，换页动作由此受到影响。虚函数本身并不构成性能上的瓶颈，真正运行时期成本发生在inlining互动的时候。<br>多重继承往往导致virtual base classes虚拟基类的需要，这可能导致对象内的隐式指针增加。RTTI让我们在运行时期获得objects和classes的<br>相关信息，需要空间存储type_info信息，使用typeud去获得class的对应type_info，type_info放在vtbl中。</p>
-<hr>
-<h1 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h1><h2 id="将constructor-和-non-member-functions虚化"><a href="#将constructor-和-non-member-functions虚化" class="headerlink" title="将constructor 和 non-member functions虚化"></a>将constructor 和 non-member functions虚化</h2><p>　　virtual constructo是某种函数，视其获得的输入，可产生不同类型对象。从磁盘或者磁带读取对象信息经常被用到。</p>
-<p>virtual copy constructor返回一个指针，指向其调用者的一个新副本，通常以clone()命名（Prototypee）。<br>当derived class重新定义其base class的一个虚函数时，不再需要一定得声明与原来相同的返回类型。<br>‘’’<br>class Base {<br>  virtual Base * clone() const = 0;<br>};</p>
-<p>class A : public Base {<br>  virtual A <em> clone() const {<br>    return new A(</em>this);<br>  }<br>};</p>
-<p>class B : public Base {<br>  virtual B <em> clone() const {<br>    return new B(</em>this);<br>  }<br>};</p>
-<p>‘’’</p>
-<p>non-member functions的虚化：写一个虚函数做实际工作，再写一个什么都不做的非虚函数，只负责调用函数。</p>
-<p>‘’’<br>class Base {<br>  virtual ostream &amp; print(ostream &amp;s) const = 0;<br>};</p>
-<p>class A : public Base {<br>  virtual ostream &amp; print(ostream &amp;s) const;<br>};</p>
-<p>class B : public Base {<br>  virtual ostream &amp; print(ostream &amp;s) const;<br>};<br>inline ostream &amp;operator &lt;&lt; (ostream &amp;s, const Base &amp;b) {<br>  return b.print(s);<br>}</p>
-<p>‘’’</p>
-<h2 id="限制某个class所能产生的对象数量"><a href="#限制某个class所能产生的对象数量" class="headerlink" title="限制某个class所能产生的对象数量"></a>限制某个class所能产生的对象数量</h2><ul>
-<li><p>允许零个或一个对象<br>阻止对象生成，只要将constructors声明为private，而利用单例模式static操作则可以生成一个对象。</p>
-</li>
-<li><p>不同的对象构造状态</p>
-</li>
-<li><p>允许对象生生灭灭</p>
-</li>
-<li><p>一个用来计算对象个数的base class</p>
-</li>
-</ul>
-<h2 id="要求或禁止对象产生于heap之中"><a href="#要求或禁止对象产生于heap之中" class="headerlink" title="要求或禁止对象产生于heap之中"></a>要求或禁止对象产生于heap之中</h2><ul>
-<li><p>要求对象产生于heap之中（head-based objects)<br>让destrutor成为private,而constructors为public,导入一个伪destructor函数调用真正的private。</p>
-</li>
-<li><p>判断某个对象是否位于heap中</p>
-</li>
-<li><p>禁止对象产生于heap之中<br>对象被直接实例化，对象被实例化为derived class objects内的base classes成分，对象被内嵌于其他对象之中。</p>
-</li>
-</ul>
-<h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><h2 id="proxy-classes代理类"><a href="#proxy-classes代理类" class="headerlink" title="proxy classes代理类"></a>proxy classes代理类</h2><p>　　用来代表其他对象的对象，称为proxy objects（替身对象）,而用以表现proxy objects者，我们称为proxy classes。</p>
-<hr>
-<h1 id="杂项讨论"><a href="#杂项讨论" class="headerlink" title="杂项讨论"></a>杂项讨论</h1><h2 id="在未来时态下发展程序"><a href="#在未来时态下发展程序" class="headerlink" title="在未来时态下发展程序"></a>在未来时态下发展程序</h2><p>　　好的软件对于变化有良好的适应能力。</p>
-<ul>
-<li>以C++本身(而非只是注释或说明文件)来表现各种规范</li>
-<li>避免”demand-paged”式的虚函数</li>
-<li>为每一个class处理assignment和copy construction动作</li>
-<li>努力让classes的操作符和函数拥有自然的语法和直观的语义</li>
-<li>让classes容易被正确使用，不容易被误用</li>
-<li>努力写出可移植代码</li>
-<li>设计你的代码，使：“系统改变所带来的冲击”得以局部化</li>
-<li>提供完整的classes,即使某些部分目前用不到</li>
-<li>设计你的接口，使有利于共同的操作行为，阻止共同的错误</li>
-<li>尽量使你的代码一般化，除非有不良的巨大后果</li>
-</ul>
-<h2 id="将非尾端类（non-leaf-classes）设计为抽象类"><a href="#将非尾端类（non-leaf-classes）设计为抽象类" class="headerlink" title="将非尾端类（non-leaf classes）设计为抽象类"></a>将非尾端类（non-leaf classes）设计为抽象类</h2><p>　　让原来的继承base类成为子类，添加一个抽象基类，这样做可达到允许同型赋值，部分赋值和异型赋值都被禁止的功能。<br>我们可以将其中的virtual destrutor函数声明为纯虚函数来避免提供一个不适合的纯虚接口，这个纯虚析构函数必须被定义，<br>因为derived classes在析构时会调用base classes的析构函数。<br>　　抽象基类降低了“企图以多态方式对待数组”的机会，让operator=的行为更容易被了解。强迫你明白认知有用之抽象性质的<br>存在。只有在原有的具体类被当做基类使用，才强迫导入一个新的抽象类。<br> 　　当你需要扩展一个程序库而又不能修改代码时，只有少数可行的选择：</p>
-<ul>
-<li>将你的具体类派生自既存的具体类</li>
-<li>试着在程序库的继承体系中找到一个更高层的抽象类</li>
-<li>以“你所希望继承的那个程序库类”来实现自己的新类，将程序库类对象作为新类的member</li>
-<li><p>写一些non-member functions以供应你希望加入class内部去的机能</p>
-<h2 id="如何在同一个程序中结合C-和C"><a href="#如何在同一个程序中结合C-和C" class="headerlink" title="如何在同一个程序中结合C++和C"></a>如何在同一个程序中结合C++和C</h2></li>
-</ul>
-<ul>
-<li>Name Mangling（名称重整）<br>　　Name Mangling是一种程序，通过它C++编译器为程序内的每一个函数编出独一无二的名称，在C中没有重载所以不需要此操作。<br>要抑制Name Mangling需要使用C++的extern “C”的命令，它是一个叙述，说明修饰的部分应该以C语言的方式调用。如果需要同时<br>处理C和C++的使用，可以采用预处理器符号__cplusplus, 这个符号只针对C++才用定义.</li>
-</ul>
-<p>‘’’<br>//如果在C++环境中我们使用C编译方式</p>
-<p>#ifdef __cplusplus<br>extern “C” {</p>
-<p>#endif</p>
-<p>// code</p>
-<p>#ifdef __cplusplus<br>}</p>
-<p>#endif</p>
-<p>‘’’</p>
-<ul>
-<li>Statics的初始化<br>　　stait class对象，全局对象，namespace内的对象以及文件范围内的对象，其constructor总在main以前得到执行。<br>而static initialization产生对象的destructors在main调用后。为了使得main是程序起点，很多编译器在main开始出安插<br>一个函数调用的特殊函数完成static initialization.<br>　　尽量使用C++编写main函数，可以调用的命名mian函数进行实际的操作,这样可以保证static的构造和析构被合理调用。<br>‘’’<br>extern “C”<br>int realMain(int argc, char *argv[]);</li>
-</ul>
-<p>int main(int argc, char *argv[]) {<br>  return realMain(argc, argv);<br>}<br>‘’’</p>
-<ul>
-<li><p>动态分配内存<br>　　C++使用new和delete， C使用malloc和free进行内存分配，char <em>strdup（const char </em>ps)这个函数的内存分配就会<br>根据不同的调用采取不同的内存分配方式，所以尽量避免调用标准程序库外的函数。</p>
-</li>
-<li><p>数据结构的兼容性<br>　　在C和C++之间对数据结构做双向交流，应该是安全的，前提是那些结构的定义式在C和C++中都可编译。</p>
-</li>
-</ul>
-<h2 id="让自己习惯于标准C-语言"><a href="#让自己习惯于标准C-语言" class="headerlink" title="让自己习惯于标准C++语言"></a>让自己习惯于标准C++语言</h2><p>　　</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[深度探索C++对象模型总结]]></title>
-      <url>https://byhj.github.io/blog/blog/2015/12/17/C++ObjectModel/</url>
-      <content type="html"><![CDATA[<p>C++对象模型主要解释为：</p>
-<ul>
-<li>语言中直接支持面向对象程序设计的部分</li>
-<li>对于各种支持的底层实现机制</li>
-</ul>
-<h1 id="关于对象"><a href="#关于对象" class="headerlink" title="关于对象"></a>关于对象</h1><p>　　C语言中，数据和处理数据的操作时分开声明，而C++采用抽象数据类型进行操作。在C++加上封装并未带来<br>布局成本，在布局以及存取时间上主要的额外负担是由virtual引起的：</p>
-<ul>
-<li>virtual function 机制：用以支持一个有效率的“执行期绑定”。</li>
-<li>virtual base blass : 用以实现“多次出现在继承体系中的base class, 有一个单一而被共享的实例”。</li>
-<li>多重继承下的一些额外负担。</li>
-</ul>
-<a id="more"></a>
-<h2 id="C-对象模型"><a href="#C-对象模型" class="headerlink" title="C++对象模型"></a>C++对象模型</h2><ul>
-<li>简单对象模型：members本身不放在objects中，object存储指向member的指针。</li>
-<li>表格驱动对象模型：数据与操作分离为两个表格，object存储指向两个表格的指针。</li>
-<li>C++对象模型：每一个class产生一堆指向virtual functions的指针，放在virtual table(vtbl)中，每一个class<pre><code>object安插一个vptr指向相关的virtual table，每一个class关联的type_info objects信息。
-vptr的设定和重置都由每一个class的constructor, destructor, copy assignment自动完成。
-</code></pre></li>
-</ul>
-<h2 id="关键词所带来的差异"><a href="#关键词所带来的差异" class="headerlink" title="关键词所带来的差异"></a>关键词所带来的差异</h2><p>当一个人感觉到比较好的时候，使用struct取代class，注意struct在C++中的逻辑意义和如何正确使用。</p>
-<h2 id="对象的差异"><a href="#对象的差异" class="headerlink" title="对象的差异"></a>对象的差异</h2><p>C++程序设计模型直接支持三种程序设计范式：</p>
-<ul>
-<li>程序模型</li>
-<li>抽象数据类型模型</li>
-<li>面向对象模型<br>纯粹以一种范式编写程序，有助于整体行为的良好稳固。</li>
-</ul>
-<p>C++以下列方式支持多态：</p>
-<ul>
-<li>经由一组隐式的转化操作，例如把derived class指针转化为一个指向其public bass type的指针</li>
-<li>经由virtual function</li>
-<li>经由dynamic_cast和typeid运算符<br>多态的主要用途是经由一个共同的接口来影响类型的封装。</li>
-</ul>
-<p>需要多少内存才能够表示一个class object:</p>
-<ul>
-<li>其nonstatic data members的总和大小</li>
-<li>任何alignment的需要而填补的空间</li>
-<li>为了支持virtual 而由内部产生的任何额外负担</li>
-</ul>
-<hr>
-<h1 id="构造函数语意学"><a href="#构造函数语意学" class="headerlink" title="构造函数语意学"></a>构造函数语意学</h1><h2 id="Default-Constructor的构造操作"><a href="#Default-Constructor的构造操作" class="headerlink" title="Default Constructor的构造操作"></a>Default Constructor的构造操作</h2><p>default constructors在需要的时候被编译器产生出来，但需要注意的是这种需要时编译器方面的而不是程序的需要。<br>一个由于为声明constructor函数而被隐式声明的default constructor将是一个trivial（无用） constructor，在某些情况<br>编译器将会生成nontrivial default constructor.</p>
-<ul>
-<li><p>带有Defulat Constructor 的Member Class Object：<br>　　在constructor真正被调用生成，编译器在包含这样member的constructor中自动扩张，将member的constructor行为先进行<br>运行，其调用顺序根据member objects在class中的声明顺序决定。</p>
-</li>
-<li><p>带有Default Constructor 的Base Class<br>　与上面同理，bass class的constructor先进行调用。</p>
-</li>
-<li><p>带有一个Virtual Function的Class<br>　　class声明或者继承一个virtual Function  /  class派生自一个继承链，其中有一个或多个virtual base classes.<br>一个virtual function table 会被编译器生成，内放virtual function地址。vptr内含vtbl的地址。</p>
-</li>
-<li><p>带有Virtual Base Class 的 Class</p>
-</li>
-</ul>
-<h2 id="Copy-Constructor的构造操作"><a href="#Copy-Constructor的构造操作" class="headerlink" title="Copy Constructor的构造操作"></a>Copy Constructor的构造操作</h2><p>有三种情况使得一个object的内容作为另一个class object的初值：</p>
-<ul>
-<li>对一个object做显示的初始化操作</li>
-<li>当object被当做参数交给某个函数时</li>
-<li>当函数传回一个class object时</li>
-</ul>
-<p>Default Memberwise Initialization:为定义一个explicit copy constructor时，将object使用递归方式拷贝每个成员。</p>
-<p>当class不展现Bitwise Copy Semantics时会合成copy constructor:</p>
-<ul>
-<li>当class内含一个声明有copy constructorh的member object</li>
-<li>继承的base class有一个copy constructor(不论是显示声明还是合成而得)</li>
-<li>当class声明一个多多个virtual functions</li>
-<li>当class派生于继承链，其中有一个或多个virtual base classes</li>
-</ul>
-<h2 id="程序转化语意学"><a href="#程序转化语意学" class="headerlink" title="程序转化语意学"></a>程序转化语意学</h2><h2 id="成员们的初始化队伍"><a href="#成员们的初始化队伍" class="headerlink" title="成员们的初始化队伍"></a>成员们的初始化队伍</h2><ul>
-<li>初始化一个reference member</li>
-<li>初始化一个const member</li>
-<li>调用一个base class的constructor,而他拥有一组参数</li>
-<li>调用一个member class的constructor， 而它有一组参数<br>initialization list的初始化会被以适当的顺序在constructor之内安插初始化操作，并且在任何explicit user code之前。</li>
-</ul>
-<hr>
-<h1 id="Data-语意学"><a href="#Data-语意学" class="headerlink" title="Data 语意学"></a>Data 语意学</h1><ul>
-<li>语言本身所造成的额外负担</li>
-<li>编译器对于特殊情况所提供的优化处理</li>
-<li>Alignment限制</li>
-</ul>
-<h2 id="Data-Member的绑定"><a href="#Data-Member的绑定" class="headerlink" title="Data Member的绑定"></a>Data Member的绑定</h2><p>   一个inline函数实体，在整个class声明未被完全看见之前，是不会被评估求值得。</p>
-<h2 id="Data-Member的布局"><a href="#Data-Member的布局" class="headerlink" title="Data Member的布局"></a>Data Member的布局</h2><p>　　static data merbers不会被放进class的布局中，members的顺序根据编译器而定，较晚出现的members有较高的地址。</p>
-<h2 id="Data-Member的存取"><a href="#Data-Member的存取" class="headerlink" title="Data Member的存取"></a>Data Member的存取</h2><ul>
-<li><p>Static Data Members<br>　　static 成员只有一个实例，通过一个指针和对象存取member结果一样。若取一个static data member的地址会得到一个指向<br>其数据类型的指针。name-mangling对其进行独一性的编码。</p>
-</li>
-<li><p>Nonstatic Data Members<br>　　在成员函数内，data members通过隐式的this指针进行访问，不同data数据的访问是通过对class object地址进行偏移进行访问。<br>Data members的地址在编译期即可获得，当使用继承之类的机制，data members的存取效率会受到影响。</p>
-</li>
-</ul>
-<h2 id="继承与Data-Member"><a href="#继承与Data-Member" class="headerlink" title="继承与Data Member"></a>继承与Data Member</h2><p>　　具体继承并不会增加空间或者存取时间的额外负担。但加上多态机制之后情况就会有所不同，vtbl 和vptr的创建，constructor和destructor对<br>vtbl和vptr的设定和销毁都会带来空间和时间上的负担。<br>　　将vptr放在class object的尾端可以保留base class C struct的对象布局。将vptr放在class object的前端对于在多重继承下，通过指向class<br>members的指针调用virtual function带来一些帮助。</p>
-<h2 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h2><h2 id="虚继承"><a href="#虚继承" class="headerlink" title="虚继承"></a>虚继承</h2><h2 id="对象成员的效率"><a href="#对象成员的效率" class="headerlink" title="对象成员的效率"></a>对象成员的效率</h2><h2 id="指向Data-Members的指针"><a href="#指向Data-Members的指针" class="headerlink" title="指向Data Members的指针"></a>指向Data Members的指针</h2><h2 id="取一个nonstatic-data-member的地址，将会得到它在class中的offset"><a href="#取一个nonstatic-data-member的地址，将会得到它在class中的offset" class="headerlink" title=" 　　取一个nonstatic data member的地址，将会得到它在class中的offset"></a> 　　取一个nonstatic data member的地址，将会得到它在class中的offset</h2><h1 id="Function-语意学"><a href="#Function-语意学" class="headerlink" title="Function 语意学"></a>Function 语意学</h1><h2 id="Member的各种调用方式"><a href="#Member的各种调用方式" class="headerlink" title="Member的各种调用方式"></a>Member的各种调用方式</h2><h3 id="Nonstatic-Member-functions"><a href="#Nonstatic-Member-functions" class="headerlink" title="Nonstatic Member functions"></a>Nonstatic Member functions</h3><ul>
-<li>改写函数的signature以安插一个额外参数（this)到member function以提供存取管道，使得class object得以将此函数调用。</li>
-<li>将每一个“对nonstatic data member”的存取操作改为经由this指针来存取。</li>
-<li>将member function通过mangling重新写成一个独一无二的·外部函数。</li>
-</ul>
-<h3 id="Virtual-Member-functions"><a href="#Virtual-Member-functions" class="headerlink" title="Virtual Member functions"></a>Virtual Member functions</h3><p>  通过虚运行机制进行调用。</p>
-<h3 id="Static-Member-functions"><a href="#Static-Member-functions" class="headerlink" title="Static Member functions"></a>Static Member functions</h3><ul>
-<li>没有this指针</li>
-<li>不能直接存取class中的nonstatic members</li>
-<li>不能够被声明为const, volatile， virtual</li>
-<li>不需要经由class object才被调用</li>
-<li>取一个这样的地址将获得其内存中的地址吗,是一个nonmember函数指针。</li>
-</ul>
-<h2 id="Virtual-Member-functions-1"><a href="#Virtual-Member-functions-1" class="headerlink" title="Virtual Member functions"></a>Virtual Member functions</h2><p>　　多态以一个public base class的指针或引用寻址出一个derived class object。每个多态class object增加两个members<br>一个字符串或数据表示class的类型和一个指向某个表格的指针（vptr),为了找到函数地址，每一个virtual function被指派一个表格<br>索引值。</p>
-<h3 id="多重继承下得Virtual-functions"><a href="#多重继承下得Virtual-functions" class="headerlink" title="多重继承下得Virtual functions"></a>多重继承下得Virtual functions</h3><h2 id="函数的效能"><a href="#函数的效能" class="headerlink" title="函数的效能"></a>函数的效能</h2><h2 id="指向Member-Function的指针"><a href="#指向Member-Function的指针" class="headerlink" title="指向Member Function的指针"></a>指向Member Function的指针</h2><p>　　取一个nonstatic member function的地址得到的时它在内存中真正的地址，这个值不是完全的，需要被绑定到某个class object上才能<br>够通过它调用该函数。</p>
-<h2 id="Inline-Functions"><a href="#Inline-Functions" class="headerlink" title="Inline Functions"></a>Inline Functions</h2><ul>
-<li>分析函数定义</li>
-<li>真正的inline函数扩展操作是在调用的那一点上。</li>
-</ul>
-<hr>
-<h1 id="构造，析构，拷贝语意学"><a href="#构造，析构，拷贝语意学" class="headerlink" title="构造，析构，拷贝语意学"></a>构造，析构，拷贝语意学</h1><p>纯虚函数的存在：可以定义和静态调用一个pure virtual Function, pure virtual function一定需要进行定义，派生类需要进行相关调用。</p>
-<h2 id="“无继承”情况下得对象构造"><a href="#“无继承”情况下得对象构造" class="headerlink" title="“无继承”情况下得对象构造"></a>“无继承”情况下得对象构造</h2><p>Plain OI Data  ：struct<br>抽象数据类型    ：ADT（Class)<br>带virtual function类 ：constructor需要再任何base class construtors调用之后，在任何使用者供应的代码之前进行附加vptr初始化。<br>这个时候，copy constructor和copy assignment operator不再是trivial,同样需要对vptr进行操作。</p>
-<h2 id="继承体系下得对象构造"><a href="#继承体系下得对象构造" class="headerlink" title="继承体系下得对象构造"></a>继承体系下得对象构造</h2><ul>
-<li>虚继承：解决virtual base class的共享性问题</li>
-</ul>
-<h2 id="vptr初始化语意学"><a href="#vptr初始化语意学" class="headerlink" title="vptr初始化语意学"></a>vptr初始化语意学</h2><ul>
-<li>当一个完整的对象被构造起来时</li>
-<li>当一个subobject constructor调用了一个virtual function</li>
-</ul>
-<h2 id="对象复制语意"><a href="#对象复制语意" class="headerlink" title="对象复制语意"></a>对象复制语意</h2><h2 id="对象的效能"><a href="#对象的效能" class="headerlink" title="对象的效能"></a>对象的效能</h2><h2 id="析构语意学"><a href="#析构语意学" class="headerlink" title="析构语意学"></a>析构语意学</h2><ul>
-<li>如果object内含一个vptrm那么首先重设相关的virtual table</li>
-<li>destructor的函数本体现在被执行</li>
-<li>class拥有member class objects,而后者有destructors，那么它们会以声明顺序的相反顺序被调用<br>-</li>
-</ul>
-<hr>
-<h1 id="执行期语意学"><a href="#执行期语意学" class="headerlink" title="执行期语意学"></a>执行期语意学</h1><h2 id="对象的构造和析构"><a href="#对象的构造和析构" class="headerlink" title="对象的构造和析构"></a>对象的构造和析构</h2><p>将object尽可能放置在使用它的那个程序区段附近，这样做可以节省非必要的对象产生操作和摧毁操作。</p>
-<ul>
-<li>全局对象: 需要静态初始化</li>
-<li>局部静态对象: 初始化一次</li>
-<li>对象数组：</li>
-</ul>
-<h2 id="new和delete运算符"><a href="#new和delete运算符" class="headerlink" title="new和delete运算符"></a>new和delete运算符</h2><ul>
-<li>通过设当的new运算符函数实例，配置所需的内存</li>
-<li>将配置得来的对象设立初值</li>
-</ul>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Cocos2dx-AndroidStudio]]></title>
       <url>https://byhj.github.io/blog/blog/2015/12/16/Cocos2dx-AndroidStudio/</url>
       <content type="html"><![CDATA[<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>   本文主要简单介绍Cocos2dx中怎么使用AndroidStudio开发.</p>
 <h1 id="2-测试环境"><a href="#2-测试环境" class="headerlink" title="2.测试环境"></a>2.测试环境</h1><p>Windows10<br>Cocos2dx3.9<br>AndroidStudio1.3.2</p>
+<h1 id="3-内容"><a href="#3-内容" class="headerlink" title="3.内容"></a>3.内容</h1><p>   Cocos2dx的环境配置安装官网上说的进行，下载所需要的sdk，在Cocos2dx 的build文件夹中用VS2015打开解决方案，编译链接程序。编译成功后使用Cocos控制台命令创建一个HelloWorld工程.</p>
  <a id="more"></a>
-<h1 id="3-内容"><a href="#3-内容" class="headerlink" title="3.内容"></a>3.内容</h1><p>   Cocos2dx的环境配置安装官网上说的进行，下载所需要的sdk，在Cocos2dx 的build文件夹中用VS2015打开解决方案，编译链接程序。<br>    编译成功后使用Cocos控制台命令创建一个HelloWorld工程</p>
-<pre><code>cocos new HellWorld -p com.byhj -l cpp -d D:/Cocos2dX
-</code></pre><p>  在D盘的Cocos2dx文件夹中可以看见新生成的HelloWorld的cocos2dx工程，里面有着多个平台开发的项目选择，一般我们使用VS编写调试工程，最后移植到所需要的平台。<br>     接着就是使用AndroidStudio测试的关键部分，因为AndroidStudio使用gradle构建系统，所以具体NDK的使用跟Eclipse有所区别，而且在AndroisStudio1.3以后，使用gradle-experimental支持NDK开发。在新生成HelloWorld工程根目录打开cmd，输入下面命令：</p>
-<pre><code>cocos run/compile -p android --android-studio      
-</code></pre><p> 这个命令使用NDK将C++文件生成Android平台下的so库文件，通过JNI被Java程序调用，具体细节暂时不用去探究，当NDK编译完成后，使用AndroidStudio导入HelloWorld工程里面的proj.android-studio工程。  编译链接，正常情况下可以使用手机设备或者安卓模拟器看到HelloWorld的测试场景。</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cocos <span class="keyword">new</span> HellWorld -p com.byhj -<span class="keyword">l</span> cpp -<span class="keyword">d</span> <span class="keyword">D</span>:/Cocos2dX</span><br></pre></td></tr></table></figure>
+<p>  在D盘的Cocos2dx文件夹中可以看见新生成的HelloWorld的cocos2dx工程，里面有着多个平台开发的项目选择，一般我们使用VS编写调试工程，最后移植到所需要的平台。接着就是使用AndroidStudio测试的关键部分，因为AndroidStudio使用gradle构建系统，所以具体NDK的使用跟Eclipse有所区别，而且在AndroisStudio1.3以后，使用gradle-experimental支持NDK开发。在新生成HelloWorld工程根目录打开cmd，输入下面命令：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cocos <span class="built_in">run</span>/compile -p android <span class="comment">--android-studio</span></span><br></pre></td></tr></table></figure></p>
+<p> 这个命令使用NDK将C++文件生成Android平台下的so库文件，通过JNI被Java程序调用，具体细节暂时不用去探究，当NDK编译完成后，使用AndroidStudio导入HelloWorld工程里面的proj.android-studio工程。  编译链接，正常情况下可以使用手机设备或者安卓模拟器看到HelloWorld的测试场景。</p>
 ]]></content>
     </entry>
     
@@ -1012,8 +972,8 @@ vptr的设定和重置都由每一个class的constructor, destructor, copy assig
       <title><![CDATA[Direct3D-Pipeline]]></title>
       <url>https://byhj.github.io/blog/blog/2015/09/18/Direct3D-Pipeline/</url>
       <content type="html"><![CDATA[<h1 id="DirectX-Pipeline"><a href="#DirectX-Pipeline" class="headerlink" title="DirectX Pipeline"></a>DirectX Pipeline</h1><hr>
-<a id="more"></a>
 <h2 id="DirectX9"><a href="#DirectX9" class="headerlink" title="DirectX9"></a>DirectX9</h2><p><img src="http://7xlvtd.com1.z0.glb.clouddn.com/15-9-18/61135679.jpg" alt="D3D9"></p>
+<a id="more"></a>
 <hr>
 <h2 id="DirectX10"><a href="#DirectX10" class="headerlink" title="DirectX10"></a>DirectX10</h2><p><img src="http://7xlvtd.com1.z0.glb.clouddn.com/15-9-18/46463470.jpg" alt="D3D10"></p>
 <hr>
@@ -1028,8 +988,8 @@ vptr的设定和重置都由每一个class的constructor, destructor, copy assig
       <title><![CDATA[OpenGL-Rendering Pipeline]]></title>
       <url>https://byhj.github.io/blog/blog/2015/09/17/OpenGL-RenderingPipeline/</url>
       <content type="html"><![CDATA[<p>OpenGL渲染流水线</p>
-<a id="more"></a>
 <p><img src="http://7xlvtd.com1.z0.glb.clouddn.com/OpenGLRenderingPipeline-1.png" alt="RenderingPipeline1"></p>
+<a id="more"></a>
 <p><img src="http://7xlvtd.com1.z0.glb.clouddn.com/15-9-21/27893569.jpg" alt="RenderingPipeline2"></p>
 <p><img src="http://7xlvtd.com1.z0.glb.clouddn.com/15-9-21/29976945.jpg" alt="RenderingPipelineMap"></p>
 <hr>
@@ -1046,11 +1006,11 @@ vptr的设定和重置都由每一个class的constructor, destructor, copy assig
     <entry>
       <title><![CDATA[OpenGL-Objects]]></title>
       <url>https://byhj.github.io/blog/blog/2015/09/17/OpenGL-Objects/</url>
-      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p> 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。<br>　　 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变OpenGL的状态，也可以查询某些状态量，或者使用当前的状态去Rendering。<br>　　 OpenGL有着多种类型的Ojbects, 它们存储着不同的状态，一组状态被封装在一个OpenGL Objects中，我们可以通过函数调用去改变它们。<br>　　 需要注意的是，OpenGL只是制定相应的规范，具体实现是由各个显卡驱动的厂商决定的，但实现也一般都会符合OpenGL制定的规范。</p>
+      <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p> 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变OpenGL的状态，也可以查询某些状态，或者使用当前的状态去Rendering。OpenGL有着多种类型的Ojbects, 它们存储着不同的状态，一组状态被封装在一个OpenGL Objects中，我们可以通过函数调用去改变它们。需要注意的是，OpenGL只是制定相应的规范，具体实现是由各个显卡驱动的厂商决定的，但实现也一般都会符合OpenGL制定的规范。</p>
 <hr>
-<a id="more"></a>
 <h1 id="Creation-amp-Destruction"><a href="#Creation-amp-Destruction" class="headerlink" title="Creation &amp; Destruction"></a>Creation &amp; Destruction</h1><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> glGen*(GLsizei n, GLuint *objects)</span><br></pre></td></tr></table></figure>
-<p> 　　该函数创建n个对象名称(整数值引用)，返回指向这些objects的指针。在这一步，并不需要创建objects的状态数据。对于大多数object来说，在第一次绑定到上下文时，只包含其默认状态。在绑定前使用Objects是非法的。需要注意的是，Program Pipeline Ojbects和 Sampler Objects并不遵循这种运行机制。<br> 　　Object名称类型是GLuint, 它是一个数值型引用，用来识别一个object, 其中数值0在不同的Object中有着特定意义。<br>  （在OpenGL3.0之前，可以完全忽略上述的的分配函数,直接绑定认为合法的Ojbect名称）<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> glDelete*(GLsizei n​, <span class="keyword">const</span> GLuint *objects​);</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p> 　　该函数创建n个对象名称(整数值引用)，返回指向这些objects的指针。在这一步，并不需要创建objects的状态数据。对于大多数object来说，在第一次绑定到上下文时，只包含其默认状态。在绑定前使用Objects是非法的。需要注意的是，Program Pipeline Ojbects和 Sampler Objects并不遵循这种运行机制。Object名称类型是GLuint, 它是一个数值型引用，用来识别一个object, 其中数值0在不同的Object中有着特定意义。（在OpenGL3.0之前，可以完全忽略上述的的分配函数,直接绑定认为合法的Ojbect名称）<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> glDelete*(GLsizei n​, <span class="keyword">const</span> GLuint *objects​);</span><br></pre></td></tr></table></figure></p>
 <p> 　　当我们使用完Objects，可以使用上面函数进行删除。任何非法Object和Object 0会被忽略。Objects被删除后，它们的名字可以通过glGen*重新分配。</p>
 <h2 id="Deletion-unbinding"><a href="#Deletion-unbinding" class="headerlink" title="Deletion unbinding"></a>Deletion unbinding</h2><p>　　当绑定到当前context的object被删除时，会解除所有该object的绑定。<br>（Binding goes to the context; attachment is what you do when one object references another. Attachments are not severed due to this call.）<br>　　当一个object attached到container object，而该object绑定到context，删除会解除attach操作，如果该object没有绑定到context, attach操作不会被破坏。</p>
 <p>Some objects can be bound to the context in unusual ways. These ways include, but are not limited to:</p>
@@ -1090,7 +1050,7 @@ vptr的设定和重置都由每一个class的constructor, destructor, copy assig
 <li>Vertex Array Objects</li>
 </ul>
 <hr>
-<h1 id="Names"><a href="#Names" class="headerlink" title="Names"></a>Names</h1><p>　　正如上面所说，OpenGL Ojbects的名字是一个由系统分配的整数值，这种方式对于用户并不直观，在调试时也有很大的缺陷。在OpenGL 4.3 Core引入了一种为Object作标志的方法。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> glObjectLabel​(<span class="type">GLenum</span> identifier​, <span class="type">GLuint</span> name​, </span><br><span class="line">                   <span class="type">GLsizei</span> length​, <span class="keyword">const</span> <span class="built_in">char</span> * label​);</span><br><span class="line">                   </span><br><span class="line"><span class="built_in">void</span> glObjectPtrLabel​(<span class="built_in">void</span> * <span class="keyword">ptr</span>​, <span class="type">GLsizei</span> length​, <span class="keyword">const</span> <span class="built_in">char</span> * label​);</span><br></pre></td></tr></table></figure></p>
+<h1 id="Names"><a href="#Names" class="headerlink" title="Names"></a>Names</h1><p>　　正如上面所说，OpenGL Ojbects的名字是一个由系统分配的整数值，这种方式对于用户并不直观，在调试时也有很大的缺陷。在OpenGL 4.3 Core引入了一种为Object作标志的方法。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> glObjectLabel​(<span class="type">GLenum</span> identifier​, <span class="type">GLuint</span> name​,</span><br><span class="line">                   <span class="type">GLsizei</span> length​, <span class="keyword">const</span> <span class="built_in">char</span> * label​);</span><br><span class="line"></span><br><span class="line"><span class="built_in">void</span> glObjectPtrLabel​(<span class="built_in">void</span> * <span class="keyword">ptr</span>​, <span class="type">GLsizei</span> length​, <span class="keyword">const</span> <span class="built_in">char</span> * label​);</span><br></pre></td></tr></table></figure></p>
 <p>第一种方法可以为所有的Objects设置Label，第二种为Sync Objects设置Label</p>
 <table>
 <thead>
@@ -1146,7 +1106,7 @@ vptr的设定和重置都由每一个class的constructor, destructor, copy assig
 </tr>
 </tbody>
 </table>
-<p>查询设置Label的Objects<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> glGetObjectLabel​(<span class="type">GLenum</span> identifier​, <span class="type">GLuint</span> name​, <span class="type">GLsizei</span> bufSize​,</span><br><span class="line">                      <span class="type">GLsizei</span> * length​, <span class="built_in">char</span> * label​);</span><br><span class="line"></span><br><span class="line"><span class="built_in">void</span> glGetObjectPtrLabel​(<span class="built_in">void</span> * <span class="keyword">ptr</span>​, <span class="type">GLsizei</span> bufSize​, </span><br><span class="line">                         <span class="type">GLsizei</span> * length​, <span class="built_in">char</span> * label​);</span><br></pre></td></tr></table></figure></p>
+<p>查询设置Label的Objects<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> glGetObjectLabel​(<span class="type">GLenum</span> identifier​, <span class="type">GLuint</span> name​, <span class="type">GLsizei</span> bufSize​,</span><br><span class="line">                      <span class="type">GLsizei</span> * length​, <span class="built_in">char</span> * label​);</span><br><span class="line"></span><br><span class="line"><span class="built_in">void</span> glGetObjectPtrLabel​(<span class="built_in">void</span> * <span class="keyword">ptr</span>​, <span class="type">GLsizei</span> bufSize​,</span><br><span class="line">                         <span class="type">GLsizei</span> * length​, <span class="built_in">char</span> * label​);</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h1 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h1><p>　　The following are “objects”, but they do not follow the standard conventions laid out on this page for OpenGL objects:</p>
 <ul>

@@ -90,7 +90,7 @@
 <meta property="og:url" content="https://byhj.github.io/blog/2015/12/17/MoreEffectiveC++/index.html">
 <meta property="og:site_name" content="byhj zzZ~~~">
 <meta property="og:description" content="基础议题仔细区别pointers和referencesPointers和references在某些方面做着同样的事情，但两者还是有所区别：　　没有null reference但是有null pointers，reference总是代表着某个对象，是另一个对象的别名，reference的这一语法特定使得在使用reference之前不需要测试其有效性，在一定程度上提高了效率。在另一方面，pointer">
-<meta property="og:updated_time" content="2016-05-09T04:13:01.216Z">
+<meta property="og:updated_time" content="2016-05-12T00:51:45.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="More Effective C++总结">
 <meta name="twitter:description" content="基础议题仔细区别pointers和referencesPointers和references在某些方面做着同样的事情，但两者还是有所区别：　　没有null reference但是有null pointers，reference总是代表着某个对象，是另一个对象的别名，reference的这一语法特定使得在使用reference之前不需要测试其有效性，在一定程度上提高了效率。在另一方面，pointer">
@@ -105,8 +105,8 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
-      author: '博主'
+      userId: 6283239007203624000,
+      author: 'Admid~~'
     }
   };
 </script>
@@ -340,9 +340,8 @@
       
 
       
-        <h1 id="基础议题"><a href="#基础议题" class="headerlink" title="基础议题"></a>基础议题</h1><h2 id="仔细区别pointers和references"><a href="#仔细区别pointers和references" class="headerlink" title="仔细区别pointers和references"></a>仔细区别pointers和references</h2><p>Pointers和references在某些方面做着同样的事情，但两者还是有所区别：<br>　　没有null reference但是有null pointers，reference总是代表着某个对象，是另一个对象的别名，reference的这一语法特定<br>使得在使用reference之前不需要测试其有效性，在一定程度上提高了效率。在另一方面，pointers可以被重新赋值，指向另一个对象，<br>而reference总是指向（代表）它最初获得的那个对象。在实现某些操作符，例如operator[], 使用reference能够比较自然得到<br>“被当做assignment赋值对象”的功能。</p>
- <a id="more"></a>
-<h2 id="最好使用C-转型操作符"><a href="#最好使用C-转型操作符" class="headerlink" title="最好使用C++转型操作符"></a>最好使用C++转型操作符</h2><p>　　由于旧式C语言的转型几乎可以将任何类型转换为其它类型，而没有给出每次转型更精确的意图，加上旧式转型的小括号方式在程序中可能难以辨识，所以最好才采用C++新的转型类型操作符：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">static_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
+        <h1 id="基础议题"><a href="#基础议题" class="headerlink" title="基础议题"></a>基础议题</h1><h2 id="仔细区别pointers和references"><a href="#仔细区别pointers和references" class="headerlink" title="仔细区别pointers和references"></a>仔细区别pointers和references</h2><p>Pointers和references在某些方面做着同样的事情，但两者还是有所区别：<br>　　没有null reference但是有null pointers，reference总是代表着某个对象，是另一个对象的别名，reference的这一语法特定使得在使用reference之前不需要测试其有效性，在一定程度上提高了效率。在另一方面，pointers可以被重新赋值，指向另一个对象，而reference总是指向（代表）它最初获得的那个对象。在实现某些操作符，例如operator[], 使用reference能够比较自然得到“被当做assignment赋值对象”的功能。</p>
+<h2 id="最好使用C-转型操作符"><a href="#最好使用C-转型操作符" class="headerlink" title="最好使用C++转型操作符"></a>最好使用C++转型操作符</h2><p>　　由于旧式C语言的转型几乎可以将任何类型转换为其它类型，而没有给出每次转型更精确的意图，加上旧式转型的小括号方式在程序中可能难以辨识，所以最好才采用C++新的转型类型操作符：<br> <a id="more"></a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">static_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
 <p>　　这是静态类型转换操作，允许基本类型之间的相互转换，但不能移除表达式的常量性，我们采用下面转换来改变表达式的常量性或易变性，这个操作由编译器执行。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">const_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
 <p>　　但要执行继承体系中“安全的向下转型或跨系转型动作”时，使用下面动态类型转换符。需要注意的是它无法应用在缺乏虚函数的类型身上，也不能改变类型的常量性。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">dynamic_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
 <p>　　最后一种转型操作几乎与编译平台相关，所以它不具备移植性，我们常用它来进行转换“函数指针”类型<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">reinterpret_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure></p>
@@ -511,8 +510,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2015/12/17/EffectiveC++/" rel="prev" title="Effective C++总结">
-                Effective C++总结 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2015/12/18/Books/" rel="prev" title="Books">
+                Books <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -608,17 +607,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

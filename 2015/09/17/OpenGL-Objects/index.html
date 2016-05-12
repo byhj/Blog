@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="Introduction 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。　　 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变Ope">
+<meta name="description" content="Introduction 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变OpenG">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL-Objects">
 <meta property="og:url" content="https://byhj.github.io/blog/2015/09/17/OpenGL-Objects/index.html">
 <meta property="og:site_name" content="byhj zzZ~~~">
-<meta property="og:description" content="Introduction 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。　　 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变Ope">
-<meta property="og:updated_time" content="2016-05-09T04:13:01.217Z">
+<meta property="og:description" content="Introduction 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变OpenG">
+<meta property="og:updated_time" content="2016-05-12T00:52:18.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL-Objects">
-<meta name="twitter:description" content="Introduction 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。　　 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变Ope">
+<meta name="twitter:description" content="Introduction 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变OpenG">
 
 
 
@@ -105,8 +105,8 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
-      author: '博主'
+      userId: 6283239007203624000,
+      author: 'Admid~~'
     }
   };
 </script>
@@ -340,11 +340,11 @@
       
 
       
-        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p> 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。<br>　　 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变OpenGL的状态，也可以查询某些状态量，或者使用当前的状态去Rendering。<br>　　 OpenGL有着多种类型的Ojbects, 它们存储着不同的状态，一组状态被封装在一个OpenGL Objects中，我们可以通过函数调用去改变它们。<br>　　 需要注意的是，OpenGL只是制定相应的规范，具体实现是由各个显卡驱动的厂商决定的，但实现也一般都会符合OpenGL制定的规范。</p>
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p> 　　在OpenGL中，OpenGL Objects是一种包含着一些状态的结构。当你把OpenGL Objects绑定到上下文环境时，Objects内含的状态就会映射到上下文环境中的状态。在这个时候，如果你通过API函数修改了上下文中的状态，对应OpenGL Ojects内的状态也会被修改。 OpenGL被定义为一种“状态机”，它所提供的多种API函数调用可以改变OpenGL的状态，也可以查询某些状态，或者使用当前的状态去Rendering。OpenGL有着多种类型的Ojbects, 它们存储着不同的状态，一组状态被封装在一个OpenGL Objects中，我们可以通过函数调用去改变它们。需要注意的是，OpenGL只是制定相应的规范，具体实现是由各个显卡驱动的厂商决定的，但实现也一般都会符合OpenGL制定的规范。</p>
 <hr>
-<a id="more"></a>
 <h1 id="Creation-amp-Destruction"><a href="#Creation-amp-Destruction" class="headerlink" title="Creation &amp; Destruction"></a>Creation &amp; Destruction</h1><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> glGen*(GLsizei n, GLuint *objects)</span><br></pre></td></tr></table></figure>
-<p> 　　该函数创建n个对象名称(整数值引用)，返回指向这些objects的指针。在这一步，并不需要创建objects的状态数据。对于大多数object来说，在第一次绑定到上下文时，只包含其默认状态。在绑定前使用Objects是非法的。需要注意的是，Program Pipeline Ojbects和 Sampler Objects并不遵循这种运行机制。<br> 　　Object名称类型是GLuint, 它是一个数值型引用，用来识别一个object, 其中数值0在不同的Object中有着特定意义。<br>  （在OpenGL3.0之前，可以完全忽略上述的的分配函数,直接绑定认为合法的Ojbect名称）<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> glDelete*(GLsizei n​, <span class="keyword">const</span> GLuint *objects​);</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p> 　　该函数创建n个对象名称(整数值引用)，返回指向这些objects的指针。在这一步，并不需要创建objects的状态数据。对于大多数object来说，在第一次绑定到上下文时，只包含其默认状态。在绑定前使用Objects是非法的。需要注意的是，Program Pipeline Ojbects和 Sampler Objects并不遵循这种运行机制。Object名称类型是GLuint, 它是一个数值型引用，用来识别一个object, 其中数值0在不同的Object中有着特定意义。（在OpenGL3.0之前，可以完全忽略上述的的分配函数,直接绑定认为合法的Ojbect名称）<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> glDelete*(GLsizei n​, <span class="keyword">const</span> GLuint *objects​);</span><br></pre></td></tr></table></figure></p>
 <p> 　　当我们使用完Objects，可以使用上面函数进行删除。任何非法Object和Object 0会被忽略。Objects被删除后，它们的名字可以通过glGen*重新分配。</p>
 <h2 id="Deletion-unbinding"><a href="#Deletion-unbinding" class="headerlink" title="Deletion unbinding"></a>Deletion unbinding</h2><p>　　当绑定到当前context的object被删除时，会解除所有该object的绑定。<br>（Binding goes to the context; attachment is what you do when one object references another. Attachments are not severed due to this call.）<br>　　当一个object attached到container object，而该object绑定到context，删除会解除attach操作，如果该object没有绑定到context, attach操作不会被破坏。</p>
 <p>Some objects can be bound to the context in unusual ways. These ways include, but are not limited to:</p>
@@ -384,7 +384,7 @@
 <li>Vertex Array Objects</li>
 </ul>
 <hr>
-<h1 id="Names"><a href="#Names" class="headerlink" title="Names"></a>Names</h1><p>　　正如上面所说，OpenGL Ojbects的名字是一个由系统分配的整数值，这种方式对于用户并不直观，在调试时也有很大的缺陷。在OpenGL 4.3 Core引入了一种为Object作标志的方法。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> glObjectLabel​(<span class="type">GLenum</span> identifier​, <span class="type">GLuint</span> name​, </span><br><span class="line">                   <span class="type">GLsizei</span> length​, <span class="keyword">const</span> <span class="built_in">char</span> * label​);</span><br><span class="line">                   </span><br><span class="line"><span class="built_in">void</span> glObjectPtrLabel​(<span class="built_in">void</span> * <span class="keyword">ptr</span>​, <span class="type">GLsizei</span> length​, <span class="keyword">const</span> <span class="built_in">char</span> * label​);</span><br></pre></td></tr></table></figure></p>
+<h1 id="Names"><a href="#Names" class="headerlink" title="Names"></a>Names</h1><p>　　正如上面所说，OpenGL Ojbects的名字是一个由系统分配的整数值，这种方式对于用户并不直观，在调试时也有很大的缺陷。在OpenGL 4.3 Core引入了一种为Object作标志的方法。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> glObjectLabel​(<span class="type">GLenum</span> identifier​, <span class="type">GLuint</span> name​,</span><br><span class="line">                   <span class="type">GLsizei</span> length​, <span class="keyword">const</span> <span class="built_in">char</span> * label​);</span><br><span class="line"></span><br><span class="line"><span class="built_in">void</span> glObjectPtrLabel​(<span class="built_in">void</span> * <span class="keyword">ptr</span>​, <span class="type">GLsizei</span> length​, <span class="keyword">const</span> <span class="built_in">char</span> * label​);</span><br></pre></td></tr></table></figure></p>
 <p>第一种方法可以为所有的Objects设置Label，第二种为Sync Objects设置Label</p>
 <table>
 <thead>
@@ -440,7 +440,7 @@
 </tr>
 </tbody>
 </table>
-<p>查询设置Label的Objects<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> glGetObjectLabel​(<span class="type">GLenum</span> identifier​, <span class="type">GLuint</span> name​, <span class="type">GLsizei</span> bufSize​,</span><br><span class="line">                      <span class="type">GLsizei</span> * length​, <span class="built_in">char</span> * label​);</span><br><span class="line"></span><br><span class="line"><span class="built_in">void</span> glGetObjectPtrLabel​(<span class="built_in">void</span> * <span class="keyword">ptr</span>​, <span class="type">GLsizei</span> bufSize​, </span><br><span class="line">                         <span class="type">GLsizei</span> * length​, <span class="built_in">char</span> * label​);</span><br></pre></td></tr></table></figure></p>
+<p>查询设置Label的Objects<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> glGetObjectLabel​(<span class="type">GLenum</span> identifier​, <span class="type">GLuint</span> name​, <span class="type">GLsizei</span> bufSize​,</span><br><span class="line">                      <span class="type">GLsizei</span> * length​, <span class="built_in">char</span> * label​);</span><br><span class="line"></span><br><span class="line"><span class="built_in">void</span> glGetObjectPtrLabel​(<span class="built_in">void</span> * <span class="keyword">ptr</span>​, <span class="type">GLsizei</span> bufSize​,</span><br><span class="line">                         <span class="type">GLsizei</span> * length​, <span class="built_in">char</span> * label​);</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h1 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h1><p>　　The following are “objects”, but they do not follow the standard conventions laid out on this page for OpenGL objects:</p>
 <ul>
@@ -584,17 +584,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

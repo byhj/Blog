@@ -98,7 +98,7 @@ Template">
 C:C++部分继承了C的语法，这个部分没有模板，重载，继承，异常等语法。
 Object-Oriented C++:包含classes(构造析构)， 封装，继承，多态。
 Template">
-<meta property="og:updated_time" content="2016-05-09T04:13:01.215Z">
+<meta property="og:updated_time" content="2016-05-12T00:45:16.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Effective C++总结">
 <meta name="twitter:description" content="让自己习惯C++视C++为一个语言联邦　当今的C++是个多重范型编程语言(过程形式，面向对象形式，函数形式，泛型形式，元编程形式)，我们应该将C++视为由语言组成的联邦而非单一语言,C++主要分为以下四个次语言：
@@ -117,8 +117,8 @@ Template">
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
-      author: '博主'
+      userId: 6283239007203624000,
+      author: 'Admid~~'
     }
   };
 </script>
@@ -352,14 +352,15 @@ Template">
       
 
       
-        <h1 id="让自己习惯C"><a href="#让自己习惯C" class="headerlink" title="让自己习惯C++"></a>让自己习惯C++</h1><h2 id="视C-为一个语言联邦"><a href="#视C-为一个语言联邦" class="headerlink" title="视C++为一个语言联邦　"></a>视C++为一个语言联邦　</h2><p>当今的C++是个多重范型编程语言(过程形式，面向对象形式，函数形式，泛型形式，元编程形式)，<br>我们应该将C++视为由语言组成的联邦而非单一语言,C++主要分为以下四个次语言：</p>
+        <h1 id="让自己习惯C"><a href="#让自己习惯C" class="headerlink" title="让自己习惯C++"></a>让自己习惯C++</h1><h2 id="视C-为一个语言联邦"><a href="#视C-为一个语言联邦" class="headerlink" title="视C++为一个语言联邦　"></a>视C++为一个语言联邦　</h2><p>当今的C++是个多重范型编程语言(过程形式，面向对象形式，函数形式，泛型形式，元编程形式)，我们应该将C++视为由语言组成的联邦而非单一语言,C++主要分为以下四个次语言：</p>
 <ul>
 <li>C:<br>C++部分继承了C的语法，这个部分没有模板，重载，继承，异常等语法。</li>
 <li>Object-Oriented C++:<br>包含classes(构造析构)， 封装，继承，多态。</li>
 <li>Template C++:<br>泛型编程的基础，带来了所谓的Template metaprogramming(TMP)编程。</li>
 <li>STL:<br>STL是templater程序库，主要包括容器，迭代器，算法部分。</li>
 </ul>
-<p>不同的次语言有着不同的规则，在编写程序时要按照你的情况进行策略的转变。<br> <a id="more"></a></p>
+<p>不同的次语言有着不同的规则，在编写程序时要按照你的情况进行策略的转变。</p>
+ <a id="more"></a>
 <h2 id="尽量以const-enum-inlne替代-define"><a href="#尽量以const-enum-inlne替代-define" class="headerlink" title="尽量以const, enum, inlne替代 #define"></a>尽量以const, enum, inlne替代 #define</h2><hr>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">static_cast</span>&lt;type&gt;(expression)</span><br></pre></td></tr></table></figure>
 <h2 id="尽量以const-enum-inlne替代-define-1"><a href="#尽量以const-enum-inlne替代-define-1" class="headerlink" title="尽量以const, enum, inlne替代 #define"></a>尽量以const, enum, inlne替代 #define</h2><p>　　宁可以编译器替换预处理器，因为#define不被视为语言的一部分，使用#define定义的名称没有进入符号表中，所以在追踪这类信息时会带来困扰。<br>预处理器盲目替换宏名称会带来更多的目标码，我们无法使用#define创建一个class专属常量，也不能提供任何封装性,下面的const提供了这些支持。</p>
@@ -554,16 +555,16 @@ Template">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2015/12/17/MoreEffectiveC++/" rel="next" title="More Effective C++总结">
-                <i class="fa fa-chevron-left"></i> More Effective C++总结
+              <a href="/blog/2015/12/16/Cocos2dx-AndroidStudio/" rel="next" title="Cocos2dx-AndroidStudio">
+                <i class="fa fa-chevron-left"></i> Cocos2dx-AndroidStudio
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2015/12/17/AgileSoftwareDevelopment/" rel="prev" title="敏捷软件开发：原则 ，模式和实践">
-                敏捷软件开发：原则 ，模式和实践 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2015/12/17/C++ObjectModel/" rel="prev" title="深度探索C++对象模型总结">
+                深度探索C++对象模型总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -659,17 +660,24 @@ Template">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="IntroductionContent安装python, perl, ruby.打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。">
+<meta name="description" content="IntroductionContent安装python, perl, ruby.打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。
+设置：1234567QMAKE_CFLAGS_RELEASE    = -O2 -MD -Zc:strictStringsQMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += -O2 -MD -Zi -Zc:strictString">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QT-static">
 <meta property="og:url" content="https://byhj.github.io/blog/2016/01/22/QT-static/index.html">
 <meta property="og:site_name" content="byhj zzZ~~~">
-<meta property="og:description" content="IntroductionContent安装python, perl, ruby.打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。">
-<meta property="og:updated_time" content="2016-05-09T04:13:01.218Z">
+<meta property="og:description" content="IntroductionContent安装python, perl, ruby.打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。
+设置：1234567QMAKE_CFLAGS_RELEASE    = -O2 -MD -Zc:strictStringsQMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += -O2 -MD -Zi -Zc:strictString">
+<meta property="og:updated_time" content="2016-05-12T00:45:16.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QT-static">
-<meta name="twitter:description" content="IntroductionContent安装python, perl, ruby.打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。">
+<meta name="twitter:description" content="IntroductionContent安装python, perl, ruby.打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。
+设置：1234567QMAKE_CFLAGS_RELEASE    = -O2 -MD -Zc:strictStringsQMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += -O2 -MD -Zi -Zc:strictString">
 
 
 
@@ -105,8 +108,8 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
-      author: '博主'
+      userId: 6283239007203624000,
+      author: 'Admid~~'
     }
   };
 </script>
@@ -340,9 +343,9 @@
       
 
       
-        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>安装python, perl, ruby.<br>打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。</p>
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>安装python, perl, ruby.打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。</p>
+<p>设置：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MD -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MD -Zi -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MDd</span><br><span class="line"><span class="comment">//将以上改为</span></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MT -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MT -Zi -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MTd</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>设置：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MD -Zc:strictStrings</span><br><span class="line"></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MD -Zi -Zc:strictStrings</span><br><span class="line"></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MDd</span><br><span class="line"></span><br><span class="line"><span class="comment">//将以上改为</span></span><br><span class="line"></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MT -Zc:strictStrings</span><br><span class="line"></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MT -Zi -Zc:strictStrings</span><br><span class="line"></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MTd</span><br></pre></td></tr></table></figure></p>
 <p>参数：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configure -confirm-license -opensource -mp -platform win32-msvc2013 -debug-and-<span class="keyword">release</span> -<span class="keyword">static</span> -prefix <span class="string">" C:\Qt\5.5.0-static-vs2013"</span> -qt-<span class="keyword">sql</span>-sqlite -qt-<span class="keyword">sql</span>-odbc -<span class="keyword">plugin</span>-<span class="keyword">sql</span>-sqlite -<span class="keyword">plugin</span>-<span class="keyword">sql</span>-odbc -qt-zlib -qt-libpng -qt-libjpeg -opengl desktop -qt-freetype -<span class="keyword">no</span>-qml-debug -<span class="keyword">no</span>-angle -nomake tests -nomake examples -<span class="keyword">skip</span> qtwebkit</span><br></pre></td></tr></table></figure>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmake</span><br><span class="line">nmake <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
@@ -481,17 +484,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

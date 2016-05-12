@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="Introduction  　　OGRE是一个面向对象的游戏(渲染)引擎，运用了很多常用的设计模式，它的场景管理尤为值得我们学习。  官网上虽然提供了SDK开发包，但是如果要深入研究OGRE的架构，使用源码学习是一个更好的选择。  本文主要介绍编译OGRE1.9源码的过程，其它版本的环境搭配也类似。">
+<meta name="description" content="Introduction  　　OGRE是一个面向对象的游戏(渲染)引擎，运用了很多常用的设计模式，它的场景管理尤为值得我们学习。官网上虽然提供了SDK开发包，但是如果要深入研究OGRE的架构，使用源码学习是一个更好的选择。本文主要介绍编译OGRE1.9源码的过程，其它版本的环境搭配也类似。
+ContentSDK　　关于OGRE1.9 SDK的编译，只要下载官网上的安装包，安装对应版本的VS，下载">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OGRE1.9-环境搭配">
 <meta property="og:url" content="https://byhj.github.io/blog/2015/12/18/OGRE1.9-环境搭配/index.html">
 <meta property="og:site_name" content="byhj zzZ~~~">
-<meta property="og:description" content="Introduction  　　OGRE是一个面向对象的游戏(渲染)引擎，运用了很多常用的设计模式，它的场景管理尤为值得我们学习。  官网上虽然提供了SDK开发包，但是如果要深入研究OGRE的架构，使用源码学习是一个更好的选择。  本文主要介绍编译OGRE1.9源码的过程，其它版本的环境搭配也类似。">
-<meta property="og:updated_time" content="2016-05-09T04:13:01.216Z">
+<meta property="og:description" content="Introduction  　　OGRE是一个面向对象的游戏(渲染)引擎，运用了很多常用的设计模式，它的场景管理尤为值得我们学习。官网上虽然提供了SDK开发包，但是如果要深入研究OGRE的架构，使用源码学习是一个更好的选择。本文主要介绍编译OGRE1.9源码的过程，其它版本的环境搭配也类似。
+ContentSDK　　关于OGRE1.9 SDK的编译，只要下载官网上的安装包，安装对应版本的VS，下载">
+<meta property="og:updated_time" content="2016-05-12T00:51:49.588Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OGRE1.9-环境搭配">
-<meta name="twitter:description" content="Introduction  　　OGRE是一个面向对象的游戏(渲染)引擎，运用了很多常用的设计模式，它的场景管理尤为值得我们学习。  官网上虽然提供了SDK开发包，但是如果要深入研究OGRE的架构，使用源码学习是一个更好的选择。  本文主要介绍编译OGRE1.9源码的过程，其它版本的环境搭配也类似。">
+<meta name="twitter:description" content="Introduction  　　OGRE是一个面向对象的游戏(渲染)引擎，运用了很多常用的设计模式，它的场景管理尤为值得我们学习。官网上虽然提供了SDK开发包，但是如果要深入研究OGRE的架构，使用源码学习是一个更好的选择。本文主要介绍编译OGRE1.9源码的过程，其它版本的环境搭配也类似。
+ContentSDK　　关于OGRE1.9 SDK的编译，只要下载官网上的安装包，安装对应版本的VS，下载">
 
 
 
@@ -105,8 +108,8 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
-      author: '博主'
+      userId: 6283239007203624000,
+      author: 'Admid~~'
     }
   };
 </script>
@@ -340,9 +343,9 @@
       
 
       
-        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>  　　OGRE是一个面向对象的游戏(渲染)引擎，运用了很多常用的设计模式，它的场景管理尤为值得我们学习。<br>  官网上虽然提供了SDK开发包，但是如果要深入研究OGRE的架构，使用源码学习是一个更好的选择。<br>  本文主要介绍编译OGRE1.9源码的过程，其它版本的环境搭配也类似。</p>
-  <a id="more"></a>
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>  　　OGRE是一个面向对象的游戏(渲染)引擎，运用了很多常用的设计模式，它的场景管理尤为值得我们学习。官网上虽然提供了SDK开发包，但是如果要深入研究OGRE的架构，使用源码学习是一个更好的选择。本文主要介绍编译OGRE1.9源码的过程，其它版本的环境搭配也类似。</p>
 <h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><h2 id="SDK"><a href="#SDK" class="headerlink" title="SDK"></a>SDK</h2><p>　　关于OGRE1.9 SDK的编译，只要下载官网上的安装包，安装对应版本的VS，下载安装Cmake。将OGRE1.9SDK安装目录下CMakeLists.txt文件使用Cmake打开，<br>选择你想要IDE(在这个选择你的对应VS版本)，点击Configure，然后Generate，编译生成的工程，就能得到Demo合集的程序。你也可以直接使用根目录下得sln<br>解决方案，用VS打开编译。</p>
+  <a id="more"></a>
 <h2 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h2><p>下载<a href="https://bitbucket.org/sinbad/ogre/downloads" target="_blank" rel="external">OGRE1.9 Source</a><br>在OGRE的bitbucket有着它全部的开发信息，在这里你可以下载到那些正在开发版本。在这里我选择Tags下v1-9-0版本，点击右边的zip下载。<br>下载<a href="https://bitbucket.org/cabalistic/ogredeps/downloads" target="_blank" rel="external">Dependencies</a><br>同样的选择Tags那里进行下载。使用Cmake生成VS工程，编译生成Dependencies工程，将生成好的库文件目录放到Ogre1.9 Source的根目录下。使用Cmake生成OGRE1.9的VS工程，编译运行。</p>
 <h1 id="Website"><a href="#Website" class="headerlink" title="Website"></a>Website</h1><ul>
 <li><a href="http://www.ogre3d.org/tikiwiki/tiki-index.php?page=Building+Ogre" target="_blank" rel="external">Building Ogre</a></li>
@@ -484,17 +487,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -84,16 +84,28 @@
 
 
 
-<meta name="description" content="Creational创建型模式与对象的创建有关">
+<meta name="description" content="Creational创建型模式与对象的创建有关
+Class
+Factory Method定义一个用于创建对象的接口，让子类决定实例化哪一个类，使一个类的实例化推迟到其子类。
+Object
+Abstract Factory提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Design Pattern">
 <meta property="og:url" content="https://byhj.github.io/blog/2015/12/20/DesignPattern/index.html">
 <meta property="og:site_name" content="byhj zzZ~~~">
-<meta property="og:description" content="Creational创建型模式与对象的创建有关">
-<meta property="og:updated_time" content="2016-05-09T04:13:01.214Z">
+<meta property="og:description" content="Creational创建型模式与对象的创建有关
+Class
+Factory Method定义一个用于创建对象的接口，让子类决定实例化哪一个类，使一个类的实例化推迟到其子类。
+Object
+Abstract Factory提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。">
+<meta property="og:updated_time" content="2016-05-12T00:47:38.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Design Pattern">
-<meta name="twitter:description" content="Creational创建型模式与对象的创建有关">
+<meta name="twitter:description" content="Creational创建型模式与对象的创建有关
+Class
+Factory Method定义一个用于创建对象的接口，让子类决定实例化哪一个类，使一个类的实例化推迟到其子类。
+Object
+Abstract Factory提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。">
 
 
 
@@ -105,8 +117,8 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
-      author: '博主'
+      userId: 6283239007203624000,
+      author: 'Admid~~'
     }
   };
 </script>
@@ -340,10 +352,13 @@
       
 
       
-        <h1 id="Creational"><a href="#Creational" class="headerlink" title="Creational"></a>Creational</h1><p>创建型模式与对象的创建有关<br><a id="more"></a></p>
+        <h1 id="Creational"><a href="#Creational" class="headerlink" title="Creational"></a>Creational</h1><p>创建型模式与对象的创建有关</p>
 <p>Class</p>
-<h2 id="Factory-Method"><a href="#Factory-Method" class="headerlink" title="Factory Method"></a>Factory Method</h2><p>定义一个用于创建对象的接口，让子类决定实例化哪一个类，使一个类的实例化推迟到其子类。<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span></span><br><span class="line"><span class="meta">## Abstract Factory</span></span><br><span class="line">提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Builder</span></span><br><span class="line">将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以产生不同的表示。</span><br></pre></td></tr></table></figure>
+<h2 id="Factory-Method"><a href="#Factory-Method" class="headerlink" title="Factory Method"></a>Factory Method</h2><p>定义一个用于创建对象的接口，让子类决定实例化哪一个类，使一个类的实例化推迟到其子类。</p>
+<p>Object</p>
+<h2 id="Abstract-Factory"><a href="#Abstract-Factory" class="headerlink" title="Abstract Factory"></a>Abstract Factory</h2><p>提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。</p>
+<a id="more"></a>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">## Builder</span><br><span class="line">将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以产生不同的表示。</span><br></pre></td></tr></table></figure>
 <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Singleton</span></span><br><span class="line">保证一个类仅有一个实例，并提供一个访问它的全局访问点。</span><br></pre></td></tr></table></figure>
 <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">## Prototype</span></span><br><span class="line">用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。</span><br></pre></td></tr></table></figure>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Structural</span></span><br><span class="line">处理类或对象的组合。</span><br><span class="line"></span><br><span class="line">Class</span><br><span class="line"><span class="comment">## Adapter</span></span><br></pre></td></tr></table></figure>
@@ -414,8 +429,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2015/12/20/OpenGLES-Android/" rel="prev" title="OpenGLES-Android">
-                OpenGLES-Android <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2015/12/20/Direct3D-Math/" rel="prev" title="Direct3D-Math">
+                Direct3D-Math <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -511,17 +526,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -588,7 +610,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Creational"><span class="nav-number">1.</span> <span class="nav-text">Creational</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Factory-Method"><span class="nav-number">1.1.</span> <span class="nav-text">Factory Method</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Behavioral"><span class="nav-number">2.</span> <span class="nav-text">Behavioral</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Template-Method"><span class="nav-number">2.1.</span> <span class="nav-text">Template Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chain-Of-Responsibility"><span class="nav-number">2.2.</span> <span class="nav-text">Chain Of Responsibility</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command"><span class="nav-number">2.3.</span> <span class="nav-text">Command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interpreter"><span class="nav-number">2.4.</span> <span class="nav-text">Interpreter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterator"><span class="nav-number">2.5.</span> <span class="nav-text">Iterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mediator"><span class="nav-number">2.6.</span> <span class="nav-text">Mediator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memento"><span class="nav-number">2.7.</span> <span class="nav-text">Memento</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Observer"><span class="nav-number">2.8.</span> <span class="nav-text">Observer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State"><span class="nav-number">2.9.</span> <span class="nav-text">State</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Strategy"><span class="nav-number">2.10.</span> <span class="nav-text">Strategy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Visitor"><span class="nav-number">2.11.</span> <span class="nav-text">Visitor</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Creational"><span class="nav-number">1.</span> <span class="nav-text">Creational</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Factory-Method"><span class="nav-number">1.1.</span> <span class="nav-text">Factory Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract-Factory"><span class="nav-number">1.2.</span> <span class="nav-text">Abstract Factory</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Behavioral"><span class="nav-number">2.</span> <span class="nav-text">Behavioral</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Template-Method"><span class="nav-number">2.1.</span> <span class="nav-text">Template Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chain-Of-Responsibility"><span class="nav-number">2.2.</span> <span class="nav-text">Chain Of Responsibility</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command"><span class="nav-number">2.3.</span> <span class="nav-text">Command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interpreter"><span class="nav-number">2.4.</span> <span class="nav-text">Interpreter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterator"><span class="nav-number">2.5.</span> <span class="nav-text">Iterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mediator"><span class="nav-number">2.6.</span> <span class="nav-text">Mediator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memento"><span class="nav-number">2.7.</span> <span class="nav-text">Memento</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Observer"><span class="nav-number">2.8.</span> <span class="nav-text">Observer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State"><span class="nav-number">2.9.</span> <span class="nav-text">State</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Strategy"><span class="nav-number">2.10.</span> <span class="nav-text">Strategy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Visitor"><span class="nav-number">2.11.</span> <span class="nav-text">Visitor</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
