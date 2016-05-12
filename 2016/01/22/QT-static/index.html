@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="IntroductionContent安装python, perl, ruby.打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。
-设置：1234567QMAKE_CFLAGS_RELEASE    = -O2 -MD -Zc:strictStringsQMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += -O2 -MD -Zi -Zc:strictString">
+<meta name="description" content="IntroductionContent安装python, perl, ruby. 将这些bin目录设置到path中，打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。打开解压目录-qtbase-mkspecs-win32-msvc2013(选择你的编译器版本)修改qmake.cof文件内的参数设置：1234567QMAKE_CFLAGS_RELEASE    = -O2 -MD -Zc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QT-static">
 <meta property="og:url" content="https://byhj.github.io/blog/2016/01/22/QT-static/index.html">
 <meta property="og:site_name" content="byhj zzZ~~~">
-<meta property="og:description" content="IntroductionContent安装python, perl, ruby.打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。
-设置：1234567QMAKE_CFLAGS_RELEASE    = -O2 -MD -Zc:strictStringsQMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += -O2 -MD -Zi -Zc:strictString">
-<meta property="og:updated_time" content="2016-05-12T00:45:16.658Z">
+<meta property="og:description" content="IntroductionContent安装python, perl, ruby. 将这些bin目录设置到path中，打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。打开解压目录-qtbase-mkspecs-win32-msvc2013(选择你的编译器版本)修改qmake.cof文件内的参数设置：1234567QMAKE_CFLAGS_RELEASE    = -O2 -MD -Zc">
+<meta property="og:updated_time" content="2016-05-12T04:50:58.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QT-static">
-<meta name="twitter:description" content="IntroductionContent安装python, perl, ruby.打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。
-设置：1234567QMAKE_CFLAGS_RELEASE    = -O2 -MD -Zc:strictStringsQMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO += -O2 -MD -Zi -Zc:strictString">
+<meta name="twitter:description" content="IntroductionContent安装python, perl, ruby. 将这些bin目录设置到path中，打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。打开解压目录-qtbase-mkspecs-win32-msvc2013(选择你的编译器版本)修改qmake.cof文件内的参数设置：1234567QMAKE_CFLAGS_RELEASE    = -O2 -MD -Zc">
 
 
 
@@ -343,11 +340,11 @@
       
 
       
-        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>安装python, perl, ruby.打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。</p>
-<p>设置：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MD -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MD -Zi -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MDd</span><br><span class="line"><span class="comment">//将以上改为</span></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MT -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MT -Zi -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MTd</span><br></pre></td></tr></table></figure></p>
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>安装python, perl, ruby. 将这些bin目录设置到path中，打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。<br>打开解压目录-qtbase-mkspecs-win32-msvc2013(选择你的编译器版本)<br>修改qmake.cof文件内的参数设置：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MD -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MD -Zi -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MDd</span><br><span class="line"><span class="comment">//将以上改为</span></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MT -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MT -Zi -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MTd</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>参数：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configure -confirm-license -opensource -mp -platform win32-msvc2013 -debug-and-<span class="keyword">release</span> -<span class="keyword">static</span> -prefix <span class="string">" C:\Qt\5.5.0-static-vs2013"</span> -qt-<span class="keyword">sql</span>-sqlite -qt-<span class="keyword">sql</span>-odbc -<span class="keyword">plugin</span>-<span class="keyword">sql</span>-sqlite -<span class="keyword">plugin</span>-<span class="keyword">sql</span>-odbc -qt-zlib -qt-libpng -qt-libjpeg -opengl desktop -qt-freetype -<span class="keyword">no</span>-qml-debug -<span class="keyword">no</span>-angle -nomake tests -nomake examples -<span class="keyword">skip</span> qtwebkit</span><br></pre></td></tr></table></figure>
+<p>回到解压目录，打开VS开发人员命令窗口 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Developer Command Prompt for VS2013”, 首先执行下面参数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configure -confirm-license -opensource -mp -platform win32-msvc2013 -debug-and-<span class="keyword">release</span> -<span class="keyword">static</span> -prefix <span class="string">" D:\Qt\5.5.0-static-vs2013"</span> -qt-<span class="keyword">sql</span>-sqlite -qt-<span class="keyword">sql</span>-odbc -<span class="keyword">plugin</span>-<span class="keyword">sql</span>-sqlite -<span class="keyword">plugin</span>-<span class="keyword">sql</span>-odbc -qt-zlib -qt-libpng -qt-libjpeg -opengl desktop -qt-freetype -<span class="keyword">no</span>-qml-debug -<span class="keyword">no</span>-angle -nomake tests -nomake examples -<span class="keyword">skip</span> qtwebkit</span><br></pre></td></tr></table></figure>
+<p>接下来执行nmake，等很久会编译完毕，然后nmake install进行安装</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmake</span><br><span class="line">nmake <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
 
       
@@ -484,7 +481,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
