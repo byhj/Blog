@@ -446,11 +446,11 @@ td {
 }
 html,
 body {
-  background-color: #454545;
+  background-color: #96b4a0;
   height: 100%;
 }
 .container {
-  background-color: #454545;
+  background-color: #96b4a0;
   position: relative;
   min-height: 100%;
 }
@@ -1551,7 +1551,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6bffff;
+  background: #08fff5;
 }
 .links-of-blogroll {
   font-size: 13px;
