@@ -286,6 +286,121 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2016/05/13/externC/" itemprop="url">
+                  extern "C"用法解析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-13T16:22:36+08:00" content="2016-05-13">
+              2016-05-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/05/13/externC/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/13/externC/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/05/13/externC/" class="leancloud_visitors" data-flag-title="extern "C"用法解析">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="extern-“C”"><a href="#extern-“C”" class="headerlink" title="extern “C”"></a>extern “C”</h1><p>包含双重含义：首先它修饰的目标是“extern”的；其次被它修饰的目标是“C”的。</p>
+<hr>
+<h1 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h1><p>extern是C/C++语言中表明函数和全局变量作用范围（可见性）的关键字，该关键字告诉编译器，其声明的函数和变量可以在本模块或其它模块中使用。<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> a;</span><br></pre></td></tr></table></figure></p>
+<p>　　上面是一个变量的声明而不是定义，编译器并没有为变量a分配内存空间。extern表示这是一个外部变量，该变量的定义在其它地方(文件)，C++规定变量只能定义一次。在模块的头文件中对本模块提供给其它模块引用的函数和全局变量，通常会以关键字extern修饰。<br>　　例如，如果模块B欲引用该模块A中定义的全局变量和函数时只需包含模块A的头文件即可。这样，模块B中调用模块A中的函数时，在编译阶段，模块B虽然找不到该函数，但是并不会报错；它会在连接阶段中从模块A编译生成的目标代码中找到此函数。与extern对应的关键字是static，被它修饰的全局变量和函数只能在本模块中使用。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/05/13/externC/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2016/05/12/lisense/" itemprop="url">
                   五种开源协议(GPL,LGPL,BSD,MIT,Apache)
                 </a>
@@ -1765,132 +1880,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2015/12/24/EffectiveSTL/" itemprop="url">
-                  Effective STL 总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-24T15:00:23+08:00" content="2015-12-24">
-              2015-12-24
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2015/12/24/EffectiveSTL/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/24/EffectiveSTL/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/blog/2015/12/24/EffectiveSTL/" class="leancloud_visitors" data-flag-title="Effective STL 总结">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><p>　  　对于C++而言，容器是比数组功能更强大更灵活的工具，它可以动态增长或缩减，可以自己管理内存，可以自己记住包含了多少对象，它们还限定了自己所支持的操作的复杂性。对于不同情况我们需要选择不同<br>的容器。</p>
-<h2 id="慎重选择容器类型"><a href="#慎重选择容器类型" class="headerlink" title="慎重选择容器类型"></a>慎重选择容器类型</h2><p>　　C++主要提供了一下几种类型的容器</p>
-<ul>
-<li>标准STL序列容器：vector, string, deque, list</li>
-<li>标准STL管理容器：set,  multiset, map, multimap</li>
-<li>非标准序列容器 ：slist, rope</li>
-<li>非标准关联容器 ：hash_set, hash_multiset, hash_map, hash_multimap</li>
-<li>几种标准的非STL容器：bitset, valarray, stack, queue, priority_queue</li>
-</ul>
-<p>　　在不同情况下我们需要采用不同的容器，一般情况下我们都使用vector容器。我们主要把容器以两种方法进行分类：</p>
-<ul>
-<li>对连续内存容器：把它的元素存放在一块或多块(动态分配)内存中，每块内存中存有多个元素。</li>
-<li>基于节点的容器：容器中元素的插入或删除只影响到指向节点的指针，而不影响节点本身的内容。</li>
-</ul>
-<p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2015/12/24/EffectiveSTL/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1936,7 +1925,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1953,7 +1942,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
