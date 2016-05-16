@@ -286,6 +286,817 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2016/05/11/proxifier-shadowsocks/" itemprop="url">
+                  使用Proxifier使得Shadowsocks本机程序进行代理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-11T21:06:52+08:00" content="2016-05-11">
+              2016-05-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/05/11/proxifier-shadowsocks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/proxifier-shadowsocks/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/05/11/proxifier-shadowsocks/" class="leancloud_visitors" data-flag-title="使用Proxifier使得Shadowsocks本机程序进行代理">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h1><p>Shadowsocks:</p>
+<p>　　shadowsocks一个可穿透防火墙的轻量代理，目前已经支持包括WIN，安卓，IOS等所有平台。Shadowsocks的安装可以参考我的另一篇文章<a href="">使用VPS搭建Shadowsocks代理</a>;<br>Proxifier:</p>
+<p>　　<a href="http://www.proxifier.com/download.htm">Proxifier</a>是一款功能非常强大的socks5客户端，可以让不支持通过代理服务器工作的网络程序能通过HTTPS或SOCKS代理或代理链。支持 64位系统，支持Xp，Vista，Win7，MAC OS ,支持socks4，socks5，http代理协议，支持TCP，UDP协议，可以指定端口，指定IP，指定域名,指定程序等运行模式，兼容性非常好，和SOCKSCAP属于同类软件，不过SOCKSCAP已经很久没更新了，不支持64位系统。 有许多网络应用程序不支持通过代理服务器工作，Proxifier 解决了这些问题和所有限制，让您有机会不受任何限制使用你喜爱的软件。此外，它让你获得了额外的网络安全控制，创建代理隧道，并添加使用更多网络功能的权力。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/05/11/proxifier-shadowsocks/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2016/05/11/linux-shadowsock/" itemprop="url">
+                  使用VPS搭建Shadowsocks实现代理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-11T20:20:59+08:00" content="2016-05-11">
+              2016-05-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/05/11/linux-shadowsock/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/linux-shadowsock/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/05/11/linux-shadowsock/" class="leancloud_visitors" data-flag-title="使用VPS搭建Shadowsocks实现代理">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="VPS注册和安装"><a href="#VPS注册和安装" class="headerlink" title="VPS注册和安装"></a>VPS注册和安装</h1><p>　　Shadowsocks的正常使用需要服务端，其实所有的翻墙方式都需要服务端，搭建服务端需要你拥有一个属于自己的VPS。VPS提供商有很多，个人推荐<a href="https://m.do.co/c/7049364a99a2">DigitalOcean</a>, 注册和安装非常容易，可以绑定国内的银行卡。</p>
+<h1 id="Shadowsocks安装"><a href="#Shadowsocks安装" class="headerlink" title="Shadowsocks安装"></a>Shadowsocks安装</h1><p>首先根据当前系统安装Shadowsocks:</p>
+<p>Debian / Ubuntu:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get <span class="keyword">install</span> python-pip</span><br><span class="line">pip <span class="keyword">install</span> shadowsocks</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/05/11/linux-shadowsock/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2016/05/02/GLSL(Built-in Variable)/" itemprop="url">
+                  GLSL内置变量
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-02T21:11:28+08:00" content="2016-05-02">
+              2016-05-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/05/02/GLSL(Built-in Variable)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/02/GLSL(Built-in Variable)/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/05/02/GLSL(Built-in Variable)/" class="leancloud_visitors" data-flag-title="GLSL内置变量">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>　  GLSL定义了许多内置变量，这些变量一般被用于固定管线的运算，这里主要介绍下各个变量的内容与用法。</p>
+<h1 id="Vertex-shader-inputs"><a href="#Vertex-shader-inputs" class="headerlink" title="Vertex shader inputs"></a>Vertex shader inputs</h1><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_VertexID</span>;</span><br><span class="line"><span class="keyword">in</span> <span class="type">int</span> <span class="built_in">gl_InstanceID</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="gl-VertexID​"><a href="#gl-VertexID​" class="headerlink" title="gl_VertexID​"></a>gl_VertexID​</h2><p>因为Vertex Shader对每个Vertex执行一次，所以gl_VertexID是Vertex Shader当前处理的顶点的索引。</p>
+<p>gl_InstanceID​<br>在执行Instance绘制时，gl_InstanceID是当前实例的索引值，当没有进行Instance绘制时它是默认的0值。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/05/02/GLSL(Built-in Variable)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2016/04/13/Vulkan-Introduction/" itemprop="url">
+                  Vulkan
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-13T10:27:26+08:00" content="2016-04-13">
+              2016-04-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/04/13/Vulkan-Introduction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/Vulkan-Introduction/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/04/13/Vulkan-Introduction/" class="leancloud_visitors" data-flag-title="Vulkan">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Devices-and-Queues"><a href="#Devices-and-Queues" class="headerlink" title="Devices and Queues"></a>Devices and Queues</h1>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/04/13/Vulkan-Introduction/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2016/01/22/QT-static/" itemprop="url">
+                  Qt静态编译-MSVC
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-22T10:26:45+08:00" content="2016-01-22">
+              2016-01-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/01/22/QT-static/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/22/QT-static/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/01/22/QT-static/" class="leancloud_visitors" data-flag-title="Qt静态编译-MSVC">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>安装python, perl, ruby. 将这些bin目录设置到path中，打开对应版本的开发人员命令提示， cd到Qt目录执行环境设置。<br>打开解压目录-qtbase-mkspecs-win32-msvc2013(选择你的编译器版本)<br>修改qmake.cof文件内的参数设置：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MD -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MD -Zi -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MDd</span><br><span class="line"><span class="comment">//将以上改为</span></span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE</span>    = -O2 -MT -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_RELEASE_WITH_DEBUGINFO</span> += -O2 -MT -Zi -Zc:strictStrings</span><br><span class="line">QMAKE_<span class="built_in">CFLAGS_DEBUG</span>      = -Zi -MTd</span><br></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/01/22/QT-static/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2015/12/25/OpenGL-Math/" itemprop="url">
+                  OpenGL-Math
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-25T11:08:14+08:00" content="2015-12-25">
+              2015-12-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/OpenGL/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenGL</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2015/12/25/OpenGL-Math/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/25/OpenGL-Math/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2015/12/25/OpenGL-Math/" class="leancloud_visitors" data-flag-title="OpenGL-Math">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>　　主要介绍怎么使用glm开源项目作为OpenGL程序的Math库.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2015/12/25/OpenGL-Math/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2015/12/25/GLFW3-AntTweakBar/" itemprop="url">
+                  在GLFW3中使用AntTweakBar
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-25T10:27:26+08:00" content="2015-12-25">
+              2015-12-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2015/12/25/GLFW3-AntTweakBar/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/25/GLFW3-AntTweakBar/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2015/12/25/GLFW3-AntTweakBar/" class="leancloud_visitors" data-flag-title="在GLFW3中使用AntTweakBar">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>　　本文主要介绍怎么在GLFW3中使用AntTweakBar吗，旧版本的GLFW使用在AntTweakBar的Example中已经有了，所以在这里不作介绍。注意，程序是在OpenGL-Framework里面介绍的代码为基础的，如果有不了解的地方，请先阅读那一篇教程.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2015/12/25/GLFW3-AntTweakBar/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2015/12/25/OpenGL-GLUT/" itemprop="url">
                   OpenGL-GLUT
                 </a>
@@ -1073,879 +1884,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2015/12/18/Direct3D-Tutorials/" itemprop="url">
-                  DirectX-Tutorials
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-18T12:24:55+08:00" content="2015-12-18">
-              2015-12-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/Direct3D/" itemprop="url" rel="index">
-                    <span itemprop="name">Direct3D</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2015/12/18/Direct3D-Tutorials/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/18/Direct3D-Tutorials/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/blog/2015/12/18/Direct3D-Tutorials/" class="leancloud_visitors" data-flag-title="DirectX-Tutorials">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="DirectX-12"><a href="#DirectX-12" class="headerlink" title="DirectX 12"></a>DirectX 12</h2><ul>
-<li><a href="https://software.intel.com/en-us/articles/tutorial-migrating-your-apps-to-directx-12-part-1">Migrating Your Apps to DirectX 12</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dn903821(v=vs.85">Direct3D 12 Graphics</a>)</li>
-<li><a href="https://digitalerr0r.wordpress.com/2015/08/19/quickstart-directx-12-programming">DirectX 12 Programming #1: A quickstart!</a></li>
-</ul>
-<h2 id="DirectX-10-amp-11"><a href="#DirectX-10-amp-11" class="headerlink" title="DirectX 10&amp;11"></a>DirectX 10&amp;11</h2><ul>
-<li><a href="http://www.rastertek.com/">www.rastertek.com</a>里面框架构建得太复杂，总体来说还是挺好的教程，同时还有Terrain的部分。</li>
-<li><a href="http://www.braynzarsoft.net/">www.braynzarsoft.net</a>程序很多东西塞在一起，导致程序变得很长没有结构感。</li>
-<li><a href="http://www.d3dcoder.net/">www.d3dcoder.net</a>龙书官网</li>
-<li><a href="https://takinginitiative.wordpress.com/directx10-tutorials/">takinginitiative</a></li>
-<li><a href="http://www.3dgep.com/category/graphics-programming/directx/">3D Game Engine Programming</a></li>
-<li><a href="http://richardssoftware.net/Home/DirectX11Tutorials">SlimDX DirectX 11 Tutorials</a></li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2015/12/18/Direct3D-Tutorials/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2015/12/18/Books/" itemprop="url">
-                  Books
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-18T09:51:18+08:00" content="2015-12-18">
-              2015-12-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/Book/" itemprop="url" rel="index">
-                    <span itemprop="name">Book</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2015/12/18/Books/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/18/Books/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/blog/2015/12/18/Books/" class="leancloud_visitors" data-flag-title="Books">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>重返巴比伦          (美)斯科特•菲茨杰拉德<br>人格心理学          (美)Jerry M.Burger<br>当代心理学体系      (美)Noel W.Smith<br>沉思录              (古罗马)马可•奥勒留<br>生命的意志          (德)尼采<br>生存空虚说          (德)叔本华<br>查拉图斯特拉如是说   (德)尼采<br>繁花将尽            (美)劳伦斯•布洛克</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2015/12/18/Books/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2015/12/17/EffectiveC++/" itemprop="url">
-                  Effective C++总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-17T21:11:28+08:00" content="2015-12-17">
-              2015-12-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2015/12/17/EffectiveC++/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/17/EffectiveC++/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/blog/2015/12/17/EffectiveC++/" class="leancloud_visitors" data-flag-title="Effective C++总结">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="让自己习惯C"><a href="#让自己习惯C" class="headerlink" title="让自己习惯C++"></a>让自己习惯C++</h1><h2 id="视C-为一个语言联邦"><a href="#视C-为一个语言联邦" class="headerlink" title="视C++为一个语言联邦　"></a>视C++为一个语言联邦　</h2><p>当今的C++是个多重范型编程语言(过程形式，面向对象形式，函数形式，泛型形式，元编程形式)，我们应该将C++视为由语言组成的联邦而非单一语言,C++主要分为以下四个次语言：</p>
-<ul>
-<li>C:<br>C++部分继承了C的语法，这个部分没有模板，重载，继承，异常等语法。</li>
-<li>Object-Oriented C++:<br>包含classes(构造析构)， 封装，继承，多态。</li>
-<li>Template C++:<br>泛型编程的基础，带来了所谓的Template metaprogramming(TMP)编程。</li>
-<li>STL:<br>STL是templater程序库，主要包括容器，迭代器，算法部分。</li>
-</ul>
-<p>不同的次语言有着不同的规则，在编写程序时要按照你的情况进行策略的转变。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2015/12/17/EffectiveC++/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2015/12/17/C++ObjectModel/" itemprop="url">
-                  深度探索C++对象模型总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-17T21:11:28+08:00" content="2015-12-17">
-              2015-12-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2015/12/17/C++ObjectModel/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/17/C++ObjectModel/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/blog/2015/12/17/C++ObjectModel/" class="leancloud_visitors" data-flag-title="深度探索C++对象模型总结">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>C++对象模型主要解释为：</p>
-<ul>
-<li>语言中直接支持面向对象程序设计的部分</li>
-<li>对于各种支持的底层实现机制</li>
-</ul>
-<h1 id="关于对象"><a href="#关于对象" class="headerlink" title="关于对象"></a>关于对象</h1><p>　　C语言中，数据和处理数据的操作时分开声明，而C++采用抽象数据类型进行操作。在C++加上封装并未带来布局成本，在布局以及存取时间上主要的额外负担是由virtual引起的：</p>
-<ul>
-<li>virtual function 机制：用以支持一个有效率的“执行期绑定”。</li>
-<li>virtual base blass : 用以实现“多次出现在继承体系中的base class, 有一个单一而被共享的实例”。</li>
-<li>多重继承下的一些额外负担。</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2015/12/17/C++ObjectModel/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2015/12/17/MoreEffectiveC++/" itemprop="url">
-                  More Effective C++总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-17T21:11:28+08:00" content="2015-12-17">
-              2015-12-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2015/12/17/MoreEffectiveC++/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/17/MoreEffectiveC++/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/blog/2015/12/17/MoreEffectiveC++/" class="leancloud_visitors" data-flag-title="More Effective C++总结">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="基础议题"><a href="#基础议题" class="headerlink" title="基础议题"></a>基础议题</h1><h2 id="仔细区别pointers和references"><a href="#仔细区别pointers和references" class="headerlink" title="仔细区别pointers和references"></a>仔细区别pointers和references</h2><p>Pointers和references在某些方面做着同样的事情，但两者还是有所区别：<br>　　没有null reference但是有null pointers，reference总是代表着某个对象，是另一个对象的别名，reference的这一语法特定使得在使用reference之前不需要测试其有效性，在一定程度上提高了效率。在另一方面，pointers可以被重新赋值，指向另一个对象，而reference总是指向（代表）它最初获得的那个对象。在实现某些操作符，例如operator[], 使用reference能够比较自然得到“被当做assignment赋值对象”的功能。</p>
-<h2 id="最好使用C-转型操作符"><a href="#最好使用C-转型操作符" class="headerlink" title="最好使用C++转型操作符"></a>最好使用C++转型操作符</h2><p>　　由于旧式C语言的转型几乎可以将任何类型转换为其它类型，而没有给出每次转型更精确的意图，加上旧式转型的小括号方式在程序中可能难以辨识，所以最好才采用C++新的转型类型操作符：<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2015/12/17/MoreEffectiveC++/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2015/12/16/Cocos2dx-AndroidStudio/" itemprop="url">
-                  Cocos2dx-AndroidStudio
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-16T21:26:37+08:00" content="2015-12-16">
-              2015-12-16
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2015/12/16/Cocos2dx-AndroidStudio/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/16/Cocos2dx-AndroidStudio/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/blog/2015/12/16/Cocos2dx-AndroidStudio/" class="leancloud_visitors" data-flag-title="Cocos2dx-AndroidStudio">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>   本文主要简单介绍Cocos2dx中怎么使用AndroidStudio开发.</p>
-<h1 id="2-测试环境"><a href="#2-测试环境" class="headerlink" title="2.测试环境"></a>2.测试环境</h1><p>Windows10<br>Cocos2dx3.9<br>AndroidStudio1.3.2</p>
-<h1 id="3-内容"><a href="#3-内容" class="headerlink" title="3.内容"></a>3.内容</h1><p>   Cocos2dx的环境配置安装官网上说的进行，下载所需要的sdk，在Cocos2dx 的build文件夹中用VS2015打开解决方案，编译链接程序。编译成功后使用Cocos控制台命令创建一个HelloWorld工程.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2015/12/16/Cocos2dx-AndroidStudio/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2015/10/06/Movie/" itemprop="url">
-                  Movie
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-06T11:20:32+08:00" content="2015-10-06">
-              2015-10-06
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2015/10/06/Movie/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/06/Movie/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/blog/2015/10/06/Movie/" class="leancloud_visitors" data-flag-title="Movie">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Movie"><a href="#Movie" class="headerlink" title="Movie"></a>Movie</h1><h2 id="Science-Fiction"><a href="#Science-Fiction" class="headerlink" title="Science Fiction"></a>Science Fiction</h2><p>黑客帝国<br>大鱼<br>盗梦空间<br> 深空失忆<br> 忍者神龟<br> 星际穿越<br> 第九区</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2015/10/06/Movie/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1991,7 +1929,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2008,7 +1946,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
