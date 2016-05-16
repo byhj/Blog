@@ -68,7 +68,7 @@
 <link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="DirectX,D3D," />
+  <meta name="keywords" content="Windows,Ubuntu," />
 
 
 
@@ -84,37 +84,40 @@
 
 
 
-<meta name="description" content="WebDirectX 12
-Migrating Your Apps to DirectX 12
-Direct3D 12 Graphics)
-DirectX 12 Programming #1: A quickstart!
+<meta name="description" content="主要流程
+对已安装Windows进行磁盘压缩
+下载Ubuntu 16.04镜像软件，制作U盘启动盘使用ultraISO
+安装Ubuntu系统
+用EasyBCD 创建启动系统启动引导
 
-DirectX 10&amp;amp;11
-www.rastertek.com里面框架构建得太复杂，总体来说还是挺好的教程，同时还有Terrain的部分。
-www.braynzarso">
+Windows磁盘压缩　　这里默认安装了Windows10系统，由于我的Windows10安装在SSD，那么Ubuntu引导/boot也需要安装在SSD比较好。当然你可以选择安装在HHD,不过后面引导的部分可能很麻烦">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DirectX-Tutorials">
-<meta property="og:url" content="https://byhj.github.io/blog/2015/12/18/Direct3D-Tutorials/index.html">
+<meta property="og:title" content="SDD+HHD Win10+Ubuntu 16.04双硬盘双系统U盘安装">
+<meta property="og:url" content="https://byhj.github.io/blog/2016/05/16/ubuntu-win/index.html">
 <meta property="og:site_name" content="byhj zzZ~~~">
-<meta property="og:description" content="WebDirectX 12
-Migrating Your Apps to DirectX 12
-Direct3D 12 Graphics)
-DirectX 12 Programming #1: A quickstart!
+<meta property="og:description" content="主要流程
+对已安装Windows进行磁盘压缩
+下载Ubuntu 16.04镜像软件，制作U盘启动盘使用ultraISO
+安装Ubuntu系统
+用EasyBCD 创建启动系统启动引导
 
-DirectX 10&amp;amp;11
-www.rastertek.com里面框架构建得太复杂，总体来说还是挺好的教程，同时还有Terrain的部分。
-www.braynzarso">
-<meta property="og:updated_time" content="2016-05-12T00:45:16.643Z">
+Windows磁盘压缩　　这里默认安装了Windows10系统，由于我的Windows10安装在SSD，那么Ubuntu引导/boot也需要安装在SSD比较好。当然你可以选择安装在HHD,不过后面引导的部分可能很麻烦">
+<meta property="og:image" content="http://7xtwmz.com1.z0.glb.clouddn.com/win-1.png">
+<meta property="og:image" content="http://7xtwmz.com1.z0.glb.clouddn.com/ubuntu-1.png">
+<meta property="og:image" content="http://7xtwmz.com1.z0.glb.clouddn.com/ubuntu-2.png">
+<meta property="og:image" content="http://7xtwmz.com1.z0.glb.clouddn.com/ubuntu-3.png">
+<meta property="og:image" content="http://7xtwmz.com1.z0.glb.clouddn.com/win-u.png">
+<meta property="og:updated_time" content="2016-05-16T02:06:20.327Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DirectX-Tutorials">
-<meta name="twitter:description" content="WebDirectX 12
-Migrating Your Apps to DirectX 12
-Direct3D 12 Graphics)
-DirectX 12 Programming #1: A quickstart!
+<meta name="twitter:title" content="SDD+HHD Win10+Ubuntu 16.04双硬盘双系统U盘安装">
+<meta name="twitter:description" content="主要流程
+对已安装Windows进行磁盘压缩
+下载Ubuntu 16.04镜像软件，制作U盘启动盘使用ultraISO
+安装Ubuntu系统
+用EasyBCD 创建启动系统启动引导
 
-DirectX 10&amp;amp;11
-www.rastertek.com里面框架构建得太复杂，总体来说还是挺好的教程，同时还有Terrain的部分。
-www.braynzarso">
+Windows磁盘压缩　　这里默认安装了Windows10系统，由于我的Windows10安装在SSD，那么Ubuntu引导/boot也需要安装在SSD比较好。当然你可以选择安装在HHD,不过后面引导的部分可能很麻烦">
+<meta name="twitter:image" content="http://7xtwmz.com1.z0.glb.clouddn.com/win-1.png">
 
 
 
@@ -132,7 +135,7 @@ www.braynzarso">
   };
 </script>
 
-  <title> DirectX-Tutorials | byhj zzZ~~~ </title>
+  <title> SDD+HHD Win10+Ubuntu 16.04双硬盘双系统U盘安装 | byhj zzZ~~~ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -305,7 +308,7 @@ www.braynzarso">
             
             
               
-                DirectX-Tutorials
+                SDD+HHD Win10+Ubuntu 16.04双硬盘双系统U盘安装
               
             
           </h1>
@@ -317,38 +320,19 @@ www.braynzarso">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-18T12:24:55+08:00" content="2015-12-18">
-              2015-12-18
+            <time itemprop="dateCreated" datetime="2016-05-16T09:18:08+08:00" content="2016-05-16">
+              2016-05-16
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/Direct3D/" itemprop="url" rel="index">
-                    <span itemprop="name">Direct3D</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/2015/12/18/Direct3D-Tutorials/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/18/Direct3D-Tutorials/" itemprop="commentsCount"></span>
+                <a href="/blog/2016/05/16/ubuntu-win/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/16/ubuntu-win/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -358,7 +342,7 @@ www.braynzarso">
 
           
           
-             <span id="/blog/2015/12/18/Direct3D-Tutorials/" class="leancloud_visitors" data-flag-title="DirectX-Tutorials">
+             <span id="/blog/2016/05/16/ubuntu-win/" class="leancloud_visitors" data-flag-title="SDD+HHD Win10+Ubuntu 16.04双硬盘双系统U盘安装">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -380,54 +364,29 @@ www.braynzarso">
       
 
       
-        <h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="DirectX-12"><a href="#DirectX-12" class="headerlink" title="DirectX 12"></a>DirectX 12</h2><ul>
-<li><a href="https://software.intel.com/en-us/articles/tutorial-migrating-your-apps-to-directx-12-part-1" target="_blank" rel="external">Migrating Your Apps to DirectX 12</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dn903821(v=vs.85" target="_blank" rel="external">Direct3D 12 Graphics</a>)</li>
-<li><a href="https://digitalerr0r.wordpress.com/2015/08/19/quickstart-directx-12-programming" target="_blank" rel="external">DirectX 12 Programming #1: A quickstart!</a></li>
-</ul>
-<h2 id="DirectX-10-amp-11"><a href="#DirectX-10-amp-11" class="headerlink" title="DirectX 10&amp;11"></a>DirectX 10&amp;11</h2><ul>
-<li><a href="http://www.rastertek.com/" target="_blank" rel="external">www.rastertek.com</a>里面框架构建得太复杂，总体来说还是挺好的教程，同时还有Terrain的部分。</li>
-<li><a href="http://www.braynzarsoft.net/" target="_blank" rel="external">www.braynzarsoft.net</a>程序很多东西塞在一起，导致程序变得很长没有结构感。</li>
-<li><a href="http://www.d3dcoder.net/" target="_blank" rel="external">www.d3dcoder.net</a>龙书官网</li>
-<li><a href="https://takinginitiative.wordpress.com/directx10-tutorials/" target="_blank" rel="external">takinginitiative</a></li>
-<li><a href="http://www.3dgep.com/category/graphics-programming/directx/" target="_blank" rel="external">3D Game Engine Programming</a></li>
-<li><a href="http://richardssoftware.net/Home/DirectX11Tutorials" target="_blank" rel="external">SlimDX DirectX 11 Tutorials</a></li>
-</ul>
+        <h1 id="主要流程"><a href="#主要流程" class="headerlink" title="主要流程"></a>主要流程</h1><ol>
+<li>对已安装Windows进行磁盘压缩</li>
+<li>下载Ubuntu 16.04镜像软件，制作U盘启动盘使用ultraISO</li>
+<li>安装Ubuntu系统</li>
+<li>用EasyBCD 创建启动系统启动引导</li>
+</ol>
+<h1 id="Windows磁盘压缩"><a href="#Windows磁盘压缩" class="headerlink" title="Windows磁盘压缩"></a>Windows磁盘压缩</h1><p>　　这里默认安装了Windows10系统，由于我的Windows10安装在SSD，那么Ubuntu引导/boot也需要安装在SSD比较好。当然你可以选择安装在HHD,不过后面引导的部分可能很麻烦。右键：此电脑-管理-磁盘管理， 对SDD右键压缩卷，压缩出几百M进行Ubuntu的/boot安装，在HHD压缩出50G进行Ubuntu其它的挂载，可以根据你的情况划分多点。</p>
 <a id="more"></a>
-<ul>
-<li><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ee663274(v=vs.85" target="_blank" rel="external">DirectX Graphics and Gaming</a>) Microsoft的DirectX说明文档,旧版本DiectX11.0和之前版本的文档是随着DirectX SDK安装到本地的。</li>
-<li><a href="http://blogs.msdn.com/b/directx/" target="_blank" rel="external">DirectX Developer Blog</a>DirectX官方博客</li>
-</ul>
-<h2 id="DirectX-9"><a href="#DirectX-9" class="headerlink" title="DirectX 9"></a>DirectX 9</h2><p>DirectX9主要看了龙书，没怎么了解其它网站的教程,分享一下我收藏的几个网站教程</p>
-<ul>
-<li><a href="http://www.chadvernon.com/blog/resources/directx9/" target="_blank" rel="external">www.chadvernon.com</a></li>
-<li><a href="http://www.drunkenhyena.com/cgi-bin/directx.pl" target="_blank" rel="external">www.drunkenhyena.com</a></li>
-<li><a href="http://www.riemers.net/eng/Tutorials/DirectX/Csharp/series3.php" target="_blank" rel="external">www.riemers.net</a></li>
-<li><a href="http://directxworld.altervista.org/index.php?link=graphic_lessons" target="_blank" rel="external">directxworld.altervista.org</a></li>
-</ul>
-<h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><p>在Windows 8.x中, DirectX SDK不在以单独的安装包提供，而是包含在Windows SDK里面。它不在支持旧版本的d3dx功能，下面这个文章可以帮助你进行过渡。</p>
-<ul>
-<li><a href="http://blogs.msdn.com/b/chuckw/archive/2013/08/21/living-without-d3dx.aspx" target="_blank" rel="external">Live Without D3DX</a></li>
-<li><a href="http://blogs.msdn.com/b/chuckw/archive/2013/09/20/directx-sdk-samples-catalog.aspx" target="_blank" rel="external">DirectX SDK Samples Catalog</a></li>
-<li><a href="http://blogs.msdn.com/b/chuckw/archive/2013/07/01/where-is-the-directx-sdk-2013-edition.aspx" target="_blank" rel="external">Where is the DirectX SDK (2013 Edition)?</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ee415571(v=vs.85" target="_blank" rel="external">DirectXMath Programming Guide</a> )</li>
-<li>【】 <a href="https://msdn.microsoft.com/library/windows/apps/hh452744" target="_blank" rel="external">https://msdn.microsoft.com/library/windows/apps/hh452744</a></li>
-</ul>
-<hr>
-<h1 id="Book"><a href="#Book" class="headerlink" title="Book"></a>Book</h1><ul>
-<li>Introduction to 3D Game Programming with DirectX 9.0</li>
-<li>Introduction to 3D Game Programming with DirectX 9.0c: A Shader Approach</li>
-<li>Introduction to 3D Game Programming with Direct3D 10.0</li>
-<li>Introduction to 3D Game Programming with Direct3D 11.0</li>
-</ul>
-<hr>
-<h1 id="Tool"><a href="#Tool" class="headerlink" title="Tool"></a>Tool</h1><ul>
-<li><a href="https://channel9.msdn.com/Series/ConnectOn-Demand/212" target="_blank" rel="external">DirectX Tools for Windows 10 in Visual Studio 2015</a></li>
-<li><a href="http://blogs.msdn.com/b/chuckw/archive/2014/10/28/directx-sdk-tools-catalog.aspx" target="_blank" rel="external">DirectX SDK Tools Catalog</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/library/hh315751.aspx" target="_blank" rel="external">Visual Studio Graphics Diagnostics</a></li>
-</ul>
-<hr>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><hr>
+<p><img width="80%" src="http://7xtwmz.com1.z0.glb.clouddn.com/win-1.png"></p>
+<h1 id="制作Ubuntu的U盘启动"><a href="#制作Ubuntu的U盘启动" class="headerlink" title="制作Ubuntu的U盘启动"></a>制作Ubuntu的U盘启动</h1><p>到官网免费下载<a href="http://www.ubuntu.com/download/desktop" target="_blank" rel="external">Ubuntu16.04</a>,使用UltraISO进行制作U盘启动。</p>
+<p><img width="80%" src="http://7xtwmz.com1.z0.glb.clouddn.com/ubuntu-1.png"></p>
+<p><img width="80%" src="http://7xtwmz.com1.z0.glb.clouddn.com/ubuntu-2.png"></p>
+<p><img width="80%" src="http://7xtwmz.com1.z0.glb.clouddn.com/ubuntu-3.png"></p>
+<h1 id="安装Ubuntu系统"><a href="#安装Ubuntu系统" class="headerlink" title="安装Ubuntu系统"></a>安装Ubuntu系统</h1><p>　　重启按F2（不同机子不同）到BIOS设置Boot启动为U盘，按照安装步骤进行，分区选“其他选项”,进行下面的分区设置：</p>
+<ol>
+<li>逻辑分区，500M，起始，Ext4日志文件系统，/boot (引导分区挂载到你的SSD压缩出来的空间)</li>
+<li>逻辑分区，5000M，起始，交换空间，无挂载点；（交换分区swap，一般不大于物理内存）</li>
+<li>逻辑分区，15000M，起始，Ext4日志文件系统，/；（系统分区)</li>
+<li>逻辑分区，剩余空间数，起始，Ext4日志文件系统，/home；（home分区存放个人文档）</li>
+</ol>
+<h1 id="用EasyBCD创建启动系统启动引导"><a href="#用EasyBCD创建启动系统启动引导" class="headerlink" title="用EasyBCD创建启动系统启动引导"></a>用EasyBCD创建启动系统启动引导</h1><p><img width="80%" src="http://7xtwmz.com1.z0.glb.clouddn.com/win-u.png"><br>重启之后就可以看到Windows10和Ubuntu的启动选择项了。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://blog.csdn.net/coderjyf/article/details/51241919" target="_blank" rel="external">Win7 U盘安装Ubuntu16.04 双系统详细教程</a></p>
+<p><a href="http://jingpin.jikexueyuan.com/article/36416.html" target="_blank" rel="external">SDD+HDD+Win7+Ubuntu12.04双硬盘双系统安装流程</a></p>
 
       
     </div>
@@ -449,9 +408,9 @@ www.braynzarso">
       
         <div class="post-tags">
           
-            <a href="/blog/tags/DirectX/" rel="tag">#DirectX</a>
+            <a href="/blog/tags/Windows/" rel="tag">#Windows</a>
           
-            <a href="/blog/tags/D3D/" rel="tag">#D3D</a>
+            <a href="/blog/tags/Ubuntu/" rel="tag">#Ubuntu</a>
           
         </div>
       
@@ -460,16 +419,16 @@ www.braynzarso">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2015/12/18/Books/" rel="next" title="Books">
-                <i class="fa fa-chevron-left"></i> Books
+              <a href="/blog/2016/05/13/externC/" rel="next" title="extern "C"用法解析">
+                <i class="fa fa-chevron-left"></i> extern "C"用法解析
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2015/12/18/Direct3D12-HelloWorld/" rel="prev" title="Direct3D12-HelloWorld">
-                Direct3D12-HelloWorld <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2016/05/16/ubuntu-ss/" rel="prev" title="Ubuntu 16.04编译安装安装Shadowsocks-qt5">
+                Ubuntu 16.04编译安装安装Shadowsocks-qt5 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -519,8 +478,8 @@ www.braynzarso">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/12/18/Direct3D-Tutorials/"
-           data-title="DirectX-Tutorials" data-url="https://byhj.github.io/blog/blog/2015/12/18/Direct3D-Tutorials/">
+      <div class="ds-thread" data-thread-key="2016/05/16/ubuntu-win/"
+           data-title="SDD+HHD Win10+Ubuntu 16.04双硬盘双系统U盘安装" data-url="https://byhj.github.io/blog/blog/2016/05/16/ubuntu-win/">
       </div>
     
   </div>
@@ -649,7 +608,7 @@ www.braynzarso">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Web"><span class="nav-number">1.</span> <span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DirectX-12"><span class="nav-number">1.1.</span> <span class="nav-text">DirectX 12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DirectX-10-amp-11"><span class="nav-number">1.2.</span> <span class="nav-text">DirectX 10&11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DirectX-9"><span class="nav-number">1.3.</span> <span class="nav-text">DirectX 9</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other"><span class="nav-number">1.4.</span> <span class="nav-text">Other</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Book"><span class="nav-number">2.</span> <span class="nav-text">Book</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tool"><span class="nav-number">3.</span> <span class="nav-text">Tool</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">4.</span> <span class="nav-text">Code</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#主要流程"><span class="nav-number">1.</span> <span class="nav-text">主要流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows磁盘压缩"><span class="nav-number">2.</span> <span class="nav-text">Windows磁盘压缩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#制作Ubuntu的U盘启动"><span class="nav-number">3.</span> <span class="nav-text">制作Ubuntu的U盘启动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Ubuntu系统"><span class="nav-number">4.</span> <span class="nav-text">安装Ubuntu系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用EasyBCD创建启动系统启动引导"><span class="nav-number">5.</span> <span class="nav-text">用EasyBCD创建启动系统启动引导</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
           </div>
         </section>

@@ -4,6 +4,48 @@
   
     
     <entry>
+      <title><![CDATA[Ubuntu 16.04编译安装安装Shadowsocks-qt5]]></title>
+      <url>https://byhj.github.io/blog/blog/2016/05/16/ubuntu-ss/</url>
+      <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>正常的安装方法通过PPA：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="built_in"> add-apt-repository </span>ppa:hzwhuang/ss-qt5</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install shadowsocks-qt5</span><br></pre></td></tr></table></figure>
+<p>但是不知为什么运行一会儿就程序崩溃了，经过一番折腾都不行。一种方法是使用[Shadowsocks Pyton版]<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get <span class="keyword">install</span> python-pip</span><br><span class="line">pip <span class="keyword">install</span> shadowsocks</span><br></pre></td></tr></table></figure></p>
+<p>我试了之后没有反应，所以就自己编译源码了。到Qt官网下载Qt5+安装，然后在安装Shadowsocks依赖包：<br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install qt5-qmake qtbase5-<span class="built_in">dev</span> libqrencode-<span class="built_in">dev</span> libqtshadowsocks-<span class="built_in">dev</span> libappindicator-<span class="built_in">dev</span> libzbar-<span class="built_in">dev</span> libbotan1<span class="number">.10</span>-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>使用Qt Creater打开<a href="https://github.com/shadowsocks/shadowsocks-qt5" target="_blank" rel="external">Shadowsocks-qt5</a>源码包中的.pro工程，编译成功运行，然后添加你的服务器的信息就可以了。</p>
+<p>浏览器中使用SwitchyOmega进行代理设置：<br><img width="80%" src="http://7xtwmz.com1.z0.glb.clouddn.com/ss-so.jpg"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SDD+HHD Win10+Ubuntu 16.04双硬盘双系统U盘安装]]></title>
+      <url>https://byhj.github.io/blog/blog/2016/05/16/ubuntu-win/</url>
+      <content type="html"><![CDATA[<h1 id="主要流程"><a href="#主要流程" class="headerlink" title="主要流程"></a>主要流程</h1><ol>
+<li>对已安装Windows进行磁盘压缩</li>
+<li>下载Ubuntu 16.04镜像软件，制作U盘启动盘使用ultraISO</li>
+<li>安装Ubuntu系统</li>
+<li>用EasyBCD 创建启动系统启动引导</li>
+</ol>
+<h1 id="Windows磁盘压缩"><a href="#Windows磁盘压缩" class="headerlink" title="Windows磁盘压缩"></a>Windows磁盘压缩</h1><p>　　这里默认安装了Windows10系统，由于我的Windows10安装在SSD，那么Ubuntu引导/boot也需要安装在SSD比较好。当然你可以选择安装在HHD,不过后面引导的部分可能很麻烦。右键：此电脑-管理-磁盘管理， 对SDD右键压缩卷，压缩出几百M进行Ubuntu的/boot安装，在HHD压缩出50G进行Ubuntu其它的挂载，可以根据你的情况划分多点。</p>
+<a id="more"></a>
+<p><img width="80%" src="http://7xtwmz.com1.z0.glb.clouddn.com/win-1.png"></p>
+<h1 id="制作Ubuntu的U盘启动"><a href="#制作Ubuntu的U盘启动" class="headerlink" title="制作Ubuntu的U盘启动"></a>制作Ubuntu的U盘启动</h1><p>到官网免费下载<a href="http://www.ubuntu.com/download/desktop" target="_blank" rel="external">Ubuntu16.04</a>,使用UltraISO进行制作U盘启动。</p>
+<p><img width="80%" src="http://7xtwmz.com1.z0.glb.clouddn.com/ubuntu-1.png"></p>
+<p><img width="80%" src="http://7xtwmz.com1.z0.glb.clouddn.com/ubuntu-2.png"></p>
+<p><img width="80%" src="http://7xtwmz.com1.z0.glb.clouddn.com/ubuntu-3.png"></p>
+<h1 id="安装Ubuntu系统"><a href="#安装Ubuntu系统" class="headerlink" title="安装Ubuntu系统"></a>安装Ubuntu系统</h1><p>　　重启按F2（不同机子不同）到BIOS设置Boot启动为U盘，按照安装步骤进行，分区选“其他选项”,进行下面的分区设置：</p>
+<ol>
+<li>逻辑分区，500M，起始，Ext4日志文件系统，/boot (引导分区挂载到你的SSD压缩出来的空间)</li>
+<li>逻辑分区，5000M，起始，交换空间，无挂载点；（交换分区swap，一般不大于物理内存）</li>
+<li>逻辑分区，15000M，起始，Ext4日志文件系统，/；（系统分区)</li>
+<li>逻辑分区，剩余空间数，起始，Ext4日志文件系统，/home；（home分区存放个人文档）</li>
+</ol>
+<h1 id="用EasyBCD创建启动系统启动引导"><a href="#用EasyBCD创建启动系统启动引导" class="headerlink" title="用EasyBCD创建启动系统启动引导"></a>用EasyBCD创建启动系统启动引导</h1><p><img width="80%" src="http://7xtwmz.com1.z0.glb.clouddn.com/win-u.png"><br>重启之后就可以看到Windows10和Ubuntu的启动选择项了。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://blog.csdn.net/coderjyf/article/details/51241919" target="_blank" rel="external">Win7 U盘安装Ubuntu16.04 双系统详细教程</a></p>
+<p><a href="http://jingpin.jikexueyuan.com/article/36416.html" target="_blank" rel="external">SDD+HDD+Win7+Ubuntu12.04双硬盘双系统安装流程</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[extern "C"用法解析]]></title>
       <url>https://byhj.github.io/blog/blog/2016/05/13/externC/</url>
       <content type="html"><![CDATA[<h1 id="extern-“C”"><a href="#extern-“C”" class="headerlink" title="extern “C”"></a>extern “C”</h1><p>包含双重含义：首先它修饰的目标是“extern”的；其次被它修饰的目标是“C”的。</p>
