@@ -1,0 +1,947 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Game Engine," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="数据转自wiki">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏引擎概览">
+<meta property="og:url" content="https://byhj.github.io/blog/2016/05/16/game-engine/index.html">
+<meta property="og:site_name" content="byhj zzZ~~~">
+<meta property="og:description" content="数据转自wiki">
+<meta property="og:updated_time" content="2016-05-17T00:55:02.847Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="游戏引擎概览">
+<meta name="twitter:description" content="数据转自wiki">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6283239007203624000,
+      author: 'Admid~~'
+    }
+  };
+</script>
+
+  <title> 游戏引擎概览 | byhj zzZ~~~ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ff98247ca0c64c8bae255603193ec927";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">byhj zzZ~~~</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">That fresh flowers will grow, And many glories of immortal stamp.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                游戏引擎概览
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-16T21:59:48+08:00" content="2016-05-16">
+              2016-05-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/05/16/game-engine/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/16/game-engine/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/05/16/game-engine/" class="leancloud_visitors" data-flag-title="游戏引擎概览">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>数据转自<a href="https://zh.wikipedia.org/wiki/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E5%88%97%E8%A1%A8" target="_blank" rel="external">wiki</a><br><a id="more"></a></p>
+<table class="wikitable sortable" style="text-align: center; font-size: 85%; width: auto; table-layout: fixed;"><br><tr><br><th>名称</th><br><th>程序语言</th><br><th>平台</th><br><th>授权</th><br><th>图像</th><br><th>音效</th><br><th>联网</th><br><th>脚本</th><br><th>其他特性</th><br><th>插件</th><br><th>备注</th><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.3dcakewalk.com/" target="_blank">3DCakeWalk</a></td><br><td>Python</td><br><td>Windows/Linux</td><br><td>商业</td><br><td>2D/3D基于DirectX和OpenGL</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是 Python</td><br><td><a rel="external" class="external text" href="http://www.3dcakewalk.com/features.php" target="_blank">参见</a></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.3dgamestudio.com/" target="_blank">A6游戏引擎</a></td><br><td>C-Script，模仿C++/Delphi</td><br><td>Windows</td><br><td>商业</td><br><td>3D基于DirectX</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是 C-Script脚本语言</td><br><td>带物理运算</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.gamedev2d.com" target="_blank">AGL引擎</a></td><br><td>C++</td><br><td>Windows</td><br><td>商业</td><br><td>2D基于DirectDraw，Direct3D和OpenGL</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td>高级游戏场景框架</td><br><td>易于使用，硬件抽象，自动资源管理，自定义文件系统</td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://alleg.sourceforge.net" target="_blank">Allegro</a></td><br><td>C++</td><br><td>DOS, Unix, Windows, BeOS, QNX, MacOS</td><br><td>开源，免费</td><br><td>2D以及3D</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.3dlevel.com/gamedev/news.php" target="_blank">Artificial引擎</a></td><br><td>.NET</td><br><td>Windows</td><br><td>免费</td><br><td>3D基于DirectX</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a href="/w/index.php?title=Axiom&amp;action=edit&amp;redlink=1" class="new" title="Axiom（页面不存在）">Axiom</a></td><br><td>.NET</td><br><td></td><br><td>免费</td><br><td>3D基于OpenGL</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.bajaengine.com/" target="_blank">Baja引擎</a></td><br><td>C++/Lua</td><br><td>Windows, Mac Os X</td><br><td>免费</td><br><td>3D基于OpenGL</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td>Lua</td><br><td>专业级品质，包含各种开发工具</td><br><td>灵活性高</td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.blitzbasic.com/" target="_blank">Blitz3D</a></td><br><td>Basic</td><br><td>Windows</td><br><td>商业</td><br><td>2d/3D基于DirectX7</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td>BlitzBasic</td><br><td>用户众多</td><br><td>易于使用，支持BSP，3DS</td><br><td>非面向对象，basic语法</td><br></tr><br><tr><br><td><a href="/w/index.php?title=BlitzMax&amp;action=edit&amp;redlink=1" class="new" title="BlitzMax（页面不存在）">BlitzMax</a></td><br><td>Object Basic</td><br><td>Windows, Linux, MacOS</td><br><td>商业</td><br><td>2D基于OpenGL</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td>BlitzMAX脚本</td><br><td>提供多种模块（GUI，3D，音效，物理运算等）易于使用</td><br><td>高速2D引擎，面向对象，支持LUA</td><br><td>没有3D支持</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://chrisk.free.fr/cariboost2/" target="_blank">Brume Game引擎</a></td><br><td>.NET 2.0（C#）</td><br><td>Windows</td><br><td>免费</td><br><td>3D基于DirectX</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td>提供多种模块（GUI，音效，物理运算，碰撞检测，动画等）</td><br><td>易于使用，面向对象</td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.terathon.com/c4engine/" target="_blank">C4引擎</a></td><br><td>C++</td><br><td>Windows/MacOS</td><br><td>商业</td><br><td>3D</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td><a rel="external" class="external text" href="http://www.terathon.com/wiki/index.php?title=Using_the_Script_Editor" target="_blank">可视化脚本编辑</a></td><br><td><a rel="external" class="external text" href="http://www.terathon.com/c4engine/features.php" target="_blank">参见</a></td><br><td>正在开发</td><br><td>特性支持不完整</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.cipherengine.com/" target="_blank">Cipher Game引擎</a></td><br><td>C/C++</td><br><td>Windows</td><br><td>商业</td><br><td>3D</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td></td><br><td>碰撞检测，AI</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.clanlib.org" target="_blank">ClanLib</a></td><br><td>C++</td><br><td>Windows, Linux, MacOSX</td><br><td>开源免费</td><br><td>2D加速</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td>网络系统表现优秀</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.hyzgame.org/" target="_blank">Classical Moon GDK</a></td><br><td>C/C++</td><br><td>Windows</td><br><td>Free/商业</td><br><td>2D基于OpenGL</td><br><td>是，基于OpenAL</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td>可定制化C/C++脚本语言</td><br><td>Chinese</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.clockworkinnovations.ca/clockwork.htm" target="_blank">Clockwork</a>（未完成）</td><br><td>不需要</td><br><td>Windows, Linux</td><br><td>Indie/商业</td><br><td>3D基于OpenGL</td><br><td>基于OpenAL</td><br><td>计划中</td><br><td>Lua</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.megastormsystems.com/" target="_blank">CRM32Pro</a></td><br><td>C++</td><br><td>Windows, Linux</td><br><td>闭源LGPL</td><br><td>2D基于SDL/glSDL，优化MMX</td><br><td>基于SDL_mixer的API</td><br><td>基于SDL_Net的API</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td>XML解析器，自带文件打包管理器，<a rel="external" class="external text" href="http://www.megastormsystems.com/sdk/crm32pro_en.htm" target="_blank">参见</a></td><br><td>基于各种CPU的高级设定，可定制化配置系统</td><br><td></td><br></tr><br><tr><br><td><a href="/wiki/Crystal_Space" title="Crystal Space">Crystal Space</a></td><br><td>C/C++</td><br><td>Linux, Windows, MacOS X</td><br><td>免费（LGPL）</td><br><td>3D基于OpenGL</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td>Python, Perl或Java</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.dabooda-engine.tk/" target="_blank">DaBooda Turbo引擎</a></td><br><td>VB</td><br><td>Windows</td><br><td></td><br><td>2D基于DirectX</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.daimonin.net/" target="_blank">Daimonin</a></td><br><td>C（服务端），C++（客户端）java（编辑器）</td><br><td>Linux, Windows, MacOSX</td><br><td>GPL</td><br><td>2D/3D基于SDL及<a href="/w/index.php?title=OGRE3D&amp;action=edit&amp;redlink=1" class="new" title="OGRE3D（页面不存在）">OGRE3D</a></td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td>Lua</td><br><td>完整的MMORPG引擎</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.delta3d.org" target="_blank">Delta3D</a></td><br><td>C++</td><br><td>Linux, Windows, MacOSX</td><br><td>免费（LGPL）</td><br><td>3D OpenGL</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td>Python</td><br><td>物理运算，场景编辑器，<a rel="external" class="external text" href="http://www.delta3d.org/article.php?story=20051209133127695&amp;topic=docs" target="_blank">参见</a></td><br><td>支持大规模地形渲染。</td><br><td></td><br></tr><br><tr><br><td><a href="/w/index.php?title=DarkbasicPro&amp;action=edit&amp;redlink=1" class="new" title="DarkbasicPro（页面不存在）">DarkbasicPro</a></td><br><td>Basic</td><br><td>Windows</td><br><td>共享软件</td><br><td>2d/3D基于DirectX9</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td>Darkbasic</td><br><td>用户众多</td><br><td>易于使用，支持BSP，3DS。</td><br><td>非面向对象，basic语法</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.simion.co.uk/dizzyage/" target="_blank">DizzyAGE</a></td><br><td>C++</td><br><td>Windows</td><br><td>免费</td><br><td>2D基于DirectX</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td>GS9脚本语言</td><br><td>有开发工具，用于快速创建冒险类游戏</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.dxgame.com/" target="_blank">DXGame引擎</a></td><br><td>VB6</td><br><td>Windows</td><br><td>免费</td><br><td>2D+基于Direct3D</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td>自动精灵管理，2D贴图地图（层数无限），基本粒子系统，碰撞检测</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://dxlib32.se32.com/" target="_blank">dx_lib32 2.0</a></td><br><td>VB 6.0（亦有VB.NET）</td><br><td>Windows</td><br><td>免费</td><br><td>2D基于D3D 8)</td><br><td>基于DirectAudio (DSound8)</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td>支持Quake/Half-Life的打包文件格式</td><br><td>界面简单，易于使用，说明文档完备</td><br><td>不完全面向对象，说明文件及网站都是<a href="/wiki/%E8%A5%BF%E7%8F%AD%E7%89%99%E8%AF%AD" title="西班牙语">西班牙语</a></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://easyway.sourceforge.net/index.php" target="_blank">EasyWay引擎</a></td><br><td>Java</td><br><td>Windows, Linux, Mac OS</td><br><td>开源GPL</td><br><td>2D/3D基于OpenGL</td><br><td>OpenAL</td><br><td>计划中</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td>可扩展，像素级碰撞检测，自动寻路</td><br><td>使用简便</td><br><td>API说明文件不完善</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://epeeengine.org" target="_blank">Epee引擎</a></td><br><td>C++</td><br><td>Windows, Linux,Mac</td><br><td>zlib/libpng</td><br><td>2D基于SDL，3D计划使用OpenGL</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td>计划中</td><br><td>计划中</td><br><td><a rel="external" class="external text" href="http://epeeengine.org" target="_blank">Epee参见</a></td><br><td>渲染快速</td><br><td>引擎还在开发中</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://dog4.dyndns.org:8080/trac" target="_blank">ephLib</a></td><br><td>C++/Io</td><br><td>OS X</td><br><td>GPL/其他</td><br><td>2D/3D基于OpenGL</td><br><td>OpenAL</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td>完整<a rel="external" class="external text" href="http://www.iolanguage.com/" target="_blank">Io</a>脚本支持</td><br><td>高级粒子系统</td><br><td>可修改</td><br><td>开发中，特性不完整</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.espresso3d.com/" target="_blank">Espresso3D</a></td><br><td>Java</td><br><td>Windows, Linux, MacOS X</td><br><td>免费/商业</td><br><td>3D基于LWJGL</td><br><td>2D/3D基于OpenAL</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td><a rel="external" class="external text" href="http://www.espresso3d.com/features.php" target="_blank">参见</a></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://fenix.sourceforge.net/" target="_blank">Fenix Project (beta)</a></td><br><td>Pascal、C兼有</td><br><td>Windows, Linux, Mac OS, Solaris, BeOs, DreamCast, GP32X</td><br><td>开源</td><br><td>2D基于SDL</td><br><td>基于MikMod</td><br><td>基于SDL_Net</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td>像素级碰撞检测，自动寻路</td><br><td>易于使用</td><br><td>基于软件渲染的2D，非面向对象的脚本语言，漏洞少</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.fifengine.de" target="_blank">FIFE</a></td><br><td>C++</td><br><td>Win32, Linux, MacOS X, BSD</td><br><td>免费（GPL 2.0）</td><br><td>2D软件渲染，基于SDL，有硬件加速模式，基于OpenGL</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是（OpenAL）</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td>Lua 5.1</td><br><td>计划支持各种特效</td><br><td></td><br><td>还不完整</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.flatredball.com" target="_blank">FlatRedBall 2.5D</a></td><br><td>.NET</td><br><td>Windows</td><br><td>Free</td><br><td>3D基于DirectX</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td>Soon</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td>模板，碰撞检测，骨骼系统，物理运算</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://g3d-cpp.sourceforge.net/" target="_blank">G3D</a></td><br><td>C++</td><br><td>Linux, Windows, MacOS X</td><br><td>免费（BSD）</td><br><td>3D基于OpenGL</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://g3d-ruby.rubyforge.org/" target="_blank">G3DRuby</a></td><br><td>Ruby</td><br><td>Windows, Linux</td><br><td>Free</td><br><td>3D基于OpenGL</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td style="background: #ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"><span style="display: none">0</span>否</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.gamemaker.nl/" target="_blank">Game Maker</a></td><br><td>Delphi</td><br><td>Windows, MacOS X</td><br><td>免费/商业</td><br><td>2D/3D</td><br><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><span style="display: none">1</span>是</td><br><td>Some</td><br><td>自创GML脚本</td><br><td>快速2D贴图地图游戏开发，但支持3D速度不够（基于DirectX）</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.genesis3d.com/" target="_blank">Genesis3D</a></td><br><td>C++</td><br><td>Windows</td><br><td>免费/商业</td><br><td>3D基于DirectX</td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a href="/w/index.php?title=GFX3D&amp;action=edit&amp;redlink=1" class="new" title="GFX3D（页面不存在）">GFX3D</a></td><br><td>C++</td><br><td>Windows</td><br><td>商业</td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://ghostengine.lutherlink.de" target="_blank">GhostEngine</a></td><br><td>C++, .NET</td><br><td>Windows（Mac和Linux在开发中）</td><br><td>引擎代码使用Zlib/libPNG许可证，非代码资源使用多种许可否</td><br><td>3D基于OpenGL/DirectX，对DirectX还在开发</td><br><td>是（FMOD）</td><br><td>是 (TCP/IP正在重写，UDP支持在计划中）</td><br><td>Lua</td><br><td>普通</td><br><td></td><br><td>开发中</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://hoek.inkblue.net/goblin/goblin.html" target="_blank">Goblin 2D+</a></td><br><td>C/C++</td><br><td>Windows</td><br><td>免费，共享，商业</td><br><td>主要是基于D3D的2D，但支持.X和.MD2模型</td><br><td>是-自创</td><br><td>否</td><br><td>否</td><br><td></td><br><td>开发中</td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://goldenstudios.or.id/products/GTGE/index.php" target="_blank">Golden T游戏引擎</a></td><br><td>Java</td><br><td>Windows, Linux, MacOS X</td><br><td>免费</td><br><td>2D基于OpenGL</td><br><td>是</td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.raschke.de/julian/gosu/" target="_blank">Gosu</a></td><br><td>C++, Ruby</td><br><td>Windows, Mac, Linux</td><br><td>免费</td><br><td>2D基于OpenGL/DirectX</td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://hge.relishgames.com/" target="_blank">HGE</a> <a href="/w/index.php?title=HGE&amp;action=edit&amp;redlink=1" class="new" title="HGE（页面不存在）">HGE</a></td><br><td>C++</td><br><td>Windows</td><br><td>开源（Zlib/libpng许可证）</td><br><td>2D基于DirectX</td><br><td>是，基于BASS</td><br><td>否</td><br><td>否</td><br><td>带开发工具</td><br><td>引擎框架好</td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://irmo.sourceforge.net/" target="_blank">Irmo</a></td><br><td>C</td><br><td>Linux</td><br><td>免费</td><br><td></td><br><td></td><br><td>是</td><br><td>Ruby</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a href="/w/index.php?title=Irrlicht&amp;action=edit&amp;redlink=1" class="new" title="Irrlicht（页面不存在）">Irrlicht</a></td><br><td>C++/.NET</td><br><td>Windows, Linux, Mac OSX</td><br><td>免费（zlib/pnglib许可证）</td><br><td>3D基于DirectX（8,9），OpenGL，多种软件渲染</td><br><td>否</td><br><td>否</td><br><td>Lua</td><br><td>碰撞检测，HDR</td><br><td>大公司开发，教学资源丰富</td><br><td>开发中</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://ika.sourceforge.net/" target="_blank">ika</a></td><br><td>C++</td><br><td>Windows, Linux</td><br><td>免费（GPL）</td><br><td>2D基于OpenGL</td><br><td>是</td><br><td>否</td><br><td>Python</td><br><td>资源消耗少</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.jadengine.com/" target="_blank">Jad引擎- C#+MDX引擎</a></td><br><td>C#</td><br><td>Windows</td><br><td>LGPL</td><br><td>3D基于Managed DirectX</td><br><td>MDSound和Vorbis .NET</td><br><td>否</td><br><td>否</td><br><td>需要支持shaders 2.0以上的图形卡，使用<a rel="external" class="external text" href="http://www.newtondynamics.com/" target="_blank">牛顿力学引擎</a>来实现逼真的运动和力回馈，支持HDR，带AI引擎（遗传算法框架）</td><br><td>开发界面直观</td><br><td>开发文档不完整</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.clickteam.com/" target="_blank">Jamagic 1.2</a></td><br><td>Jamascript</td><br><td>Windows</td><br><td>商业</td><br><td>3D</td><br><td>是</td><br><td>是</td><br><td>是</td><br><td>嵌入式编辑器</td><br><td>易学</td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://jengine.homedns.org/" target="_blank">JEngine SSE</a></td><br><td>C++</td><br><td>Windows, Linux</td><br><td>免费（GPL）</td><br><td>2D基于OpenGL</td><br><td>是</td><br><td>是</td><br><td>Lua</td><br><td>碰撞检测，Cg&amp;GLS效果</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a href="/w/index.php?title=Jet3D&amp;action=edit&amp;redlink=1" class="new" title="Jet3D（页面不存在）">Jet3D</a></td><br><td>C/C++</td><br><td>Windows</td><br><td>Free</td><br><td>3D基于DirectX</td><br><td></td><br><td>是</td><br><td></td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td>JGame</td><br><td>Java</td><br><td>Windows, Unix, MacOSX</td><br><td>免费（BSD）</td><br><td>2D</td><br><td>是</td><br><td>否</td><br><td>否</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://jmonkeyengine.com/" target="_blank">jMonkey引擎</a></td><br><td>Java</td><br><td>Windows, Linux, MacOS X</td><br><td>免费（BSD）</td><br><td>3D基于LWJGL</td><br><td>未知</td><br><td>否</td><br><td>否</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://jogre.sourceforge.net/" target="_blank">JOGRE引擎</a></td><br><td>Java</td><br><td>Windows, Linux, MacOS X</td><br><td>免费（BSD）</td><br><td>2D</td><br><td>&#160;?</td><br><td>否</td><br><td>否</td><br><td>Java在线游戏引擎</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.klayge.org/" target="_blank">KlayGE引擎</a></td><br><td>C++, Python</td><br><td>Windows, Linux</td><br><td>免费（GPL）</td><br><td>3D可以使用D3D9-11，OGL 2.0-4.0，以及OGL ES 2.0</td><br><td>是</td><br><td>否</td><br><td>Python</td><br><td>支持粒子系统，HDR等大部分特效</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://blog.csdn.net/cping1982/" target="_blank">LGame引擎</a></td><br><td>Java</td><br><td>Windows, Linux, MacOS X, Android, WP7</td><br><td>免费（Apache 2.0）</td><br><td>2D基于LWJGL，以及OGL ES 2.</td><br><td>是</td><br><td>否</td><br><td>自制</td><br><td>附带有AVG、RPG、SRPG、STG等游戏开发包</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.clickteam.com/" target="_blank">Multimedia Fusion 2</a></td><br><td>非脚本</td><br><td>Windows</td><br><td>商业</td><br><td>2D</td><br><td>是</td><br><td>是</td><br><td>Lua</td><br><td>ActiveX, Dll，插件丰富，可扩展</td><br><td>易学</td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.Nowhere-else.org/engine" target="_blank">neabEngine</a></td><br><td>PHP</td><br><td>Windows, Linux</td><br><td>商业</td><br><td>2D (AJAX)</td><br><td>否</td><br><td>是</td><br><td>是</td><br><td>带完整源代码，可添加模块</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.nevrax.org" target="_blank">NeL</a></td><br><td>C/C++</td><br><td>Windows, Linux</td><br><td>免费/商业</td><br><td>3D基于DirectX或OpenGL</td><br><td>是</td><br><td>是</td><br><td></td><br><td><a rel="external" class="external text" href="http://www.ironicentertainment.org/cegui/" target="_blank">CEGUI集成</a></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://perso.numericable.fr/~gazkole/malakoff/index.htm" target="_blank">NemoX 3D引擎</a></td><br><td>VB/Delphi/.NET</td><br><td>Windows</td><br><td>免费</td><br><td>3D基于DirectX</td><br><td>DirectX</td><br><td>是</td><br><td>易于使用</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a href="/w/index.php?title=NeoEngine&amp;action=edit&amp;redlink=1" class="new" title="NeoEngine（页面不存在）">NeoEngine</a></td><br><td>C++</td><br><td>Windows, Linux</td><br><td>免费（MPL）</td><br><td>3D基于DirectX或OpenGL</td><br><td>是</td><br><td>是</td><br><td>Lua</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.opengameengine.org/" target="_blank">OGE - Open Game Engine</a></td><br><td>C++</td><br><td>Windows（mingw, VC）, Linux (gcc)</td><br><td>免费（LGPL）/商业</td><br><td>3D（OGRE，hence DX + OpenGL)</td><br><td>OpenAL</td><br><td>RakNet</td><br><td>Squirrel</td><br><td>多线程设计，GUI (CEGUI)物理系统（ODE）</td><br><td>简便的开发平台</td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.ogre3d.org/" target="_blank">OGRE</a></td><br><td>C++</td><br><td>Windows, Linux, MacOS X</td><br><td>免费（LGPL）/商业</td><br><td>3D基于Directx或OpenGL</td><br><td>否</td><br><td>否</td><br><td>否</td><br><td>几乎支持所有高端3D技术</td><br><td>大公司开发，教程丰富，开源</td><br><td>源代码庞大</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.baronsoft.com" target="_blank">ORE</a></td><br><td>VB6</td><br><td>Windows</td><br><td>免费</td><br><td>2D基于DirectX7/DirectX8</td><br><td>是</td><br><td>是</td><br><td>是</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://ovorp.sf.net" target="_blank">Ovorp引擎</a></td><br><td>.NET</td><br><td>Windows</td><br><td>免费</td><br><td>2D基于DirectX</td><br><td></td><br><td>是</td><br><td></td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://pab.dyndns.org/" target="_blank">PAB游戏引擎</a></td><br><td>VB</td><br><td>Windows</td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.panda3d.org/" target="_blank">Panda3D</a></td><br><td>C++</td><br><td>Windows, Linux</td><br><td>免费(BSD)</td><br><td>3D DirectX / OpenGL</td><br><td>是，基于FMOD、OpenAL、Miles</td><br><td>有</td><br><td>Python（官方建议）、C++</td><br><td>自带碰撞与ODE物理引擎，有性能监控等辅助程序</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://photon.sourceforge.net" target="_blank">Photon</a></td><br><td>C++</td><br><td>Linux, Windows</td><br><td>zlib</td><br><td>2D基于OpenGL</td><br><td>是,OpenAL</td><br><td>否</td><br><td>否</td><br><td>带资源管理</td><br><td>文档丰富</td><br><td>开发早</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://plib.sourceforge.net" target="_blank">PLib</a></td><br><td>C++</td><br><td>Linux, UNIX, Windows, MacOSX, MacOS9</td><br><td>免费（LGPL）</td><br><td>2D/3D基于OpenGL</td><br><td>是</td><br><td>是</td><br><td>是</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://developer.popcap.com/" target="_blank">Popcap Framework</a></td><br><td>C++</td><br><td>Windows</td><br><td>免费</td><br><td>2D</td><br><td>是</td><br><td>否</td><br><td>否</td><br><td>开发过Zuma</td><br><td></td><br><td>不支持3D</td><br></tr><br><tr><br><td><a href="/w/index.php?title=PowerRender&amp;action=edit&amp;redlink=1" class="new" title="PowerRender（页面不存在）">PowerRender</a></td><br><td>C++</td><br><td>Windows, Xbox</td><br><td>商业</td><br><td>3D基于DirectX</td><br><td>是</td><br><td>否</td><br><td>C++脚本</td><br><td>物理系统，碰撞检测，HDR</td><br><td>可定制引擎</td><br><td>阴影算法不佳</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.phelios.com/ptk/" target="_blank">PTK引擎</a></td><br><td>C++</td><br><td>Windows, Mac</td><br><td>免费/商业</td><br><td>2D</td><br><td>是</td><br><td>否</td><br><td>否</td><br><td>支持TTF字体，各种线条，Tar文件</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://aspc.cs.utt.ro/~karg/ppt/" target="_blank">PPTactical引擎</a></td><br><td>C++</td><br><td>Windows, Linux</td><br><td>免费（LGPL）</td><br><td>2D</td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.purebasic.com/" target="_blank">PureBasic</a></td><br><td>Basic</td><br><td>Mac OS X, Linux, Windows</td><br><td>商业</td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.idsoftware.com/" target="_blank">Quake Engine</a></td><br><td>C</td><br><td>DOS &amp; Windows</td><br><td>GPL，商业</td><br><td>Software, OpenGL</td><br><td>是</td><br><td>是</td><br><td>QuakeC</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.idsoftware.com/" target="_blank">Quake II引擎</a></td><br><td>C</td><br><td>Windows, Linux</td><br><td>GPL/商业</td><br><td>OpenGL</td><br><td>是</td><br><td>是</td><br><td></td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.idsoftware.com/" target="_blank">Quake III Arena引擎</a></td><br><td>C</td><br><td>Windows, Linux, Mac OS</td><br><td>GPL/商业</td><br><td>OpenGL</td><br><td>是</td><br><td>是</td><br><td></td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://raydium.cqfd-corp.org/" target="_blank">Raydium 3D</a></td><br><td>C</td><br><td>Windows, Linux</td><br><td>免费（GPL）</td><br><td>3D基于OpenGL</td><br><td>是，基于OpenAL</td><br><td>是</td><br><td>嵌入式PHP, Python</td><br><td>基于ODE的物理系统</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a href="/w/index.php?title=Ray_Game_Designer_2&amp;action=edit&amp;redlink=1" class="new" title="Ray Game Designer 2（页面不存在）">Ray Game Designer 2</a></td><br><td>不需要</td><br><td>Windows</td><br><td>免费</td><br><td>3D基于OpenGL或Direct3D</td><br><td>是</td><br><td>否</td><br><td>是</td><br><td>碰撞检测，半透明，灯光效果</td><br><td>不需要编程基础，易用，含各种开发工具</td><br><td>游戏设定优先，图像引擎过时</td><br></tr><br><tr><br><td><a href="/w/index.php?title=Reality_Factory&amp;action=edit&amp;redlink=1" class="new" title="Reality Factory（页面不存在）">Reality Factory</a></td><br><td>不需要</td><br><td>Windows</td><br><td></td><br><td>3D基于<a rel="external" class="external text" href="http://www.genesis3d.com/" target="_blank">Genesis3D</a>（DirectX）</td><br><td>是</td><br><td>是</td><br><td>是</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://realmforge.com/" target="_blank">RealmForge</a></td><br><td>.NET</td><br><td></td><br><td></td><br><td>3D基于<a href="/w/index.php?title=Axiom&amp;action=edit&amp;redlink=1" class="new" title="Axiom（页面不存在）">Axiom</a>（OpenGL）</td><br><td>是</td><br><td>是</td><br><td>是</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://sourceforge.net/projects/retinax" target="_blank">RetinaX</a></td><br><td>.NET 2.0 (C#)</td><br><td></td><br><td>免费（BSD）</td><br><td>3D基于Managed DirectX</td><br><td>是</td><br><td>否</td><br><td>否</td><br><td>有用户界面</td><br><td>易用，可定制性强</td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.revolution3d.org/" target="_blank">Revolution3D</a></td><br><td>VB/C++/.NET</td><br><td>Windows</td><br><td>免费</td><br><td>3D基于DirectX</td><br><td>是</td><br><td>否</td><br><td>否</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.rpg-maker-downloads.tnrstudios.com/rpg-maker-2003.html" target="_blank">RPG Maker 2003</a></td><br><td>C/Delphi</td><br><td>Windows</td><br><td>共享软件</td><br><td>2D</td><br><td>是，基于DirectX</td><br><td>是</td><br><td>Ruby</td><br><td>有关卡编辑器</td><br><td>易用</td><br><td>闭源</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.enterbrain.co.jp/tkool/RPG_XP/eng" target="_blank">RPG Maker XP</a></td><br><td>C/Delphi</td><br><td>Windows</td><br><td>共享软件</td><br><td>2D</td><br><td>是，基于DirectX</td><br><td>是</td><br><td>Ruby</td><br><td>有关卡编辑器</td><br><td>易用</td><br><td>闭源</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://saqscrap.com/saq2d.aspx" target="_blank">Saq2D</a></td><br><td>C#</td><br><td>Windows</td><br><td>免费</td><br><td>2D基于XNA</td><br><td></td><br><td></td><br><td>否</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.diamondpants.com/spritecraft/" target="_blank">Sprite Craft</a></td><br><td>VB/C++/Delphi</td><br><td>Windows</td><br><td>免费</td><br><td>2D</td><br><td></td><br><td></td><br><td>VBScript/JavaScript</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.valvesoftware.com/" target="_blank">Source引擎</a></td><br><td>C++</td><br><td>Windows, Linux（服务端）</td><br><td>商业</td><br><td>Direct3D</td><br><td>是</td><br><td>是</td><br><td>否</td><br><td>基于Havok的物理系统，基于Valve的面部表情系统，VGUI, HDR</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://nebuladevice.cubik.org" target="_blank">The Nebula Device 2</a></td><br><td>C++</td><br><td>Windows</td><br><td>Free</td><br><td>3D基于DirectX</td><br><td>是</td><br><td>是</td><br><td>是</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.thousandparsec.net/" target="_blank">Thousand Parsec</a>框架</td><br><td>Python, C++，其他</td><br><td>Windows, Linux, MacOS X</td><br><td>免费（GPL）</td><br><td>2D/3D</td><br><td>否</td><br><td>TP协议</td><br><td>是</td><br><td>用于联机游戏的引擎框架</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.tntbasic.com" target="_blank">TNT Basic</a></td><br><td>Basic</td><br><td>MacOSX</td><br><td>免费（GPL）</td><br><td>2D</td><br><td>是</td><br><td>否</td><br><td>否</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.garagegames.com/pg/product/view.php?id=1" target="_blank">Torque</a></td><br><td>C++</td><br><td>Windows, Linux, MacOS X</td><br><td>商业</td><br><td>3D基于OpenGL</td><br><td>OpenAL</td><br><td>是</td><br><td>自定义脚本</td><br><td>任务/地形编辑器，支持Mac和Linux，实时界面编辑器，粒子系统，支持多语言</td><br><td>开源，用户众多，支持Many 3D模型导入</td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.garagegames.com/products/62" target="_blank">Torque2D</a></td><br><td>C++</td><br><td>Windows, Linux, MacOS X</td><br><td>商业</td><br><td>2D</td><br><td>OpenAL</td><br><td>是</td><br><td>自定义脚本</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a href="/wiki/Truevision3D" title="Truevision3D">Truevision3D</a></td><br><td>VB/Delphi/C++/.NET</td><br><td>Windows</td><br><td>免费/商业</td><br><td>3D基于DirectX</td><br><td>DirectX</td><br><td>是</td><br><td>VBscript, Python, Java Script</td><br><td>物理引擎，支持各种常见模型文件，正规映射，阴影</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.unrealengine.com/" target="_blank">UnrealEngine2 / 2X / 3</a></td><br><td>C++</td><br><td>Windows, Linux, MacOS X, PS2, Xbox, PS3, XBOX 360</td><br><td>商业</td><br><td>3D</td><br><td>是</td><br><td>是</td><br><td>UnrealScript</td><br><td>物理系统, HDR (UE3)</td><br><td></td><br><td>价格较高</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.unigine.com/" target="_blank">Unigine</a></td><br><td>C++</td><br><td>Windows, Linux</td><br><td>商业</td><br><td>3D</td><br><td>是</td><br><td>是</td><br><td>UnigineScript（类似C++）</td><br><td>物理系统, HDR, PRT，像素阴影（3.0）</td><br><td>图像表现类似Doom3, Unreal，价格较低，工具很多</td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.vbgore.com/" target="_blank">vbGORE</a></td><br><td>VB6</td><br><td>Windows</td><br><td>Free (Open Source)</td><br><td>2D基于3D</td><br><td>是</td><br><td>是</td><br><td>否</td><br><td>针对ORPG和MMORPG游戏设计的引擎</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a href="/wiki/Valve" title="Valve" class="mw-redirect">Valve</a></td><br><td>Python</td><br><td>Windows/Linux</td><br><td>商业</td><br><td>2D/3D基于DirectX和OpenGL</td><br><td>是</td><br><td></td><br><td>Python</td><br><td><a rel="external" class="external text" href="http://www.3dcakewalk.com/features.php" target="_blank">更多信息</a></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.visual3d.net" target="_blank">Visual3D.NET</a></td><br><td>.NET 2.0（C#）</td><br><td>Windows, Xbox 360</td><br><td>商业，对初学者免费</td><br><td>3D基于DirectX和XNA</td><br><td>是</td><br><td>是</td><br><td>C#, VB.NET, C++.NET, J#（Java）, JScript.NET (JavaScript), IronPython, Visual Programming/Modeling</td><br><td>可视化开发环境，布娃娃系统，正规映射，Shaders（3.0）, HDR</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a href="/w/index.php?title=YAKE_Engine&amp;action=edit&amp;redlink=1" class="new" title="YAKE Engine（页面不存在）">YAKE Engine</a></td><br><td>C++</td><br><td>Windows, Linux</td><br><td>免费</td><br><td>3D基于<a href="/wiki/OGRE" title="OGRE">OGRE</a>（OpenGL）, Direct3D 9</td><br><td>OpenAL</td><br><td>是</td><br><td>Lua</td><br><td>GUI基于<a href="/w/index.php?title=CEGUI&amp;action=edit&amp;redlink=1" class="new" title="CEGUI（页面不存在）">CEGUI</a>，基于<a href="/wiki/ODE" title="ODE" class="mw-disambig">ODE</a>的物理系统</td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.yage3d.net" target="_blank">Yage</a></td><br><td>D</td><br><td>Windows, Linux</td><br><td>免费(LGPL)</td><br><td>3D基于OpenGL</td><br><td>OpenAL</td><br><td>否</td><br><td>否</td><br><td></td><br><td></td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://panda3d.org/" target="_blank">Panda 3D</a></td><br><td>C++, Python</td><br><td>Windows, Linux</td><br><td>免费</td><br><td>3D</td><br><td>是</td><br><td>是</td><br><td>C++和Python</td><br><td>提供免费模型，文档，教程</td><br><td>迪士尼公司用来制作ToonTown，易学，很稳定</td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://zerodingames.com" target="_blank">zerodin引擎</a></td><br><td>C++</td><br><td>Windows, Linux, MacOS X, PS2, Xbox, PS3, XBOX 360</td><br><td>商业</td><br><td>3D</td><br><td>是</td><br><td>是</td><br><td>是</td><br><td><a rel="external" class="external text" href="http://zerodingames.com" target="_blank">,HDR ，自动寻路，碰撞检测，等</a></td><br><td>渲染快速，工具充足，界面简捷，易于使用，说明文档完备，能提高开发速度.</td><br><td>真正意义上的MMORPG引擎,，分布式服务器结构，理论上实现10万以上同时在线</td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://www.zakengine.com/" target="_blank">Zak Engine</a></td><br><td>C++</td><br><td>Windows</td><br><td>Free</td><br><td>2D基于DirectX 8.1 and 9.0</td><br><td><a rel="external" class="external text" href="http://audiere.sourceforge.net/" target="_blank">Audiere</a></td><br><td>是</td><br><td><a rel="external" class="external text" href="http://www.angelcode.com/angelscript/" target="_blank">AngelScript</a></td><br><td>Tiles地图（AnaConda地图编辑器），精灵，粒子系统，位图字体</td><br><td>很稳定，易用</td><br><td></td><br></tr><br><tr><br><td><a rel="external" class="external text" href="http://zfxce.sourceforge.net" target="_blank">ZFX Community Engine</a></td><br><td>C++</td><br><td>Windows, Linux, BSD</td><br><td>免费（LGPL）</td><br><td>3D基于DirectX和OpenGL</td><br><td>是</td><br><td>是</td><br><td>Lua</td><br><td></td><br><td></td><br><td></td><br></tr><br></table>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Game-Engine/" rel="tag">#Game Engine</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/05/16/vs-error/" rel="next" title="VS编译常见错误">
+                <i class="fa fa-chevron-left"></i> VS编译常见错误
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2016/05/16/maya-font/" rel="prev" title="改变MAYA字体大小">
+                改变MAYA字体大小 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/16/game-engine/"
+           data-title="游戏引擎概览" data-url="https://byhj.github.io/blog/blog/2016/05/16/game-engine/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/byhj.png"
+               alt="byhj" />
+          <p class="site-author-name" itemprop="name">byhj</p>
+          <p class="site-description motion-element" itemprop="description">心之所依，行之所向</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/byhj" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/xiebinyu" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://xiebinyu.com" target="_blank" title="website">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  website
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="binyuapple@163.com" target="_blank" title="emial">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  emial
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byhj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"byhjblog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("PKb1YXeoxSGQQacaNCBuWV4b-gzGzoHsz", "UeY5313r5g3YaEqgT9zWPs5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
