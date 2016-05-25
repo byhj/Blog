@@ -68,7 +68,7 @@
 <link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="GLSL,Shader,HLSL," />
+  <meta name="keywords" content="LeetCode," />
 
 
 
@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="介绍NShader是一款VS中Shader语法高亮的插件，主要支持下面几种高亮：
-123.fx, .fxh, .hlsl, .vsh, .psh files         : HLSL syntax highlighter..glsl, .frag, .vert, .fp, .vp, .geom files : GLSL syntax highlighter..cg, .cgfx, files">
+<meta name="description" content="12345678int countBits(uint32_t n) &amp;#123;     int cnt = 0;     while (n) &amp;#123;       n &amp;amp;= (n-1);       ++cnt;     &amp;#125;        return cnt;&amp;#125;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用NShader在VS中语法高亮GLSL，HLSL等Shader文件">
-<meta property="og:url" content="https://byhj.github.io/blog/2016/05/12/NShader/index.html">
+<meta property="og:title" content="计算二进制1的个数">
+<meta property="og:url" content="https://byhj.github.io/blog/2016/05/25/onebit/index.html">
 <meta property="og:site_name" content="byhj zzZ~~~">
-<meta property="og:description" content="介绍NShader是一款VS中Shader语法高亮的插件，主要支持下面几种高亮：
-123.fx, .fxh, .hlsl, .vsh, .psh files         : HLSL syntax highlighter..glsl, .frag, .vert, .fp, .vp, .geom files : GLSL syntax highlighter..cg, .cgfx, files">
-<meta property="og:updated_time" content="2016-05-16T02:09:20.422Z">
+<meta property="og:description" content="12345678int countBits(uint32_t n) &amp;#123;     int cnt = 0;     while (n) &amp;#123;       n &amp;amp;= (n-1);       ++cnt;     &amp;#125;        return cnt;&amp;#125;">
+<meta property="og:updated_time" content="2016-05-25T01:24:22.920Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用NShader在VS中语法高亮GLSL，HLSL等Shader文件">
-<meta name="twitter:description" content="介绍NShader是一款VS中Shader语法高亮的插件，主要支持下面几种高亮：
-123.fx, .fxh, .hlsl, .vsh, .psh files         : HLSL syntax highlighter..glsl, .frag, .vert, .fp, .vp, .geom files : GLSL syntax highlighter..cg, .cgfx, files">
+<meta name="twitter:title" content="计算二进制1的个数">
+<meta name="twitter:description" content="12345678int countBits(uint32_t n) &amp;#123;     int cnt = 0;     while (n) &amp;#123;       n &amp;amp;= (n-1);       ++cnt;     &amp;#125;        return cnt;&amp;#125;">
 
 
 
@@ -114,7 +111,7 @@
   };
 </script>
 
-  <title> 使用NShader在VS中语法高亮GLSL，HLSL等Shader文件 | byhj zzZ~~~ </title>
+  <title> 计算二进制1的个数 | byhj zzZ~~~ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -287,7 +284,7 @@
             
             
               
-                使用NShader在VS中语法高亮GLSL，HLSL等Shader文件
+                计算二进制1的个数
               
             
           </h1>
@@ -299,8 +296,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-12T09:13:49+08:00" content="2016-05-12">
-              2016-05-12
+            <time itemprop="dateCreated" datetime="2016-05-25T09:22:05+08:00" content="2016-05-25">
+              2016-05-25
             </time>
           </span>
 
@@ -310,8 +307,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/2016/05/12/NShader/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/NShader/" itemprop="commentsCount"></span>
+                <a href="/blog/2016/05/25/onebit/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/25/onebit/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -321,7 +318,7 @@
 
           
           
-             <span id="/blog/2016/05/12/NShader/" class="leancloud_visitors" data-flag-title="使用NShader在VS中语法高亮GLSL，HLSL等Shader文件">
+             <span id="/blog/2016/05/25/onebit/" class="leancloud_visitors" data-flag-title="计算二进制1的个数">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -343,16 +340,7 @@
       
 
       
-        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p><a href="http://nshader.codeplex.com/" target="_blank" rel="external">NShader</a>是一款VS中Shader语法高亮的插件，主要支持下面几种高亮：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.fx</span>, <span class="selector-class">.fxh</span>, <span class="selector-class">.hlsl</span>, <span class="selector-class">.vsh</span>, <span class="selector-class">.psh</span> files         : HLSL syntax highlighter.</span><br><span class="line"><span class="selector-class">.glsl</span>, <span class="selector-class">.frag</span>, <span class="selector-class">.vert</span>, <span class="selector-class">.fp</span>, <span class="selector-class">.vp</span>, <span class="selector-class">.geom</span> files : GLSL syntax highlighter.</span><br><span class="line"><span class="selector-class">.cg</span>, <span class="selector-class">.cgfx</span>, files                          : CG syntax highlighter.</span><br></pre></td></tr></table></figure>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>在官网中下载Nshader然后安装。打开注册表，删除下面的键值：<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HKEY_CURRENT_USER<span class="symbol">\S</span>oftware<span class="symbol">\M</span>icrosoft<span class="symbol">\V</span>isualStudio<span class="symbol">\1</span>1.0<span class="symbol">\F</span>ontAndColors<span class="symbol">\C</span>ache<span class="symbol">\ </span>HKEY_CURRENT_USER<span class="symbol">\S</span>oftware<span class="symbol">\M</span>icrosoft<span class="symbol">\V</span>isualStudio<span class="symbol">\1</span>1.0_Config</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>VS2012需要删除下面文件内所有fx，hlsl的行，这样VS默认的hlsl语法高亮不会影响NShader的语法高亮：<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:<span class="symbol">\P</span>rogram Files (x86)<span class="symbol">\M</span>icrosoft Visual Studio 11.0<span class="symbol">\C</span>ommon7<span class="symbol">\I</span>DE<span class="symbol">\C</span>ommonExtensions<span class="symbol">\M</span>icrosoft<span class="symbol">\V</span>C<span class="symbol">\V</span>C_Pkg_Core_Registration.pkgdef</span><br></pre></td></tr></table></figure></p>
-<p>如果需要配置高亮方案，可以在VS（Tools-Options-Environment-Fonts and Colors)右侧的Display items中设置带有NShder开头的项,这样就可以分别设置语法高亮方案。</p>
-<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h1><p>由于官网上Nshader只支持VS2012，下面我主要讲下怎么在在VS2013/VS2015中使用NShader实现Shader的语法高亮，并说下怎么添加自定义文件后缀进行语法高亮。在我github中下<a href="https://github.com/byhj/nshader" target="_blank" rel="external">nshader</a>的源码，然后使用VS2013/VS2015进行编译。找到生成NShader.vsix进行安装。你可以通过修改NShader.pkgdef文件来支持你自定义后缀的Shader文件进行语法高亮。NShader.pkgdef文件在：</p>
-<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:<span class="symbol">\U</span>ser(用户)<span class="symbol">\你</span>当前的用户<span class="symbol">\A</span>ppData<span class="symbol">\L</span>ocal<span class="symbol">\M</span>icrosoft<span class="symbol">\V</span>isualStudio<span class="symbol">\1</span>2.0(VS2015是14.0)<span class="symbol">\E</span>xtensions\</span><br><span class="line">然后直接搜索NShader.pkgdef文件</span><br></pre></td></tr></table></figure>
-<p>打开NShader.pkgdef文件然后安装里面的案例进行修改就可以了，下面给出我的自定义方案:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">OpenGL:</span><br><span class="line">- <span class="selector-class">.vert</span> : GL_VERTEX_SHADER</span><br><span class="line">- <span class="selector-class">.tcs</span>  : GL_TESS_CONTROL_SHADER</span><br><span class="line">- <span class="selector-class">.tes</span>  : GL_TESS_EVALUATION_SHADER</span><br><span class="line">- <span class="selector-class">.geom</span> : GL_GEOMETRY_SHADER</span><br><span class="line">- <span class="selector-class">.farg</span> : GL_FRAGMENT_SHADER</span><br><span class="line">- <span class="selector-class">.comp</span> : GL_COMPUTE_SHADER</span><br><span class="line"></span><br><span class="line">Direct3D:</span><br><span class="line">- <span class="selector-class">.vsh</span>: D3D_VERTEX_SHADER</span><br><span class="line">- <span class="selector-class">.hsh</span>: D3D_HULL_SHADER</span><br><span class="line">- <span class="selector-class">.dsh</span>: D3D_DOMAIN_SHADER</span><br><span class="line">- <span class="selector-class">.gsh</span>: D3D_GEOMETRY_SHADER</span><br><span class="line">- <span class="selector-class">.psh</span>: D3D_PIXEL_SHADER</span><br><span class="line">- <span class="selector-class">.csh</span>: D3D_COMPUTE_SHADER</span><br></pre></td></tr></table></figure></p>
-<p>Nshader.pkgdef:<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">[$RootKey$\InstalledProducts\NShader]</span><br><span class="line">@=<span class="string">"#110"</span></span><br><span class="line"><span class="string">"Package"</span>=<span class="string">"&#123;dd9b8cde-96a0-4442-bf6f-083a7f43d453&#125;"</span></span><br><span class="line"><span class="string">"PID"</span>=<span class="string">"1.54"</span></span><br><span class="line"><span class="string">"ProductDetails"</span>=<span class="string">"#112"</span></span><br><span class="line"><span class="string">"LogoID"</span>=<span class="string">"#400"</span></span><br><span class="line">[$RootKey$\Packages\&#123;dd9b8cde<span class="number">-96</span>a0<span class="number">-4442</span>-bf6f<span class="number">-083</span>a7f43d453&#125;]</span><br><span class="line">@=<span class="string">"NShader"</span></span><br><span class="line"><span class="string">"InprocServer32"</span>=<span class="string">"$WinDir$\SYSTEM32\MSCOREE.DLL"</span></span><br><span class="line"><span class="string">"Class"</span>=<span class="string">"NShader.NShader"</span></span><br><span class="line"><span class="string">"CodeBase"</span>=<span class="string">"$PackageFolder$\NShader.dll"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.cg]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.cgfx]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.cginc]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.comp]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.fp]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.frag]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.fsh]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.fx]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.fxh]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.geom]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.glsl]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.hlsl]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.psh]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.shader]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.slfx]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.vert]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.tcs]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.tes]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.vp]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.vsh]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.hsh]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.dsh]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.tsh]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.gsh]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.csh]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\File Extensions\.xsh]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line">[$RootKey$\Languages\Language Services\NShader]</span><br><span class="line">@=<span class="string">"&#123;20d6b815-3b2a-303d-bb0a-d13bd201825a&#125;"</span></span><br><span class="line"><span class="string">"Package"</span>=<span class="string">"&#123;dd9b8cde-96a0-4442-bf6f-083a7f43d453&#125;"</span></span><br><span class="line"><span class="string">"LangResID"</span>=dword:<span class="number">00000072</span></span><br><span class="line"><span class="string">"RequestStockColors"</span>=dword:<span class="number">00000000</span></span><br><span class="line"><span class="string">"EnableFormatSelection"</span>=dword:<span class="number">00000001</span></span><br><span class="line"><span class="string">"EnableCommenting"</span>=dword:<span class="number">00000001</span></span><br><span class="line"><span class="string">"EnableLineNumbersOption"</span>=dword:<span class="number">00000001</span></span><br><span class="line">[$RootKey$\Services\&#123;<span class="number">20</span>d6b815<span class="number">-3</span>b2a<span class="number">-303</span>d-bb0a-d13bd201825a&#125;]</span><br><span class="line">@=<span class="string">"&#123;dd9b8cde-96a0-4442-bf6f-083a7f43d453&#125;"</span></span><br><span class="line"><span class="string">"Name"</span>=<span class="string">"Shader Language Service"</span></span><br></pre></td></tr></table></figure></p>
+        <figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> countBits(uint32_t n) &#123;</span><br><span class="line">     <span class="keyword">int</span> <span class="keyword">cnt</span> = <span class="number">0</span><span class="comment">;</span></span><br><span class="line">     <span class="keyword">while</span> (n) &#123;</span><br><span class="line">       n &amp;= (n<span class="number">-1</span>)<span class="comment">;</span></span><br><span class="line">       ++<span class="keyword">cnt</span><span class="comment">;</span></span><br><span class="line">     &#125;   </span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">cnt</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -374,11 +362,7 @@
       
         <div class="post-tags">
           
-            <a href="/blog/tags/GLSL/" rel="tag">#GLSL</a>
-          
-            <a href="/blog/tags/Shader/" rel="tag">#Shader</a>
-          
-            <a href="/blog/tags/HLSL/" rel="tag">#HLSL</a>
+            <a href="/blog/tags/LeetCode/" rel="tag">#LeetCode</a>
           
         </div>
       
@@ -387,17 +371,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2016/05/12/windows10-cpu/" rel="next" title="windows10下CPU磁盘运行总是100%优化方法">
-                <i class="fa fa-chevron-left"></i> windows10下CPU磁盘运行总是100%优化方法
+              <a href="/blog/2016/05/20/dom-query-angular/" rel="next" title="DOM element在Qjuery和Anglular中转换">
+                <i class="fa fa-chevron-left"></i> DOM element在Qjuery和Anglular中转换
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2016/05/12/lisense/" rel="prev" title="五种开源协议(GPL,LGPL,BSD,MIT,Apache)">
-                五种开源协议(GPL,LGPL,BSD,MIT,Apache) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -446,8 +426,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/12/NShader/"
-           data-title="使用NShader在VS中语法高亮GLSL，HLSL等Shader文件" data-url="https://byhj.github.io/blog/blog/2016/05/12/NShader/">
+      <div class="ds-thread" data-thread-key="2016/05/25/onebit/"
+           data-title="计算二进制1的个数" data-url="https://byhj.github.io/blog/blog/2016/05/25/onebit/">
       </div>
     
   </div>
@@ -576,7 +556,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展"><span class="nav-number">3.</span> <span class="nav-text">扩展</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
